@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "crafts_construct:block/train_spout"
+      }
+    }
+  ]
+}

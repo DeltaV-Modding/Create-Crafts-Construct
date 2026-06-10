@@ -42,7 +42,8 @@ public class craftsconstruct {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
-        ModBlockEntityTypes.register();
+        ModBlockEntityTypes.register(modEventBus);
+        ModCapabilities.register(modEventBus);
 
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "crafts_construct:block/andesite_smart_fluid_pipe"
+      }
+    }
+  ]
+}

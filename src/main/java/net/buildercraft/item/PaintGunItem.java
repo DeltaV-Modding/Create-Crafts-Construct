@@ -42,12 +42,25 @@ public class PaintGunItem extends Item {
         PaintMaterial heldMaterial = getMaterial(cartridge);
         PaintMaterial material = creative ? (heldMaterial == null ? PaintMaterial.BRASS : heldMaterial) : heldMaterial;
         if (material == null) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.no_cartridge"), true);
+            }
             return InteractionResult.PASS;
         }
 
         BlockState sourceState = level.getBlockState(context.getClickedPos());
+        if (PaintTargetResolver.isAlreadyMaterial(sourceState, material)) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.same_material"), true);
+            }
+            return InteractionResult.PASS;
+        }
+
         Optional<BlockState> targetState = PaintTargetResolver.resolve(sourceState, material);
         if (targetState.isEmpty()) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.no_target"), true);
+            }
             return InteractionResult.PASS;
         }
 

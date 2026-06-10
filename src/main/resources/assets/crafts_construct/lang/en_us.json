@@ -88,5 +88,8 @@
   "create.tooltip.cc.condition": " Applies currently selected _Material_.",
   "create.tooltip.cc.behaviour2": "Paint Material",
   "create.tooltip.cc.behaviour3": "Paint Material:",
-  "create.tooltip.cc.condition2": " Requires a _Paint Cartridge_ in _Off-Hand_"
+  "create.tooltip.cc.condition2": " Requires a _Paint Cartridge_ in _Off-Hand_",
+  "message.crafts_construct.paint_gun.no_cartridge": "Put a paint cartridge in your off-hand.",
+  "message.crafts_construct.paint_gun.no_target": "This block has no paint variant for that cartridge.",
+  "message.crafts_construct.paint_gun.same_material": "This block already uses that paint material."
 }

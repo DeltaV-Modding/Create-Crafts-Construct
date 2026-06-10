@@ -73,6 +73,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MAGENTA_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.PINK_CHECKERED_TEXTILE);
 
+                        for (var tempPaintBlock : ModBlocks.TEMP_PAINT_BLOCKS) {
+                            output.accept(tempPaintBlock);
+                        }
+
                         output.accept(ModItems.GREEN_GUMMY_BEAR);
                         output.accept(ModItems.RED_GUMMY_BEAR);
                         output.accept(ModItems.YELLOW_GUMMY_BEAR);

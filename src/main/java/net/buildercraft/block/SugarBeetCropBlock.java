@@ -1,6 +1,5 @@
 package net.buildercraft.block;
 
-
 import net.buildercraft.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -17,14 +16,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SugarBeetCropBlock extends CropBlock {
     public static final int MAX_AGE = 3;
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
-    private static final VoxelShape[] SHAPE_BY_AGE =
-            new VoxelShape[]{
-                    Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-                    Block.box(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-                    Block.box(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-                    Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),};
-
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
+    private static final int REQUIRED_LIGHT_LEVEL = 9;
+    private static final float GROWTH_SPEED = 5.0F;
+    private static final VoxelShape[] SHAPE_BY_AGE = {
+            Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+            Block.box(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+            Block.box(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+            Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
+    };
 
 
     public SugarBeetCropBlock(Properties properties) {
@@ -58,20 +58,23 @@ public class SugarBeetCropBlock extends CropBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!level.isAreaLoaded(pos, 1)) return;
-
-        if (level.getRawBrightness(pos.above(), 0) >= 9) {
-            float growthChance = getGrowthSpeed(state, level, pos);
-
-            if (random.nextInt((int)(35.0F / growthChance) + 1) == 0) {
-                int age = getAge(state);
-                if (age < getMaxAge()) {
-                    level.setBlock(pos, getStateForAge(age + 1), 2);
-                }
-            }
+        if (!level.isAreaLoaded(pos, 1) || level.getRawBrightness(pos.above(), 0) < REQUIRED_LIGHT_LEVEL) {
+            return;
         }
+
+        int age = getAge(state);
+        if (age >= MAX_AGE || random.nextInt(getGrowthInterval()) != 0) {
+            return;
+        }
+
+        level.setBlock(pos, getStateForAge(age + 1), Block.UPDATE_CLIENTS);
     }
+
+    private static int getGrowthInterval() {
+        return (int) (35.0F / GROWTH_SPEED) + 1;
+    }
+
     protected static float getGrowthSpeed(BlockState state, BlockGetter level, BlockPos pos) {
-        return 5.0F;
+        return GROWTH_SPEED;
     }
 }
