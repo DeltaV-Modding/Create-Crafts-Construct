@@ -1,0 +1,7 @@
+{
+  "parent": "crafts_construct:block/copper_mechanical_saw/blade_horizontal_active",
+  "textures": {
+    "stonecutter_saw": "crafts_construct:block/temp/copper_mechanical_saw",
+    "stonecutter_saw_reversed": "crafts_construct:block/temp/copper_mechanical_saw"
+  }
+}

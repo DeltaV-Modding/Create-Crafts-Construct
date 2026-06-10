@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public class PaintTargetResolver {
     private static final Map<ResourceLocation, Map<PaintMaterial, ResourceLocation>> SPECIAL_TARGETS = Map.of(
@@ -33,6 +34,50 @@ public class PaintTargetResolver {
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_large_cogwheel"),
                     PaintMaterial.BRASS, id("create", "brass_encased_large_cogwheel")
             )
+    );
+    private static final Map<String, PaintMaterial> CREATE_BASE_MATERIALS = Map.ofEntries(
+            Map.entry("fluid_pipe", PaintMaterial.COPPER),
+            Map.entry("mechanical_pump", PaintMaterial.COPPER),
+            Map.entry("fluid_valve", PaintMaterial.COPPER),
+            Map.entry("fluid_tank", PaintMaterial.COPPER),
+            Map.entry("spout", PaintMaterial.COPPER),
+            Map.entry("hose_pulley", PaintMaterial.COPPER),
+            Map.entry("portable_fluid_interface", PaintMaterial.COPPER),
+            Map.entry("steam_engine", PaintMaterial.COPPER),
+            Map.entry("steam_whistle", PaintMaterial.COPPER),
+            Map.entry("smart_fluid_pipe", PaintMaterial.BRASS),
+            Map.entry("mechanical_crafter", PaintMaterial.BRASS),
+            Map.entry("gearbox", PaintMaterial.ANDESITE),
+            Map.entry("encased_chain_drive", PaintMaterial.ANDESITE),
+            Map.entry("encased_fan", PaintMaterial.ANDESITE),
+            Map.entry("millstone", PaintMaterial.ANDESITE),
+            Map.entry("mechanical_saw", PaintMaterial.ANDESITE),
+            Map.entry("mechanical_press", PaintMaterial.ANDESITE),
+            Map.entry("mechanical_mixer", PaintMaterial.ANDESITE),
+            Map.entry("deployer", PaintMaterial.ANDESITE),
+            Map.entry("mechanical_drill", PaintMaterial.ANDESITE)
+    );
+    private static final Map<String, Set<PaintMaterial>> CUSTOM_MATERIALS = Map.ofEntries(
+            Map.entry("fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_pump", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("fluid_valve", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("fluid_tank", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("spout", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("hose_pulley", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("portable_fluid_interface", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("steam_engine", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("steam_whistle", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("smart_fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_crafter", Set.of(PaintMaterial.ANDESITE, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
+            Map.entry("gearbox", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("encased_chain_drive", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
+            Map.entry("encased_fan", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("millstone", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_saw", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_press", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_mixer", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("deployer", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
+            Map.entry("mechanical_drill", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN))
     );
 
     private PaintTargetResolver() {
@@ -69,6 +114,14 @@ public class PaintTargetResolver {
         if (sourceId.equals(id(craftsconstruct.MOD_ID, "brass_item_drain"))) {
             return Optional.of(PaintMaterial.BRASS);
         }
+        if ("create".equals(sourceId.getNamespace())) {
+            String strippedPath = stripKnownMaterialPrefix(sourceId.getPath());
+            String path = strippedPath == null ? sourceId.getPath() : strippedPath;
+            PaintMaterial baseMaterial = CREATE_BASE_MATERIALS.get(path);
+            if (baseMaterial != null && sourceId.equals(id("create", path))) {
+                return Optional.of(baseMaterial);
+            }
+        }
 
         String path = sourceId.getPath();
         for (PaintMaterial material : PaintMaterial.values()) {
@@ -91,6 +144,10 @@ public class PaintTargetResolver {
             if (strippedPath == null) {
                 return null;
             }
+            Optional<ResourceLocation> baseVariant = baseCreateId(material, strippedPath);
+            if (baseVariant.isPresent()) {
+                return baseVariant.get();
+            }
             Optional<ResourceLocation> createVariant = existingCreateId(material.getSerializedName() + "_" + strippedPath);
             return createVariant.orElse(functionalCraftsConstructVariant(material, strippedPath).orElse(null));
         }
@@ -105,8 +162,20 @@ public class PaintTargetResolver {
             strippedPath = sourcePath;
         }
 
+        Optional<ResourceLocation> baseVariant = baseCreateId(material, strippedPath);
+        if (baseVariant.isPresent()) {
+            return baseVariant.get();
+        }
         Optional<ResourceLocation> createVariant = existingCreateId(material.getSerializedName() + "_" + strippedPath);
         return createVariant.orElse(functionalCraftsConstructVariant(material, strippedPath).orElse(null));
+    }
+
+    private static Optional<ResourceLocation> baseCreateId(PaintMaterial material, String strippedPath) {
+        if (CREATE_BASE_MATERIALS.get(strippedPath) != material) {
+            return Optional.empty();
+        }
+        ResourceLocation id = id("create", strippedPath);
+        return BuiltInRegistries.BLOCK.get(id) == Blocks.AIR ? Optional.empty() : Optional.of(id);
     }
 
     private static Optional<ResourceLocation> existingCreateId(String path) {
@@ -116,6 +185,9 @@ public class PaintTargetResolver {
 
     private static Optional<ResourceLocation> functionalCraftsConstructVariant(PaintMaterial material, String strippedPath) {
         if (!isFunctionalCraftsConstructVariant(strippedPath)) {
+            return Optional.empty();
+        }
+        if (!CUSTOM_MATERIALS.getOrDefault(strippedPath, Set.of()).contains(material)) {
             return Optional.empty();
         }
 

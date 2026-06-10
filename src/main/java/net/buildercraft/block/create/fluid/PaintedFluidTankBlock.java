@@ -55,6 +55,10 @@ public class PaintedFluidTankBlock extends FluidTankBlock {
 
     private boolean tryPlaceSquare(Level level, BlockPos origin, BlockState state, ItemStack stack, int size, boolean consume) {
         List<BlockPos> positions = positionsForSquare(origin, size);
+        if (!hasMatchingTankLayerBelow(level, positions, state)) {
+            return false;
+        }
+
         List<BlockPos> missing = new ArrayList<>();
         for (BlockPos target : positions) {
             if (target.equals(origin)) {
@@ -76,6 +80,15 @@ public class PaintedFluidTankBlock extends FluidTankBlock {
         }
         if (consume) {
             stack.shrink(extraBlocks);
+        }
+        return true;
+    }
+
+    private boolean hasMatchingTankLayerBelow(Level level, List<BlockPos> positions, BlockState state) {
+        for (BlockPos target : positions) {
+            if (!level.getBlockState(target.below()).is(state.getBlock())) {
+                return false;
+            }
         }
         return true;
     }

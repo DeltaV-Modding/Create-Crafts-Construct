@@ -1,3 +1,3 @@
 {
-  "parent": "crafts_construct:block/copper_mechanical_saw"
+  "parent": "crafts_construct:block/copper_mechanical_saw/item"
 }

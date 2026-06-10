@@ -1,9 +1,0 @@
-{
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/brass_mechanical_crafter"
-      }
-    }
-  ]
-}

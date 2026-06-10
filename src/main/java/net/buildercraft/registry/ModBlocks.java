@@ -178,7 +178,9 @@ public class ModBlocks {
     static {
         for (String material : TEMP_PAINT_MATERIALS) {
             for (String target : TEMP_PAINT_TARGETS) {
-                registerTempPaintBlock(material + "_" + target);
+                if (shouldRegisterPaintVariant(material, target)) {
+                    registerTempPaintBlock(material + "_" + target);
+                }
             }
         }
     }
@@ -255,6 +257,40 @@ public class ModBlocks {
     private static Block createBlock(String target) {
         Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", target));
         return block == Blocks.AIR ? Blocks.IRON_BLOCK : block;
+    }
+
+    private static boolean shouldRegisterPaintVariant(String material, String target) {
+        if ("encased_chain_drive".equals(target) && "copper".equals(material)) {
+            return true;
+        }
+        String baseMaterial = baseMaterialFor(target);
+        return baseMaterial == null || !baseMaterial.equals(material);
+    }
+
+    private static String baseMaterialFor(String target) {
+        return switch (target) {
+            case "fluid_pipe",
+                 "mechanical_pump",
+                 "fluid_valve",
+                 "fluid_tank",
+                 "spout",
+                 "hose_pulley",
+                 "portable_fluid_interface",
+                 "steam_engine",
+                 "steam_whistle" -> "copper";
+            case "smart_fluid_pipe",
+                 "mechanical_crafter" -> "brass";
+            case "gearbox",
+                 "encased_chain_drive",
+                 "encased_fan",
+                 "millstone",
+                 "mechanical_saw",
+                 "mechanical_press",
+                 "mechanical_mixer",
+                 "deployer",
+                 "mechanical_drill" -> "andesite";
+            default -> null;
+        };
     }
 
     private static String stripMaterialPrefix(String name) {

@@ -1,9 +1,30 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/copper_encased_fan"
-      }
+  "variants": {
+    "facing=down": {
+      "model": "crafts_construct:block/copper_encased_fan/block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "crafts_construct:block/copper_encased_fan/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/copper_encased_fan/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/copper_encased_fan/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "crafts_construct:block/copper_encased_fan/block"
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/copper_encased_fan/block",
+      "x": 90,
+      "y": 270
     }
-  ]
+  }
 }

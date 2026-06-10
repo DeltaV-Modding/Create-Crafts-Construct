@@ -1,9 +1,0 @@
-{
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/copper_steam_whistle"
-      }
-    }
-  ]
-}

@@ -1,9 +1,19 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_hose_pulley"
-      }
+  "variants": {
+    "facing=east": {
+      "model": "crafts_construct:block/train_hose_pulley/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/train_hose_pulley/block"
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/train_hose_pulley/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/train_hose_pulley/block",
+      "y": 270
     }
-  ]
+  }
 }

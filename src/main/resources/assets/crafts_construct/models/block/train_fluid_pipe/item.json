@@ -1,0 +1,48 @@
+{
+  "textures": {
+    "pipe": "crafts_construct:block/temp/train_fluid_pipe",
+    "particle": "crafts_construct:block/temp/train_fluid_pipe"
+  },
+  "elements": [
+    {
+      "from": [0, 4, 4],
+      "to": [16, 12, 12],
+      "faces": {
+        "north": {"uv": [0, 4, 16, 12], "texture": "#pipe"},
+        "south": {"uv": [0, 4, 16, 12], "texture": "#pipe"},
+        "up": {"uv": [0, 4, 16, 12], "texture": "#pipe"},
+        "down": {"uv": [0, 4, 16, 12], "texture": "#pipe"},
+        "west": {"uv": [4, 4, 12, 12], "texture": "#pipe"},
+        "east": {"uv": [4, 4, 12, 12], "texture": "#pipe"}
+      }
+    },
+    {
+      "from": [0, 3, 3],
+      "to": [2, 13, 13],
+      "faces": {
+        "north": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "east": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "south": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "west": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "up": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "down": {"uv": [3, 3, 13, 13], "texture": "#pipe"}
+      }
+    },
+    {
+      "from": [14, 3, 3],
+      "to": [16, 13, 13],
+      "faces": {
+        "north": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "east": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "south": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "west": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "up": {"uv": [3, 3, 13, 13], "texture": "#pipe"},
+        "down": {"uv": [3, 3, 13, 13], "texture": "#pipe"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {"rotation": [30, 225, 0], "translation": [0, 0, 0], "scale": [0.8, 0.8, 0.8]},
+    "fixed": {"rotation": [0, 90, 0], "translation": [0, 0, 0], "scale": [0.7, 0.7, 0.7]}
+  }
+}

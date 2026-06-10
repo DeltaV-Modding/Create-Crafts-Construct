@@ -1,9 +1,30 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/andesite_portable_fluid_interface"
-      }
+  "variants": {
+    "facing=down": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block"
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/andesite_portable_fluid_interface/block",
+      "x": 90,
+      "y": 270
     }
-  ]
+  }
 }

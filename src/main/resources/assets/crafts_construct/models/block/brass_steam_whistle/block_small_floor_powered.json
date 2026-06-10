@@ -1,0 +1,6 @@
+{
+  "parent": "crafts_construct:block/brass_steam_whistle/block_small_floor",
+  "textures": {
+    "2": "crafts_construct:block/temp/brass_steam_whistle"
+  }
+}

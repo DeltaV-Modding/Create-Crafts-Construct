@@ -1,9 +1,11 @@
 {
   "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_fluid_pipe"
-      }
-    }
+    { "apply": { "model": "crafts_construct:block/train_fluid_pipe/item" } },
+    { "when": { "north": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item" } },
+    { "when": { "east": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item", "y": 90 } },
+    { "when": { "south": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item" } },
+    { "when": { "west": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item", "y": 90 } },
+    { "when": { "up": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item", "x": 90 } },
+    { "when": { "down": "true" }, "apply": { "model": "crafts_construct:block/train_fluid_pipe/item", "x": 90 } }
   ]
 }

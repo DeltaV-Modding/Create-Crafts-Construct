@@ -1,9 +1,7 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/copper_millstone"
-      }
+  "variants": {
+    "": {
+      "model": "crafts_construct:block/copper_millstone/block"
     }
-  ]
+  }
 }

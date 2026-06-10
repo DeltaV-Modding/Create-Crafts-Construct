@@ -1,9 +1,7 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_mechanical_mixer"
-      }
+  "variants": {
+    "": {
+      "model": "crafts_construct:block/train_mechanical_mixer/block"
     }
-  ]
+  }
 }
