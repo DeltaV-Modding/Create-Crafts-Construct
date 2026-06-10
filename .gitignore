@@ -1,0 +1,18 @@
+.gradle/
+build/
+run/
+.idea/
+
+# IntelliJ / Gradle local files
+*.iml
+*.ipr
+*.iws
+
+# Logs and crash dumps
+*.log
+hs_err_pid*
+replay_pid*
+
+# OS files
+.DS_Store
+Thumbs.db

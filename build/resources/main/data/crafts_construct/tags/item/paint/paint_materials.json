@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "create:copper_sheet",
-    "create:brass_sheet"
-  ]
-}
