@@ -83,6 +83,7 @@
   "create.tooltip.cc.paint.copper": " _COPPER_",
   "create.tooltip.cc.paint.andesite": " _ANDESITE ALLOY_",
   "create.tooltip.cc.paint.train": " _STURDY SHEET_",
+  "create.tooltip.cc.paint_cartridge.uses": "Uses: %s/%s",
   "create.tooltip.cc.behaviour": "R-Click at Block",
   "create.tooltip.cc.condition": " Applies currently selected _Material_.",
   "create.tooltip.cc.behaviour2": "Paint Material",

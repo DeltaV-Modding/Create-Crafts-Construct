@@ -1,21 +1,16 @@
 package net.buildercraft.registry;
 
-import com.simibubi.create.foundation.item.TooltipHelper;
-import com.simibubi.create.foundation.utility.CreateLang;
 import net.buildercraft.craftsconstruct;
 import net.buildercraft.item.DragonCharge;
 import net.buildercraft.item.FireballCharge;
-import net.createmod.catnip.lang.FontHelper;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
+import net.buildercraft.item.PaintCartridgeItem;
+import net.buildercraft.item.PaintGunItem;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import util.ModFood;
-
-import java.util.List;
+import util.PaintMaterial;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
@@ -40,150 +35,22 @@ public class ModItems {
 
     //Paint Cartridge
     public static final DeferredItem<Item> EMPTY_PAINT_CARTRIDGE = ITEMS.register("empty_paint_cartridge", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BRASS_PAINT_CARTRIDGE = ITEMS.register("brass_paint_cartridge", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-                List<Component> material = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.paint.brass").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                tooltip.add(Component.translatable("create.tooltip.cc.behaviour3")
-                        .withStyle(ChatFormatting.GRAY));
-                tooltip.addAll(material);
-        }
-
-    });
-    public static final DeferredItem<Item> COPPER_PAINT_CARTRIDGE = ITEMS.register("copper_paint_cartridge", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-            List<Component> material = TooltipHelper.cutTextComponent(
-                    CreateLang.translate("tooltip.cc.paint.copper").component(),
-                    FontHelper.Palette.STANDARD_CREATE.primary(),
-                    FontHelper.Palette.STANDARD_CREATE.highlight()
-            );
-            tooltip.add(Component.translatable("create.tooltip.cc.behaviour3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.addAll(material);
-        }
-
-    });
-    public static final DeferredItem<Item> ANDESITE_PAINT_CARTRIDGE = ITEMS.register("andesite_paint_cartridge", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-            List<Component> material = TooltipHelper.cutTextComponent(
-                    CreateLang.translate("tooltip.cc.paint.andesite").component(),
-                    FontHelper.Palette.STANDARD_CREATE.primary(),
-                    FontHelper.Palette.STANDARD_CREATE.highlight()
-            );
-            tooltip.add(Component.translatable("create.tooltip.cc.behaviour3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.addAll(material);
-        }
-
-    });
-    public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = ITEMS.register("train_paint_cartridge", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-            List<Component> material = TooltipHelper.cutTextComponent(
-                    CreateLang.translate("tooltip.cc.paint.train").component(),
-                    FontHelper.Palette.STANDARD_CREATE.primary(),
-                    FontHelper.Palette.STANDARD_CREATE.highlight()
-            );
-            tooltip.add(Component.translatable("create.tooltip.cc.behaviour3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.addAll(material);
-        }
-
-    });
+    public static final DeferredItem<Item> BRASS_PAINT_CARTRIDGE = ITEMS.register("brass_paint_cartridge",
+            () -> new PaintCartridgeItem(PaintMaterial.BRASS, new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_PAINT_CARTRIDGE = ITEMS.register("copper_paint_cartridge",
+            () -> new PaintCartridgeItem(PaintMaterial.COPPER, new Item.Properties()));
+    public static final DeferredItem<Item> ANDESITE_PAINT_CARTRIDGE = ITEMS.register("andesite_paint_cartridge",
+            () -> new PaintCartridgeItem(PaintMaterial.ANDESITE, new Item.Properties()));
+    public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = ITEMS.register("train_paint_cartridge",
+            () -> new PaintCartridgeItem(PaintMaterial.TRAIN, new Item.Properties()));
 
 
     //Paint Gun
-    public static final DeferredItem<Item> PAINT_GUN = ITEMS.register("paint_gun", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)){
-        //adds the tooltips to the Item
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-            if (Screen.hasShiftDown()) {
-                List<Component> summary = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.paint_gun.summary").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                List<Component> condition = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.condition").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                List<Component> condition2 = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.condition2").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                tooltip.add(Component.translatable("create.tooltip.cc.keyShift_down")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-                tooltip.add(Component.translatable("create.tooltip.cc.null"));
-                tooltip.addAll(summary);
-                tooltip.add(Component.translatable("create.tooltip.cc.null"));
-                tooltip.add(Component.translatable("create.tooltip.cc.behaviour")
-                        .withStyle(ChatFormatting.GRAY));
-                tooltip.addAll(condition);
-                tooltip.add(Component.translatable("create.tooltip.cc.behaviour2")
-                        .withStyle(ChatFormatting.GRAY));
-                tooltip.addAll(condition2);
+    public static final DeferredItem<Item> PAINT_GUN = ITEMS.register("paint_gun",
+            () -> new PaintGunItem(false, new Item.Properties()));
 
-            } else {
-                tooltip.add(Component.translatable("create.tooltip.cc.keyShift")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-            }
-        }
-
-    });
-
-    public static final DeferredItem<Item> C_PAINT_GUN = ITEMS.register("creative_paint_gun", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)){
-        //adds the tooltips to the Item
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-            super.appendHoverText(stack, context, tooltip, flag);
-            if (Screen.hasShiftDown()) {
-                List<Component> summary = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.c_paint_gun.summary").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                List<Component> condition = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.condition").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                List<Component> condition2 = TooltipHelper.cutTextComponent(
-                        CreateLang.translate("tooltip.cc.condition2").component(),
-                        FontHelper.Palette.STANDARD_CREATE.primary(),
-                        FontHelper.Palette.STANDARD_CREATE.highlight()
-                );
-                tooltip.add(Component.translatable("create.tooltip.cc.keyShift_down")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-                tooltip.add(Component.translatable("create.tooltip.cc.null"));
-                tooltip.addAll(summary);
-                tooltip.add(Component.translatable("create.tooltip.cc.null"));
-                tooltip.add(Component.translatable("create.tooltip.cc.behaviour")
-                        .withStyle(ChatFormatting.GRAY));
-                tooltip.addAll(condition);
-                tooltip.add(Component.translatable("create.tooltip.cc.behaviour2")
-                        .withStyle(ChatFormatting.GRAY));
-                tooltip.addAll(condition2);
-
-            } else {
-                tooltip.add(Component.translatable("create.tooltip.cc.keyShift")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-            }
-        }
-
-    });
+    public static final DeferredItem<Item> C_PAINT_GUN = ITEMS.register("creative_paint_gun",
+            () -> new PaintGunItem(true, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

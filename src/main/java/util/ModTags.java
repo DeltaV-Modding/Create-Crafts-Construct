@@ -14,7 +14,7 @@ public class ModTags {
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, name));
         }
-        public static final TagKey<Block> PAINTABLE_BLOCKS = BlockTags.create(ResourceLocation.parse(craftsconstruct.MOD_ID + ":tags/block/paint/paintable"));
+        public static final TagKey<Block> PAINTABLE_BLOCKS = createTag("paint/paintable");
     }
 
     public static class Items {
