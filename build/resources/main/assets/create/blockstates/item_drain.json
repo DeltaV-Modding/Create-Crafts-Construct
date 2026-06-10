@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "material=copper": {
+      "model": "create:block/item_drain"
+    },
+    "material=brass": {
+      "model": "crafts_construct/block/brass_item_drain"
+    }
+  }
+}

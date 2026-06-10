@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "crafts_construct:block/blue_textile_2"
+  }
+}

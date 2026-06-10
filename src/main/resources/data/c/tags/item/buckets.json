@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "crafts_construct:green_jelly_bucket",
+    "crafts_construct:red_jelly_bucket",
+    "crafts_construct:yellow_jelly_bucket",
+    "crafts_construct:blue_jelly_bucket",
+    "crafts_construct:pink_jelly_bucket"
+  ]
+}

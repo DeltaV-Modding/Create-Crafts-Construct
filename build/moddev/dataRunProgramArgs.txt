@@ -1,0 +1,29 @@
+# Main Class
+cpw.mods.bootstraplauncher.BootstrapLauncher
+
+# NeoForge Run-Type Program Arguments
+--launchTarget
+forgedatauserdev
+--assetIndex
+17
+--assetsDir
+C:\\Users\\Lukas\\.gradle\\caches\\neoformruntime\\assets
+--gameDir
+.
+--fml.neoForgeVersion
+21.1.139
+--fml.fmlVersion
+4.0.38
+--fml.mcVersion
+1.21.1
+--fml.neoFormVersion
+20240808.144430
+
+# User Supplied Program Arguments
+--mod
+crafts_construct
+--all
+--output
+F:\\Games\\MODS\\crafts_construct\\src\\generated\\resources
+--existing
+F:\\Games\\MODS\\crafts_construct\\src\\main\\resources

@@ -1,0 +1,15 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "crafts_construct:green_jelly"
+    }
+  ],
+  "results": [
+    {
+      "id": "crafts_construct:green_gummy_bear"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crafts_construct.main.iml" filepath="$PROJECT_DIR$/.idea/modules/crafts_construct.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crafts_construct.test.iml" filepath="$PROJECT_DIR$/.idea/modules/crafts_construct.test.iml" />
+    </modules>
+  </component>
+</project>

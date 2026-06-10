@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "crafts_construct:item/red_gummy_bear"
+  }
+}

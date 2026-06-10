@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
+
+[[mods]]
+modId = "crafts_construct"
+version = "2.0.0"
+displayName = "Create: Crafts & Construct"
+authors = "Quatrogamer, Shayans"
+description = '''Create-Mod addon that adds new Recipes and more stuff to the Game.'''
+logoFile = "logo.png"
+[[mixins]]
+config = "craftsconstruct.mixins.json"
+
+[[dependencies.crafts_construct]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.139,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.crafts_construct]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.crafts_construct]]
+modId = "create"
+type = "required"
+versionRange = "[6.0.4]"
+ordering = "NONE"
+side = "BOTH"
