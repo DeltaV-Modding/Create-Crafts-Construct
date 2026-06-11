@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "crafts_construct:block/andesite_fluid_tank_top",
-		"1": "crafts_construct:block/andesite_fluid_tank",
-		"3": "crafts_construct:block/andesite_fluid_tank_window",
-		"4": "crafts_construct:block/andesite_fluid_tank_inner",
-		"particle": "crafts_construct:block/andesite_fluid_tank"
+		"0": "crafts_construct:block/andesite_fluid_tank/andesite_fluid_tank_top",
+		"1": "crafts_construct:block/andesite_fluid_tank/andesite_fluid_tank",
+		"3": "crafts_construct:block/andesite_fluid_tank/andesite_fluid_tank_window",
+		"4": "crafts_construct:block/andesite_fluid_tank/andesite_fluid_tank_inner",
+		"particle": "crafts_construct:block/andesite_fluid_tank/andesite_fluid_tank"
 	},
 	"elements": [
 		{

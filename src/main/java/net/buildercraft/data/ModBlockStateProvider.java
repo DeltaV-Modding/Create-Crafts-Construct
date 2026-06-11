@@ -34,7 +34,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
         models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()),
-                ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + textureName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()))).renderType("cutout"));
+                ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/sugar_beets/" + textureName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()))).renderType("cutout"));
 
         return models;
     }

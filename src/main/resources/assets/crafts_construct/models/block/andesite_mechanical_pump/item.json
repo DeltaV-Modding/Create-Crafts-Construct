@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "crafts_construct:block/temp/andesite_mechanical_pump",
+	"parent": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump",
 	"texture_size": [32, 32],
 	"textures": {
-		"4": "crafts_construct:block/temp/andesite_mechanical_pump",
-		"particle": "crafts_construct:block/temp/andesite_mechanical_pump"
+		"4": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump",
+		"particle": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump"
 	},
 	"elements": [
 		{

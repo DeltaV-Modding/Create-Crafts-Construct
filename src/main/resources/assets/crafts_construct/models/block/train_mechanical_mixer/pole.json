@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"6": "crafts_construct:block/temp/train_mechanical_mixer",
-		"mechanical_press_pole": "crafts_construct:block/temp/train_mechanical_mixer"
+		"6": "crafts_construct:block/train_mechanical_mixer/train_mechanical_mixer",
+		"mechanical_press_pole": "crafts_construct:block/train_mechanical_mixer/train_mechanical_mixer"
 	},
 	"elements": [
 		{

@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "crafts_construct:block/train_spout",
-		"3": "crafts_construct:block/temp/train_spout",
-		"particle": "crafts_construct:block/temp/train_spout"
+		"0": "crafts_construct:block/train_spout/train_spout",
+		"3": "crafts_construct:block/train_spout/train_spout",
+		"particle": "crafts_construct:block/train_spout/train_spout"
 	},
 	"elements": [
 		{

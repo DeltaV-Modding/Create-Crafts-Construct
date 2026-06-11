@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "crafts_construct:block/temp/andesite_smart_fluid_pipe",
-		"2": "crafts_construct:block/temp/andesite_smart_fluid_pipe",
-		"3": "crafts_construct:block/temp/andesite_smart_fluid_pipe",
-		"4": "crafts_construct:block/temp/andesite_smart_fluid_pipe",
-		"particle": "crafts_construct:block/temp/andesite_smart_fluid_pipe"
+		"1": "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe",
+		"2": "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe_casing",
+		"3": "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe_casing",
+		"4": "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe_casing",
+		"particle": "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe"
 	},
 	"elements": [
 		{

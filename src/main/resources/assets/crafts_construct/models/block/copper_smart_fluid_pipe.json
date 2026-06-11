@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/copper_smart_fluid_pipe"
+    "all": "crafts_construct:block/copper_smart_fluid_pipe/copper_smart_fluid_pipe"
   }
 }

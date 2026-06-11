@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/andesite_hose_pulley"
+    "all": "crafts_construct:block/andesite_hose_pulley/andesite_hose_pulley"
   }
 }

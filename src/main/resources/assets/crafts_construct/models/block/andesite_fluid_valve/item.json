@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "crafts_construct:block/andesite_fluid_valve",
-		"4": "crafts_construct:block/temp/andesite_fluid_valve",
-		"1_1": "crafts_construct:block/temp/andesite_fluid_valve",
-		"1_0": "crafts_construct:block/temp/andesite_fluid_valve",
-		"particle": "crafts_construct:block/temp/andesite_fluid_valve"
+		"2": "crafts_construct:block/andesite_fluid_valve/andesite_fluid_valve",
+		"4": "crafts_construct:block/andesite_fluid_valve/andesite_fluid_valve",
+		"1_1": "crafts_construct:block/andesite_fluid_valve/andesite_fluid_valve",
+		"1_0": "crafts_construct:block/andesite_fluid_valve/andesite_fluid_valve",
+		"particle": "crafts_construct:block/andesite_fluid_valve/andesite_fluid_valve"
 	},
 	"elements": [
 		{

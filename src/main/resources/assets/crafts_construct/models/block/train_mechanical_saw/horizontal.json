@@ -1,13 +1,13 @@
 {
 	"credit": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
-	"parent": "crafts_construct:block/temp/train_mechanical_saw",
+	"parent": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw",
 	"textures": {
-		"slit": "crafts_construct:block/train_mechanical_saw_top_no_slot",
-		"particle": "crafts_construct:block/temp/train_mechanical_saw",
-		"gearbox_top": "crafts_construct:block/temp/train_mechanical_saw",
-		"encased_belt": "crafts_construct:block/temp/train_mechanical_saw",
-		"gearbox": "crafts_construct:block/temp/train_mechanical_saw",
-		"andesite_casing_short": "crafts_construct:block/temp/train_mechanical_saw"
+		"slit": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw_top_no_slot",
+		"particle": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw",
+		"gearbox_top": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw",
+		"encased_belt": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw",
+		"gearbox": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw",
+		"andesite_casing_short": "crafts_construct:block/train_mechanical_saw/train_mechanical_saw"
 	},
 	"elements": [
 		{

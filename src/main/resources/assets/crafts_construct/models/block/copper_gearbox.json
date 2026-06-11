@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/copper_gearbox"
+    "all": "crafts_construct:block/copper_gearbox/copper_gearbox"
   }
 }

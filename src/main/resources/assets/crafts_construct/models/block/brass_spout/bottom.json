@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"2": "crafts_construct:block/brass_spout_nozzle"
+		"2": "crafts_construct:block/brass_spout/brass_spout_nozzle"
 	},
 	"elements": [
 		{

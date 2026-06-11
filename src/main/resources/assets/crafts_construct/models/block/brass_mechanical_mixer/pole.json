@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"6": "crafts_construct:block/temp/brass_mechanical_mixer",
-		"mechanical_press_pole": "crafts_construct:block/temp/brass_mechanical_mixer"
+		"6": "crafts_construct:block/brass_mechanical_mixer/brass_mechanical_mixer",
+		"mechanical_press_pole": "crafts_construct:block/brass_mechanical_mixer/brass_mechanical_mixer"
 	},
 	"elements": [
 		{

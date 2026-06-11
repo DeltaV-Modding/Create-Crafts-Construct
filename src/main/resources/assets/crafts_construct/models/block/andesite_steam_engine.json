@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/andesite_steam_engine"
+    "all": "crafts_construct:block/andesite_steam_engine/andesite_steam_engine"
   }
 }

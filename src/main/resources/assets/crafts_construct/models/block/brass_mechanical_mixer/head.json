@@ -3,7 +3,7 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"6": "crafts_construct:block/temp/brass_mechanical_mixer"
+		"6": "crafts_construct:block/brass_mechanical_mixer/brass_mechanical_mixer"
 	},
   "render_type": "minecraft:cutout",
   "elements": [

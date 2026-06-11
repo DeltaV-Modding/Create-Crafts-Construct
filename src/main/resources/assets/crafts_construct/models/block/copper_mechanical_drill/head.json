@@ -2,10 +2,10 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "crafts_construct:block/temp/copper_mechanical_drill",
-		"1": "crafts_construct:block/temp/copper_mechanical_drill",
+		"0": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
+		"1": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
 		"2": "block/anvil",
-		"10": "crafts_construct:block/temp/copper_mechanical_drill",
+		"10": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
 		"particle": "block/anvil"
 	},
 	"elements": [

@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "crafts_construct:block/temp/brass_steam_engine"
+		"0": "crafts_construct:block/brass_steam_engine/brass_steam_engine"
 	},
 	"elements": [
 		{

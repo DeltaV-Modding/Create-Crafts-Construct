@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/brass_fluid_valve"
+    "all": "crafts_construct:block/brass_fluid_valve/brass_fluid_valve"
   }
 }

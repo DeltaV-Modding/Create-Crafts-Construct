@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/andesite_smart_fluid_pipe"
+    "all": "crafts_construct:block/andesite_smart_fluid_pipe/andesite_smart_fluid_pipe"
   }
 }

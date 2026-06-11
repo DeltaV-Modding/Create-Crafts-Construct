@@ -1,6 +1,6 @@
 {
   "parent": "crafts_construct:block/train_steam_whistle/block_medium_wall",
   "textures": {
-    "2": "crafts_construct:block/temp/train_steam_whistle"
+    "2": "crafts_construct:block/train_steam_whistle/train_steam_whistle"
   }
 }

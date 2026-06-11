@@ -3,18 +3,18 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "crafts_construct:block/temp/brass_deployer",
-		"1": "crafts_construct:block/temp/brass_deployer",
-		"6": "crafts_construct:block/temp/brass_deployer",
-		"7": "crafts_construct:block/temp/brass_deployer",
-		"10": "crafts_construct:block/temp/brass_deployer",
-		"18": "crafts_construct:block/brass_deployer",
-		"particle": "crafts_construct:block/temp/brass_deployer",
-		"gearbox_top": "crafts_construct:block/temp/brass_deployer",
-		"gearbox": "crafts_construct:block/temp/brass_deployer",
-		"andesite_casing_short": "crafts_construct:block/temp/brass_deployer",
-		"mechanical_press_pole": "crafts_construct:block/temp/brass_deployer",
-		"mechanical_press_head": "crafts_construct:block/temp/brass_deployer"
+		"0": "crafts_construct:block/brass_deployer/brass_deployer",
+		"1": "crafts_construct:block/brass_deployer/brass_deployer",
+		"6": "crafts_construct:block/brass_deployer/brass_deployer",
+		"7": "crafts_construct:block/brass_deployer/brass_deployer",
+		"10": "crafts_construct:block/brass_deployer/brass_deployer",
+		"18": "crafts_construct:block/brass_deployer/brass_deployer",
+		"particle": "crafts_construct:block/brass_deployer/brass_deployer",
+		"gearbox_top": "crafts_construct:block/brass_deployer/brass_deployer",
+		"gearbox": "crafts_construct:block/brass_deployer/brass_deployer",
+		"andesite_casing_short": "crafts_construct:block/brass_deployer/brass_deployer",
+		"mechanical_press_pole": "crafts_construct:block/brass_deployer/brass_deployer",
+		"mechanical_press_head": "crafts_construct:block/brass_deployer/brass_deployer"
 	},
 	"elements": [
 		{

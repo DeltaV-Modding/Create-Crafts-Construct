@@ -2,16 +2,16 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "crafts_construct:block/temp/train_mechanical_press",
-		"1": "crafts_construct:block/temp/train_mechanical_press",
-		"8": "crafts_construct:block/train_mechanical_press_side",
-		"particle": "crafts_construct:block/train_mechanical_press_side",
-		"mechanical_press_head": "crafts_construct:block/train_mechanical_press_head",
-		"gearbox_top": "crafts_construct:block/temp/train_mechanical_press",
-		"mechanical_press_pole": "crafts_construct:block/train_mechanical_press_pole",
-		"gearbox": "crafts_construct:block/temp/train_mechanical_press",
-		"mechanical_press_top": "crafts_construct:block/train_mechanical_press_top",
-		"mechanical_press_bottom": "crafts_construct:block/train_mechanical_press_bottom"
+		"0": "crafts_construct:block/train_mechanical_press/train_mechanical_press",
+		"1": "crafts_construct:block/train_mechanical_press/train_mechanical_press",
+		"8": "crafts_construct:block/train_mechanical_press/train_mechanical_press_side",
+		"particle": "crafts_construct:block/train_mechanical_press/train_mechanical_press_side",
+		"mechanical_press_head": "crafts_construct:block/train_mechanical_press/train_mechanical_press_head",
+		"gearbox_top": "crafts_construct:block/train_mechanical_press/train_mechanical_press",
+		"mechanical_press_pole": "crafts_construct:block/train_mechanical_press/train_mechanical_press_pole",
+		"gearbox": "crafts_construct:block/train_mechanical_press/train_mechanical_press",
+		"mechanical_press_top": "crafts_construct:block/train_mechanical_press/train_mechanical_press_top",
+		"mechanical_press_bottom": "crafts_construct:block/train_mechanical_press/train_mechanical_press_bottom"
 	},
 	"elements": [
 		{

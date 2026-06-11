@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "crafts_construct:block/andesite_spout_nozzle",
-		"particle": "crafts_construct:block/andesite_spout_nozzle"
+		"0": "crafts_construct:block/andesite_spout/andesite_spout_nozzle",
+		"particle": "crafts_construct:block/andesite_spout/andesite_spout_nozzle"
 	},
 	"elements": [
 		{

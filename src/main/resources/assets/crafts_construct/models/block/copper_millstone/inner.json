@@ -3,10 +3,10 @@
 	"parent": "block/block",
 	"texture_size": [32, 32],
 	"textures": {
-		"5": "crafts_construct:block/copper_millstone",
-		"particle": "crafts_construct:block/temp/copper_millstone",
-		"1_0": "crafts_construct:block/temp/copper_millstone",
-		"1_1": "crafts_construct:block/temp/copper_millstone"
+		"5": "crafts_construct:block/copper_millstone/copper_millstone",
+		"particle": "crafts_construct:block/copper_millstone/copper_millstone",
+		"1_0": "crafts_construct:block/copper_millstone/copper_millstone",
+		"1_1": "crafts_construct:block/copper_millstone/copper_millstone"
 	},
 	"elements": [
 		{

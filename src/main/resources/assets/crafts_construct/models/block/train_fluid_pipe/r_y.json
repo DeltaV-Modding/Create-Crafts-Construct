@@ -1,0 +1,7 @@
+﻿{
+    "textures":  {
+                     "particle":  "crafts_construct:block/train_fluid_pipe/train_fluid_pipe",
+                     "0":  "crafts_construct:block/train_fluid_pipe/core_y"
+                 },
+    "parent":  "create:block/fluid_pipe/r_y"
+}

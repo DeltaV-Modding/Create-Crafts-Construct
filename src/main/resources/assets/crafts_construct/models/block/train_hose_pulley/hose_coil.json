@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "crafts_construct:block/train_hose_pulley_coil",
-		"particle": "crafts_construct:block/temp/train_hose_pulley"
+		"2": "crafts_construct:block/train_hose_pulley/train_hose_pulley_coil",
+		"particle": "crafts_construct:block/train_hose_pulley/train_hose_pulley"
 	},
 	"elements": [
 		{

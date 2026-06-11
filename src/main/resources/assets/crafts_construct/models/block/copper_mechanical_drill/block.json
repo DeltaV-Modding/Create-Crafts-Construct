@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"4": "crafts_construct:block/copper_mechanical_drill_top",
-		"10": "crafts_construct:block/temp/copper_mechanical_drill",
-		"gearbox_top": "crafts_construct:block/temp/copper_mechanical_drill",
-		"particle": "crafts_construct:block/temp/copper_mechanical_drill",
-		"gearbox": "crafts_construct:block/temp/copper_mechanical_drill"
+		"4": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill_top",
+		"10": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
+		"gearbox_top": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
+		"particle": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill",
+		"gearbox": "crafts_construct:block/copper_mechanical_drill/copper_mechanical_drill"
 	},
 	"elements": [
 		{

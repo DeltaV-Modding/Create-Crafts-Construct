@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "crafts_construct:block/andesite_portable_fluid_interface",
-		"particle": "crafts_construct:block/temp/andesite_portable_fluid_interface"
+		"0": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface",
+		"particle": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface"
 	},
 	"elements": [
 		{

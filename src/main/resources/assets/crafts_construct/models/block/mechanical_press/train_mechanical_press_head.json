@@ -1,8 +1,8 @@
 {
 	"credit": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
 	"textures": {
-		"mechanical_press_head": "crafts_construct:block/temp/train_mechanical_press",
-		"mechanical_press_pole": "crafts_construct:block/temp/train_mechanical_press"
+		"mechanical_press_head": "crafts_construct:block/train_mechanical_press/train_mechanical_press",
+		"mechanical_press_pole": "crafts_construct:block/train_mechanical_press/train_mechanical_press"
 	},
 	"elements": [
 		{

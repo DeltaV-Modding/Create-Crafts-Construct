@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "crafts_construct:block/train_portable_fluid_interface",
-		"particle": "crafts_construct:block/temp/train_portable_fluid_interface"
+		"0": "crafts_construct:block/train_portable_fluid_interface/train_portable_fluid_interface",
+		"particle": "crafts_construct:block/train_portable_fluid_interface/train_portable_fluid_interface"
 	},
 	"elements": [
 		{

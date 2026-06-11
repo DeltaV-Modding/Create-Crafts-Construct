@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/train_mechanical_press"
+    "all": "crafts_construct:block/train_mechanical_press/train_mechanical_press"
   }
 }

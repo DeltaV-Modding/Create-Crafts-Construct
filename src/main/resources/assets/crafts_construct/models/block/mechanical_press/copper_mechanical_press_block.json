@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"4": "crafts_construct:block/temp/copper_mechanical_press",
-		"particle": "crafts_construct:block/temp/copper_mechanical_press",
-		"gearbox_top": "crafts_construct:block/temp/copper_mechanical_press",
-		"gearbox": "crafts_construct:block/temp/copper_mechanical_press",
-		"mechanical_press_top": "crafts_construct:block/temp/copper_mechanical_press",
-		"mechanical_press_bottom": "crafts_construct:block/temp/copper_mechanical_press"
+		"4": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press",
+		"particle": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press",
+		"gearbox_top": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press",
+		"gearbox": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press",
+		"mechanical_press_top": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press",
+		"mechanical_press_bottom": "crafts_construct:block/copper_mechanical_press/copper_mechanical_press"
 	},
 	"elements": [
 		{

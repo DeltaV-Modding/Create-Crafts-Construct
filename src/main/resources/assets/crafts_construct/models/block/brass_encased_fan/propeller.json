@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"axis_top": "crafts_construct:block/temp/brass_encased_fan",
-		"fan_blades": "crafts_construct:block/temp/brass_encased_fan",
-		"axis": "crafts_construct:block/temp/brass_encased_fan"
+		"axis_top": "crafts_construct:block/brass_encased_fan/brass_encased_fan",
+		"fan_blades": "crafts_construct:block/brass_encased_fan/brass_encased_fan",
+		"axis": "crafts_construct:block/brass_encased_fan/brass_encased_fan"
 	},
   "render_type": "minecraft:cutout",
 	"elements": [

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/magenta_textile_2"
+    "all": "crafts_construct:block/textile/magenta_textile_2"
   }
 }

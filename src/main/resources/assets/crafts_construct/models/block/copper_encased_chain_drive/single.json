@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "crafts_construct:block/temp/copper_encased_chain_drive",
-		"particle": "crafts_construct:block/copper_encased_chain_drive",
-		"side": "crafts_construct:block/copper_encased_chain_drive"
+		"1": "crafts_construct:block/copper_encased_chain_drive/copper_encased_chain_drive",
+		"particle": "crafts_construct:block/copper_encased_chain_drive/copper_encased_chain_drive",
+		"side": "crafts_construct:block/copper_encased_chain_drive/copper_encased_chain_drive"
 	},
 	"elements": [
 		{

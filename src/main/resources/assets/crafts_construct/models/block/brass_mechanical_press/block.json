@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"4": "crafts_construct:block/brass_mechanical_press_side",
-		"particle": "crafts_construct:block/brass_mechanical_press_side",
-		"gearbox_top": "crafts_construct:block/temp/brass_mechanical_press",
-		"gearbox": "crafts_construct:block/temp/brass_mechanical_press",
-		"mechanical_press_top": "crafts_construct:block/brass_mechanical_press_top",
-		"mechanical_press_bottom": "crafts_construct:block/brass_mechanical_press_bottom"
+		"4": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press_side",
+		"particle": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press_side",
+		"gearbox_top": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press",
+		"gearbox": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press",
+		"mechanical_press_top": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press_top",
+		"mechanical_press_bottom": "crafts_construct:block/brass_mechanical_press/brass_mechanical_press_bottom"
 	},
 	"elements": [
 		{

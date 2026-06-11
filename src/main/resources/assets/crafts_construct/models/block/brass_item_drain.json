@@ -2,11 +2,11 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "textures": {
-    "0": "crafts_construct:block/brass_item_drain_side",
+    "0": "crafts_construct:block/brass_item_drain/brass_item_drain_side",
     "1": "create:block/item_drain_top",
-    "3": "crafts_construct:block/brass_pump",
-    "4": "crafts_construct:block/brass_underside",
-    "particle": "crafts_construct:block/brass_item_drain_side"
+    "3": "crafts_construct:block/brass_item_drain/brass_pump",
+    "4": "crafts_construct:block/brass_item_drain/brass_underside",
+    "particle": "crafts_construct:block/brass_item_drain/brass_item_drain_side"
   },
   "elements": [
     {

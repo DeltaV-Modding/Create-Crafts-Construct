@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/copper_deployer"
+    "all": "crafts_construct:block/copper_deployer/copper_deployer"
   }
 }

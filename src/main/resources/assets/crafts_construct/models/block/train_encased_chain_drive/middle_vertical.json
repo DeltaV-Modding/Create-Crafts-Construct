@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "crafts_construct:block/train_encased_chain_drive_middle",
-		"particle": "crafts_construct:block/train_encased_chain_drive",
-		"side": "crafts_construct:block/train_encased_chain_drive"
+		"1": "crafts_construct:block/train_encased_chain_drive/train_encased_chain_drive_middle",
+		"particle": "crafts_construct:block/train_encased_chain_drive/train_encased_chain_drive",
+		"side": "crafts_construct:block/train_encased_chain_drive/train_encased_chain_drive"
 	},
 	"elements": [
 		{

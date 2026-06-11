@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"1": "crafts_construct:block/brass_hose_pulley",
-		"2": "crafts_construct:block/brass_hose_pulley_coil",
-		"3": "crafts_construct:block/temp/brass_hose_pulley",
-		"4": "crafts_construct:block/temp/brass_hose_pulley",
-		"5": "crafts_construct:block/temp/brass_hose_pulley",
-		"particle": "crafts_construct:block/temp/brass_hose_pulley"
+		"1": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley",
+		"2": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley_coil",
+		"3": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley",
+		"4": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley",
+		"5": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley",
+		"particle": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley"
 	},
 	"elements": [
 		{

@@ -234,7 +234,7 @@ public class ModBlocks {
             case "smart_fluid_pipe" -> new PaintedSmartFluidPipeBlock(properties, () -> ModBlockEntityTypes.PAINTED_SMART_FLUID_PIPE.get());
             case "mechanical_pump" -> new PaintedPumpBlock(properties, () -> ModBlockEntityTypes.PAINTED_MECHANICAL_PUMP.get());
             case "fluid_valve" -> new PaintedFluidValveBlock(properties, () -> ModBlockEntityTypes.PAINTED_FLUID_VALVE.get());
-            case "fluid_tank" -> new PaintedFluidTankBlock(properties, () -> ModBlockEntityTypes.PAINTED_FLUID_TANK.get());
+            case "fluid_tank" -> new PaintedFluidTankBlock(properties, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get);
             case "spout" -> new PaintedSpoutBlock(properties, () -> ModBlockEntityTypes.PAINTED_SPOUT.get());
             case "hose_pulley" -> new PaintedHosePulleyBlock(properties, () -> ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get());
             case "gearbox" -> new PaintedGearboxBlock(properties, () -> ModBlockEntityTypes.PAINTED_GEARBOX.get());

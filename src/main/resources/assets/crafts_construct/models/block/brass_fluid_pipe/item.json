@@ -1,7 +1,7 @@
 {
   "textures": {
-    "pipe": "crafts_construct:block/temp/brass_fluid_pipe",
-    "particle": "crafts_construct:block/temp/brass_fluid_pipe"
+    "pipe": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe",
+    "particle": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe"
   },
   "elements": [
     {

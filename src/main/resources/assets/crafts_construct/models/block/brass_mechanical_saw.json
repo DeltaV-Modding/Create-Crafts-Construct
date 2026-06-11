@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/brass_mechanical_saw"
+    "all": "crafts_construct:block/brass_mechanical_saw/brass_mechanical_saw"
   }
 }

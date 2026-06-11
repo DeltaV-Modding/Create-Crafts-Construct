@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"2": "crafts_construct:block/brass_encased_chain_drive_end",
-		"particle": "crafts_construct:block/brass_encased_chain_drive",
-		"side": "crafts_construct:block/brass_encased_chain_drive"
+		"2": "crafts_construct:block/brass_encased_chain_drive/brass_encased_chain_drive_end",
+		"particle": "crafts_construct:block/brass_encased_chain_drive/brass_encased_chain_drive",
+		"side": "crafts_construct:block/brass_encased_chain_drive/brass_encased_chain_drive"
 	},
 	"elements": [
 		{

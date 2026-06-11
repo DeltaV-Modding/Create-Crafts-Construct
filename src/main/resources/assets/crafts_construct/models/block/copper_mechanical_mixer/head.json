@@ -3,7 +3,7 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"6": "crafts_construct:block/temp/copper_mechanical_mixer"
+		"6": "crafts_construct:block/copper_mechanical_mixer/copper_mechanical_mixer"
 	},
   "render_type": "minecraft:cutout",
   "elements": [

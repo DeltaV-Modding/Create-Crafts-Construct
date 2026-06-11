@@ -3,7 +3,7 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"mechanical_press_pole": "crafts_construct:block/temp/brass_deployer"
+		"mechanical_press_pole": "crafts_construct:block/brass_deployer/brass_deployer"
 	},
 	"elements": [
 		{

@@ -2,13 +2,13 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"2": "crafts_construct:block/temp/train_encased_fan",
-		"fan_casing": "crafts_construct:block/temp/train_encased_fan",
-		"particle": "crafts_construct:block/temp/train_encased_fan",
-		"fan_side": "crafts_construct:block/temp/train_encased_fan",
-		"axis_top": "crafts_construct:block/temp/train_encased_fan",
-		"fan_blades": "crafts_construct:block/temp/train_encased_fan",
-		"axis": "crafts_construct:block/temp/train_encased_fan"
+		"2": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"fan_casing": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"particle": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"fan_side": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"axis_top": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"fan_blades": "crafts_construct:block/train_encased_fan/train_encased_fan",
+		"axis": "crafts_construct:block/train_encased_fan/train_encased_fan"
 	},
 	"elements": [
 		{

@@ -3,18 +3,18 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "crafts_construct:block/temp/train_deployer",
-		"1": "crafts_construct:block/temp/train_deployer",
-		"6": "crafts_construct:block/temp/train_deployer",
-		"7": "crafts_construct:block/temp/train_deployer",
-		"10": "crafts_construct:block/temp/train_deployer",
-		"18": "crafts_construct:block/train_deployer",
-		"particle": "crafts_construct:block/temp/train_deployer",
-		"gearbox_top": "crafts_construct:block/temp/train_deployer",
-		"gearbox": "crafts_construct:block/temp/train_deployer",
-		"andesite_casing_short": "crafts_construct:block/temp/train_deployer",
-		"mechanical_press_pole": "crafts_construct:block/temp/train_deployer",
-		"mechanical_press_head": "crafts_construct:block/temp/train_deployer"
+		"0": "crafts_construct:block/train_deployer/train_deployer",
+		"1": "crafts_construct:block/train_deployer/train_deployer",
+		"6": "crafts_construct:block/train_deployer/train_deployer",
+		"7": "crafts_construct:block/train_deployer/train_deployer",
+		"10": "crafts_construct:block/train_deployer/train_deployer",
+		"18": "crafts_construct:block/train_deployer/train_deployer",
+		"particle": "crafts_construct:block/train_deployer/train_deployer",
+		"gearbox_top": "crafts_construct:block/train_deployer/train_deployer",
+		"gearbox": "crafts_construct:block/train_deployer/train_deployer",
+		"andesite_casing_short": "crafts_construct:block/train_deployer/train_deployer",
+		"mechanical_press_pole": "crafts_construct:block/train_deployer/train_deployer",
+		"mechanical_press_head": "crafts_construct:block/train_deployer/train_deployer"
 	},
 	"elements": [
 		{

@@ -1,0 +1,7 @@
+﻿{
+    "textures":  {
+                     "particle":  "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe",
+                     "0":  "crafts_construct:block/brass_fluid_pipe/core_y"
+                 },
+    "parent":  "create:block/fluid_pipe/lr_y"
+}

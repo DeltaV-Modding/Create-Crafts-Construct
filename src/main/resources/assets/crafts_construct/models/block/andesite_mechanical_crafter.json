@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crafts_construct:block/temp/andesite_mechanical_crafter"
+    "all": "crafts_construct:block/andesite_mechanical_crafter/andesite_mechanical_crafter"
   }
 }

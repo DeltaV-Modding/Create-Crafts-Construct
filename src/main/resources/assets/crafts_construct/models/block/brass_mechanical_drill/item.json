@@ -1,15 +1,15 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "crafts_construct:block/temp/brass_mechanical_drill",
+	"parent": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill",
 	"textures": {
-		"0": "crafts_construct:block/temp/brass_mechanical_drill",
-		"1": "crafts_construct:block/temp/brass_mechanical_drill",
+		"0": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill",
+		"1": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill",
 		"2": "block/anvil",
 		"7": "block/polished_andesite",
-		"8": "crafts_construct:block/brass_mechanical_drill_top",
-		"10": "crafts_construct:block/temp/brass_mechanical_drill",
+		"8": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill_top",
+		"10": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill",
 		"particle": "block/anvil",
-		"gearbox": "crafts_construct:block/temp/brass_mechanical_drill"
+		"gearbox": "crafts_construct:block/brass_mechanical_drill/brass_mechanical_drill"
 	},
 	"elements": [
 		{
