@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/contraption_controls/block",
+  "textures": {
+    "casing": "crafts_construct:block/train_contraption_controls/train_contraption_controls",
+    "0": "crafts_construct:block/train_contraption_controls/train_contraption_controls",
+    "1": "crafts_construct:block/train_contraption_controls/train_contraption_controls",
+    "2": "crafts_construct:block/train_contraption_controls/train_contraption_controls",
+    "particle": "crafts_construct:block/train_contraption_controls/train_contraption_controls"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/valve_handle",
+  "textures": {
+    "3": "crafts_construct:block/train_valve_handle/train_valve_handle"
+  }
+}

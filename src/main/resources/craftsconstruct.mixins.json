@@ -4,8 +4,17 @@
   "package": "net.buildercraft.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BoilerDataMixin",
+    "PoweredShaftBlockEntityMixin",
+    "SteamEngineBlockEntityMixin",
+    "ValveHandleVisualMixin",
+    "WhistleBlockMixin",
+    "WhistleExtenderBlockMixin"
   ],
-  "client": [],
+  "client": [
+    "FluidTankRendererMixin",
+    "PortableStorageInterfaceRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

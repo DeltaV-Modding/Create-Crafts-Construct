@@ -1,0 +1,9 @@
+{
+  "parent": "create:item/speedometer",
+  "textures": {
+    "casing": "crafts_construct:block/train_speedometer/train_speedometer",
+    "0": "crafts_construct:block/train_speedometer/train_speedometer",
+    "1": "crafts_construct:block/train_speedometer/train_speedometer",
+    "particle": "crafts_construct:block/train_speedometer/train_speedometer"
+  }
+}

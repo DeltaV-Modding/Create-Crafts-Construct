@@ -1,0 +1,1551 @@
+Compiled from "BoilerData.java"
+public class com.simibubi.create.content.fluids.tank.BoilerData {
+  static final int SAMPLE_RATE;
+
+  private static final int waterSupplyPerLevel;
+
+  private static final float passiveEngineEfficiency;
+
+  int gatheredSupply;
+
+  float[] supplyOverTime;
+
+  int ticksUntilNextSample;
+
+  int currentIndex;
+
+  public boolean needsHeatLevelUpdate;
+
+  public boolean passiveHeat;
+
+  public int activeHeat;
+
+  public float waterSupply;
+
+  public int attachedEngines;
+
+  public int attachedWhistles;
+
+  private int maxHeatForSize;
+
+  private int maxHeatForWater;
+
+  private int minValue;
+
+  private int maxValue;
+
+  public boolean[] occludedDirections;
+
+  public net.createmod.catnip.animation.LerpedFloat gauge;
+
+  private final com.simibubi.create.content.fluids.tank.SoundPool$Sound sound;
+
+  private final java.util.EnumMap<net.minecraft.core.Direction, com.simibubi.create.content.fluids.tank.SoundPool> pools;
+
+  public com.simibubi.create.content.fluids.tank.BoilerData();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: bipush        10
+       7: newarray       float
+       9: putfield      #7                  // Field supplyOverTime:[F
+      12: aload_0
+      13: iconst_0
+      14: putfield      #13                 // Field maxHeatForSize:I
+      17: aload_0
+      18: iconst_0
+      19: putfield      #17                 // Field maxHeatForWater:I
+      22: aload_0
+      23: iconst_0
+      24: putfield      #20                 // Field minValue:I
+      27: aload_0
+      28: iconst_0
+      29: putfield      #23                 // Field maxValue:I
+      32: aload_0
+      33: iconst_4
+      34: newarray       boolean
+      36: dup
+      37: iconst_0
+      38: iconst_1
+      39: bastore
+      40: dup
+      41: iconst_1
+      42: iconst_1
+      43: bastore
+      44: dup
+      45: iconst_2
+      46: iconst_1
+      47: bastore
+      48: dup
+      49: iconst_3
+      50: iconst_1
+      51: bastore
+      52: putfield      #26                 // Field occludedDirections:[Z
+      55: aload_0
+      56: invokestatic  #30                 // Method net/createmod/catnip/animation/LerpedFloat.linear:()Lnet/createmod/catnip/animation/LerpedFloat;
+      59: putfield      #36                 // Field gauge:Lnet/createmod/catnip/animation/LerpedFloat;
+      62: aload_0
+      63: aload_0
+      64: invokedynamic #40,  0             // InvokeDynamic #0:playAt:(Lcom/simibubi/create/content/fluids/tank/BoilerData;)Lcom/simibubi/create/content/fluids/tank/SoundPool$Sound;
+      69: putfield      #44                 // Field sound:Lcom/simibubi/create/content/fluids/tank/SoundPool$Sound;
+      72: aload_0
+      73: new           #48                 // class java/util/EnumMap
+      76: dup
+      77: ldc           #50                 // class net/minecraft/core/Direction
+      79: invokespecial #52                 // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+      82: putfield      #55                 // Field pools:Ljava/util/EnumMap;
+      85: return
+
+  public void tick(com.simibubi.create.content.fluids.tank.FluidTankBlockEntity);
+    Code:
+       0: aload_0
+       1: invokevirtual #59                 // Method isActive:()Z
+       4: ifne          8
+       7: return
+       8: aload_1
+       9: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+      12: astore_2
+      13: aload_2
+      14: getfield      #69                 // Field net/minecraft/world/level/Level.isClientSide:Z
+      17: ifeq          104
+      20: aload_0
+      21: getfield      #55                 // Field pools:Ljava/util/EnumMap;
+      24: invokevirtual #75                 // Method java/util/EnumMap.values:()Ljava/util/Collection;
+      27: aload_2
+      28: invokedynamic #79,  0             // InvokeDynamic #1:accept:(Lnet/minecraft/world/level/Level;)Ljava/util/function/Consumer;
+      33: invokeinterface #83,  2           // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+      38: aload_0
+      39: getfield      #36                 // Field gauge:Lnet/createmod/catnip/animation/LerpedFloat;
+      42: invokevirtual #89                 // Method net/createmod/catnip/animation/LerpedFloat.tickChaser:()V
+      45: aload_0
+      46: getfield      #36                 // Field gauge:Lnet/createmod/catnip/animation/LerpedFloat;
+      49: fconst_1
+      50: invokevirtual #92                 // Method net/createmod/catnip/animation/LerpedFloat.getValue:(F)F
+      53: fstore_3
+      54: fload_3
+      55: fconst_1
+      56: fcmpl
+      57: ifle          103
+      60: aload_2
+      61: getfield      #96                 // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+      64: invokeinterface #100,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      69: ldc           #106                // float 0.5f
+      71: fcmpg
+      72: ifge          103
+      75: aload_0
+      76: getfield      #36                 // Field gauge:Lnet/createmod/catnip/animation/LerpedFloat;
+      79: fload_3
+      80: fload_3
+      81: fconst_1
+      82: fsub
+      83: fneg
+      84: aload_2
+      85: getfield      #96                 // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+      88: invokeinterface #100,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      93: fmul
+      94: fconst_0
+      95: invokestatic  #107                // Method java/lang/Math.min:(FF)F
+      98: fadd
+      99: f2d
+     100: invokevirtual #113                // Method net/createmod/catnip/animation/LerpedFloat.setValueNoUpdate:(D)V
+     103: return
+     104: aload_0
+     105: getfield      #117                // Field needsHeatLevelUpdate:Z
+     108: ifeq          123
+     111: aload_0
+     112: aload_1
+     113: invokevirtual #120                // Method updateTemperature:(Lcom/simibubi/create/content/fluids/tank/FluidTankBlockEntity;)Z
+     116: ifeq          123
+     119: aload_1
+     120: invokevirtual #124                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.notifyUpdate:()V
+     123: aload_0
+     124: dup
+     125: getfield      #127                // Field ticksUntilNextSample:I
+     128: iconst_1
+     129: isub
+     130: putfield      #127                // Field ticksUntilNextSample:I
+     133: aload_0
+     134: getfield      #127                // Field ticksUntilNextSample:I
+     137: ifle          141
+     140: return
+     141: aload_1
+     142: getfield      #130                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.tankInventory:Lnet/neoforged/neoforge/fluids/capability/templates/FluidTank;
+     145: invokevirtual #134                // Method net/neoforged/neoforge/fluids/capability/templates/FluidTank.getCapacity:()I
+     148: istore_3
+     149: iload_3
+     150: ifne          154
+     153: return
+     154: aload_0
+     155: iconst_5
+     156: putfield      #127                // Field ticksUntilNextSample:I
+     159: aload_0
+     160: getfield      #7                  // Field supplyOverTime:[F
+     163: aload_0
+     164: getfield      #140                // Field currentIndex:I
+     167: aload_0
+     168: getfield      #143                // Field gatheredSupply:I
+     171: i2f
+     172: ldc           #146                // float 5.0f
+     174: fdiv
+     175: fastore
+     176: aload_0
+     177: aload_0
+     178: getfield      #147                // Field waterSupply:F
+     181: aload_0
+     182: getfield      #7                  // Field supplyOverTime:[F
+     185: aload_0
+     186: getfield      #140                // Field currentIndex:I
+     189: faload
+     190: invokestatic  #151                // Method java/lang/Math.max:(FF)F
+     193: putfield      #147                // Field waterSupply:F
+     196: aload_0
+     197: aload_0
+     198: getfield      #140                // Field currentIndex:I
+     201: iconst_1
+     202: iadd
+     203: aload_0
+     204: getfield      #7                  // Field supplyOverTime:[F
+     207: arraylength
+     208: irem
+     209: putfield      #140                // Field currentIndex:I
+     212: aload_0
+     213: iconst_0
+     214: putfield      #143                // Field gatheredSupply:I
+     217: aload_0
+     218: getfield      #140                // Field currentIndex:I
+     221: ifne          276
+     224: aload_0
+     225: fconst_0
+     226: putfield      #147                // Field waterSupply:F
+     229: aload_0
+     230: getfield      #7                  // Field supplyOverTime:[F
+     233: astore        4
+     235: aload         4
+     237: arraylength
+     238: istore        5
+     240: iconst_0
+     241: istore        6
+     243: iload         6
+     245: iload         5
+     247: if_icmpge     276
+     250: aload         4
+     252: iload         6
+     254: faload
+     255: fstore        7
+     257: aload_0
+     258: fload         7
+     260: aload_0
+     261: getfield      #147                // Field waterSupply:F
+     264: invokestatic  #151                // Method java/lang/Math.max:(FF)F
+     267: putfield      #147                // Field waterSupply:F
+     270: iinc          6, 1
+     273: goto          243
+     276: aload_1
+     277: instanceof    #154                // class com/simibubi/create/content/fluids/tank/CreativeFluidTankBlockEntity
+     280: ifeq          289
+     283: aload_0
+     284: ldc           #156                // float 200.0f
+     286: putfield      #147                // Field waterSupply:F
+     289: aload_0
+     290: aload_1
+     291: invokevirtual #157                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getTotalTankSize:()I
+     294: invokevirtual #160                // Method getActualHeat:(I)I
+     297: bipush        18
+     299: if_icmpne     309
+     302: aload_1
+     303: getstatic     #164                // Field com/simibubi/create/foundation/advancement/AllAdvancements.STEAM_ENGINE_MAXED:Lcom/simibubi/create/foundation/advancement/CreateAdvancement;
+     306: invokevirtual #170                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.award:(Lcom/simibubi/create/foundation/advancement/CreateAdvancement;)V
+     309: aload_1
+     310: invokevirtual #124                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.notifyUpdate:()V
+     313: return
+
+  public void updateOcclusion(com.simibubi.create.content.fluids.tank.FluidTankBlockEntity);
+    Code:
+       0: aload_1
+       1: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       4: getfield      #69                 // Field net/minecraft/world/level/Level.isClientSide:Z
+       7: ifne          11
+      10: return
+      11: aload_0
+      12: getfield      #174                // Field attachedEngines:I
+      15: aload_0
+      16: getfield      #177                // Field attachedWhistles:I
+      19: iadd
+      20: ifne          24
+      23: return
+      24: getstatic     #180                // Field net/createmod/catnip/data/Iterate.horizontalDirections:[Lnet/minecraft/core/Direction;
+      27: astore_2
+      28: aload_2
+      29: arraylength
+      30: istore_3
+      31: iconst_0
+      32: istore        4
+      34: iload         4
+      36: iload_3
+      37: if_icmpge     202
+      40: aload_2
+      41: iload         4
+      43: aaload
+      44: astore        5
+      46: new           #186                // class net/minecraft/world/phys/AABB
+      49: dup
+      50: aload_1
+      51: invokevirtual #188                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+      54: invokespecial #192                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/core/BlockPos;)V
+      57: aload_1
+      58: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      61: i2f
+      62: fconst_2
+      63: fdiv
+      64: ldc           #106                // float 0.5f
+      66: fsub
+      67: f2d
+      68: dconst_0
+      69: aload_1
+      70: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      73: i2f
+      74: fconst_2
+      75: fdiv
+      76: ldc           #106                // float 0.5f
+      78: fsub
+      79: f2d
+      80: invokevirtual #198                // Method net/minecraft/world/phys/AABB.move:(DDD)Lnet/minecraft/world/phys/AABB;
+      83: ldc2_w        #202                // double 0.625d
+      86: invokevirtual #204                // Method net/minecraft/world/phys/AABB.deflate:(D)Lnet/minecraft/world/phys/AABB;
+      89: astore        6
+      91: aload         6
+      93: aload         5
+      95: invokevirtual #208                // Method net/minecraft/core/Direction.getStepX:()I
+      98: i2f
+      99: aload_1
+     100: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+     103: i2f
+     104: fconst_2
+     105: fdiv
+     106: ldc           #211                // float 0.25f
+     108: fadd
+     109: fmul
+     110: f2d
+     111: dconst_0
+     112: aload         5
+     114: invokevirtual #212                // Method net/minecraft/core/Direction.getStepZ:()I
+     117: i2f
+     118: aload_1
+     119: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+     122: i2f
+     123: fconst_2
+     124: fdiv
+     125: ldc           #211                // float 0.25f
+     127: fadd
+     128: fmul
+     129: f2d
+     130: invokevirtual #198                // Method net/minecraft/world/phys/AABB.move:(DDD)Lnet/minecraft/world/phys/AABB;
+     133: astore        6
+     135: aload         6
+     137: aload         5
+     139: invokevirtual #212                // Method net/minecraft/core/Direction.getStepZ:()I
+     142: invokestatic  #215                // Method java/lang/Math.abs:(I)I
+     145: i2f
+     146: fconst_2
+     147: fdiv
+     148: f2d
+     149: ldc2_w        #218                // double 0.25d
+     152: aload         5
+     154: invokevirtual #208                // Method net/minecraft/core/Direction.getStepX:()I
+     157: invokestatic  #215                // Method java/lang/Math.abs:(I)I
+     160: i2f
+     161: fconst_2
+     162: fdiv
+     163: f2d
+     164: invokevirtual #220                // Method net/minecraft/world/phys/AABB.inflate:(DDD)Lnet/minecraft/world/phys/AABB;
+     167: astore        6
+     169: aload_0
+     170: getfield      #26                 // Field occludedDirections:[Z
+     173: aload         5
+     175: invokevirtual #223                // Method net/minecraft/core/Direction.get2DDataValue:()I
+     178: aload_1
+     179: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+     182: aload         6
+     184: invokevirtual #226                // Method net/minecraft/world/level/Level.noCollision:(Lnet/minecraft/world/phys/AABB;)Z
+     187: ifne          194
+     190: iconst_1
+     191: goto          195
+     194: iconst_0
+     195: bastore
+     196: iinc          4, 1
+     199: goto          34
+     202: return
+
+  public void queueSoundOnSide(net.minecraft.core.BlockPos, net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field pools:Ljava/util/EnumMap;
+       4: aload_2
+       5: invokevirtual #230                // Method java/util/EnumMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       8: checkcast     #234                // class com/simibubi/create/content/fluids/tank/SoundPool
+      11: astore_3
+      12: aload_3
+      13: ifnonnull     40
+      16: new           #234                // class com/simibubi/create/content/fluids/tank/SoundPool
+      19: dup
+      20: iconst_4
+      21: iconst_2
+      22: aload_0
+      23: getfield      #44                 // Field sound:Lcom/simibubi/create/content/fluids/tank/SoundPool$Sound;
+      26: invokespecial #236                // Method com/simibubi/create/content/fluids/tank/SoundPool."<init>":(IILcom/simibubi/create/content/fluids/tank/SoundPool$Sound;)V
+      29: astore_3
+      30: aload_0
+      31: getfield      #55                 // Field pools:Ljava/util/EnumMap;
+      34: aload_2
+      35: aload_3
+      36: invokevirtual #239                // Method java/util/EnumMap.put:(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;
+      39: pop
+      40: aload_3
+      41: aload_1
+      42: invokevirtual #243                // Method com/simibubi/create/content/fluids/tank/SoundPool.queueAt:(Lnet/minecraft/core/BlockPos;)V
+      45: return
+
+  public int getTheoreticalHeatLevel();
+    Code:
+       0: aload_0
+       1: getfield      #246                // Field activeHeat:I
+       4: ireturn
+
+  public int getMaxHeatLevelForBoilerSize(int);
+    Code:
+       0: bipush        18
+       2: iload_1
+       3: iconst_4
+       4: idiv
+       5: invokestatic  #249                // Method java/lang/Math.min:(II)I
+       8: ireturn
+
+  public int getMaxHeatLevelForWaterSupply();
+    Code:
+       0: bipush        18
+       2: aload_0
+       3: getfield      #147                // Field waterSupply:F
+       6: invokestatic  #252                // Method net/minecraft/util/Mth.ceil:(F)I
+       9: bipush        10
+      11: idiv
+      12: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      15: ireturn
+
+  public boolean isPassive();
+    Code:
+       0: aload_0
+       1: getfield      #258                // Field passiveHeat:Z
+       4: ifeq          25
+       7: aload_0
+       8: getfield      #13                 // Field maxHeatForSize:I
+      11: ifle          25
+      14: aload_0
+      15: getfield      #17                 // Field maxHeatForWater:I
+      18: ifle          25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: ireturn
+
+  public boolean isPassive(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokevirtual #261                // Method calcMinMaxForSize:(I)V
+       5: aload_0
+       6: invokevirtual #265                // Method isPassive:()Z
+       9: ireturn
+
+  public float getEngineEfficiency(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokevirtual #268                // Method isPassive:(I)Z
+       5: ifeq          18
+       8: ldc_w         #271                // float 0.125f
+      11: aload_0
+      12: getfield      #174                // Field attachedEngines:I
+      15: i2f
+      16: fdiv
+      17: freturn
+      18: aload_0
+      19: getfield      #246                // Field activeHeat:I
+      22: ifne          27
+      25: fconst_0
+      26: freturn
+      27: aload_0
+      28: iload_1
+      29: invokevirtual #160                // Method getActualHeat:(I)I
+      32: istore_2
+      33: aload_0
+      34: getfield      #174                // Field attachedEngines:I
+      37: iload_2
+      38: if_icmpgt     45
+      41: fconst_1
+      42: goto          53
+      45: iload_2
+      46: i2f
+      47: aload_0
+      48: getfield      #174                // Field attachedEngines:I
+      51: i2f
+      52: fdiv
+      53: freturn
+
+  private int getActualHeat(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokevirtual #272                // Method getMaxHeatLevelForBoilerSize:(I)I
+       5: istore_2
+       6: aload_0
+       7: invokevirtual #275                // Method getMaxHeatLevelForWaterSupply:()I
+      10: istore_3
+      11: aload_0
+      12: getfield      #246                // Field activeHeat:I
+      15: iload_3
+      16: iload_2
+      17: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      20: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      23: istore        4
+      25: iload         4
+      27: ireturn
+
+  public boolean addToGoggleTooltip(java.util.List<net.minecraft.network.chat.Component>, boolean, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #59                 // Method isActive:()Z
+       4: ifne          9
+       7: iconst_0
+       8: ireturn
+       9: aload_0
+      10: iload_3
+      11: invokevirtual #261                // Method calcMinMaxForSize:(I)V
+      14: ldc_w         #278                // String boiler.status
+      17: iconst_1
+      18: anewarray     #2                  // class java/lang/Object
+      21: dup
+      22: iconst_0
+      23: aload_0
+      24: invokevirtual #280                // Method getHeatLevelTextComponent:()Lnet/minecraft/network/chat/MutableComponent;
+      27: getstatic     #284                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+      30: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      33: aastore
+      34: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+      37: aload_1
+      38: invokevirtual #302                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;)V
+      41: invokestatic  #308                // Method com/simibubi/create/foundation/utility/CreateLang.builder:()Lnet/createmod/catnip/lang/LangBuilder;
+      44: aload_0
+      45: iconst_1
+      46: iconst_0
+      47: iconst_0
+      48: anewarray     #285                // class net/minecraft/ChatFormatting
+      51: invokevirtual #312                // Method getSizeComponent:(ZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      54: invokevirtual #316                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/minecraft/network/chat/MutableComponent;)Lnet/createmod/catnip/lang/LangBuilder;
+      57: aload_1
+      58: iconst_1
+      59: invokevirtual #320                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;I)V
+      62: invokestatic  #308                // Method com/simibubi/create/foundation/utility/CreateLang.builder:()Lnet/createmod/catnip/lang/LangBuilder;
+      65: aload_0
+      66: iconst_1
+      67: iconst_0
+      68: iconst_0
+      69: anewarray     #285                // class net/minecraft/ChatFormatting
+      72: invokevirtual #323                // Method getWaterComponent:(ZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      75: invokevirtual #316                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/minecraft/network/chat/MutableComponent;)Lnet/createmod/catnip/lang/LangBuilder;
+      78: aload_1
+      79: iconst_1
+      80: invokevirtual #320                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;I)V
+      83: invokestatic  #308                // Method com/simibubi/create/foundation/utility/CreateLang.builder:()Lnet/createmod/catnip/lang/LangBuilder;
+      86: aload_0
+      87: iconst_1
+      88: iconst_0
+      89: iconst_0
+      90: anewarray     #285                // class net/minecraft/ChatFormatting
+      93: invokevirtual #326                // Method getHeatComponent:(ZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      96: invokevirtual #316                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/minecraft/network/chat/MutableComponent;)Lnet/createmod/catnip/lang/LangBuilder;
+      99: aload_1
+     100: iconst_1
+     101: invokevirtual #320                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;I)V
+     104: aload_0
+     105: getfield      #174                // Field attachedEngines:I
+     108: ifne          113
+     111: iconst_1
+     112: ireturn
+     113: aload_0
+     114: getfield      #246                // Field activeHeat:I
+     117: aload_0
+     118: getfield      #17                 // Field maxHeatForWater:I
+     121: aload_0
+     122: getfield      #13                 // Field maxHeatForSize:I
+     125: invokestatic  #249                // Method java/lang/Math.min:(II)I
+     128: invokestatic  #249                // Method java/lang/Math.min:(II)I
+     131: istore        4
+     133: aload_0
+     134: iload_3
+     135: invokevirtual #329                // Method getEngineEfficiency:(I)F
+     138: ldc_w         #333                // float 16.0f
+     141: fmul
+     142: iload         4
+     144: aload_0
+     145: getfield      #174                // Field attachedEngines:I
+     148: invokestatic  #334                // Method java/lang/Math.max:(II)I
+     151: i2f
+     152: fmul
+     153: f2d
+     154: getstatic     #336                // Field com/simibubi/create/AllBlocks.STEAM_ENGINE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     157: invokevirtual #342                // Method com/tterrag/registrate/util/entry/BlockEntry.get:()Ljava/lang/Object;
+     160: checkcast     #347                // class net/minecraft/world/level/block/Block
+     163: invokestatic  #349                // Method com/simibubi/create/api/stress/BlockStressValues.getCapacity:(Lnet/minecraft/world/level/block/Block;)D
+     166: dmul
+     167: dstore        5
+     169: aload_1
+     170: getstatic     #354                // Field net/minecraft/network/chat/CommonComponents.EMPTY:Lnet/minecraft/network/chat/Component;
+     173: invokeinterface #360,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     178: pop
+     179: aload_0
+     180: getfield      #174                // Field attachedEngines:I
+     183: ifle          328
+     186: aload_0
+     187: getfield      #13                 // Field maxHeatForSize:I
+     190: ifle          328
+     193: aload_0
+     194: getfield      #17                 // Field maxHeatForWater:I
+     197: ifne          328
+     200: aload_0
+     201: getfield      #258                // Field passiveHeat:Z
+     204: ifeq          211
+     207: iconst_1
+     208: goto          215
+     211: aload_0
+     212: getfield      #246                // Field activeHeat:I
+     215: ifle          328
+     218: ldc_w         #365                // String boiler.water_input_rate
+     221: iconst_0
+     222: anewarray     #2                  // class java/lang/Object
+     225: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     228: getstatic     #367                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+     231: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     234: aload_1
+     235: invokevirtual #302                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;)V
+     238: aload_0
+     239: getfield      #147                // Field waterSupply:F
+     242: f2d
+     243: invokestatic  #374                // Method com/simibubi/create/foundation/utility/CreateLang.number:(D)Lnet/createmod/catnip/lang/LangBuilder;
+     246: getstatic     #378                // Field net/minecraft/ChatFormatting.BLUE:Lnet/minecraft/ChatFormatting;
+     249: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     252: ldc_w         #381                // String generic.unit.millibuckets
+     255: iconst_0
+     256: anewarray     #2                  // class java/lang/Object
+     259: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     262: invokevirtual #383                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/createmod/catnip/lang/LangBuilder;)Lnet/createmod/catnip/lang/LangBuilder;
+     265: ldc_w         #386                // String  /
+     268: invokestatic  #388                // Method com/simibubi/create/foundation/utility/CreateLang.text:(Ljava/lang/String;)Lnet/createmod/catnip/lang/LangBuilder;
+     271: getstatic     #367                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+     274: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     277: invokevirtual #383                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/createmod/catnip/lang/LangBuilder;)Lnet/createmod/catnip/lang/LangBuilder;
+     280: ldc_w         #392                // String boiler.per_tick
+     283: iconst_1
+     284: anewarray     #2                  // class java/lang/Object
+     287: dup
+     288: iconst_0
+     289: ldc2_w        #394                // double 10.0d
+     292: invokestatic  #374                // Method com/simibubi/create/foundation/utility/CreateLang.number:(D)Lnet/createmod/catnip/lang/LangBuilder;
+     295: ldc_w         #381                // String generic.unit.millibuckets
+     298: iconst_0
+     299: anewarray     #2                  // class java/lang/Object
+     302: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     305: invokevirtual #383                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/createmod/catnip/lang/LangBuilder;)Lnet/createmod/catnip/lang/LangBuilder;
+     308: aastore
+     309: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     312: getstatic     #396                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+     315: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     318: invokevirtual #383                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/createmod/catnip/lang/LangBuilder;)Lnet/createmod/catnip/lang/LangBuilder;
+     321: aload_1
+     322: iconst_1
+     323: invokevirtual #320                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;I)V
+     326: iconst_1
+     327: ireturn
+     328: ldc_w         #399                // String tooltip.capacityProvided
+     331: iconst_0
+     332: anewarray     #2                  // class java/lang/Object
+     335: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     338: getstatic     #367                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+     341: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     344: aload_1
+     345: invokevirtual #302                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;)V
+     348: dload         5
+     350: invokestatic  #374                // Method com/simibubi/create/foundation/utility/CreateLang.number:(D)Lnet/createmod/catnip/lang/LangBuilder;
+     353: ldc_w         #401                // String generic.unit.stress
+     356: iconst_0
+     357: anewarray     #2                  // class java/lang/Object
+     360: invokevirtual #403                // Method net/createmod/catnip/lang/LangBuilder.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     363: getstatic     #404                // Field net/minecraft/ChatFormatting.AQUA:Lnet/minecraft/ChatFormatting;
+     366: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     369: invokevirtual #407                // Method net/createmod/catnip/lang/LangBuilder.space:()Lnet/createmod/catnip/lang/LangBuilder;
+     372: aload_0
+     373: getfield      #174                // Field attachedEngines:I
+     376: iconst_1
+     377: if_icmpne     393
+     380: ldc_w         #410                // String boiler.via_one_engine
+     383: iconst_0
+     384: anewarray     #2                  // class java/lang/Object
+     387: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     390: goto          413
+     393: ldc_w         #412                // String boiler.via_engines
+     396: iconst_1
+     397: anewarray     #2                  // class java/lang/Object
+     400: dup
+     401: iconst_0
+     402: aload_0
+     403: getfield      #174                // Field attachedEngines:I
+     406: invokestatic  #414                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     409: aastore
+     410: invokestatic  #296                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     413: getstatic     #396                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+     416: invokevirtual #370                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     419: invokevirtual #383                // Method net/createmod/catnip/lang/LangBuilder.add:(Lnet/createmod/catnip/lang/LangBuilder;)Lnet/createmod/catnip/lang/LangBuilder;
+     422: aload_1
+     423: iconst_1
+     424: invokevirtual #320                // Method net/createmod/catnip/lang/LangBuilder.forGoggles:(Ljava/util/List;I)V
+     427: iconst_1
+     428: ireturn
+
+  public void calcMinMaxForSize(int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: iload_1
+       3: invokevirtual #272                // Method getMaxHeatLevelForBoilerSize:(I)I
+       6: putfield      #13                 // Field maxHeatForSize:I
+       9: aload_0
+      10: aload_0
+      11: invokevirtual #275                // Method getMaxHeatLevelForWaterSupply:()I
+      14: putfield      #17                 // Field maxHeatForWater:I
+      17: aload_0
+      18: aload_0
+      19: getfield      #258                // Field passiveHeat:Z
+      22: ifeq          29
+      25: iconst_1
+      26: goto          33
+      29: aload_0
+      30: getfield      #246                // Field activeHeat:I
+      33: aload_0
+      34: getfield      #17                 // Field maxHeatForWater:I
+      37: aload_0
+      38: getfield      #13                 // Field maxHeatForSize:I
+      41: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      44: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      47: putfield      #20                 // Field minValue:I
+      50: aload_0
+      51: aload_0
+      52: getfield      #258                // Field passiveHeat:Z
+      55: ifeq          62
+      58: iconst_1
+      59: goto          66
+      62: aload_0
+      63: getfield      #246                // Field activeHeat:I
+      66: aload_0
+      67: getfield      #17                 // Field maxHeatForWater:I
+      70: aload_0
+      71: getfield      #13                 // Field maxHeatForSize:I
+      74: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      77: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      80: putfield      #23                 // Field maxValue:I
+      83: return
+
+  public net.minecraft.network.chat.MutableComponent getHeatLevelTextComponent();
+    Code:
+       0: aload_0
+       1: getfield      #246                // Field activeHeat:I
+       4: aload_0
+       5: getfield      #17                 // Field maxHeatForWater:I
+       8: aload_0
+       9: getfield      #13                 // Field maxHeatForSize:I
+      12: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      15: invokestatic  #249                // Method java/lang/Math.min:(II)I
+      18: istore_1
+      19: aload_0
+      20: invokevirtual #265                // Method isPassive:()Z
+      23: ifeq          39
+      26: ldc_w         #420                // String boiler.passive
+      29: iconst_0
+      30: anewarray     #2                  // class java/lang/Object
+      33: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      36: goto          92
+      39: iload_1
+      40: ifne          56
+      43: ldc_w         #426                // String boiler.idle
+      46: iconst_0
+      47: anewarray     #2                  // class java/lang/Object
+      50: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      53: goto          92
+      56: iload_1
+      57: bipush        18
+      59: if_icmpne     75
+      62: ldc_w         #428                // String boiler.max_lvl
+      65: iconst_0
+      66: anewarray     #2                  // class java/lang/Object
+      69: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      72: goto          92
+      75: ldc_w         #430                // String boiler.lvl
+      78: iconst_1
+      79: anewarray     #2                  // class java/lang/Object
+      82: dup
+      83: iconst_0
+      84: iload_1
+      85: invokestatic  #432                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+      88: aastore
+      89: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      92: areturn
+
+  public net.minecraft.network.chat.MutableComponent getSizeComponent(boolean, boolean, net.minecraft.ChatFormatting...);
+    Code:
+       0: aload_0
+       1: ldc_w         #437                // String size
+       4: aload_0
+       5: getfield      #13                 // Field maxHeatForSize:I
+       8: iload_1
+       9: iload_2
+      10: aload_3
+      11: invokevirtual #439                // Method componentHelper:(Ljava/lang/String;IZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      14: areturn
+
+  public net.minecraft.network.chat.MutableComponent getWaterComponent(boolean, boolean, net.minecraft.ChatFormatting...);
+    Code:
+       0: aload_0
+       1: ldc_w         #443                // String water
+       4: aload_0
+       5: getfield      #17                 // Field maxHeatForWater:I
+       8: iload_1
+       9: iload_2
+      10: aload_3
+      11: invokevirtual #439                // Method componentHelper:(Ljava/lang/String;IZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      14: areturn
+
+  public net.minecraft.network.chat.MutableComponent getHeatComponent(boolean, boolean, net.minecraft.ChatFormatting...);
+    Code:
+       0: aload_0
+       1: ldc_w         #445                // String heat
+       4: aload_0
+       5: getfield      #258                // Field passiveHeat:Z
+       8: ifeq          15
+      11: iconst_1
+      12: goto          19
+      15: aload_0
+      16: getfield      #246                // Field activeHeat:I
+      19: iload_1
+      20: iload_2
+      21: aload_3
+      22: invokevirtual #439                // Method componentHelper:(Ljava/lang/String;IZZ[Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      25: areturn
+
+  private net.minecraft.network.chat.MutableComponent componentHelper(java.lang.String, int, boolean, boolean, net.minecraft.ChatFormatting...);
+    Code:
+       0: iload         4
+       2: ifeq          13
+       5: aload_0
+       6: iload_2
+       7: invokevirtual #447                // Method blockComponent:(I)Lnet/minecraft/network/chat/MutableComponent;
+      10: goto          18
+      13: aload_0
+      14: iload_2
+      15: invokevirtual #451                // Method barComponent:(I)Lnet/minecraft/network/chat/MutableComponent;
+      18: astore        6
+      20: iload_3
+      21: ifne          27
+      24: aload         6
+      26: areturn
+      27: aload         5
+      29: arraylength
+      30: iconst_1
+      31: if_icmplt     41
+      34: aload         5
+      36: iconst_0
+      37: aaload
+      38: goto          44
+      41: getstatic     #367                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+      44: astore        7
+      46: aload         5
+      48: arraylength
+      49: iconst_2
+      50: if_icmplt     60
+      53: aload         5
+      55: iconst_1
+      56: aaload
+      57: goto          63
+      60: getstatic     #396                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+      63: astore        8
+      65: aload_1
+      66: invokedynamic #454,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      71: iconst_0
+      72: anewarray     #2                  // class java/lang/Object
+      75: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      78: aload         7
+      80: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      83: aload_1
+      84: invokedynamic #458,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      89: iconst_0
+      90: anewarray     #2                  // class java/lang/Object
+      93: invokestatic  #422                // Method com/simibubi/create/foundation/utility/CreateLang.translateDirect:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      96: aload         8
+      98: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     101: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     104: aload         6
+     106: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     109: areturn
+
+  private net.minecraft.network.chat.MutableComponent blockComponent(int);
+    Code:
+       0: ldc_w         #463                // String ?
+       3: aload_0
+       4: getfield      #20                 // Field minValue:I
+       7: invokevirtual #465                // Method java/lang/String.repeat:(I)Ljava/lang/String;
+      10: ldc_w         #468                // String ?
+      13: iload_1
+      14: aload_0
+      15: getfield      #20                 // Field minValue:I
+      18: isub
+      19: invokevirtual #465                // Method java/lang/String.repeat:(I)Ljava/lang/String;
+      22: ldc_w         #470                // String ?
+      25: aload_0
+      26: getfield      #23                 // Field maxValue:I
+      29: iload_1
+      30: isub
+      31: invokevirtual #465                // Method java/lang/String.repeat:(I)Ljava/lang/String;
+      34: invokedynamic #472,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      39: invokestatic  #475                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      42: areturn
+
+  private net.minecraft.network.chat.MutableComponent barComponent(int);
+    Code:
+       0: invokestatic  #481                // InterfaceMethod net/minecraft/network/chat/Component.empty:()Lnet/minecraft/network/chat/MutableComponent;
+       3: aload_0
+       4: iconst_0
+       5: aload_0
+       6: getfield      #20                 // Field minValue:I
+       9: iconst_1
+      10: isub
+      11: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      14: getstatic     #484                // Field net/minecraft/ChatFormatting.DARK_GREEN:Lnet/minecraft/ChatFormatting;
+      17: invokevirtual #487                // Method bars:(ILnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      20: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      23: aload_0
+      24: aload_0
+      25: getfield      #20                 // Field minValue:I
+      28: ifle          35
+      31: iconst_1
+      32: goto          36
+      35: iconst_0
+      36: getstatic     #284                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+      39: invokevirtual #487                // Method bars:(ILnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      42: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      45: aload_0
+      46: iconst_0
+      47: iload_1
+      48: aload_0
+      49: getfield      #20                 // Field minValue:I
+      52: isub
+      53: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      56: getstatic     #484                // Field net/minecraft/ChatFormatting.DARK_GREEN:Lnet/minecraft/ChatFormatting;
+      59: invokevirtual #487                // Method bars:(ILnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      62: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      65: aload_0
+      66: iconst_0
+      67: aload_0
+      68: getfield      #23                 // Field maxValue:I
+      71: iload_1
+      72: isub
+      73: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      76: getstatic     #491                // Field net/minecraft/ChatFormatting.DARK_RED:Lnet/minecraft/ChatFormatting;
+      79: invokevirtual #487                // Method bars:(ILnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      82: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+      85: aload_0
+      86: iconst_0
+      87: bipush        18
+      89: aload_0
+      90: getfield      #23                 // Field maxValue:I
+      93: isub
+      94: aload_0
+      95: getfield      #23                 // Field maxValue:I
+      98: iconst_5
+      99: idiv
+     100: iconst_1
+     101: iadd
+     102: iconst_5
+     103: imul
+     104: aload_0
+     105: getfield      #23                 // Field maxValue:I
+     108: isub
+     109: invokestatic  #249                // Method java/lang/Math.min:(II)I
+     112: invokestatic  #334                // Method java/lang/Math.max:(II)I
+     115: getstatic     #396                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+     118: invokevirtual #487                // Method bars:(ILnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     121: invokevirtual #459                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     124: areturn
+
+  private net.minecraft.network.chat.MutableComponent bars(int, net.minecraft.ChatFormatting);
+    Code:
+       0: bipush        124
+       2: iload_1
+       3: invokestatic  #494                // Method joptsimple/internal/Strings.repeat:(CI)Ljava/lang/String;
+       6: invokestatic  #475                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       9: aload_2
+      10: invokevirtual #290                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      13: areturn
+
+  public boolean evaluate(com.simibubi.create.content.fluids.tank.FluidTankBlockEntity);
+    Code:
+       0: aload_1
+       1: invokevirtual #188                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       9: astore_3
+      10: aload_0
+      11: getfield      #174                // Field attachedEngines:I
+      14: istore        4
+      16: aload_0
+      17: getfield      #177                // Field attachedWhistles:I
+      20: istore        5
+      22: aload_0
+      23: iconst_0
+      24: putfield      #174                // Field attachedEngines:I
+      27: aload_0
+      28: iconst_0
+      29: putfield      #177                // Field attachedWhistles:I
+      32: iconst_0
+      33: istore        6
+      35: iload         6
+      37: aload_1
+      38: getfield      #499                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.height:I
+      41: if_icmpge     232
+      44: iconst_0
+      45: istore        7
+      47: iload         7
+      49: aload_1
+      50: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      53: if_icmpge     226
+      56: iconst_0
+      57: istore        8
+      59: iload         8
+      61: aload_1
+      62: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      65: if_icmpge     220
+      68: aload_2
+      69: iload         7
+      71: iload         6
+      73: iload         8
+      75: invokevirtual #502                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      78: astore        9
+      80: aload_3
+      81: aload         9
+      83: invokevirtual #508                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      86: astore        10
+      88: aload         10
+      90: invokestatic  #512                // Method com/simibubi/create/content/fluids/tank/FluidTankBlock.isTank:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      93: ifne          99
+      96: goto          214
+      99: getstatic     #518                // Field net/createmod/catnip/data/Iterate.directions:[Lnet/minecraft/core/Direction;
+     102: astore        11
+     104: aload         11
+     106: arraylength
+     107: istore        12
+     109: iconst_0
+     110: istore        13
+     112: iload         13
+     114: iload         12
+     116: if_icmpge     214
+     119: aload         11
+     121: iload         13
+     123: aaload
+     124: astore        14
+     126: aload         9
+     128: aload         14
+     130: invokevirtual #521                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     133: astore        15
+     135: aload_3
+     136: aload         15
+     138: invokevirtual #508                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     141: astore        16
+     143: getstatic     #336                // Field com/simibubi/create/AllBlocks.STEAM_ENGINE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     146: aload         16
+     148: invokevirtual #525                // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     151: ifeq          174
+     154: aload         16
+     156: invokestatic  #528                // Method com/simibubi/create/content/kinetics/steamEngine/SteamEngineBlock.getFacing:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+     159: aload         14
+     161: if_acmpne     174
+     164: aload_0
+     165: dup
+     166: getfield      #174                // Field attachedEngines:I
+     169: iconst_1
+     170: iadd
+     171: putfield      #174                // Field attachedEngines:I
+     174: getstatic     #534                // Field com/simibubi/create/AllBlocks.STEAM_WHISTLE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     177: aload         16
+     179: invokevirtual #525                // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     182: ifeq          208
+     185: aload         16
+     187: invokestatic  #537                // Method com/simibubi/create/content/decoration/steamWhistle/WhistleBlock.getAttachedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+     190: invokevirtual #542                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     193: aload         14
+     195: if_acmpne     208
+     198: aload_0
+     199: dup
+     200: getfield      #177                // Field attachedWhistles:I
+     203: iconst_1
+     204: iadd
+     205: putfield      #177                // Field attachedWhistles:I
+     208: iinc          13, 1
+     211: goto          112
+     214: iinc          8, 1
+     217: goto          59
+     220: iinc          7, 1
+     223: goto          47
+     226: iinc          6, 1
+     229: goto          35
+     232: aload_0
+     233: iconst_1
+     234: putfield      #117                // Field needsHeatLevelUpdate:Z
+     237: iload         4
+     239: aload_0
+     240: getfield      #174                // Field attachedEngines:I
+     243: if_icmpne     255
+     246: iload         5
+     248: aload_0
+     249: getfield      #177                // Field attachedWhistles:I
+     252: if_icmpeq     259
+     255: iconst_1
+     256: goto          260
+     259: iconst_0
+     260: ireturn
+
+  public void checkPipeOrganAdvancement(com.simibubi.create.content.fluids.tank.FluidTankBlockEntity);
+    Code:
+       0: aload_1
+       1: getstatic     #546                // Field com/simibubi/create/foundation/advancement/AdvancementBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       4: invokevirtual #552                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getBehaviour:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+       7: checkcast     #547                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      10: invokevirtual #556                // Method com/simibubi/create/foundation/advancement/AdvancementBehaviour.isOwnerPresent:()Z
+      13: ifne          17
+      16: return
+      17: aload_1
+      18: invokevirtual #188                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+      21: astore_2
+      22: aload_1
+      23: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+      26: astore_3
+      27: new           #559                // class java/util/HashSet
+      30: dup
+      31: invokespecial #561                // Method java/util/HashSet."<init>":()V
+      34: astore        4
+      36: iconst_0
+      37: istore        5
+      39: iload         5
+      41: aload_1
+      42: getfield      #499                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.height:I
+      45: if_icmpge     234
+      48: iconst_0
+      49: istore        6
+      51: iload         6
+      53: aload_1
+      54: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      57: if_icmpge     228
+      60: iconst_0
+      61: istore        7
+      63: iload         7
+      65: aload_1
+      66: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      69: if_icmpge     222
+      72: aload_2
+      73: iload         6
+      75: iload         5
+      77: iload         7
+      79: invokevirtual #502                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      82: astore        8
+      84: aload_3
+      85: aload         8
+      87: invokevirtual #508                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      90: astore        9
+      92: aload         9
+      94: invokestatic  #512                // Method com/simibubi/create/content/fluids/tank/FluidTankBlock.isTank:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      97: ifne          103
+     100: goto          216
+     103: getstatic     #518                // Field net/createmod/catnip/data/Iterate.directions:[Lnet/minecraft/core/Direction;
+     106: astore        10
+     108: aload         10
+     110: arraylength
+     111: istore        11
+     113: iconst_0
+     114: istore        12
+     116: iload         12
+     118: iload         11
+     120: if_icmpge     216
+     123: aload         10
+     125: iload         12
+     127: aaload
+     128: astore        13
+     130: aload         8
+     132: aload         13
+     134: invokevirtual #521                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     137: astore        14
+     139: aload_3
+     140: aload         14
+     142: invokevirtual #508                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     145: astore        15
+     147: getstatic     #534                // Field com/simibubi/create/AllBlocks.STEAM_WHISTLE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     150: aload         15
+     152: invokevirtual #525                // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     155: ifeq          210
+     158: aload         15
+     160: invokestatic  #537                // Method com/simibubi/create/content/decoration/steamWhistle/WhistleBlock.getAttachedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+     163: invokevirtual #542                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     166: aload         13
+     168: if_acmpne     210
+     171: aload_3
+     172: aload         14
+     174: invokevirtual #562                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+     177: astore        17
+     179: aload         17
+     181: instanceof    #566                // class com/simibubi/create/content/decoration/steamWhistle/WhistleBlockEntity
+     184: ifeq          210
+     187: aload         17
+     189: checkcast     #566                // class com/simibubi/create/content/decoration/steamWhistle/WhistleBlockEntity
+     192: astore        16
+     194: aload         4
+     196: aload         16
+     198: invokevirtual #568                // Method com/simibubi/create/content/decoration/steamWhistle/WhistleBlockEntity.getPitchId:()I
+     201: invokestatic  #414                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     204: invokeinterface #571,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     209: pop
+     210: iinc          12, 1
+     213: goto          116
+     216: iinc          7, 1
+     219: goto          63
+     222: iinc          6, 1
+     225: goto          51
+     228: iinc          5, 1
+     231: goto          39
+     234: aload         4
+     236: invokeinterface #574,  1          // InterfaceMethod java/util/Set.size:()I
+     241: bipush        12
+     243: if_icmplt     253
+     246: aload_1
+     247: getstatic     #576                // Field com/simibubi/create/foundation/advancement/AllAdvancements.PIPE_ORGAN:Lcom/simibubi/create/foundation/advancement/CreateAdvancement;
+     250: invokevirtual #170                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.award:(Lcom/simibubi/create/foundation/advancement/CreateAdvancement;)V
+     253: return
+
+  public boolean updateTemperature(com.simibubi.create.content.fluids.tank.FluidTankBlockEntity);
+    Code:
+       0: aload_1
+       1: invokevirtual #188                // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #63                 // Method com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       9: astore_3
+      10: aload_0
+      11: iconst_0
+      12: putfield      #117                // Field needsHeatLevelUpdate:Z
+      15: aload_0
+      16: getfield      #258                // Field passiveHeat:Z
+      19: istore        4
+      21: aload_0
+      22: getfield      #246                // Field activeHeat:I
+      25: istore        5
+      27: aload_0
+      28: iconst_0
+      29: putfield      #258                // Field passiveHeat:Z
+      32: aload_0
+      33: iconst_0
+      34: putfield      #246                // Field activeHeat:I
+      37: iconst_0
+      38: istore        6
+      40: iload         6
+      42: aload_1
+      43: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      46: if_icmpge     137
+      49: iconst_0
+      50: istore        7
+      52: iload         7
+      54: aload_1
+      55: getfield      #195                // Field com/simibubi/create/content/fluids/tank/FluidTankBlockEntity.width:I
+      58: if_icmpge     131
+      61: aload_2
+      62: iload         6
+      64: iconst_m1
+      65: iload         7
+      67: invokevirtual #502                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      70: astore        8
+      72: aload_3
+      73: aload         8
+      75: invokevirtual #508                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      78: astore        9
+      80: aload_3
+      81: aload         8
+      83: aload         9
+      85: invokestatic  #579                // InterfaceMethod com/simibubi/create/api/boiler/BoilerHeater.findHeat:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)F
+      88: fstore        10
+      90: fload         10
+      92: fconst_0
+      93: fcmpl
+      94: ifne          105
+      97: aload_0
+      98: iconst_1
+      99: putfield      #258                // Field passiveHeat:Z
+     102: goto          125
+     105: fload         10
+     107: fconst_0
+     108: fcmpl
+     109: ifle          125
+     112: aload_0
+     113: dup
+     114: getfield      #246                // Field activeHeat:I
+     117: i2f
+     118: fload         10
+     120: fadd
+     121: f2i
+     122: putfield      #246                // Field activeHeat:I
+     125: iinc          7, 1
+     128: goto          52
+     131: iinc          6, 1
+     134: goto          40
+     137: aload_0
+     138: dup
+     139: getfield      #258                // Field passiveHeat:Z
+     142: aload_0
+     143: getfield      #246                // Field activeHeat:I
+     146: ifne          153
+     149: iconst_1
+     150: goto          154
+     153: iconst_0
+     154: iand
+     155: putfield      #258                // Field passiveHeat:Z
+     158: iload         5
+     160: aload_0
+     161: getfield      #246                // Field activeHeat:I
+     164: if_icmpne     176
+     167: iload         4
+     169: aload_0
+     170: getfield      #258                // Field passiveHeat:Z
+     173: if_icmpeq     180
+     176: iconst_1
+     177: goto          181
+     180: iconst_0
+     181: ireturn
+
+  public boolean isActive();
+    Code:
+       0: aload_0
+       1: getfield      #174                // Field attachedEngines:I
+       4: ifgt          14
+       7: aload_0
+       8: getfield      #177                // Field attachedWhistles:I
+      11: ifle          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public void clear();
+    Code:
+       0: aload_0
+       1: fconst_0
+       2: putfield      #147                // Field waterSupply:F
+       5: aload_0
+       6: iconst_0
+       7: putfield      #246                // Field activeHeat:I
+      10: aload_0
+      11: iconst_0
+      12: putfield      #258                // Field passiveHeat:Z
+      15: aload_0
+      16: iconst_0
+      17: putfield      #174                // Field attachedEngines:I
+      20: aload_0
+      21: getfield      #7                  // Field supplyOverTime:[F
+      24: fconst_0
+      25: invokestatic  #585                // Method java/util/Arrays.fill:([FF)V
+      28: return
+
+  public net.minecraft.nbt.CompoundTag write();
+    Code:
+       0: new           #591                // class net/minecraft/nbt/CompoundTag
+       3: dup
+       4: invokespecial #593                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc_w         #594                // String Supply
+      12: aload_0
+      13: getfield      #147                // Field waterSupply:F
+      16: invokevirtual #596                // Method net/minecraft/nbt/CompoundTag.putFloat:(Ljava/lang/String;F)V
+      19: aload_1
+      20: ldc_w         #600                // String ActiveHeat
+      23: aload_0
+      24: getfield      #246                // Field activeHeat:I
+      27: invokevirtual #602                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      30: aload_1
+      31: ldc_w         #606                // String PassiveHeat
+      34: aload_0
+      35: getfield      #258                // Field passiveHeat:Z
+      38: invokevirtual #608                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      41: aload_1
+      42: ldc_w         #612                // String Engines
+      45: aload_0
+      46: getfield      #174                // Field attachedEngines:I
+      49: invokevirtual #602                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      52: aload_1
+      53: ldc_w         #614                // String Whistles
+      56: aload_0
+      57: getfield      #177                // Field attachedWhistles:I
+      60: invokevirtual #602                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      63: aload_1
+      64: ldc_w         #616                // String Update
+      67: aload_0
+      68: getfield      #117                // Field needsHeatLevelUpdate:Z
+      71: invokevirtual #608                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      74: aload_1
+      75: areturn
+
+  public void read(net.minecraft.nbt.CompoundTag, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc_w         #594                // String Supply
+       5: invokevirtual #618                // Method net/minecraft/nbt/CompoundTag.getFloat:(Ljava/lang/String;)F
+       8: putfield      #147                // Field waterSupply:F
+      11: aload_0
+      12: aload_1
+      13: ldc_w         #600                // String ActiveHeat
+      16: invokevirtual #622                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      19: putfield      #246                // Field activeHeat:I
+      22: aload_0
+      23: aload_1
+      24: ldc_w         #606                // String PassiveHeat
+      27: invokevirtual #626                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      30: putfield      #258                // Field passiveHeat:Z
+      33: aload_0
+      34: aload_1
+      35: ldc_w         #612                // String Engines
+      38: invokevirtual #622                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      41: putfield      #174                // Field attachedEngines:I
+      44: aload_0
+      45: aload_1
+      46: ldc_w         #614                // String Whistles
+      49: invokevirtual #622                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      52: putfield      #177                // Field attachedWhistles:I
+      55: aload_0
+      56: aload_1
+      57: ldc_w         #616                // String Update
+      60: invokevirtual #626                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      63: putfield      #117                // Field needsHeatLevelUpdate:Z
+      66: aload_0
+      67: getfield      #7                  // Field supplyOverTime:[F
+      70: aload_0
+      71: getfield      #147                // Field waterSupply:F
+      74: f2i
+      75: i2f
+      76: invokestatic  #585                // Method java/util/Arrays.fill:([FF)V
+      79: aload_0
+      80: iload_2
+      81: invokevirtual #272                // Method getMaxHeatLevelForBoilerSize:(I)I
+      84: istore_3
+      85: aload_0
+      86: invokevirtual #275                // Method getMaxHeatLevelForWaterSupply:()I
+      89: istore        4
+      91: aload_0
+      92: getfield      #246                // Field activeHeat:I
+      95: iload         4
+      97: iload_3
+      98: invokestatic  #249                // Method java/lang/Math.min:(II)I
+     101: invokestatic  #249                // Method java/lang/Math.min:(II)I
+     104: istore        5
+     106: aload_0
+     107: iload_2
+     108: invokevirtual #268                // Method isPassive:(I)Z
+     111: ifeq          120
+     114: ldc_w         #271                // float 0.125f
+     117: goto          136
+     120: iload_3
+     121: ifne          128
+     124: fconst_0
+     125: goto          136
+     128: iload         5
+     130: i2f
+     131: iload_3
+     132: i2f
+     133: fconst_1
+     134: fmul
+     135: fdiv
+     136: fstore        6
+     138: aload_0
+     139: getfield      #36                 // Field gauge:Lnet/createmod/catnip/animation/LerpedFloat;
+     142: fload         6
+     144: f2d
+     145: ldc2_w        #630                // double 0.125d
+     148: getstatic     #632                // Field net/createmod/catnip/animation/LerpedFloat$Chaser.EXP:Lnet/createmod/catnip/animation/LerpedFloat$Chaser;
+     151: invokevirtual #638                // Method net/createmod/catnip/animation/LerpedFloat.chase:(DDLnet/createmod/catnip/animation/LerpedFloat$Chaser;)Lnet/createmod/catnip/animation/LerpedFloat;
+     154: pop
+     155: return
+
+  public com.simibubi.create.content.fluids.tank.BoilerData$BoilerFluidHandler createHandler();
+    Code:
+       0: new           #642                // class com/simibubi/create/content/fluids/tank/BoilerData$BoilerFluidHandler
+       3: dup
+       4: aload_0
+       5: invokespecial #644                // Method com/simibubi/create/content/fluids/tank/BoilerData$BoilerFluidHandler."<init>":(Lcom/simibubi/create/content/fluids/tank/BoilerData;)V
+       8: areturn
+
+  private static void lambda$tick$1(net.minecraft.world.level.Level, com.simibubi.create.content.fluids.tank.SoundPool);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #647                // Method com/simibubi/create/content/fluids/tank/SoundPool.play:(Lnet/minecraft/world/level/Level;)V
+       5: return
+
+  private void lambda$new$0(net.minecraft.world.level.Level, net.minecraft.core.Vec3i);
+    Code:
+       0: ldc_w         #651                // float 3.0f
+       3: iconst_2
+       4: aload_0
+       5: getfield      #174                // Field attachedEngines:I
+       8: bipush        6
+      10: idiv
+      11: invokestatic  #334                // Method java/lang/Math.max:(II)I
+      14: i2f
+      15: fdiv
+      16: fstore_3
+      17: ldc_w         #652                // float 1.18f
+      20: aload_1
+      21: getfield      #96                 // Field net/minecraft/world/level/Level.random:Lnet/minecraft/util/RandomSource;
+      24: invokeinterface #100,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      29: ldc           #211                // float 0.25f
+      31: fmul
+      32: fsub
+      33: fstore        4
+      35: aload_1
+      36: aload_2
+      37: invokevirtual #653                // Method net/minecraft/core/Vec3i.getX:()I
+      40: i2d
+      41: aload_2
+      42: invokevirtual #658                // Method net/minecraft/core/Vec3i.getY:()I
+      45: i2d
+      46: aload_2
+      47: invokevirtual #661                // Method net/minecraft/core/Vec3i.getZ:()I
+      50: i2d
+      51: getstatic     #664                // Field net/minecraft/sounds/SoundEvents.CANDLE_EXTINGUISH:Lnet/minecraft/sounds/SoundEvent;
+      54: getstatic     #670                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+      57: fload_3
+      58: fload         4
+      60: iconst_0
+      61: invokevirtual #676                // Method net/minecraft/world/level/Level.playLocalSound:(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+      64: getstatic     #680                // Field com/simibubi/create/AllSoundEvents.STEAM:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+      67: aload_1
+      68: aload_2
+      69: fload_3
+      70: ldc_w         #333                // float 16.0f
+      73: fdiv
+      74: ldc_w         #686                // float 0.8f
+      77: iconst_0
+      78: invokevirtual #687                // Method com/simibubi/create/AllSoundEvents$SoundEntry.playAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;FFZ)V
+      81: return
+}

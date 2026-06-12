@@ -9,8 +9,8 @@ import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import util.ModFood;
-import util.PaintMaterial;
+import net.buildercraft.util.ModFood;
+import net.buildercraft.util.PaintMaterial;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);

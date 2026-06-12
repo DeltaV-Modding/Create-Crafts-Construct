@@ -5,6 +5,7 @@
     "create:mechanical_pump",
     "create:smart_fluid_pipe",
     "create:fluid_valve",
+    "create:copper_valve_handle",
     "create:fluid_tank",
     "create:hose_pulley",
     "create:item_drain",

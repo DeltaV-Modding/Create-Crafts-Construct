@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/valve_handle",
+  "textures": {
+    "3": "crafts_construct:block/andesite_valve_handle/andesite_valve_handle"
+  }
+}

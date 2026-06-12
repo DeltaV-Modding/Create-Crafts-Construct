@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "crafts_construct:block/copper_contraption_controls/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/copper_contraption_controls/block"
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/copper_contraption_controls/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/copper_contraption_controls/block",
+      "y": 270
+    }
+  }
+}

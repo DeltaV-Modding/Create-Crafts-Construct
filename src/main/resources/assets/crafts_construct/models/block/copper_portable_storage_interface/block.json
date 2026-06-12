@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/portable_storage_interface/block",
+  "textures": {
+    "casing": "crafts_construct:block/copper_portable_storage_interface/copper_portable_storage_interface",
+    "0": "crafts_construct:block/copper_portable_storage_interface/copper_portable_storage_interface",
+    "1": "crafts_construct:block/copper_portable_storage_interface/copper_portable_storage_interface",
+    "2": "crafts_construct:block/copper_portable_storage_interface/copper_portable_storage_interface",
+    "particle": "crafts_construct:block/copper_portable_storage_interface/copper_portable_storage_interface"
+  }
+}

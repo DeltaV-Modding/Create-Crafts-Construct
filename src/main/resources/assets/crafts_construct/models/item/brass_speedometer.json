@@ -1,0 +1,9 @@
+{
+  "parent": "create:item/speedometer",
+  "textures": {
+    "casing": "crafts_construct:block/brass_speedometer/brass_speedometer",
+    "0": "crafts_construct:block/brass_speedometer/brass_speedometer",
+    "1": "crafts_construct:block/brass_speedometer/brass_speedometer",
+    "particle": "crafts_construct:block/brass_speedometer/brass_speedometer"
+  }
+}

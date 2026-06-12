@@ -9,4 +9,11 @@ public class PaintedHosePulleyBlockEntity extends HosePulleyBlockEntity {
     public PaintedHosePulleyBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get(), pos, state);
     }
+
+    @Override
+    protected net.minecraft.world.level.block.Block getStressConfigKey() {
+        return net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(
+            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("create", "hose_pulley")
+        );
+    }
 }

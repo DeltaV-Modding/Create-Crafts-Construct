@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "crafts_construct:block/train_steam_engine/train_steam_engine",
-		"particle": "crafts_construct:block/train_steam_engine/train_steam_engine"
+		"0": "crafts_construct:block/train_steam_engine/train_boiler_gauge",
+		"particle": "crafts_construct:block/train_steam_engine/train_boiler_gauge"
 	},
 	"elements": [
 		{

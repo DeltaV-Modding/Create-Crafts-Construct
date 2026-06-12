@@ -1,0 +1,9 @@
+{
+  "parent": "create:item/depot",
+  "textures": {
+    "casing": "crafts_construct:block/train_depot/train_depot",
+    "0": "crafts_construct:block/train_depot/train_depot",
+    "1": "crafts_construct:block/train_depot/train_depot",
+    "particle": "crafts_construct:block/train_depot/train_depot"
+  }
+}

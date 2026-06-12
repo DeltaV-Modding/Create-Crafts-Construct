@@ -4,6 +4,7 @@
     "create:mechanical_pump",
     "create:smart_fluid_pipe",
     "create:fluid_valve",
+    "create:copper_valve_handle",
     "create:fluid_tank",
     "create:hose_pulley",
     "create:item_drain",
@@ -39,6 +40,15 @@
     "create:mechanical_mixer",
     "create:deployer",
     "create:mechanical_drill",
-    "create:mechanical_crafter"
+    "create:mechanical_crafter",
+    "create:depot",
+    "create:weighted_ejector",
+    "create:clutch",
+    "create:gearshift",
+    "create:speedometer",
+    "create:stressometer",
+    "create:adjustable_chain_gearshift",
+    "create:portable_storage_interface",
+    "create:contraption_controls"
   ]
 }

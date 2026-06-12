@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/gauge/base",
+  "textures": {
+    "casing": "crafts_construct:block/train_stressometer/train_stressometer",
+    "0": "crafts_construct:block/train_stressometer/train_stressometer",
+    "1": "crafts_construct:block/train_stressometer/train_stressometer",
+    "2": "crafts_construct:block/train_stressometer/train_stressometer",
+    "particle": "crafts_construct:block/train_stressometer/train_stressometer"
+  }
+}

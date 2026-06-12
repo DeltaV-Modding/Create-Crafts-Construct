@@ -1,7 +1,7 @@
 {
   "parent": "create:block/fluid_pipe/item",
   "textures": {
-    "1": "create:block/pipes",
-    "particle": "create:block/pipes"
+    "1": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe",
+    "particle": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe"
   }
 }

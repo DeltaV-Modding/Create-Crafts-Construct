@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "crafts_construct:block/copper_portable_storage_interface/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/copper_portable_storage_interface/block"
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/copper_portable_storage_interface/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/copper_portable_storage_interface/block",
+      "y": 270
+    }
+  }
+}

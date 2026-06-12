@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/gearshift/block",
+  "textures": {
+    "casing": "crafts_construct:block/copper_gearshift/copper_gearshift",
+    "0": "crafts_construct:block/copper_gearshift/copper_gearshift",
+    "1": "crafts_construct:block/copper_gearshift/copper_gearshift",
+    "2": "crafts_construct:block/copper_gearshift/copper_gearshift",
+    "particle": "crafts_construct:block/copper_gearshift/copper_gearshift"
+  }
+}

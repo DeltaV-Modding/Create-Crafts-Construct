@@ -16,8 +16,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import util.PaintMaterial;
-import util.PaintTargetResolver;
+import net.buildercraft.util.PaintMaterial;
+import net.buildercraft.util.PaintTargetResolver;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,8 +30,16 @@ public class PaintGunItem extends Item {
         this.creative = creative;
     }
 
+    public boolean isCreative() {
+        return creative;
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
+        return useOn(context, creative);
+    }
+
+    public static InteractionResult useOn(UseOnContext context, boolean creative) {
         Player player = context.getPlayer();
         if (player == null) {
             return InteractionResult.PASS;
@@ -45,7 +53,7 @@ public class PaintGunItem extends Item {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.no_cartridge"), true);
             }
-            return InteractionResult.PASS;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
         BlockState sourceState = level.getBlockState(context.getClickedPos());
@@ -53,7 +61,7 @@ public class PaintGunItem extends Item {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.same_material"), true);
             }
-            return InteractionResult.PASS;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
         Optional<BlockState> targetState = PaintTargetResolver.resolve(sourceState, material);
@@ -61,7 +69,7 @@ public class PaintGunItem extends Item {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.no_target"), true);
             }
-            return InteractionResult.PASS;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
         if (!level.isClientSide) {

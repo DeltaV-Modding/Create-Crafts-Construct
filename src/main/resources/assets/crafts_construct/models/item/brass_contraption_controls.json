@@ -1,0 +1,9 @@
+{
+  "parent": "create:item/contraption_controls",
+  "textures": {
+    "casing": "crafts_construct:block/brass_contraption_controls/brass_contraption_controls",
+    "0": "crafts_construct:block/brass_contraption_controls/brass_contraption_controls",
+    "1": "crafts_construct:block/brass_contraption_controls/brass_contraption_controls",
+    "particle": "crafts_construct:block/brass_contraption_controls/brass_contraption_controls"
+  }
+}

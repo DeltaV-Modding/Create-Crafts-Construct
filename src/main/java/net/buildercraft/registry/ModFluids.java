@@ -27,7 +27,7 @@ import org.joml.Vector3f;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static util.ModCreativeModeTabs.CC_TAB_KEY;
+import static net.buildercraft.util.ModCreativeModeTabs.CC_TAB_KEY;
 
 public class ModFluids {
 

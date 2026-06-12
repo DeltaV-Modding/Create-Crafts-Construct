@@ -1,0 +1,9 @@
+{
+  "parent": "create:item/weighted_ejector",
+  "textures": {
+    "casing": "crafts_construct:block/copper_weighted_ejector/copper_weighted_ejector",
+    "0": "crafts_construct:block/copper_weighted_ejector/copper_weighted_ejector",
+    "1": "crafts_construct:block/copper_weighted_ejector/copper_weighted_ejector",
+    "particle": "crafts_construct:block/copper_weighted_ejector/copper_weighted_ejector"
+  }
+}

@@ -1,0 +1,21 @@
+﻿{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "crafts_construct:copper_contraption_controls"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "crafts_construct:blocks/copper_contraption_controls"
+}

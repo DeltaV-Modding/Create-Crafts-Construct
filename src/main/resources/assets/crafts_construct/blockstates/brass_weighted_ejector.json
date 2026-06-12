@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "crafts_construct:block/brass_weighted_ejector/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafts_construct:block/brass_weighted_ejector/block"
+    },
+    "facing=south": {
+      "model": "crafts_construct:block/brass_weighted_ejector/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafts_construct:block/brass_weighted_ejector/block",
+      "y": 270
+    }
+  }
+}

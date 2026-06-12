@@ -5,7 +5,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import util.PaintGunOutlineRenderer;
+import net.buildercraft.util.PaintGunOutlineRenderer;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class ModEvents {
