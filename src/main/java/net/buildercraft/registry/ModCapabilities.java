@@ -33,7 +33,7 @@ public class ModCapabilities {
     private static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntityTypes.BRASS_ITEM_DRAIN.get(),
+                ModBlockEntityTypes.PAINTED_ITEM_DRAIN.get(),
                 (be, context) -> {
                     if (context != null && context.getAxis().isHorizontal()) {
                         return ReflectionAccess.itemHandler(be, context);
@@ -44,7 +44,7 @@ public class ModCapabilities {
 
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.BRASS_ITEM_DRAIN.get(),
+                ModBlockEntityTypes.PAINTED_ITEM_DRAIN.get(),
                 (be, context) -> {
                     if (context != Direction.UP) {
                         return ReflectionAccess.fluidHandler(be);

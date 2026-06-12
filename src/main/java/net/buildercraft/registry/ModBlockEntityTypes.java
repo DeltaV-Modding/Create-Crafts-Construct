@@ -20,8 +20,8 @@ import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
 import com.simibubi.create.content.contraptions.actors.psi.PortableFluidInterfaceBlockEntity;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.buildercraft.block.create.drain.BrassItemDrainBlockEntity;
-import net.buildercraft.block.create.drain.BrassItemDrainRenderer;
+import net.buildercraft.block.create.drain.PaintedItemDrainBlockEntity;
+import net.buildercraft.block.create.drain.PaintedItemDrainRenderer;
 import net.buildercraft.block.create.fluid.PaintedFluidTankBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedFluidValveBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedHosePulleyBlockEntity;
@@ -58,11 +58,20 @@ public class ModBlockEntityTypes {
     private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, craftsconstruct.MOD_ID);
 
-public static final BlockEntityEntry<BrassItemDrainBlockEntity> BRASS_ITEM_DRAIN = REGISTRATE
-        .blockEntity("brass_item_drain", BrassItemDrainBlockEntity::new)
-        .validBlocks(ModBlocks.BRASS_ITEM_DRAIN)
-        .renderer(() -> BrassItemDrainRenderer::new)
-        .register();
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedItemDrainBlockEntity>> PAINTED_ITEM_DRAIN =
+            BLOCK_ENTITY_TYPES.register("painted_item_drain", () -> BlockEntityType.Builder.of(
+                    PaintedItemDrainBlockEntity::new,
+                    getValidItemDrains()
+            ).build(null));
+
+    private static Block[] getValidItemDrains() {
+        java.util.List<Block> list = new java.util.ArrayList<>();
+        list.add(ModBlocks.BRASS_ITEM_DRAIN.get());
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_ITEM_DRAINS) {
+            list.add(block.get());
+        }
+        return list.toArray(Block[]::new);
+    }
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedFluidPipeBlockEntity>> PAINTED_FLUID_PIPE =
             BLOCK_ENTITY_TYPES.register("painted_fluid_pipe", () -> BlockEntityType.Builder.of(

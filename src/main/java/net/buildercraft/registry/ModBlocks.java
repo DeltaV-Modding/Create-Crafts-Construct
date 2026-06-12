@@ -4,7 +4,8 @@ import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.buildercraft.block.SugarBeetCropBlock;
-import net.buildercraft.block.create.drain.BrassItemDrainBlock;
+import net.buildercraft.block.create.drain.PaintedItemDrainBlock;
+import com.simibubi.create.content.fluids.tank.FluidTankItem;
 import net.buildercraft.block.create.fluid.PaintedFluidTankBlock;
 import net.buildercraft.block.create.fluid.PaintedFluidValveBlock;
 import net.buildercraft.block.create.fluid.PaintedHosePulleyBlock;
@@ -70,7 +71,8 @@ public class ModBlocks {
             "mechanical_mixer",
             "deployer",
             "mechanical_drill",
-            "mechanical_crafter"
+            "mechanical_crafter",
+            "item_drain"
     };
     public static final List<DeferredBlock<Block>> TEMP_PAINT_BLOCKS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_FLUID_PIPES = new ArrayList<>();
@@ -93,6 +95,7 @@ public class ModBlocks {
     public static final List<DeferredBlock<Block>> PAINTED_STEAM_ENGINES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_STEAM_WHISTLES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_PORTABLE_FLUID_INTERFACES = new ArrayList<>();
+    public static final List<DeferredBlock<Block>> PAINTED_ITEM_DRAINS = new ArrayList<>();
 
     public static final DeferredBlock<Block> WHITE_TEXTILE = registerBlock("white_textile_block", () -> new Block(BlockBehaviour.Properties.of()
                     .ignitedByLava().sound(SoundType.WOOL).strength(0.8f)));
@@ -167,7 +170,7 @@ public class ModBlocks {
 
 
     //Create Stuff
-    public static final BlockEntry<BrassItemDrainBlock> BRASS_ITEM_DRAIN = REGISTRATE.block("brass_item_drain", BrassItemDrainBlock::new)
+    public static final BlockEntry<PaintedItemDrainBlock> BRASS_ITEM_DRAIN = REGISTRATE.block("brass_item_drain", PaintedItemDrainBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
             .addLayer(() -> RenderType::cutoutMipped)
@@ -194,7 +197,13 @@ public class ModBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        ModItems.ITEMS.register(name, () -> {
+            Block b = block.get();
+            if (b instanceof PaintedFluidTankBlock) {
+                return new FluidTankItem(b, new Item.Properties());
+            }
+            return new BlockItem(b, new Item.Properties());
+        });
     }
 
     private static void registerTempPaintBlock(String name) {
@@ -221,6 +230,7 @@ public class ModBlocks {
             case "steam_engine" -> PAINTED_STEAM_ENGINES.add(block);
             case "steam_whistle" -> PAINTED_STEAM_WHISTLES.add(block);
             case "portable_fluid_interface" -> PAINTED_PORTABLE_FLUID_INTERFACES.add(block);
+            case "item_drain" -> PAINTED_ITEM_DRAINS.add(block);
             default -> {
             }
         }
@@ -250,6 +260,7 @@ public class ModBlocks {
             case "steam_engine" -> new PaintedSteamEngineBlock(properties, () -> ModBlockEntityTypes.PAINTED_STEAM_ENGINE.get());
             case "steam_whistle" -> new PaintedSteamWhistleBlock(properties, () -> ModBlockEntityTypes.PAINTED_STEAM_WHISTLE.get());
             case "portable_fluid_interface" -> new PaintedPortableFluidInterfaceBlock(properties);
+            case "item_drain" -> new PaintedItemDrainBlock(properties);
             default -> new Block(properties);
         };
     }
@@ -263,6 +274,9 @@ public class ModBlocks {
         if ("encased_chain_drive".equals(target) && "copper".equals(material)) {
             return true;
         }
+        if ("item_drain".equals(target) && "brass".equals(material)) {
+            return false;
+        }
         String baseMaterial = baseMaterialFor(target);
         return baseMaterial == null || !baseMaterial.equals(material);
     }
@@ -270,6 +284,7 @@ public class ModBlocks {
     private static String baseMaterialFor(String target) {
         return switch (target) {
             case "fluid_pipe",
+                 "smart_fluid_pipe",
                  "mechanical_pump",
                  "fluid_valve",
                  "fluid_tank",
@@ -277,9 +292,9 @@ public class ModBlocks {
                  "hose_pulley",
                  "portable_fluid_interface",
                  "steam_engine",
-                 "steam_whistle" -> "copper";
-            case "smart_fluid_pipe",
-                 "mechanical_crafter" -> "brass";
+                 "steam_whistle",
+                 "item_drain" -> "copper";
+            case "mechanical_crafter" -> "brass";
             case "gearbox",
                  "encased_chain_drive",
                  "encased_fan",

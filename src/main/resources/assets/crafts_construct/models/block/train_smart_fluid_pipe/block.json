@@ -2,11 +2,11 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"2": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe_casing",
-		"3": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe_casing",
-		"4": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe",
-		"5": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe_casing",
-		"particle": "crafts_construct:block/train_fluid_pipe/train_fluid_pipe"
+		"2": "create:block/railway_casing",
+		"3": "create:block/railway_casing",
+		"4": "create:block/pipes",
+		"5": "crafts_construct:block/train_smart_fluid_pipe/train_smart_pipe_3",
+		"particle": "create:block/pipes"
 	},
 	"elements": [
 		{

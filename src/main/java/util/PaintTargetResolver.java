@@ -16,11 +16,27 @@ public class PaintTargetResolver {
     private static final Map<ResourceLocation, Map<PaintMaterial, ResourceLocation>> SPECIAL_TARGETS = Map.of(
             id("create", "item_drain"), Map.of(
                     PaintMaterial.COPPER, id("create", "item_drain"),
-                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain")
+                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain"),
+                    PaintMaterial.ANDESITE, id(craftsconstruct.MOD_ID, "andesite_item_drain"),
+                    PaintMaterial.TRAIN, id(craftsconstruct.MOD_ID, "train_item_drain")
             ),
             id(craftsconstruct.MOD_ID, "brass_item_drain"), Map.of(
                     PaintMaterial.COPPER, id("create", "item_drain"),
-                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain")
+                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain"),
+                    PaintMaterial.ANDESITE, id(craftsconstruct.MOD_ID, "andesite_item_drain"),
+                    PaintMaterial.TRAIN, id(craftsconstruct.MOD_ID, "train_item_drain")
+            ),
+            id(craftsconstruct.MOD_ID, "andesite_item_drain"), Map.of(
+                    PaintMaterial.COPPER, id("create", "item_drain"),
+                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain"),
+                    PaintMaterial.ANDESITE, id(craftsconstruct.MOD_ID, "andesite_item_drain"),
+                    PaintMaterial.TRAIN, id(craftsconstruct.MOD_ID, "train_item_drain")
+            ),
+            id(craftsconstruct.MOD_ID, "train_item_drain"), Map.of(
+                    PaintMaterial.COPPER, id("create", "item_drain"),
+                    PaintMaterial.BRASS, id(craftsconstruct.MOD_ID, "brass_item_drain"),
+                    PaintMaterial.ANDESITE, id(craftsconstruct.MOD_ID, "andesite_item_drain"),
+                    PaintMaterial.TRAIN, id(craftsconstruct.MOD_ID, "train_item_drain")
             ),
             id("create", "shaft"), Map.of(
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_shaft"),
@@ -45,7 +61,7 @@ public class PaintTargetResolver {
             Map.entry("portable_fluid_interface", PaintMaterial.COPPER),
             Map.entry("steam_engine", PaintMaterial.COPPER),
             Map.entry("steam_whistle", PaintMaterial.COPPER),
-            Map.entry("smart_fluid_pipe", PaintMaterial.BRASS),
+            Map.entry("smart_fluid_pipe", PaintMaterial.COPPER),
             Map.entry("mechanical_crafter", PaintMaterial.BRASS),
             Map.entry("gearbox", PaintMaterial.ANDESITE),
             Map.entry("encased_chain_drive", PaintMaterial.ANDESITE),
@@ -67,7 +83,7 @@ public class PaintTargetResolver {
             Map.entry("portable_fluid_interface", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("steam_engine", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("steam_whistle", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
-            Map.entry("smart_fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
+            Map.entry("smart_fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("mechanical_crafter", Set.of(PaintMaterial.ANDESITE, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
             Map.entry("gearbox", Set.of(PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("encased_chain_drive", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
@@ -113,6 +129,12 @@ public class PaintTargetResolver {
         }
         if (sourceId.equals(id(craftsconstruct.MOD_ID, "brass_item_drain"))) {
             return Optional.of(PaintMaterial.BRASS);
+        }
+        if (sourceId.equals(id(craftsconstruct.MOD_ID, "andesite_item_drain"))) {
+            return Optional.of(PaintMaterial.ANDESITE);
+        }
+        if (sourceId.equals(id(craftsconstruct.MOD_ID, "train_item_drain"))) {
+            return Optional.of(PaintMaterial.TRAIN);
         }
         if ("create".equals(sourceId.getNamespace())) {
             String strippedPath = stripKnownMaterialPrefix(sourceId.getPath());
