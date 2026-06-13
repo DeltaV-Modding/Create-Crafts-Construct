@@ -34,17 +34,23 @@ public final class PaintedFluidClient {
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get()).factory(HosePulleyVisual::new).skipVanillaRender(be -> true).apply();
     }
 
-    public static void registerModelSwappers() {
+    public static void registerRenderLayers() {
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_SPOUTS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_VALVES) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
-
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+    }
 
+    public static void registerModelSwappers() {
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
             String path = block.getId().getPath();
             CTSpriteShiftEntry sideShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
@@ -69,8 +75,6 @@ public final class PaintedFluidClient {
         }
 
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
-
             String path = block.getId().getPath();
             String baseTankPath = path.replace("horizontal_", "");
 

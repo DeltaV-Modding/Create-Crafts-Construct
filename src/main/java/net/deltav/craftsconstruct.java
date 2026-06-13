@@ -122,6 +122,10 @@ public class craftsconstruct {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                PaintedFluidClient.registerRenderLayers();
+                PaintedPipeClient.registerRenderLayers();
+            });
             PaintedKineticClient.registerVisualizers();
             PaintedFluidClient.registerVisualizers();
             PaintedPortableFluidInterfaceClient.registerVisualizers();

@@ -1,6 +1,6 @@
 {
-  "parent": "crafts_construct:block/andesite_steam_whistle/block_small_floor",
-  "textures": {
-    "2": "crafts_construct:block/andesite_steam_whistle/andesite_steam_whistle"
-  }
+    "parent": "crafts_construct:block/andesite_steam_whistle/block_small_floor",
+    "textures": {
+        "2": "crafts_construct:block/andesite_steam_whistle/andesite_redstone_plate_powered"
+    }
 }

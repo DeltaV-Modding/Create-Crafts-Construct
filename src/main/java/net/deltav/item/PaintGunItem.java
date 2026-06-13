@@ -19,6 +19,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.deltav.util.PaintMaterial;
 import net.deltav.util.PaintTargetResolver;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +62,8 @@ public class PaintGunItem extends Item {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        BlockState sourceState = level.getBlockState(context.getClickedPos());
+        BlockPos pos = context.getClickedPos();
+        BlockState sourceState = level.getBlockState(pos);
         if (PaintTargetResolver.isAlreadyMaterial(sourceState, material)) {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable("message.crafts_construct.paint_gun.same_material"), true);
@@ -73,8 +80,28 @@ public class PaintGunItem extends Item {
         }
 
         if (!level.isClientSide) {
-            level.setBlock(context.getClickedPos(), targetState.get(), 3);
-            level.playSound(null, context.getClickedPos(), SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            BlockEntity oldBe = level.getBlockEntity(pos);
+            CompoundTag nbt = null;
+            if (oldBe != null) {
+                nbt = oldBe.saveWithFullMetadata(level.registryAccess());
+            }
+
+            level.setBlock(pos, targetState.get(), 3);
+            level.playSound(null, pos, SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+            if (nbt != null) {
+                BlockEntity newBe = level.getBlockEntity(pos);
+                if (newBe != null) {
+                    ResourceLocation newTypeId = BlockEntityType.getKey(newBe.getType());
+                    if (newTypeId != null) {
+                        nbt.putString("id", newTypeId.toString());
+                    }
+                    newBe.loadWithComponents(nbt, level.registryAccess());
+                    newBe.setChanged();
+                    level.sendBlockUpdated(pos, sourceState, targetState.get(), 3);
+                }
+            }
+
             if (!creative && !player.getAbilities().instabuild) {
                 consumeCartridge(cartridge, player);
             }

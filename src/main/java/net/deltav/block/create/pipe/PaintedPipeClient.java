@@ -31,6 +31,15 @@ public final class PaintedPipeClient {
     private PaintedPipeClient() {
     }
 
+    public static void registerRenderLayers() {
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_PIPES) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_SMART_FLUID_PIPES) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+    }
+
     public static void registerModelSwappers() {
         registerPipeModels(ModBlocks.PAINTED_FLUID_PIPES);
         registerPipeModels(ModBlocks.PAINTED_SMART_FLUID_PIPES);
@@ -43,7 +52,6 @@ public final class PaintedPipeClient {
 
     private static void registerPipeModels(List<DeferredBlock<Block>> blocks) {
         for (DeferredBlock<Block> block : blocks) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
 
             String path = block.getId().getPath();
             String material = path.split("_")[0];

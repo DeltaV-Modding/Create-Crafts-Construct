@@ -11,12 +11,12 @@
     "WhistleBlockMixin",
     "WhistleExtenderBlockMixin",
     "BlockCapabilityCacheProviderMixin",
-    "FluidPropagatorMixin",
     "PortableStorageInterfaceMovementMixin",
     "ConnectivityHandlerMixin",
     "FluidTankBlockEntityMixin",
     "FluidValveBlockEntityAccessor",
-    "FluidPipeBlockMixin"
+    "FluidPipeBlockMixin",
+    "SmartBlockEntityMixin"
   ],
   "client": [
     "FluidTankRendererMixin",

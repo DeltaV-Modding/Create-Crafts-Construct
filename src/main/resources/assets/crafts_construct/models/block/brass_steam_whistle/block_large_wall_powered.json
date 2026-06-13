@@ -1,6 +1,6 @@
 {
-  "parent": "crafts_construct:block/brass_steam_whistle/block_large_wall",
-  "textures": {
-    "2": "crafts_construct:block/brass_steam_whistle/brass_steam_whistle"
-  }
+    "parent": "crafts_construct:block/brass_steam_whistle/block_large_wall",
+    "textures": {
+        "2": "crafts_construct:block/brass_steam_whistle/brass_redstone_plate_powered"
+    }
 }
