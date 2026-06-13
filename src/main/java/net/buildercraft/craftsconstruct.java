@@ -71,6 +71,28 @@ public class craftsconstruct {
                 com.simibubi.create.api.stress.BlockStressValues.CAPACITIES.register(block.get(), () -> com.simibubi.create.api.stress.BlockStressValues.getCapacity(com.simibubi.create.AllBlocks.STEAM_ENGINE.get()));
                 com.simibubi.create.api.stress.BlockStressValues.RPM.register(block.get(), com.simibubi.create.api.stress.BlockStressValues.RPM.get(com.simibubi.create.AllBlocks.STEAM_ENGINE.get()));
             }
+
+            // Register Portable Storage Interfaces
+            for (net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> block : ModBlocks.PAINTED_PORTABLE_STORAGE_INTERFACES) {
+                com.simibubi.create.api.behaviour.movement.MovementBehaviour.REGISTRY.register(block.get(), new com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement());
+            }
+
+            // Register Portable Fluid Interfaces
+            for (net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> block : ModBlocks.PAINTED_PORTABLE_FLUID_INTERFACES) {
+                com.simibubi.create.api.behaviour.movement.MovementBehaviour.REGISTRY.register(block.get(), new com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement());
+            }
+
+            // Register Contraption Controls
+            for (net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> block : ModBlocks.PAINTED_CONTRAPTION_CONTROLS) {
+                com.simibubi.create.api.behaviour.movement.MovementBehaviour.REGISTRY.register(block.get(), new com.simibubi.create.content.contraptions.actors.contraptionControls.ContraptionControlsMovement());
+                com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.REGISTRY.register(block.get(), new com.simibubi.create.content.contraptions.actors.contraptionControls.ContraptionControlsMovingInteraction());
+            }
+
+            // Register Fluid Tanks
+            for (net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
+                com.simibubi.create.api.behaviour.movement.MovementBehaviour.REGISTRY.register(block.get(), new com.simibubi.create.content.fluids.tank.FluidTankMovementBehavior());
+                com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType.REGISTRY.register(block.get(), com.simibubi.create.AllMountedStorageTypes.FLUID_TANK.get());
+            }
         });
     }
 
