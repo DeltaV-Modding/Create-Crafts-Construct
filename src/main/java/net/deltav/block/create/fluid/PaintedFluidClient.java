@@ -32,10 +32,6 @@ public final class PaintedFluidClient {
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.PAINTED_MECHANICAL_PUMP.get()).factory(SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG)).skipVanillaRender(be -> true).apply();
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.PAINTED_FLUID_VALVE.get()).factory(PaintedFluidValveVisual::new).skipVanillaRender(be -> true).apply();
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get()).factory(HosePulleyVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.PAINTED_FLUID_PIPE.get())
-                .factory((ctx, be, partialTick) -> new net.deltav.block.create.pipe.PaintedGlassPipeVisual(ctx, (net.deltav.block.create.pipe.PaintedFluidPipeBlockEntity) be, partialTick))
-                .neverSkipVanillaRender()
-                .apply();
     }
 
     public static void registerModelSwappers() {
