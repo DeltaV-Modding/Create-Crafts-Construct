@@ -16,7 +16,12 @@
   ],
   "client": [
     "FluidTankRendererMixin",
-    "PortableStorageInterfaceRendererMixin"
+    "PortableStorageInterfaceRendererMixin",
+    "PonderUIMixin",
+    "PonderIndexMixin",
+    "SchematicLevelMixin",
+    "PonderSceneRegistryAccessor",
+    "PonderTagRegistryAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
