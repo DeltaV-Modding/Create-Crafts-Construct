@@ -38,6 +38,7 @@ public final class PaintedPipeClient {
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_SMART_FLUID_PIPE.get(), SmartBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_FLUID_PIPE.get(), PaintedGlassPipeRenderer::new);
     }
 
     private static void registerPipeModels(List<DeferredBlock<Block>> blocks) {
