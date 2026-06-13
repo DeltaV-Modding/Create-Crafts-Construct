@@ -47,15 +47,15 @@ public class PaintedFluidValveVisual extends ShaftVisual<FluidValveBlockEntity> 
 
     @Override
     public void beginFrame(DynamicVisual.Context context) {
-        if (settled)
+        if (((net.deltav.mixin.FluidValveBlockEntityAccessor) blockEntity).getPointer().settled() && settled)
             return;
         transformPointer(context.partialTick());
     }
 
     private void transformPointer(float partialTick) {
-        float value = blockState.getValue(FluidValveBlock.ENABLED) ? 1 : 0;
+        float value = ((net.deltav.mixin.FluidValveBlockEntityAccessor) blockEntity).getPointer().getValue(partialTick);
         float pointerRotation = Mth.lerp(value, 0, -90);
-        settled = true;
+        settled = (value == 0 || value == 1) && ((net.deltav.mixin.FluidValveBlockEntityAccessor) blockEntity).getPointer().settled();
 
         pointer.setIdentityTransform()
                 .translate(getVisualPosition())

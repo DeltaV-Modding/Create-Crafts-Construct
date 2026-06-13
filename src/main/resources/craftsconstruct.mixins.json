@@ -14,7 +14,8 @@
     "FluidPropagatorMixin",
     "PortableStorageInterfaceMovementMixin",
     "ConnectivityHandlerMixin",
-    "FluidTankBlockEntityMixin"
+    "FluidTankBlockEntityMixin",
+    "FluidValveBlockEntityAccessor"
   ],
   "client": [
     "FluidTankRendererMixin",

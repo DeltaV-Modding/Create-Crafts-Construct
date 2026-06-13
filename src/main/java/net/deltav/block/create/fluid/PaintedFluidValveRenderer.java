@@ -37,7 +37,7 @@ public class PaintedFluidValveRenderer extends KineticBlockEntityRenderer<FluidV
 
         BlockState state = be.getBlockState();
         Direction facing = state.getValue(FluidValveBlock.FACING);
-        float pointerRotation = Mth.lerp(state.getValue(FluidValveBlock.ENABLED) ? 1 : 0, 0, -90);
+        float pointerRotation = Mth.lerp(((net.deltav.mixin.FluidValveBlockEntityAccessor) be).getPointer().getValue(partialTicks), 0, -90);
         Direction.Axis pipeAxis = FluidValveBlock.getPipeAxis(state);
         Direction.Axis rotationAxis = getRotationAxisOf(be);
         int pointerRotationOffset = pipeAxis.isHorizontal() && rotationAxis == Direction.Axis.X || pipeAxis.isVertical() ? 90 : 0;
