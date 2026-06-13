@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "create:block/portable_storage_interface",
-		"1": "crafts_construct:block/brass_portable_storage_interface/brass_portable_storage_interface",
-		"particle": "create:block/portable_storage_interface"
+		"0": "crafts_construct:block/brass_portable_storage_interface/brass_portable_storage_interface",
+		"1": "create:block/brass_casing",
+		"particle": "crafts_construct:block/brass_portable_storage_interface/brass_portable_storage_interface"
 	},
 	"elements": [
 		{
