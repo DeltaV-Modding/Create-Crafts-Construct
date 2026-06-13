@@ -110,6 +110,11 @@ public class craftsconstruct {
             PaintedItemDrainClient.registerModelLayers();
         }
 
+        @SubscribeEvent
+        public static void onRegisterAdditional(net.neoforged.neoforge.client.event.ModelEvent.RegisterAdditional event) {
+            net.buildercraft.registry.ModPartialModels.init();
+        }
+
         @SubscribeEvent(priority = EventPriority.LOWEST)
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             PaintedKineticClient.registerRenderers(event);
