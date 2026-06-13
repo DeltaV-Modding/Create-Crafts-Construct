@@ -100,7 +100,6 @@ public class craftsconstruct {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            net.buildercraft.registry.ModPartialModels.init();
             PaintedKineticClient.registerVisualizers();
             PaintedFluidClient.registerVisualizers();
             PaintedPortableFluidInterfaceClient.registerVisualizers();
@@ -110,7 +109,7 @@ public class craftsconstruct {
             PaintedItemDrainClient.registerModelLayers();
         }
 
-        @SubscribeEvent
+        @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void onRegisterAdditional(net.neoforged.neoforge.client.event.ModelEvent.RegisterAdditional event) {
             net.buildercraft.registry.ModPartialModels.init();
         }
