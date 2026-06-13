@@ -48,10 +48,11 @@ public class PaintGunOutlineRenderer {
                 if (material != null) {
                     BlockState state = player.level().getBlockState(targetPos);
                     if (PaintTargetResolver.isAlreadyMaterial(state, material)) {
-                        color = 0xffa500; // Orange color
-                    } else if (PaintTargetResolver.resolve(state, material).isEmpty()) {
-                        color = 0xff0000; // Red if resolve returns empty (no target variant)
+                        color = 0xffd000;
                     }
+                }
+                if(material == null && !creative) {
+                    color = 0xffd000;
                 }
             }
         }
