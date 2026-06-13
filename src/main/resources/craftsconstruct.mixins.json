@@ -15,7 +15,8 @@
     "PortableStorageInterfaceMovementMixin",
     "ConnectivityHandlerMixin",
     "FluidTankBlockEntityMixin",
-    "FluidValveBlockEntityAccessor"
+    "FluidValveBlockEntityAccessor",
+    "FluidPipeBlockMixin"
   ],
   "client": [
     "FluidTankRendererMixin",
@@ -24,7 +25,8 @@
     "PonderIndexMixin",
     "SchematicLevelMixin",
     "PonderSceneRegistryAccessor",
-    "PonderTagRegistryAccessor"
+    "PonderTagRegistryAccessor",
+    "PipeAttachmentModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -57,13 +57,18 @@ public final class PaintedPipeClient {
                     ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, targetPrefix + "_connected")
             );
 
+            SpriteShiftEntry glassPipeShift = SpriteShifter.get(
+                    ResourceLocation.fromNamespaceAndPath("create", "block/glass_fluid_pipe"),
+                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe")
+            );
+
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
                     block.getId(),
-                    bakedModel -> new SpriteShiftingBakedModel(PipeAttachmentModel.withAO(bakedModel), pipeShift, pipeConnectedShift)
+                    bakedModel -> new SpriteShiftingBakedModel(PipeAttachmentModel.withAO(bakedModel), pipeShift, pipeConnectedShift, glassPipeShift)
             );
             CreateClient.MODEL_SWAPPER.getCustomItemModels().register(
                     block.getId(),
-                    bakedModel -> new SpriteShiftingBakedModel(bakedModel, pipeShift, pipeConnectedShift)
+                    bakedModel -> new SpriteShiftingBakedModel(bakedModel, pipeShift, pipeConnectedShift, glassPipeShift)
             );
         }
     }
@@ -71,11 +76,13 @@ public final class PaintedPipeClient {
     private static class SpriteShiftingBakedModel extends BakedModelWrapper<BakedModel> {
         private final SpriteShiftEntry spriteShift;
         private final SpriteShiftEntry connectedSpriteShift;
+        private final SpriteShiftEntry glassPipeShift;
 
-        private SpriteShiftingBakedModel(BakedModel originalModel, SpriteShiftEntry spriteShift, SpriteShiftEntry connectedSpriteShift) {
+        private SpriteShiftingBakedModel(BakedModel originalModel, SpriteShiftEntry spriteShift, SpriteShiftEntry connectedSpriteShift, SpriteShiftEntry glassPipeShift) {
             super(originalModel);
             this.spriteShift = spriteShift;
             this.connectedSpriteShift = connectedSpriteShift;
+            this.glassPipeShift = glassPipeShift;
         }
 
         @Override
@@ -115,6 +122,8 @@ public final class PaintedPipeClient {
                 return spriteShift;
             if (connectedSpriteShift != null && quad.getSprite() == connectedSpriteShift.getOriginal())
                 return connectedSpriteShift;
+            if (glassPipeShift != null && quad.getSprite() == glassPipeShift.getOriginal())
+                return glassPipeShift;
             return null;
         }
     }
