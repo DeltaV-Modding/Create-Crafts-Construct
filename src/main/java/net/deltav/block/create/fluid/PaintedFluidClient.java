@@ -70,7 +70,7 @@ public final class PaintedFluidClient {
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
                     block.getId(),
-                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift)
+                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift, false)
             );
         }
 
@@ -122,7 +122,7 @@ public final class PaintedFluidClient {
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
                     block.getId(),
-                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift)
+                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift, true)
             );
         }
     }

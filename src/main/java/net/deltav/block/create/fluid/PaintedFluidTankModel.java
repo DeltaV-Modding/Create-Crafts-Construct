@@ -26,7 +26,13 @@ public class PaintedFluidTankModel extends CTModel {
     protected static final ModelProperty<CullData> CULL_PROPERTY = new ModelProperty<>();
 
     public PaintedFluidTankModel(BakedModel originalModel, CTSpriteShiftEntry side, CTSpriteShiftEntry top, CTSpriteShiftEntry inner) {
-        super(originalModel, new FluidTankCTBehaviour(side, top, inner));
+        this(originalModel, side, top, inner, false);
+    }
+
+    public PaintedFluidTankModel(BakedModel originalModel, CTSpriteShiftEntry side, CTSpriteShiftEntry top, CTSpriteShiftEntry inner, boolean horizontal) {
+        super(originalModel, horizontal ? 
+                new HorizontalFluidTankCTBehaviour(side, top, inner) : 
+                new FluidTankCTBehaviour(side, top, inner));
     }
 
     @Override
