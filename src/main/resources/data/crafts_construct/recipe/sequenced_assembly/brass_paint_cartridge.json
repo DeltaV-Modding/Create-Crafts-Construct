@@ -6,7 +6,7 @@
   "loops": 1,
   "results": [
     {
-      "id": "crafts_construct:train_paint_cartridge"
+      "id": "crafts_construct:brass_paint_cartridge"
     }
   ],
   "sequence": [
@@ -18,13 +18,16 @@
         },
         [
           {
-            "item": "create:sturdy_sheet"
+            "item": "create:brass_ingot"
+          },
+          {
+            "item": "create:brass_sheet"
           }
         ]
       ],
       "results": [
         {
-          "id": "crafts_construct:incomplete_sturdy_paint_cartridge"
+          "id": "crafts_construct:incomplete_brass_paint_cartridge"
         }
       ]
     },
@@ -32,12 +35,12 @@
       "type": "create:pressing",
       "ingredients": [
         {
-          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+          "item": "crafts_construct:incomplete_brass_paint_cartridge"
         }
       ],
       "results": [
         {
-          "id": "crafts_construct:incomplete_sturdy_paint_cartridge"
+          "id": "crafts_construct:incomplete_brass_paint_cartridge"
         }
       ]
     },
@@ -45,17 +48,17 @@
       "type": "create:pressing",
       "ingredients": [
         {
-          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+          "item": "crafts_construct:incomplete_brass_paint_cartridge"
         }
       ],
       "results": [
         {
-          "id": "crafts_construct:incomplete_sturdy_paint_cartridge"
+          "id": "crafts_construct:incomplete_brass_paint_cartridge"
         }
       ]
     }
   ],
   "transitional_item": {
-    "id": "crafts_construct:incomplete_sturdy_paint_cartridge"
+    "id": "crafts_construct:incomplete_brass_paint_cartridge"
   }
 }
