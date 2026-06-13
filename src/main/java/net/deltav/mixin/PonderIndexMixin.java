@@ -35,8 +35,12 @@ public class PonderIndexMixin {
         for (Map.Entry<ResourceLocation, StoryBoardEntry> entry : scenesToCopy) {
             ResourceLocation originalId = entry.getKey();
             if (originalId.getNamespace().equals("create")) {
+                String originalPath = originalId.getPath();
+                if (originalPath.equals("copper_valve_handle")) {
+                    originalPath = "valve_handle";
+                }
                 for (PaintMaterial material : PaintMaterial.values()) {
-                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalId.getPath());
+                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalPath);
                     if (BuiltInRegistries.ITEM.containsKey(customId) || BuiltInRegistries.BLOCK.containsKey(customId)) {
                         scenesMap.put(customId, entry.getValue());
                     }
@@ -50,8 +54,12 @@ public class PonderIndexMixin {
         for (Map.Entry<ResourceLocation, ResourceLocation> entry : tagsToCopy) {
             ResourceLocation originalId = entry.getKey();
             if (originalId.getNamespace().equals("create")) {
+                String originalPath = originalId.getPath();
+                if (originalPath.equals("copper_valve_handle")) {
+                    originalPath = "valve_handle";
+                }
                 for (PaintMaterial material : PaintMaterial.values()) {
-                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalId.getPath());
+                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalPath);
                     if (BuiltInRegistries.ITEM.containsKey(customId) || BuiltInRegistries.BLOCK.containsKey(customId)) {
                         tagsMap.put(customId, entry.getValue());
                     }
