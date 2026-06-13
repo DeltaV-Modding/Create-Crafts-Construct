@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.buildercraft.mixin",
+  "package": "net.deltav.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BoilerDataMixin",
