@@ -12,3 +12,4 @@ public class com.simibubi.create.api.stress.BlockStressValues {
   private static void lambda$setGeneratorSpeed$0(int, net.minecraft.world.level.block.Block);
   static {};
 }
+  

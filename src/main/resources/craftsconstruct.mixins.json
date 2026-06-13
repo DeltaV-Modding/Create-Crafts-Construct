@@ -9,7 +9,10 @@
     "SteamEngineBlockEntityMixin",
     "ValveHandleVisualMixin",
     "WhistleBlockMixin",
-    "WhistleExtenderBlockMixin"
+    "WhistleExtenderBlockMixin",
+    "BlockCapabilityCacheProviderMixin",
+    "FluidPropagatorMixin",
+    "PortableStorageInterfaceMovementMixin"
   ],
   "client": [
     "FluidTankRendererMixin",
