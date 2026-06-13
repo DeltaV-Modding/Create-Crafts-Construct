@@ -30,6 +30,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_PAINT_CARTRIDGE);
                         output.accept(ModItems.ANDESITE_PAINT_CARTRIDGE);
                         output.accept(ModItems.TRAIN_PAINT_CARTRIDGE);
+                        output.accept(ModItems.INCOMPLETE_ANDESITE_PAINT_CARTRIDGE);
+                        output.accept(ModItems.INCOMPLETE_BRASS_PAINT_CARTRIDGE);
+                        output.accept(ModItems.INCOMPLETE_COPPER_PAINT_CARTRIDGE);
+                        output.accept(ModItems.INCOMPLETE_STURDY_PAINT_CARTRIDGE);
 
                         output.accept(ModItems.RAW_DIAMOND);
                         output.accept(ModItems.RAW_AMETHYST);

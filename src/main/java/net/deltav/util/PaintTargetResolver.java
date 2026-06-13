@@ -143,7 +143,7 @@ public class PaintTargetResolver {
         return currentMaterial(sourceId).filter(material::equals).isPresent();
     }
 
-    private static Optional<PaintMaterial> currentMaterial(ResourceLocation sourceId) {
+    public static Optional<PaintMaterial> currentMaterial(ResourceLocation sourceId) {
         if (sourceId.equals(id("create", "item_drain"))) {
             return Optional.of(PaintMaterial.COPPER);
         }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "crafts_construct:item/incomplete_brass_paint_cartridge"
+  }
+}

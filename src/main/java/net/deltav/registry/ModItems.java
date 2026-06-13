@@ -44,6 +44,15 @@ public class ModItems {
     public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = ITEMS.register("train_paint_cartridge",
             () -> new PaintCartridgeItem(PaintMaterial.TRAIN, new Item.Properties()));
 
+    public static final DeferredItem<Item> INCOMPLETE_ANDESITE_PAINT_CARTRIDGE = ITEMS.register("incomplete_andesite_paint_cartridge",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> INCOMPLETE_BRASS_PAINT_CARTRIDGE = ITEMS.register("incomplete_brass_paint_cartridge",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> INCOMPLETE_COPPER_PAINT_CARTRIDGE = ITEMS.register("incomplete_copper_paint_cartridge",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> INCOMPLETE_STURDY_PAINT_CARTRIDGE = ITEMS.register("incomplete_sturdy_paint_cartridge",
+            () -> new Item(new Item.Properties()));
+
 
     //Paint Gun
     public static final DeferredItem<Item> PAINT_GUN = ITEMS.register("paint_gun",
