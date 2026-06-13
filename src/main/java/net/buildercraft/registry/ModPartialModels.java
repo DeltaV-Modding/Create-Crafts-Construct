@@ -17,6 +17,14 @@ public class ModPartialModels {
     public static final Map<String, PartialModel> VALVE_POINTERS = new HashMap<>();
     public static final Map<String, PartialModel> VALVE_HANDLES = new HashMap<>();
 
+    public static final Map<String, PartialModel> PORTABLE_STORAGE_INTERFACE_TOP = new HashMap<>();
+    public static final Map<String, PartialModel> PORTABLE_STORAGE_INTERFACE_MIDDLE = new HashMap<>();
+    public static final Map<String, PartialModel> PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = new HashMap<>();
+
+    public static final Map<String, PartialModel> PORTABLE_FLUID_INTERFACE_TOP = new HashMap<>();
+    public static final Map<String, PartialModel> PORTABLE_FLUID_INTERFACE_MIDDLE = new HashMap<>();
+    public static final Map<String, PartialModel> PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = new HashMap<>();
+
     public static void init() {
         String[] materials = {"andesite", "brass", "train"};
         for (String mat : materials) {
@@ -32,6 +40,22 @@ public class ModPartialModels {
 
             String valveHandlePath = mat + "_valve_handle";
             VALVE_HANDLES.put(valveHandlePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + valveHandlePath)));
+        }
+
+        String[] storageMaterials = {"brass", "copper", "train"};
+        for (String mat : storageMaterials) {
+            String path = mat + "_portable_storage_interface";
+            PORTABLE_STORAGE_INTERFACE_TOP.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_top")));
+            PORTABLE_STORAGE_INTERFACE_MIDDLE.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle")));
+            PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
+        }
+
+        String[] fluidMaterials = {"andesite", "brass", "train"};
+        for (String mat : fluidMaterials) {
+            String path = mat + "_portable_fluid_interface";
+            PORTABLE_FLUID_INTERFACE_TOP.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_top")));
+            PORTABLE_FLUID_INTERFACE_MIDDLE.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle")));
+            PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
         }
     }
 }
