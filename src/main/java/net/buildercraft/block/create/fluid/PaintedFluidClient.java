@@ -39,19 +39,6 @@ public final class PaintedFluidClient {
     }
 
     public static void registerModelSwappers() {
-        Constructor<FluidTankModel> tankModelConstructor;
-        try {
-            tankModelConstructor = FluidTankModel.class.getDeclaredConstructor(
-                    BakedModel.class,
-                    CTSpriteShiftEntry.class,
-                    CTSpriteShiftEntry.class,
-                    CTSpriteShiftEntry.class
-            );
-            tankModelConstructor.setAccessible(true);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException("Could not find FluidTankModel constructor", e);
-        }
-
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
 
@@ -74,13 +61,61 @@ public final class PaintedFluidClient {
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
                     block.getId(),
-                    bakedModel -> {
-                        try {
-                            return tankModelConstructor.newInstance(bakedModel, sideShift, topShift, innerShift);
-                        } catch (Exception e) {
-                            throw new RuntimeException("Failed to instantiate FluidTankModel via reflection", e);
-                        }
-                    }
+                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift)
+            );
+        }
+
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+
+            String path = block.getId().getPath();
+            String baseTankPath = path.replace("horizontal_", "");
+
+            String namespace;
+            String texturePath;
+            String connectedPath;
+            String topPath;
+            String topConnectedPath;
+            String innerPath;
+            String innerConnectedPath;
+
+            if (baseTankPath.startsWith("copper")) {
+                namespace = "create";
+                texturePath = "block/fluid_tank";
+                connectedPath = "block/fluid_tank_connected";
+                topPath = "block/fluid_tank_top";
+                topConnectedPath = "block/fluid_tank_top_connected";
+                innerPath = "block/fluid_tank_inner";
+                innerConnectedPath = "block/fluid_tank_inner_connected";
+            } else {
+                namespace = craftsconstruct.MOD_ID;
+                texturePath = "block/" + baseTankPath + "/" + baseTankPath;
+                connectedPath = "block/" + baseTankPath + "/" + baseTankPath + "_connected";
+                topPath = "block/" + baseTankPath + "/" + baseTankPath + "_top";
+                topConnectedPath = "block/" + baseTankPath + "/" + baseTankPath + "_top_connected";
+                innerPath = "block/" + baseTankPath + "/" + baseTankPath + "_inner";
+                innerConnectedPath = "block/" + baseTankPath + "/" + baseTankPath + "_inner_connected";
+            }
+
+            CTSpriteShiftEntry sideShift = CTSpriteShifter.getCT(
+                    AllCTTypes.RECTANGLE,
+                    ResourceLocation.fromNamespaceAndPath(namespace, texturePath),
+                    ResourceLocation.fromNamespaceAndPath(namespace, connectedPath)
+            );
+            CTSpriteShiftEntry topShift = CTSpriteShifter.getCT(
+                    AllCTTypes.RECTANGLE,
+                    ResourceLocation.fromNamespaceAndPath(namespace, topPath),
+                    ResourceLocation.fromNamespaceAndPath(namespace, topConnectedPath)
+            );
+            CTSpriteShiftEntry innerShift = CTSpriteShifter.getCT(
+                    AllCTTypes.RECTANGLE,
+                    ResourceLocation.fromNamespaceAndPath(namespace, innerPath),
+                    ResourceLocation.fromNamespaceAndPath(namespace, innerConnectedPath)
+            );
+
+            CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
+                    block.getId(),
+                    bakedModel -> new PaintedFluidTankModel(bakedModel, sideShift, topShift, innerShift)
             );
         }
     }
@@ -90,6 +125,7 @@ public final class PaintedFluidClient {
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_MECHANICAL_PUMP.get(), PumpRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_FLUID_VALVE.get(), PaintedFluidValveRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_FLUID_TANK.get(), PaintedFluidTankRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get(), PaintedFluidTankRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_SPOUT.get(), SpoutRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get(), HosePulleyRenderer::new);
     }

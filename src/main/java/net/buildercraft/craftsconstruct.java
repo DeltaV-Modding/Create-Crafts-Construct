@@ -126,9 +126,13 @@ public class craftsconstruct {
             PaintedFluidClient.registerVisualizers();
             PaintedPortableFluidInterfaceClient.registerVisualizers();
             PaintedPortableStorageInterfaceClient.registerVisualizers();
+            PaintedItemDrainClient.registerModelLayers();
+        }
+
+        @SubscribeEvent(priority = EventPriority.HIGH)
+        public static void onModifyBakingResult(net.neoforged.neoforge.client.event.ModelEvent.ModifyBakingResult event) {
             PaintedFluidClient.registerModelSwappers();
             PaintedPipeClient.registerModelSwappers();
-            PaintedItemDrainClient.registerModelLayers();
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)

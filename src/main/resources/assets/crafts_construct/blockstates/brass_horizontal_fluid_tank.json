@@ -1,0 +1,220 @@
+{
+  "variants": {
+    "axis=x,bottom=false,shape=plain,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=plain,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_ne,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_ne",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_ne,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_ne",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_nw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_nw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_nw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_nw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_se,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_se",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_se,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_se",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_sw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_sw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=false,shape=window_sw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_sw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=plain,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=plain,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_ne,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_ne",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_ne,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_ne",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_nw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_nw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_nw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_nw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_se,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_se",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_se,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_se",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_sw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_sw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bottom=true,shape=window_sw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_sw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bottom=false,shape=plain,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=plain,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_ne,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_ne",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_ne,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_ne",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_nw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_nw",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_nw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_nw",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_se,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_se",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_se,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_se",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_sw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_middle_window_sw",
+      "x": 90
+    },
+    "axis=z,bottom=false,shape=window_sw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_top_window_sw",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=plain,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=plain,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_ne,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_ne",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_ne,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_ne",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_nw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_nw",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_nw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_nw",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_se,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_se",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_se,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_se",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_sw,top=false": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_bottom_window_sw",
+      "x": 90
+    },
+    "axis=z,bottom=true,shape=window_sw,top=true": {
+      "model": "crafts_construct:block/brass_fluid_tank/block_single_window_sw",
+      "x": 90
+    }
+  }
+}

@@ -12,7 +12,9 @@
     "WhistleExtenderBlockMixin",
     "BlockCapabilityCacheProviderMixin",
     "FluidPropagatorMixin",
-    "PortableStorageInterfaceMovementMixin"
+    "PortableStorageInterfaceMovementMixin",
+    "ConnectivityHandlerMixin",
+    "FluidTankBlockEntityMixin"
   ],
   "client": [
     "FluidTankRendererMixin",

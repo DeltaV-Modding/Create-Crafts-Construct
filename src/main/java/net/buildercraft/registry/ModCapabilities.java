@@ -6,6 +6,7 @@ import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlockEntity;
 import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import net.buildercraft.block.create.fluid.PaintedFluidTankBlockEntity;
+import net.buildercraft.block.create.fluid.HorizontalFluidTankBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedHosePulleyBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedSpoutBlockEntity;
 import net.buildercraft.block.create.portableInterface.PaintedPortableFluidInterfaceBlockEntity;
@@ -63,6 +64,19 @@ public class ModCapabilities {
                 Capabilities.FluidHandler.BLOCK,
                 ModBlockEntityTypes.PAINTED_FLUID_TANK.get(),
                 (PaintedFluidTankBlockEntity be, Direction context) -> {
+                    IFluidHandler handler = be.getFluidHandler();
+                    if (handler == null) {
+                        be.initialize();
+                        handler = be.getFluidHandler();
+                    }
+                    return handler;
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get(),
+                (HorizontalFluidTankBlockEntity be, Direction context) -> {
                     IFluidHandler handler = be.getFluidHandler();
                     if (handler == null) {
                         be.initialize();

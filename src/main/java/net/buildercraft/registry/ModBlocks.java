@@ -8,6 +8,7 @@ import net.buildercraft.block.SugarBeetCropBlock;
 import net.buildercraft.block.create.drain.PaintedItemDrainBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankItem;
 import net.buildercraft.block.create.fluid.PaintedFluidTankBlock;
+import net.buildercraft.block.create.fluid.HorizontalFluidTankBlock;
 import net.buildercraft.block.create.fluid.PaintedFluidValveBlock;
 import net.buildercraft.block.create.fluid.PaintedHosePulleyBlock;
 import net.buildercraft.block.create.fluid.PaintedPumpBlock;
@@ -67,6 +68,7 @@ public class ModBlocks {
             "fluid_valve",
             "valve_handle",
             "fluid_tank",
+            "horizontal_fluid_tank",
             "hose_pulley",
             "spout",
             "portable_fluid_interface",
@@ -100,6 +102,7 @@ public class ModBlocks {
     public static final List<DeferredBlock<Block>> PAINTED_FLUID_VALVES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_VALVE_HANDLES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_FLUID_TANKS = new ArrayList<>();
+    public static final List<DeferredBlock<Block>> PAINTED_HORIZONTAL_FLUID_TANKS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_SPOUTS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_HOSE_PULLEYS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_GEARBOXES = new ArrayList<>();
@@ -228,7 +231,7 @@ public class ModBlocks {
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ModItems.ITEMS.register(name, () -> {
             Block b = block.get();
-            if (b instanceof PaintedFluidTankBlock) {
+            if (b instanceof PaintedFluidTankBlock || b instanceof HorizontalFluidTankBlock) {
                 return new FluidTankItem(b, new Item.Properties());
             }
             return new BlockItem(b, new Item.Properties());
@@ -245,6 +248,7 @@ public class ModBlocks {
             case "fluid_valve" -> PAINTED_FLUID_VALVES.add(block);
             case "valve_handle" -> PAINTED_VALVE_HANDLES.add(block);
             case "fluid_tank" -> PAINTED_FLUID_TANKS.add(block);
+            case "horizontal_fluid_tank" -> PAINTED_HORIZONTAL_FLUID_TANKS.add(block);
             case "spout" -> PAINTED_SPOUTS.add(block);
             case "hose_pulley" -> PAINTED_HOSE_PULLEYS.add(block);
             case "gearbox" -> PAINTED_GEARBOXES.add(block);
@@ -285,6 +289,7 @@ public class ModBlocks {
             case "fluid_valve" -> new PaintedFluidValveBlock(properties, () -> ModBlockEntityTypes.PAINTED_FLUID_VALVE.get());
             case "valve_handle" -> ValveHandleBlock.copper(properties);
             case "fluid_tank" -> new PaintedFluidTankBlock(properties, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get);
+            case "horizontal_fluid_tank" -> new HorizontalFluidTankBlock(properties, () -> ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get());
             case "spout" -> new PaintedSpoutBlock(properties, () -> ModBlockEntityTypes.PAINTED_SPOUT.get());
             case "hose_pulley" -> new PaintedHosePulleyBlock(properties, () -> ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get());
             case "gearbox" -> new PaintedGearboxBlock(properties, () -> ModBlockEntityTypes.PAINTED_GEARBOX.get());
@@ -318,6 +323,9 @@ public class ModBlocks {
         if ("valve_handle".equals(target)) {
             return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", "copper_valve_handle"));
         }
+        if ("horizontal_fluid_tank".equals(target)) {
+            return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", "fluid_tank"));
+        }
         Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", target));
         return block == Blocks.AIR ? Blocks.IRON_BLOCK : block;
     }
@@ -335,6 +343,7 @@ public class ModBlocks {
 
     private static String baseMaterialFor(String target) {
         return switch (target) {
+            case "horizontal_fluid_tank" -> null;
             case "fluid_pipe",
                  "smart_fluid_pipe",
                  "mechanical_pump",

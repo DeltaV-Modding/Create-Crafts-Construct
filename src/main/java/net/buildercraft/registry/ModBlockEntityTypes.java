@@ -23,6 +23,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.buildercraft.block.create.drain.PaintedItemDrainBlockEntity;
 import net.buildercraft.block.create.drain.PaintedItemDrainRenderer;
 import net.buildercraft.block.create.fluid.PaintedFluidTankBlockEntity;
+import net.buildercraft.block.create.fluid.HorizontalFluidTankBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedFluidValveBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedHosePulleyBlockEntity;
 import net.buildercraft.block.create.fluid.PaintedPumpBlockEntity;
@@ -110,6 +111,12 @@ public class ModBlockEntityTypes {
             BLOCK_ENTITY_TYPES.register("painted_fluid_tank", () -> BlockEntityType.Builder.of(
                     PaintedFluidTankBlockEntity::new,
                     blocks(ModBlocks.PAINTED_FLUID_TANKS)
+            ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HorizontalFluidTankBlockEntity>> HORIZONTAL_FLUID_TANK =
+            BLOCK_ENTITY_TYPES.register("horizontal_fluid_tank", () -> BlockEntityType.Builder.of(
+                    HorizontalFluidTankBlockEntity::new,
+                    blocks(ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS)
             ).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedSpoutBlockEntity>> PAINTED_SPOUT =
