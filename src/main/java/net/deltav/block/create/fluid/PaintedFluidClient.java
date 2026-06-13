@@ -35,6 +35,13 @@ public final class PaintedFluidClient {
     }
 
     public static void registerModelSwappers() {
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_SPOUTS) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_VALVES) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
 
@@ -122,7 +129,7 @@ public final class PaintedFluidClient {
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_FLUID_VALVE.get(), PaintedFluidValveRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_FLUID_TANK.get(), PaintedFluidTankRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get(), PaintedFluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_SPOUT.get(), SpoutRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_SPOUT.get(), PaintedSpoutRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get(), HosePulleyRenderer::new);
     }
 }

@@ -25,6 +25,10 @@ public class ModPartialModels {
     public static final Map<String, PartialModel> PORTABLE_FLUID_INTERFACE_MIDDLE = new HashMap<>();
     public static final Map<String, PartialModel> PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = new HashMap<>();
 
+    public static final Map<String, PartialModel> SPOUT_TOPS = new HashMap<>();
+    public static final Map<String, PartialModel> SPOUT_MIDDLES = new HashMap<>();
+    public static final Map<String, PartialModel> SPOUT_BOTTOMS = new HashMap<>();
+
     public static void init() {
         String[] materials = {"andesite", "brass", "train"};
         for (String mat : materials) {
@@ -40,6 +44,11 @@ public class ModPartialModels {
 
             String valveHandlePath = mat + "_valve_handle";
             VALVE_HANDLES.put(valveHandlePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + valveHandlePath)));
+
+            String spoutPath = mat + "_spout";
+            SPOUT_TOPS.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/top")));
+            SPOUT_MIDDLES.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/middle")));
+            SPOUT_BOTTOMS.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/bottom")));
         }
 
         String[] storageMaterials = {"brass", "copper", "train"};
