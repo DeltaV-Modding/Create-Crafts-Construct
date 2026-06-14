@@ -56,7 +56,7 @@ public class ModBlockEntityTypes {
 
     private static Block[] getValidItemDrains() {
         java.util.List<Block> list = new java.util.ArrayList<>();
-        list.add(ModBlocks.BRASS_ITEM_DRAIN.get());
+    //    list.add(ModBlocks.BRASS_ITEM_DRAIN.get());
         for (DeferredBlock<Block> block : ModBlocks.PAINTED_ITEM_DRAINS) {
             list.add(block.get());
         }

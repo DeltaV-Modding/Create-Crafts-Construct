@@ -70,10 +70,12 @@ public class ModBlocks {
             "fluid_tank",
             "horizontal_fluid_tank",
             "hose_pulley",
+            "item_drain",
             "spout",
             "portable_fluid_interface",
             "steam_engine",
             "steam_whistle",
+            /*
             "gearbox",
             "encased_chain_drive",
             "encased_fan",
@@ -84,7 +86,6 @@ public class ModBlocks {
             "deployer",
             "mechanical_drill",
             "mechanical_crafter",
-            "item_drain",
             "depot",
             "weighted_ejector",
             "clutch",
@@ -94,6 +95,7 @@ public class ModBlocks {
             "adjustable_chain_gearshift",
             "portable_storage_interface",
             "contraption_controls"
+            */
     };
     public static final List<DeferredBlock<Block>> TEMP_PAINT_BLOCKS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_FLUID_PIPES = new ArrayList<>();
@@ -199,16 +201,6 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SUGAR_BEETS = BLOCKS.register("sugar_beets", () -> new SugarBeetCropBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BEETROOTS)));
-
-
-    //Create Stuff
-    public static final BlockEntry<PaintedItemDrainBlock> BRASS_ITEM_DRAIN = REGISTRATE.block("brass_item_drain", PaintedItemDrainBlock::new)
-            .initialProperties(SharedProperties::copperMetal)
-            .transform(pickaxeOnly())
-            .addLayer(() -> RenderType::cutoutMipped)
-            .blockstate((c, p) -> p.simpleBlock(c.get(), AssetLookup.standardModel(c, p)))
-            .simpleItem()
-            .register();
 
     static {
         for (String material : TEMP_PAINT_MATERIALS) {
@@ -334,9 +326,9 @@ public class ModBlocks {
         if ("encased_chain_drive".equals(target) && "copper".equals(material)) {
             return true;
         }
-        if ("item_drain".equals(target) && "brass".equals(material)) {
-            return false;
-        }
+        //if ("item_drain".equals(target) && "brass".equals(material)) {
+        //    return false;
+        //}
         String baseMaterial = baseMaterialFor(target);
         return baseMaterial == null || !baseMaterial.equals(material);
     }
