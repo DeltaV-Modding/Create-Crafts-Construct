@@ -2,8 +2,8 @@
     "credit": "Made with Blockbench",
     "textures": {
         "0": "crafts_construct:block/train_portable_fluid_interface/train_portable_fluid_interface",
-        "2": "create:block/railway_casing",
-        "particle": "create:block/railway_casing"
+        "2": "crafts_construct:block/train_fluid_tank/train_fluid_tank_inner",
+        "particle": "crafts_construct:block/train_fluid_tank/train_fluid_tank_inner"
     },
     "elements": [
         {
