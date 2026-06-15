@@ -1,9 +1,0 @@
-{
-  "parent": "create:item/clutch",
-  "textures": {
-    "casing": "crafts_construct:block/brass_clutch/brass_clutch",
-    "0": "crafts_construct:block/brass_clutch/brass_clutch",
-    "1": "crafts_construct:block/brass_clutch/brass_clutch",
-    "particle": "crafts_construct:block/brass_clutch/brass_clutch"
-  }
-}

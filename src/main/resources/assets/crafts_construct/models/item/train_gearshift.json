@@ -1,9 +1,0 @@
-{
-  "parent": "create:item/gearshift",
-  "textures": {
-    "casing": "crafts_construct:block/train_gearshift/train_gearshift",
-    "0": "crafts_construct:block/train_gearshift/train_gearshift",
-    "1": "crafts_construct:block/train_gearshift/train_gearshift",
-    "particle": "crafts_construct:block/train_gearshift/train_gearshift"
-  }
-}

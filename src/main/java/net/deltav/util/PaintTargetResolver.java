@@ -94,26 +94,7 @@ public class PaintTargetResolver {
             Map.entry("portable_fluid_interface", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("steam_engine", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
             Map.entry("steam_whistle", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
-            Map.entry("smart_fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN)),
-            Map.entry("mechanical_crafter", Set.of(PaintMaterial.ANDESITE, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("gearbox", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("encased_chain_drive", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("encased_fan", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("millstone", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("mechanical_saw", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("mechanical_press", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("mechanical_mixer", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("deployer", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("mechanical_drill", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("clutch", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("gearshift", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("speedometer", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("stressometer", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("adjustable_chain_gearshift", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("contraption_controls", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("depot", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("weighted_ejector", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN)),
-            Map.entry("portable_storage_interface", Set.of(PaintMaterial.BRASS, PaintMaterial.COPPER, PaintMaterial.TRAIN))
+            Map.entry("smart_fluid_pipe", Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN))
     );
 
     private PaintTargetResolver() {
@@ -253,26 +234,7 @@ public class PaintTargetResolver {
                  "hose_pulley",
                  "portable_fluid_interface",
                  "steam_engine",
-                 "steam_whistle",
-                 "gearbox",
-                 "encased_chain_drive",
-                 "encased_fan",
-                 "millstone",
-                 "mechanical_saw",
-                 "mechanical_press",
-                 "mechanical_mixer",
-                 "deployer",
-                 "mechanical_drill",
-                 "mechanical_crafter",
-                 "depot",
-                 "weighted_ejector",
-                 "clutch",
-                 "gearshift",
-                 "speedometer",
-                 "stressometer",
-                 "adjustable_chain_gearshift",
-                 "portable_storage_interface",
-                 "contraption_controls" -> true;
+                 "steam_whistle" -> true;
             default -> false;
         };
     }

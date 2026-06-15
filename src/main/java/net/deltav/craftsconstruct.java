@@ -6,7 +6,6 @@ import net.deltav.block.create.fluid.PaintedFluidClient;
 import net.deltav.block.create.kinetic.PaintedKineticClient;
 import net.deltav.block.create.pipe.PaintedPipeClient;
 import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceClient;
-import net.deltav.block.create.portableInterface.PaintedPortableStorageInterfaceClient;
 import net.deltav.item.PaintGunItem;
 import net.deltav.registry.*;
 import net.neoforged.api.distmarker.Dist;
@@ -129,7 +128,6 @@ public class craftsconstruct {
             PaintedKineticClient.registerVisualizers();
             PaintedFluidClient.registerVisualizers();
             PaintedPortableFluidInterfaceClient.registerVisualizers();
-            PaintedPortableStorageInterfaceClient.registerVisualizers();
             PaintedItemDrainClient.registerModelLayers();
         }
 
@@ -150,7 +148,6 @@ public class craftsconstruct {
             PaintedFluidClient.registerRenderers(event);
             PaintedPipeClient.registerRenderers(event);
             PaintedPortableFluidInterfaceClient.registerRenderers(event);
-            PaintedPortableStorageInterfaceClient.registerRenderers(event);
             PaintedItemDrainClient.registerRenderers(event);
         }
     }

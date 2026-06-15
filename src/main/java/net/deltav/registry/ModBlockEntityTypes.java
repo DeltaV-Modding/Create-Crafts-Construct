@@ -9,29 +9,11 @@ import net.deltav.block.create.fluid.PaintedHosePulleyBlockEntity;
 import net.deltav.block.create.fluid.PaintedPumpBlockEntity;
 import net.deltav.block.create.fluid.PaintedSpoutBlockEntity;
 import net.deltav.block.create.kinetic.PaintedChainDriveBlockEntity;
-import net.deltav.block.create.kinetic.PaintedDeployerBlockEntity;
-import net.deltav.block.create.kinetic.PaintedEncasedFanBlockEntity;
-import net.deltav.block.create.kinetic.PaintedGearboxBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMechanicalCrafterBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMechanicalDrillBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMechanicalMixerBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMechanicalPressBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMechanicalSawBlockEntity;
-import net.deltav.block.create.kinetic.PaintedMillstoneBlockEntity;
 import net.deltav.block.create.kinetic.PaintedSteamEngineBlockEntity;
 import net.deltav.block.create.kinetic.PaintedSteamWhistleBlockEntity;
 import net.deltav.block.create.pipe.PaintedFluidPipeBlockEntity;
 import net.deltav.block.create.pipe.PaintedSmartFluidPipeBlockEntity;
 import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceBlockEntity;
-import net.deltav.block.create.portableInterface.PaintedPortableStorageInterfaceBlockEntity;
-import net.deltav.block.create.kinetic.PaintedDepotBlockEntity;
-import net.deltav.block.create.kinetic.PaintedWeightedEjectorBlockEntity;
-import net.deltav.block.create.kinetic.PaintedClutchBlockEntity;
-import net.deltav.block.create.kinetic.PaintedGearshiftBlockEntity;
-import net.deltav.block.create.kinetic.PaintedSpeedometerBlockEntity;
-import net.deltav.block.create.kinetic.PaintedStressometerBlockEntity;
-import net.deltav.block.create.kinetic.PaintedAdjustableChainGearshiftBlockEntity;
-import net.deltav.block.create.kinetic.PaintedContraptionControlsBlockEntity;
 import net.deltav.craftsconstruct;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
@@ -111,64 +93,10 @@ public class ModBlockEntityTypes {
                     blocks(ModBlocks.PAINTED_HOSE_PULLEYS)
             ).build(null));
 
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedGearboxBlockEntity>> PAINTED_GEARBOX =
-            BLOCK_ENTITY_TYPES.register("painted_gearbox", () -> BlockEntityType.Builder.of(
-                    PaintedGearboxBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_GEARBOXES)
-            ).build(null));
-
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedChainDriveBlockEntity>> PAINTED_ENCASED_CHAIN_DRIVE =
             BLOCK_ENTITY_TYPES.register("painted_encased_chain_drive", () -> BlockEntityType.Builder.of(
                     PaintedChainDriveBlockEntity::new,
                     blocks(ModBlocks.PAINTED_ENCASED_CHAIN_DRIVES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedEncasedFanBlockEntity>> PAINTED_ENCASED_FAN =
-            BLOCK_ENTITY_TYPES.register("painted_encased_fan", () -> BlockEntityType.Builder.of(
-                    PaintedEncasedFanBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_ENCASED_FANS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMillstoneBlockEntity>> PAINTED_MILLSTONE =
-            BLOCK_ENTITY_TYPES.register("painted_millstone", () -> BlockEntityType.Builder.of(
-                    PaintedMillstoneBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MILLSTONES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMechanicalSawBlockEntity>> PAINTED_MECHANICAL_SAW =
-            BLOCK_ENTITY_TYPES.register("painted_mechanical_saw", () -> BlockEntityType.Builder.of(
-                    PaintedMechanicalSawBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MECHANICAL_SAWS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMechanicalPressBlockEntity>> PAINTED_MECHANICAL_PRESS =
-            BLOCK_ENTITY_TYPES.register("painted_mechanical_press", () -> BlockEntityType.Builder.of(
-                    PaintedMechanicalPressBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MECHANICAL_PRESSES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMechanicalMixerBlockEntity>> PAINTED_MECHANICAL_MIXER =
-            BLOCK_ENTITY_TYPES.register("painted_mechanical_mixer", () -> BlockEntityType.Builder.of(
-                    PaintedMechanicalMixerBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MECHANICAL_MIXERS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedDeployerBlockEntity>> PAINTED_DEPLOYER =
-            BLOCK_ENTITY_TYPES.register("painted_deployer", () -> BlockEntityType.Builder.of(
-                    PaintedDeployerBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_DEPLOYERS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMechanicalDrillBlockEntity>> PAINTED_MECHANICAL_DRILL =
-            BLOCK_ENTITY_TYPES.register("painted_mechanical_drill", () -> BlockEntityType.Builder.of(
-                    PaintedMechanicalDrillBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MECHANICAL_DRILLS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedMechanicalCrafterBlockEntity>> PAINTED_MECHANICAL_CRAFTER =
-            BLOCK_ENTITY_TYPES.register("painted_mechanical_crafter", () -> BlockEntityType.Builder.of(
-                    PaintedMechanicalCrafterBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_MECHANICAL_CRAFTERS)
             ).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedSteamEngineBlockEntity>> PAINTED_STEAM_ENGINE =
@@ -187,60 +115,6 @@ public class ModBlockEntityTypes {
             BLOCK_ENTITY_TYPES.register("painted_portable_fluid_interface", () -> BlockEntityType.Builder.of(
                     PaintedPortableFluidInterfaceBlockEntity::new,
                     blocks(ModBlocks.PAINTED_PORTABLE_FLUID_INTERFACES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedDepotBlockEntity>> PAINTED_DEPOT =
-            BLOCK_ENTITY_TYPES.register("painted_depot", () -> BlockEntityType.Builder.of(
-                    PaintedDepotBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_DEPOTS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedWeightedEjectorBlockEntity>> PAINTED_WEIGHTED_EJECTOR =
-            BLOCK_ENTITY_TYPES.register("painted_weighted_ejector", () -> BlockEntityType.Builder.of(
-                    PaintedWeightedEjectorBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_WEIGHTED_EJECTORS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedClutchBlockEntity>> PAINTED_CLUTCH =
-            BLOCK_ENTITY_TYPES.register("painted_clutch", () -> BlockEntityType.Builder.of(
-                    PaintedClutchBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_CLUTCHES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedGearshiftBlockEntity>> PAINTED_GEARSHIFT =
-            BLOCK_ENTITY_TYPES.register("painted_gearshift", () -> BlockEntityType.Builder.of(
-                    PaintedGearshiftBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_GEARSHIFTS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedSpeedometerBlockEntity>> PAINTED_SPEEDOMETER =
-            BLOCK_ENTITY_TYPES.register("painted_speedometer", () -> BlockEntityType.Builder.of(
-                    PaintedSpeedometerBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_SPEEDOMETERS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedStressometerBlockEntity>> PAINTED_STRESSOMETER =
-            BLOCK_ENTITY_TYPES.register("painted_stressometer", () -> BlockEntityType.Builder.of(
-                    PaintedStressometerBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_STRESSOMETERS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedAdjustableChainGearshiftBlockEntity>> PAINTED_ADJUSTABLE_CHAIN_GEARSHIFT =
-            BLOCK_ENTITY_TYPES.register("painted_adjustable_chain_gearshift", () -> BlockEntityType.Builder.of(
-                    PaintedAdjustableChainGearshiftBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_ADJUSTABLE_CHAIN_GEARSHIFTS)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedPortableStorageInterfaceBlockEntity>> PAINTED_PORTABLE_STORAGE_INTERFACE =
-            BLOCK_ENTITY_TYPES.register("painted_portable_storage_interface", () -> BlockEntityType.Builder.of(
-                    PaintedPortableStorageInterfaceBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_PORTABLE_STORAGE_INTERFACES)
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PaintedContraptionControlsBlockEntity>> PAINTED_CONTRAPTION_CONTROLS =
-            BLOCK_ENTITY_TYPES.register("painted_contraption_controls", () -> BlockEntityType.Builder.of(
-                    PaintedContraptionControlsBlockEntity::new,
-                    blocks(ModBlocks.PAINTED_CONTRAPTION_CONTROLS)
             ).build(null));
 
     private static Block[] blocks(List<DeferredBlock<Block>> blocks) {

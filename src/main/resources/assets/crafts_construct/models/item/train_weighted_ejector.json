@@ -1,9 +1,0 @@
-{
-  "parent": "create:item/weighted_ejector",
-  "textures": {
-    "casing": "crafts_construct:block/train_weighted_ejector/train_weighted_ejector",
-    "0": "crafts_construct:block/train_weighted_ejector/train_weighted_ejector",
-    "1": "crafts_construct:block/train_weighted_ejector/train_weighted_ejector",
-    "particle": "crafts_construct:block/train_weighted_ejector/train_weighted_ejector"
-  }
-}

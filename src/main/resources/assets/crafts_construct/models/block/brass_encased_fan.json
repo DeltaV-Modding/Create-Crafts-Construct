@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "crafts_construct:block/brass_encased_fan/brass_encased_fan"
-  }
-}

@@ -3,7 +3,6 @@ package net.deltav.mixin;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement;
 import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceBlock;
-import net.deltav.block.create.portableInterface.PaintedPortableStorageInterfaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,9 +23,6 @@ public class PortableStorageInterfaceMovementMixin {
         Block block = instance.getBlock();
         if (block == AllBlocks.PORTABLE_FLUID_INTERFACE.get() || block instanceof PaintedPortableFluidInterfaceBlock) {
             return AllBlocks.PORTABLE_FLUID_INTERFACE.get();
-        }
-        if (block == AllBlocks.PORTABLE_STORAGE_INTERFACE.get() || block instanceof PaintedPortableStorageInterfaceBlock) {
-            return AllBlocks.PORTABLE_STORAGE_INTERFACE.get();
         }
         return block;
     }

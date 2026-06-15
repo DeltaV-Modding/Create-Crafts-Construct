@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "crafts_construct:block/copper_mechanical_saw/copper_mechanical_saw"
-  }
-}
