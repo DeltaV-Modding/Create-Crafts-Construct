@@ -26,7 +26,12 @@
     "SchematicLevelMixin",
     "PonderSceneRegistryAccessor",
     "PonderTagRegistryAccessor",
-    "PipeAttachmentModelMixin"
+    "PipeAttachmentModelMixin",
+    "AbstractPulleyRendererMixin",
+    "HosePulleyRendererMixin",
+    "HosePulleyVisualMixin",
+    "AbstractVisualAccessor",
+    "AbstractBlockEntityVisualAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -7,7 +7,20 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.createmod.catnip.render.SpriteShiftEntry;
+import net.createmod.catnip.render.SpriteShifter;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
 public class ModPartialModels {
+    public static final ThreadLocal<BlockEntity> CURRENT_BE = new ThreadLocal<>();
+
+    public static final Map<String, PartialModel> HOSE_PULLEY_MAGNETS = new HashMap<>();
+    public static final Map<String, PartialModel> HOSE_PULLEY_ROPES = new HashMap<>();
+    public static final Map<String, PartialModel> HOSE_PULLEY_ROPES_HALF = new HashMap<>();
+    public static final Map<String, PartialModel> HOSE_PULLEY_ROPES_HALF_MAGNET = new HashMap<>();
+    public static final Map<String, PartialModel> HOSE_PULLEY_COILS = new HashMap<>();
+    public static final Map<String, SpriteShiftEntry> HOSE_PULLEY_COIL_SHIFTS = new HashMap<>();
+
     public static final Map<String, PartialModel> STEAM_ENGINE_GAUGES = new HashMap<>();
     public static final Map<String, PartialModel> STEAM_ENGINE_DIALS = new HashMap<>();
     public static final Map<String, PartialModel> STEAM_ENGINE_PISTONS = new HashMap<>();
@@ -59,12 +72,26 @@ public class ModPartialModels {
             PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
         }
 
+
         String[] fluidMaterials = {"andesite", "brass", "train"};
         for (String mat : fluidMaterials) {
             String path = mat + "_portable_fluid_interface";
             PORTABLE_FLUID_INTERFACE_TOP.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_top")));
             PORTABLE_FLUID_INTERFACE_MIDDLE.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle")));
             PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
+        }
+
+        for (String mat : fluidMaterials) {
+            String hosePath = mat + "_hose_pulley";
+            HOSE_PULLEY_MAGNETS.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/pulley_magnet")));
+            HOSE_PULLEY_ROPES.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope")));
+            HOSE_PULLEY_ROPES_HALF.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope_half")));
+            HOSE_PULLEY_ROPES_HALF_MAGNET.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope_half_magnet")));
+            HOSE_PULLEY_COILS.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/hose_coil")));
+            HOSE_PULLEY_COIL_SHIFTS.put(hosePath, SpriteShifter.get(
+                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + mat + "_hose_pulley/" + mat + "_hose_pulley_coil"),
+                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + mat + "_hose_pulley/" + mat + "_hose_pulley_coil_scroll")
+            ));
         }
     }
 }
