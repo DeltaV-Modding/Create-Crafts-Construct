@@ -26,7 +26,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
 
 public final class FluidClient {
     private FluidClient() {
@@ -47,22 +46,22 @@ public final class FluidClient {
     }
 
     public static void registerRenderLayers() {
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_SPOUTS) {
+        for (var block : ModBlocks.PAINTED_SPOUTS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_VALVES) {
+        for (var block : ModBlocks.PAINTED_FLUID_VALVES) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
+        for (var block : ModBlocks.PAINTED_FLUID_TANKS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
+        for (var block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
     }
 
     public static void registerModelSwappers() {
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_TANKS) {
+        for (var block : ModBlocks.PAINTED_FLUID_TANKS) {
             String path = block.getId().getPath();
             CTSpriteShiftEntry sideShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
@@ -95,7 +94,7 @@ public final class FluidClient {
             );
         }
 
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
+        for (var block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
             String path = block.getId().getPath();
             String baseTankPath = path.replace("horizontal_", "");
 

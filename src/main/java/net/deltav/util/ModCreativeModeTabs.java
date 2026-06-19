@@ -71,7 +71,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LIME_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.GREEN_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.CYAN_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.LIGHT_CHECKERED_BLUE_TEXTILE);
+                        output.accept(ModBlocks.LIGHT_BLUE_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.BLUE_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.PURPLE_CHECKERED_TEXTILE);
                         output.accept(ModBlocks.MAGENTA_CHECKERED_TEXTILE);

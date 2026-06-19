@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.model.BakedModelWrapper;
 import net.neoforged.neoforge.client.model.data.ModelData;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import com.tterrag.registrate.util.entry.BlockEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +35,10 @@ public final class PipeClient {
     }
 
     public static void registerRenderLayers() {
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_FLUID_PIPES) {
+        for (var block : ModBlocks.PAINTED_FLUID_PIPES) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_SMART_FLUID_PIPES) {
+        for (var block : ModBlocks.PAINTED_SMART_FLUID_PIPES) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
     }
@@ -58,8 +58,8 @@ public final class PipeClient {
         event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_FLUID_PIPE.get(), TrainGlassPipeRenderer::new);
     }
 
-    private static void registerPipeModels(List<DeferredBlock<Block>> blocks) {
-        for (DeferredBlock<Block> block : blocks) {
+    private static void registerPipeModels(List<BlockEntry<? extends Block>> blocks) {
+        for (var block : blocks) {
 
             String path = block.getId().getPath();
             String material = path.split("_")[0];

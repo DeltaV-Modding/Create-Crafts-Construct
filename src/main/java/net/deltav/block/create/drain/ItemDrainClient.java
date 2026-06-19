@@ -7,16 +7,14 @@ import net.deltav.block.create.drain.brass.*;
 import net.deltav.block.create.drain.train.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
 
 public final class ItemDrainClient {
     private ItemDrainClient() {
     }
 
     public static void registerModelLayers() {
-        for (DeferredBlock<Block> block : ModBlocks.PAINTED_ITEM_DRAINS) {
+        for (var block : ModBlocks.PAINTED_ITEM_DRAINS) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
     }

@@ -27,7 +27,7 @@ public class AndesiteSteamEngineBlockEntity extends SteamEngineBlockEntity {
         net.minecraft.world.level.block.state.BlockState state = lvl.getBlockState(getBlockPos().relative(opposite));
         if (state.is(com.simibubi.create.AllBlocks.FLUID_TANK.get()))
             return true;
-        for (net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> block : net.deltav.registry.ModBlocks.PAINTED_FLUID_TANKS) {
+        for (var block : net.deltav.registry.ModBlocks.PAINTED_FLUID_TANKS) {
             if (state.is(block.get()))
                 return true;
         }
