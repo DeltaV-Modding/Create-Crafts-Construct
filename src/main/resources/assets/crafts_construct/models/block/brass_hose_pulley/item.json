@@ -3,7 +3,7 @@
     "parent": "create:block/block",
     "textures": {
         "1": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley",
-        "2": "crafts_construct:block/brass_hose_pulley/brass_hose_pulley_coil",
+        "2": "create:block/hose_pulley_coil",
         "3": "crafts_construct:block/brass_mechanical_pump/brass_pump",
         "4": "create:block/axis",
         "5": "create:block/axis_top",
