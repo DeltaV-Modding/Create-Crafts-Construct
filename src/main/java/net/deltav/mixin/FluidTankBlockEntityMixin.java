@@ -3,9 +3,9 @@ package net.deltav.mixin;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock.Shape;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
-import net.deltav.block.create.fluid.HorizontalFluidTankBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +28,7 @@ public abstract class FluidTankBlockEntityMixin {
     private void onSetWindows(boolean window, CallbackInfo ci) {
         FluidTankBlockEntity tank = (FluidTankBlockEntity) (Object) this;
         BlockState blockState = tank.getBlockState();
-        if (blockState.getBlock() instanceof HorizontalFluidTankBlock) {
+        if (BuiltInRegistries.BLOCK.getKey(blockState.getBlock()).getPath().endsWith("horizontal_fluid_tank")) {
             ci.cancel();
             this.window = window;
             if (tank.getLevel() == null) return;

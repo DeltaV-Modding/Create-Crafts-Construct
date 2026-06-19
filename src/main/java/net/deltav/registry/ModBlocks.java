@@ -1,27 +1,8 @@
 package net.deltav.registry;
 
-import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.SharedProperties;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import com.simibubi.create.content.kinetics.crank.ValveHandleBlock;
 import net.deltav.block.SugarBeetCropBlock;
-import net.deltav.block.create.drain.PaintedItemDrainBlock;
-import com.simibubi.create.content.fluids.tank.FluidTankItem;
-import net.deltav.block.create.fluid.PaintedFluidTankBlock;
-import net.deltav.block.create.fluid.HorizontalFluidTankBlock;
-import net.deltav.block.create.fluid.PaintedFluidValveBlock;
-import net.deltav.block.create.fluid.PaintedHosePulleyBlock;
-import net.deltav.block.create.fluid.PaintedPumpBlock;
-import net.deltav.block.create.fluid.PaintedSpoutBlock;
-import net.deltav.block.create.kinetic.PaintedChainDriveBlock;
-import net.deltav.block.create.kinetic.PaintedSteamEngineBlock;
-import net.deltav.block.create.kinetic.PaintedSteamWhistleBlock;
-import net.deltav.block.create.pipe.PaintedFluidPipeBlock;
-import net.deltav.block.create.pipe.PaintedSmartFluidPipeBlock;
-import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceBlock;
-import net.deltav.block.create.kinetic.PaintedGaugeBlock;
 import net.deltav.craftsconstruct;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -33,54 +14,35 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.simibubi.create.content.fluids.tank.FluidTankItem;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
-import static net.deltav.craftsconstruct.REGISTRATE;
+// Material-specific imports
+import net.deltav.block.create.fluid.andesite.*;
+import net.deltav.block.create.fluid.brass.*;
+import net.deltav.block.create.fluid.copper.*;
+import net.deltav.block.create.fluid.train.*;
+import net.deltav.block.create.kinetic.andesite.*;
+import net.deltav.block.create.kinetic.brass.*;
+import net.deltav.block.create.kinetic.train.*;
+import net.deltav.block.create.pipe.andesite.*;
+import net.deltav.block.create.pipe.brass.*;
+import net.deltav.block.create.pipe.train.*;
+import net.deltav.block.create.portableInterface.andesite.*;
+import net.deltav.block.create.portableInterface.brass.*;
+import net.deltav.block.create.portableInterface.train.*;
+import net.deltav.block.create.drain.andesite.*;
+import net.deltav.block.create.drain.brass.*;
+import net.deltav.block.create.drain.train.*;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(craftsconstruct.MOD_ID);
-    private static final String[] TEMP_PAINT_MATERIALS = {"andesite", "brass", "copper", "train"};
-    private static final String[] TEMP_PAINT_TARGETS = {
-            "fluid_pipe",
-            "mechanical_pump",
-            "smart_fluid_pipe",
-            "fluid_valve",
-            "valve_handle",
-            "fluid_tank",
-            "horizontal_fluid_tank",
-            "hose_pulley",
-            "item_drain",
-            "spout",
-            "portable_fluid_interface",
-            "steam_engine",
-            "steam_whistle",
-            /*
-            "gearbox",
-            "encased_chain_drive",
-            "encased_fan",
-            "millstone",
-            "mechanical_saw",
-            "mechanical_press",
-            "mechanical_mixer",
-            "deployer",
-            "mechanical_drill",
-            "mechanical_crafter",
-            "depot",
-            "weighted_ejector",
-            "clutch",
-            "gearshift",
-            "speedometer",
-            "stressometer",
-            "adjustable_chain_gearshift",
-            "portable_storage_interface",
-            "contraption_controls"
-            */
-    };
+
+
     public static final List<DeferredBlock<Block>> TEMP_PAINT_BLOCKS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_FLUID_PIPES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_SMART_FLUID_PIPES = new ArrayList<>();
@@ -114,6 +76,50 @@ public class ModBlocks {
     public static final List<DeferredBlock<Block>> PAINTED_ADJUSTABLE_CHAIN_GEARSHIFTS = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_PORTABLE_STORAGE_INTERFACES = new ArrayList<>();
     public static final List<DeferredBlock<Block>> PAINTED_CONTRAPTION_CONTROLS = new ArrayList<>();
+
+    public static final DeferredBlock<Block> ANDESITE_FLUID_PIPE = registerBlock("andesite_fluid_pipe", () -> new AndesiteFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_pipe")), () -> ModBlockEntityTypes.ANDESITE_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> BRASS_FLUID_PIPE = registerBlock("brass_fluid_pipe", () -> new BrassFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_pipe")), () -> ModBlockEntityTypes.BRASS_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> TRAIN_FLUID_PIPE = registerBlock("train_fluid_pipe", () -> new TrainFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_pipe")), () -> ModBlockEntityTypes.TRAIN_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> ANDESITE_SMART_FLUID_PIPE = registerBlock("andesite_smart_fluid_pipe", () -> new AndesiteSmartFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("smart_fluid_pipe")), () -> ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> BRASS_SMART_FLUID_PIPE = registerBlock("brass_smart_fluid_pipe", () -> new BrassSmartFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("smart_fluid_pipe")), () -> ModBlockEntityTypes.BRASS_SMART_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> TRAIN_SMART_FLUID_PIPE = registerBlock("train_smart_fluid_pipe", () -> new TrainSmartFluidPipeBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("smart_fluid_pipe")), () -> ModBlockEntityTypes.TRAIN_SMART_FLUID_PIPE.get()));
+    public static final DeferredBlock<Block> ANDESITE_MECHANICAL_PUMP = registerBlock("andesite_mechanical_pump", () -> new AndesitePumpBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("mechanical_pump")), () -> ModBlockEntityTypes.ANDESITE_MECHANICAL_PUMP.get()));
+    public static final DeferredBlock<Block> BRASS_MECHANICAL_PUMP = registerBlock("brass_mechanical_pump", () -> new BrassPumpBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("mechanical_pump")), () -> ModBlockEntityTypes.BRASS_MECHANICAL_PUMP.get()));
+    public static final DeferredBlock<Block> TRAIN_MECHANICAL_PUMP = registerBlock("train_mechanical_pump", () -> new TrainPumpBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("mechanical_pump")), () -> ModBlockEntityTypes.TRAIN_MECHANICAL_PUMP.get()));
+    public static final DeferredBlock<Block> ANDESITE_FLUID_VALVE = registerBlock("andesite_fluid_valve", () -> new AndesiteFluidValveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_valve")), () -> ModBlockEntityTypes.ANDESITE_FLUID_VALVE.get()));
+    public static final DeferredBlock<Block> BRASS_FLUID_VALVE = registerBlock("brass_fluid_valve", () -> new BrassFluidValveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_valve")), () -> ModBlockEntityTypes.BRASS_FLUID_VALVE.get()));
+    public static final DeferredBlock<Block> TRAIN_FLUID_VALVE = registerBlock("train_fluid_valve", () -> new TrainFluidValveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_valve")), () -> ModBlockEntityTypes.TRAIN_FLUID_VALVE.get()));
+    public static final DeferredBlock<Block> ANDESITE_VALVE_HANDLE = registerBlock("andesite_valve_handle", () -> ValveHandleBlock.copper(BlockBehaviour.Properties.ofFullCopy(createBlock("valve_handle"))));
+    public static final DeferredBlock<Block> BRASS_VALVE_HANDLE = registerBlock("brass_valve_handle", () -> ValveHandleBlock.copper(BlockBehaviour.Properties.ofFullCopy(createBlock("valve_handle"))));
+    public static final DeferredBlock<Block> TRAIN_VALVE_HANDLE = registerBlock("train_valve_handle", () -> ValveHandleBlock.copper(BlockBehaviour.Properties.ofFullCopy(createBlock("valve_handle"))));
+    public static final DeferredBlock<Block> ANDESITE_FLUID_TANK = registerBlock("andesite_fluid_tank", () -> new AndesiteFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_tank")), com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get));
+    public static final DeferredBlock<Block> BRASS_FLUID_TANK = registerBlock("brass_fluid_tank", () -> new BrassFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_tank")), com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get));
+    public static final DeferredBlock<Block> TRAIN_FLUID_TANK = registerBlock("train_fluid_tank", () -> new TrainFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("fluid_tank")), com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get));
+    public static final DeferredBlock<Block> ANDESITE_HORIZONTAL_FLUID_TANK = registerBlock("andesite_horizontal_fluid_tank", () -> new AndesiteHorizontalFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("horizontal_fluid_tank")), () -> ModBlockEntityTypes.ANDESITE_HORIZONTAL_FLUID_TANK.get()));
+    public static final DeferredBlock<Block> BRASS_HORIZONTAL_FLUID_TANK = registerBlock("brass_horizontal_fluid_tank", () -> new BrassHorizontalFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("horizontal_fluid_tank")), () -> ModBlockEntityTypes.BRASS_HORIZONTAL_FLUID_TANK.get()));
+    public static final DeferredBlock<Block> COPPER_HORIZONTAL_FLUID_TANK = registerBlock("copper_horizontal_fluid_tank", () -> new CopperHorizontalFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("horizontal_fluid_tank")), () -> ModBlockEntityTypes.COPPER_HORIZONTAL_FLUID_TANK.get()));
+    public static final DeferredBlock<Block> TRAIN_HORIZONTAL_FLUID_TANK = registerBlock("train_horizontal_fluid_tank", () -> new TrainHorizontalFluidTankBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("horizontal_fluid_tank")), () -> ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK.get()));
+    public static final DeferredBlock<Block> ANDESITE_SPOUT = registerBlock("andesite_spout", () -> new AndesiteSpoutBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("spout")), () -> ModBlockEntityTypes.ANDESITE_SPOUT.get()));
+    public static final DeferredBlock<Block> BRASS_SPOUT = registerBlock("brass_spout", () -> new BrassSpoutBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("spout")), () -> ModBlockEntityTypes.BRASS_SPOUT.get()));
+    public static final DeferredBlock<Block> TRAIN_SPOUT = registerBlock("train_spout", () -> new TrainSpoutBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("spout")), () -> ModBlockEntityTypes.TRAIN_SPOUT.get()));
+    public static final DeferredBlock<Block> ANDESITE_HOSE_PULLEY = registerBlock("andesite_hose_pulley", () -> new AndesiteHosePulleyBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("hose_pulley")), () -> ModBlockEntityTypes.ANDESITE_HOSE_PULLEY.get()));
+    public static final DeferredBlock<Block> BRASS_HOSE_PULLEY = registerBlock("brass_hose_pulley", () -> new BrassHosePulleyBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("hose_pulley")), () -> ModBlockEntityTypes.BRASS_HOSE_PULLEY.get()));
+    public static final DeferredBlock<Block> TRAIN_HOSE_PULLEY = registerBlock("train_hose_pulley", () -> new TrainHosePulleyBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("hose_pulley")), () -> ModBlockEntityTypes.TRAIN_HOSE_PULLEY.get()));
+    public static final DeferredBlock<Block> ANDESITE_ITEM_DRAIN = registerBlock("andesite_item_drain", () -> new AndesiteItemDrainBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("item_drain"))));
+    public static final DeferredBlock<Block> BRASS_ITEM_DRAIN = registerBlock("brass_item_drain", () -> new BrassItemDrainBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("item_drain"))));
+    public static final DeferredBlock<Block> TRAIN_ITEM_DRAIN = registerBlock("train_item_drain", () -> new TrainItemDrainBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("item_drain"))));
+    public static final DeferredBlock<Block> ANDESITE_PORTABLE_FLUID_INTERFACE = registerBlock("andesite_portable_fluid_interface", () -> new AndesitePortableFluidInterfaceBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("portable_fluid_interface"))));
+    public static final DeferredBlock<Block> BRASS_PORTABLE_FLUID_INTERFACE = registerBlock("brass_portable_fluid_interface", () -> new BrassPortableFluidInterfaceBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("portable_fluid_interface"))));
+    public static final DeferredBlock<Block> TRAIN_PORTABLE_FLUID_INTERFACE = registerBlock("train_portable_fluid_interface", () -> new TrainPortableFluidInterfaceBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("portable_fluid_interface"))));
+    public static final DeferredBlock<Block> ANDESITE_STEAM_ENGINE = registerBlock("andesite_steam_engine", () -> new AndesiteSteamEngineBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_engine")), () -> ModBlockEntityTypes.ANDESITE_STEAM_ENGINE.get()));
+    public static final DeferredBlock<Block> BRASS_STEAM_ENGINE = registerBlock("brass_steam_engine", () -> new BrassSteamEngineBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_engine")), () -> ModBlockEntityTypes.BRASS_STEAM_ENGINE.get()));
+    public static final DeferredBlock<Block> TRAIN_STEAM_ENGINE = registerBlock("train_steam_engine", () -> new TrainSteamEngineBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_engine")), () -> ModBlockEntityTypes.TRAIN_STEAM_ENGINE.get()));
+    public static final DeferredBlock<Block> ANDESITE_STEAM_WHISTLE = registerBlock("andesite_steam_whistle", () -> new AndesiteSteamWhistleBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_whistle")), () -> ModBlockEntityTypes.ANDESITE_STEAM_WHISTLE.get()));
+    public static final DeferredBlock<Block> BRASS_STEAM_WHISTLE = registerBlock("brass_steam_whistle", () -> new BrassSteamWhistleBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_whistle")), () -> ModBlockEntityTypes.BRASS_STEAM_WHISTLE.get()));
+    public static final DeferredBlock<Block> TRAIN_STEAM_WHISTLE = registerBlock("train_steam_whistle", () -> new TrainSteamWhistleBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("steam_whistle")), () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()));
+    public static final DeferredBlock<Block> ANDESITE_ENCASED_CHAIN_DRIVE = registerBlock("andesite_encased_chain_drive", () -> new AndesiteChainDriveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("encased_chain_drive")), () -> ModBlockEntityTypes.ANDESITE_ENCASED_CHAIN_DRIVE.get()));
+    public static final DeferredBlock<Block> BRASS_ENCASED_CHAIN_DRIVE = registerBlock("brass_encased_chain_drive", () -> new BrassChainDriveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("encased_chain_drive")), () -> ModBlockEntityTypes.BRASS_ENCASED_CHAIN_DRIVE.get()));
+    public static final DeferredBlock<Block> TRAIN_ENCASED_CHAIN_DRIVE = registerBlock("train_encased_chain_drive", () -> new TrainChainDriveBlock(BlockBehaviour.Properties.ofFullCopy(createBlock("encased_chain_drive")), () -> ModBlockEntityTypes.TRAIN_ENCASED_CHAIN_DRIVE.get()));
 
     public static final DeferredBlock<Block> WHITE_TEXTILE = registerBlock("white_textile_block", () -> new Block(BlockBehaviour.Properties.of()
                     .ignitedByLava().sound(SoundType.WOOL).strength(0.8f)));
@@ -186,16 +192,52 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SUGAR_BEETS = BLOCKS.register("sugar_beets", () -> new SugarBeetCropBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BEETROOTS)));
 
-    static {
-        for (String material : TEMP_PAINT_MATERIALS) {
-            for (String target : TEMP_PAINT_TARGETS) {
-                if (shouldRegisterPaintVariant(material, target)) {
-                    registerTempPaintBlock(material + "_" + target);
-                }
-            }
-        }
-    }
 
+    static {
+        PAINTED_FLUID_PIPES.add(ANDESITE_FLUID_PIPE);
+        PAINTED_FLUID_PIPES.add(BRASS_FLUID_PIPE);
+        PAINTED_FLUID_PIPES.add(TRAIN_FLUID_PIPE);
+        PAINTED_SMART_FLUID_PIPES.add(ANDESITE_SMART_FLUID_PIPE);
+        PAINTED_SMART_FLUID_PIPES.add(BRASS_SMART_FLUID_PIPE);
+        PAINTED_SMART_FLUID_PIPES.add(TRAIN_SMART_FLUID_PIPE);
+        PAINTED_MECHANICAL_PUMPS.add(ANDESITE_MECHANICAL_PUMP);
+        PAINTED_MECHANICAL_PUMPS.add(BRASS_MECHANICAL_PUMP);
+        PAINTED_MECHANICAL_PUMPS.add(TRAIN_MECHANICAL_PUMP);
+        PAINTED_FLUID_VALVES.add(ANDESITE_FLUID_VALVE);
+        PAINTED_FLUID_VALVES.add(BRASS_FLUID_VALVE);
+        PAINTED_FLUID_VALVES.add(TRAIN_FLUID_VALVE);
+        PAINTED_VALVE_HANDLES.add(ANDESITE_VALVE_HANDLE);
+        PAINTED_VALVE_HANDLES.add(BRASS_VALVE_HANDLE);
+        PAINTED_VALVE_HANDLES.add(TRAIN_VALVE_HANDLE);
+        PAINTED_FLUID_TANKS.add(ANDESITE_FLUID_TANK);
+        PAINTED_FLUID_TANKS.add(BRASS_FLUID_TANK);
+        PAINTED_FLUID_TANKS.add(TRAIN_FLUID_TANK);
+        PAINTED_HORIZONTAL_FLUID_TANKS.add(ANDESITE_HORIZONTAL_FLUID_TANK);
+        PAINTED_HORIZONTAL_FLUID_TANKS.add(BRASS_HORIZONTAL_FLUID_TANK);
+        PAINTED_HORIZONTAL_FLUID_TANKS.add(COPPER_HORIZONTAL_FLUID_TANK);
+        PAINTED_HORIZONTAL_FLUID_TANKS.add(TRAIN_HORIZONTAL_FLUID_TANK);
+        PAINTED_SPOUTS.add(ANDESITE_SPOUT);
+        PAINTED_SPOUTS.add(BRASS_SPOUT);
+        PAINTED_SPOUTS.add(TRAIN_SPOUT);
+        PAINTED_HOSE_PULLEYS.add(ANDESITE_HOSE_PULLEY);
+        PAINTED_HOSE_PULLEYS.add(BRASS_HOSE_PULLEY);
+        PAINTED_HOSE_PULLEYS.add(TRAIN_HOSE_PULLEY);
+        PAINTED_ITEM_DRAINS.add(ANDESITE_ITEM_DRAIN);
+        PAINTED_ITEM_DRAINS.add(BRASS_ITEM_DRAIN);
+        PAINTED_ITEM_DRAINS.add(TRAIN_ITEM_DRAIN);
+        PAINTED_PORTABLE_FLUID_INTERFACES.add(ANDESITE_PORTABLE_FLUID_INTERFACE);
+        PAINTED_PORTABLE_FLUID_INTERFACES.add(BRASS_PORTABLE_FLUID_INTERFACE);
+        PAINTED_PORTABLE_FLUID_INTERFACES.add(TRAIN_PORTABLE_FLUID_INTERFACE);
+        PAINTED_STEAM_ENGINES.add(ANDESITE_STEAM_ENGINE);
+        PAINTED_STEAM_ENGINES.add(BRASS_STEAM_ENGINE);
+        PAINTED_STEAM_ENGINES.add(TRAIN_STEAM_ENGINE);
+        PAINTED_STEAM_WHISTLES.add(ANDESITE_STEAM_WHISTLE);
+        PAINTED_STEAM_WHISTLES.add(BRASS_STEAM_WHISTLE);
+        PAINTED_STEAM_WHISTLES.add(TRAIN_STEAM_WHISTLE);
+        PAINTED_ENCASED_CHAIN_DRIVES.add(ANDESITE_ENCASED_CHAIN_DRIVE);
+        PAINTED_ENCASED_CHAIN_DRIVES.add(BRASS_ENCASED_CHAIN_DRIVE);
+        PAINTED_ENCASED_CHAIN_DRIVES.add(TRAIN_ENCASED_CHAIN_DRIVE);
+    }
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -207,74 +249,11 @@ public class ModBlocks {
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ModItems.ITEMS.register(name, () -> {
             Block b = block.get();
-            if (b instanceof PaintedFluidTankBlock || b instanceof HorizontalFluidTankBlock) {
+            if (b instanceof com.simibubi.create.content.fluids.tank.FluidTankBlock) {
                 return new FluidTankItem(b, new Item.Properties());
             }
             return new BlockItem(b, new Item.Properties());
         });
-    }
-
-    private static void registerTempPaintBlock(String name) {
-        DeferredBlock<Block> block = registerBlock(name, () -> createTempPaintBlock(name));
-        TEMP_PAINT_BLOCKS.add(block);
-        switch (stripMaterialPrefix(name)) {
-            case "fluid_pipe" -> PAINTED_FLUID_PIPES.add(block);
-            case "smart_fluid_pipe" -> PAINTED_SMART_FLUID_PIPES.add(block);
-            case "mechanical_pump" -> PAINTED_MECHANICAL_PUMPS.add(block);
-            case "fluid_valve" -> PAINTED_FLUID_VALVES.add(block);
-            case "valve_handle" -> PAINTED_VALVE_HANDLES.add(block);
-            case "fluid_tank" -> PAINTED_FLUID_TANKS.add(block);
-            case "horizontal_fluid_tank" -> PAINTED_HORIZONTAL_FLUID_TANKS.add(block);
-            case "spout" -> PAINTED_SPOUTS.add(block);
-            case "hose_pulley" -> PAINTED_HOSE_PULLEYS.add(block);
-            case "gearbox" -> PAINTED_GEARBOXES.add(block);
-            case "encased_chain_drive" -> PAINTED_ENCASED_CHAIN_DRIVES.add(block);
-            case "encased_fan" -> PAINTED_ENCASED_FANS.add(block);
-            case "millstone" -> PAINTED_MILLSTONES.add(block);
-            case "mechanical_saw" -> PAINTED_MECHANICAL_SAWS.add(block);
-            case "mechanical_press" -> PAINTED_MECHANICAL_PRESSES.add(block);
-            case "mechanical_mixer" -> PAINTED_MECHANICAL_MIXERS.add(block);
-            case "deployer" -> PAINTED_DEPLOYERS.add(block);
-            case "mechanical_drill" -> PAINTED_MECHANICAL_DRILLS.add(block);
-            case "mechanical_crafter" -> PAINTED_MECHANICAL_CRAFTERS.add(block);
-            case "steam_engine" -> PAINTED_STEAM_ENGINES.add(block);
-            case "steam_whistle" -> PAINTED_STEAM_WHISTLES.add(block);
-            case "portable_fluid_interface" -> PAINTED_PORTABLE_FLUID_INTERFACES.add(block);
-            case "item_drain" -> PAINTED_ITEM_DRAINS.add(block);
-            case "depot" -> PAINTED_DEPOTS.add(block);
-            case "weighted_ejector" -> PAINTED_WEIGHTED_EJECTORS.add(block);
-            case "clutch" -> PAINTED_CLUTCHES.add(block);
-            case "gearshift" -> PAINTED_GEARSHIFTS.add(block);
-            case "speedometer" -> PAINTED_SPEEDOMETERS.add(block);
-            case "stressometer" -> PAINTED_STRESSOMETERS.add(block);
-            case "adjustable_chain_gearshift" -> PAINTED_ADJUSTABLE_CHAIN_GEARSHIFTS.add(block);
-            case "portable_storage_interface" -> PAINTED_PORTABLE_STORAGE_INTERFACES.add(block);
-            case "contraption_controls" -> PAINTED_CONTRAPTION_CONTROLS.add(block);
-            default -> {
-            }
-        }
-    }
-
-    private static Block createTempPaintBlock(String name) {
-        String target = stripMaterialPrefix(name);
-        BlockBehaviour.Properties properties = BlockBehaviour.Properties.ofFullCopy(createBlock(target));
-        return switch (target) {
-            case "fluid_pipe" -> new PaintedFluidPipeBlock(properties, () -> ModBlockEntityTypes.PAINTED_FLUID_PIPE.get());
-            case "smart_fluid_pipe" -> new PaintedSmartFluidPipeBlock(properties, () -> ModBlockEntityTypes.PAINTED_SMART_FLUID_PIPE.get());
-            case "mechanical_pump" -> new PaintedPumpBlock(properties, () -> ModBlockEntityTypes.PAINTED_MECHANICAL_PUMP.get());
-            case "fluid_valve" -> new PaintedFluidValveBlock(properties, () -> ModBlockEntityTypes.PAINTED_FLUID_VALVE.get());
-            case "valve_handle" -> ValveHandleBlock.copper(properties);
-            case "fluid_tank" -> new PaintedFluidTankBlock(properties, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get);
-            case "horizontal_fluid_tank" -> new HorizontalFluidTankBlock(properties, () -> ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get());
-            case "spout" -> new PaintedSpoutBlock(properties, () -> ModBlockEntityTypes.PAINTED_SPOUT.get());
-            case "hose_pulley" -> new PaintedHosePulleyBlock(properties, () -> ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get());
-            case "encased_chain_drive" -> new PaintedChainDriveBlock(properties, () -> ModBlockEntityTypes.PAINTED_ENCASED_CHAIN_DRIVE.get());
-            case "steam_engine" -> new PaintedSteamEngineBlock(properties, () -> ModBlockEntityTypes.PAINTED_STEAM_ENGINE.get());
-            case "steam_whistle" -> new PaintedSteamWhistleBlock(properties, () -> ModBlockEntityTypes.PAINTED_STEAM_WHISTLE.get());
-            case "portable_fluid_interface" -> new PaintedPortableFluidInterfaceBlock(properties);
-            case "item_drain" -> new PaintedItemDrainBlock(properties);
-            default -> new Block(properties);
-        };
     }
 
     private static Block createBlock(String target) {
@@ -286,65 +265,6 @@ public class ModBlocks {
         }
         Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", target));
         return block == Blocks.AIR ? Blocks.IRON_BLOCK : block;
-    }
-
-    private static boolean shouldRegisterPaintVariant(String material, String target) {
-        if ("encased_chain_drive".equals(target) && "copper".equals(material)) {
-            return true;
-        }
-        //if ("item_drain".equals(target) && "brass".equals(material)) {
-        //    return false;
-        //}
-        String baseMaterial = baseMaterialFor(target);
-        return baseMaterial == null || !baseMaterial.equals(material);
-    }
-
-    private static String baseMaterialFor(String target) {
-        return switch (target) {
-            case "horizontal_fluid_tank" -> null;
-            case "fluid_pipe",
-                 "smart_fluid_pipe",
-                 "mechanical_pump",
-                 "fluid_valve",
-                 "valve_handle",
-                 "fluid_tank",
-                 "spout",
-                 "hose_pulley",
-                 "portable_fluid_interface",
-                 "steam_engine",
-                 "steam_whistle",
-                 "item_drain" -> "copper";
-            case "mechanical_crafter" -> "brass";
-            case "gearbox",
-                 "encased_chain_drive",
-                 "encased_fan",
-                 "millstone",
-                 "mechanical_saw",
-                 "mechanical_press",
-                 "mechanical_mixer",
-                 "deployer",
-                 "mechanical_drill",
-                 "clutch",
-                 "gearshift",
-                 "speedometer",
-                 "stressometer",
-                 "adjustable_chain_gearshift",
-                 "contraption_controls",
-                 "depot",
-                 "weighted_ejector",
-                 "portable_storage_interface" -> "andesite";
-            default -> null;
-        };
-    }
-
-    private static String stripMaterialPrefix(String name) {
-        for (String material : TEMP_PAINT_MATERIALS) {
-            String prefix = material + "_";
-            if (name.startsWith(prefix)) {
-                return name.substring(prefix.length());
-            }
-        }
-        return name;
     }
 
     public static void register(IEventBus eventBus) {

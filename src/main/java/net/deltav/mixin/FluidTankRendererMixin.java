@@ -3,7 +3,7 @@ package net.deltav.mixin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
-import net.deltav.block.create.fluid.PaintedFluidTankRenderer;
+import net.deltav.block.create.fluid.andesite.AndesiteFluidTankRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,7 +19,7 @@ public class FluidTankRendererMixin {
     )
     private void onRenderAsBoiler(FluidTankBlockEntity tank, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                                   int light, int overlay, CallbackInfo ci) {
-        if (PaintedFluidTankRenderer.renderPaintedBoiler(tank, partialTicks, ms, buffer, light, overlay)) {
+        if (AndesiteFluidTankRenderer.renderPaintedBoiler(tank, partialTicks, ms, buffer, light, overlay)) {
             ci.cancel();
         }
     }

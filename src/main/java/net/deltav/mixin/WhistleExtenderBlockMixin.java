@@ -1,8 +1,8 @@
 package net.deltav.mixin;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleExtenderBlock;
-import net.deltav.block.create.kinetic.PaintedSteamWhistleBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +23,7 @@ public class WhistleExtenderBlockMixin {
                 return true;
             }
             if (stack.getItem() instanceof BlockItem blockItem) {
-                return blockItem.getBlock() instanceof PaintedSteamWhistleBlock;
+                return blockItem.getBlock() instanceof WhistleBlock;
             }
         }
         return entry.isIn(stack);
@@ -35,7 +35,7 @@ public class WhistleExtenderBlockMixin {
     )
     private boolean craftsConstruct$allowExtenderToSurviveOnCustomWhistles(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
         if (entry == AllBlocks.STEAM_WHISTLE) {
-            return entry.has(state) || state.getBlock() instanceof PaintedSteamWhistleBlock;
+            return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         }
         return entry.has(state);
     }
@@ -46,7 +46,7 @@ public class WhistleExtenderBlockMixin {
     )
     private boolean craftsConstruct$allowHidingNeighborFaceOnCustomWhistles(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
         if (entry == AllBlocks.STEAM_WHISTLE) {
-            return entry.has(state) || state.getBlock() instanceof PaintedSteamWhistleBlock;
+            return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         }
         return entry.has(state);
     }

@@ -5,11 +5,13 @@ import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlockEntity;
 import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
-import net.deltav.block.create.fluid.PaintedFluidTankBlockEntity;
-import net.deltav.block.create.fluid.HorizontalFluidTankBlockEntity;
-import net.deltav.block.create.fluid.PaintedHosePulleyBlockEntity;
-import net.deltav.block.create.fluid.PaintedSpoutBlockEntity;
-import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceBlockEntity;
+import net.deltav.block.create.fluid.andesite.*;
+import net.deltav.block.create.fluid.brass.*;
+import net.deltav.block.create.fluid.copper.*;
+import net.deltav.block.create.fluid.train.*;
+import net.deltav.block.create.portableInterface.andesite.*;
+import net.deltav.block.create.portableInterface.brass.*;
+import net.deltav.block.create.portableInterface.train.*;
 import net.minecraft.core.Direction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -17,6 +19,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class ModCapabilities {
     private static final Field ITEM_HANDLERS_FIELD = field("itemHandlers");
@@ -32,76 +35,152 @@ public class ModCapabilities {
     }
 
     private static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_ITEM_DRAIN.get(),
-                (be, context) -> {
-                    if (context != null && context.getAxis().isHorizontal()) {
-                        return ReflectionAccess.itemHandler(be, context);
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_ITEM_DRAIN,
+                ModBlockEntityTypes.BRASS_ITEM_DRAIN,
+                ModBlockEntityTypes.TRAIN_ITEM_DRAIN
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.ItemHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        if (context != null && context.getAxis().isHorizontal()) {
+                            return ReflectionAccess.itemHandler(be, context);
+                        }
+                        return null;
                     }
-                    return null;
-                }
-        );
+            );
 
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_ITEM_DRAIN.get(),
-                (be, context) -> {
-                    if (context != Direction.UP) {
-                        return ReflectionAccess.fluidHandler(be);
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        if (context != Direction.UP) {
+                            return ReflectionAccess.fluidHandler(be);
+                        }
+                        return null;
                     }
-                    return null;
-                }
-        );
+            );
+        }
 
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_PORTABLE_FLUID_INTERFACE.get(),
-                (PaintedPortableFluidInterfaceBlockEntity be, Direction context) -> be.getFluidHandler()
-        );
-
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_FLUID_TANK.get(),
-                (PaintedFluidTankBlockEntity be, Direction context) -> {
-                    IFluidHandler handler = be.getFluidHandler();
-                    if (handler == null) {
-                        be.initialize();
-                        handler = be.getFluidHandler();
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_PORTABLE_FLUID_INTERFACE,
+                ModBlockEntityTypes.BRASS_PORTABLE_FLUID_INTERFACE,
+                ModBlockEntityTypes.TRAIN_PORTABLE_FLUID_INTERFACE
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        if (be instanceof AndesitePortableFluidInterfaceBlockEntity andesiteBe) {
+                            return andesiteBe.getFluidHandler();
+                        } else if (be instanceof BrassPortableFluidInterfaceBlockEntity brassBe) {
+                            return brassBe.getFluidHandler();
+                        } else if (be instanceof TrainPortableFluidInterfaceBlockEntity trainBe) {
+                            return trainBe.getFluidHandler();
+                        }
+                        return null;
                     }
-                    return handler;
-                }
-        );
+            );
+        }
 
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.HORIZONTAL_FLUID_TANK.get(),
-                (HorizontalFluidTankBlockEntity be, Direction context) -> {
-                    IFluidHandler handler = be.getFluidHandler();
-                    if (handler == null) {
-                        be.initialize();
-                        handler = be.getFluidHandler();
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_FLUID_TANK,
+                ModBlockEntityTypes.BRASS_FLUID_TANK,
+                ModBlockEntityTypes.TRAIN_FLUID_TANK
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        IFluidHandler handler = null;
+                        if (be instanceof AndesiteFluidTankBlockEntity andesiteBe) {
+                            handler = andesiteBe.getFluidHandler();
+                        } else if (be instanceof BrassFluidTankBlockEntity brassBe) {
+                            handler = brassBe.getFluidHandler();
+                        } else if (be instanceof TrainFluidTankBlockEntity trainBe) {
+                            handler = trainBe.getFluidHandler();
+                        }
+                        if (handler == null && be instanceof com.simibubi.create.content.fluids.tank.FluidTankBlockEntity ftbe) {
+                            ftbe.initialize();
+                            if (be instanceof AndesiteFluidTankBlockEntity andesiteBe) {
+                                handler = andesiteBe.getFluidHandler();
+                            } else if (be instanceof BrassFluidTankBlockEntity brassBe) {
+                                handler = brassBe.getFluidHandler();
+                            } else if (be instanceof TrainFluidTankBlockEntity trainBe) {
+                                handler = trainBe.getFluidHandler();
+                            }
+                        }
+                        return handler;
                     }
-                    return handler;
-                }
-        );
+            );
+        }
 
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_SPOUT.get(),
-                (PaintedSpoutBlockEntity be, Direction context) -> ReflectionAccess.spoutFluidHandler(be)
-        );
-
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                ModBlockEntityTypes.PAINTED_HOSE_PULLEY.get(),
-                (PaintedHosePulleyBlockEntity be, Direction context) -> {
-                    if (context == null || HosePulleyBlock.hasPipeTowards(be.getLevel(), be.getBlockPos(), be.getBlockState(), context)) {
-                        return ReflectionAccess.hosePulleyFluidHandler(be);
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_HORIZONTAL_FLUID_TANK,
+                ModBlockEntityTypes.BRASS_HORIZONTAL_FLUID_TANK,
+                ModBlockEntityTypes.COPPER_HORIZONTAL_FLUID_TANK,
+                ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        IFluidHandler handler = null;
+                        if (be instanceof AndesiteHorizontalFluidTankBlockEntity andesiteBe) {
+                            handler = andesiteBe.getFluidHandler();
+                        } else if (be instanceof BrassHorizontalFluidTankBlockEntity brassBe) {
+                            handler = brassBe.getFluidHandler();
+                        } else if (be instanceof CopperHorizontalFluidTankBlockEntity copperBe) {
+                            handler = copperBe.getFluidHandler();
+                        } else if (be instanceof TrainHorizontalFluidTankBlockEntity trainBe) {
+                            handler = trainBe.getFluidHandler();
+                        }
+                        if (handler == null && be instanceof com.simibubi.create.content.fluids.tank.FluidTankBlockEntity ftbe) {
+                            ftbe.initialize();
+                            if (be instanceof AndesiteHorizontalFluidTankBlockEntity andesiteBe) {
+                                handler = andesiteBe.getFluidHandler();
+                            } else if (be instanceof BrassHorizontalFluidTankBlockEntity brassBe) {
+                                handler = brassBe.getFluidHandler();
+                            } else if (be instanceof CopperHorizontalFluidTankBlockEntity copperBe) {
+                                handler = copperBe.getFluidHandler();
+                            } else if (be instanceof TrainHorizontalFluidTankBlockEntity trainBe) {
+                                handler = trainBe.getFluidHandler();
+                            }
+                        }
+                        return handler;
                     }
-                    return null;
-                }
-        );
+            );
+        }
+
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_SPOUT,
+                ModBlockEntityTypes.BRASS_SPOUT,
+                ModBlockEntityTypes.TRAIN_SPOUT
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> ReflectionAccess.spoutFluidHandler(be)
+            );
+        }
+
+        for (var beType : List.of(
+                ModBlockEntityTypes.ANDESITE_HOSE_PULLEY,
+                ModBlockEntityTypes.BRASS_HOSE_PULLEY,
+                ModBlockEntityTypes.TRAIN_HOSE_PULLEY
+        )) {
+            event.registerBlockEntity(
+                    Capabilities.FluidHandler.BLOCK,
+                    beType.get(),
+                    (be, context) -> {
+                        if (context == null || HosePulleyBlock.hasPipeTowards(be.getLevel(), be.getBlockPos(), be.getBlockState(), context)) {
+                            return ReflectionAccess.hosePulleyFluidHandler(be);
+                        }
+                        return null;
+                    }
+            );
+        }
     }
 
     private static Field field(String name) {

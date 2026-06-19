@@ -1,11 +1,11 @@
 package net.deltav;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import net.deltav.block.create.drain.PaintedItemDrainClient;
-import net.deltav.block.create.fluid.PaintedFluidClient;
-import net.deltav.block.create.kinetic.PaintedKineticClient;
-import net.deltav.block.create.pipe.PaintedPipeClient;
-import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceClient;
+import net.deltav.block.create.drain.ItemDrainClient;
+import net.deltav.block.create.fluid.FluidClient;
+import net.deltav.block.create.kinetic.KineticClient;
+import net.deltav.block.create.pipe.PipeClient;
+import net.deltav.block.create.portableInterface.PortableFluidInterfaceClient;
 import net.deltav.item.PaintGunItem;
 import net.deltav.registry.*;
 import net.neoforged.api.distmarker.Dist;
@@ -122,19 +122,19 @@ public class craftsconstruct {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
-                PaintedFluidClient.registerRenderLayers();
-                PaintedPipeClient.registerRenderLayers();
+                FluidClient.registerRenderLayers();
+                PipeClient.registerRenderLayers();
             });
-            PaintedKineticClient.registerVisualizers();
-            PaintedFluidClient.registerVisualizers();
-            PaintedPortableFluidInterfaceClient.registerVisualizers();
-            PaintedItemDrainClient.registerModelLayers();
+            KineticClient.registerVisualizers();
+            FluidClient.registerVisualizers();
+            PortableFluidInterfaceClient.registerVisualizers();
+            ItemDrainClient.registerModelLayers();
         }
 
         @SubscribeEvent(priority = EventPriority.HIGH)
         public static void onModifyBakingResult(net.neoforged.neoforge.client.event.ModelEvent.ModifyBakingResult event) {
-            PaintedFluidClient.registerModelSwappers();
-            PaintedPipeClient.registerModelSwappers();
+            FluidClient.registerModelSwappers();
+            PipeClient.registerModelSwappers();
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -144,11 +144,11 @@ public class craftsconstruct {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-            PaintedKineticClient.registerRenderers(event);
-            PaintedFluidClient.registerRenderers(event);
-            PaintedPipeClient.registerRenderers(event);
-            PaintedPortableFluidInterfaceClient.registerRenderers(event);
-            PaintedItemDrainClient.registerRenderers(event);
+            KineticClient.registerRenderers(event);
+            FluidClient.registerRenderers(event);
+            PipeClient.registerRenderers(event);
+            PortableFluidInterfaceClient.registerRenderers(event);
+            ItemDrainClient.registerRenderers(event);
         }
     }
 }

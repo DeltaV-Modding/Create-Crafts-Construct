@@ -2,7 +2,6 @@ package net.deltav.mixin;
 
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceRenderer;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import net.deltav.block.create.portableInterface.PaintedPortableFluidInterfaceBlock;
 import net.deltav.registry.ModPartialModels;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,8 +19,8 @@ public class PortableStorageInterfaceRendererMixin {
             cancellable = true
     )
     private static void onGetMiddleForState(BlockState state, boolean lit, CallbackInfoReturnable<PartialModel> cir) {
-        if (state.getBlock() instanceof PaintedPortableFluidInterfaceBlock) {
-            String path = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        String path = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        if (path.endsWith("portable_fluid_interface")) {
             PartialModel model = lit ? ModPartialModels.PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.get(path)
                     : ModPartialModels.PORTABLE_FLUID_INTERFACE_MIDDLE.get(path);
             if (model != null) {
@@ -36,8 +35,8 @@ public class PortableStorageInterfaceRendererMixin {
             cancellable = true
     )
     private static void onGetTopForState(BlockState state, CallbackInfoReturnable<PartialModel> cir) {
-        if (state.getBlock() instanceof PaintedPortableFluidInterfaceBlock) {
-            String path = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        String path = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        if (path.endsWith("portable_fluid_interface")) {
             PartialModel model = ModPartialModels.PORTABLE_FLUID_INTERFACE_TOP.get(path);
             if (model != null) {
                 cir.setReturnValue(model);

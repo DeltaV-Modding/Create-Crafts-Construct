@@ -2,7 +2,6 @@ package net.deltav.mixin;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
-import net.deltav.block.create.kinetic.PaintedSteamWhistleBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +21,7 @@ public class WhistleBlockMixin {
                 return true;
             }
             if (stack.getItem() instanceof BlockItem blockItem) {
-                return blockItem.getBlock() instanceof PaintedSteamWhistleBlock;
+                return blockItem.getBlock() instanceof WhistleBlock;
             }
         }
         return entry.isIn(stack);

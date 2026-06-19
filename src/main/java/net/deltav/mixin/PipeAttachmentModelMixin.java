@@ -2,7 +2,6 @@ package net.deltav.mixin;
 
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour.AttachmentTypes;
-import net.deltav.block.create.pipe.PaintedFluidPipeBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -23,8 +22,19 @@ public class PipeAttachmentModelMixin {
     private AttachmentTypes redirectGetRenderedRimAttachment(com.simibubi.create.content.fluids.FluidTransportBehaviour instance,
                                                             BlockAndTintGetter world, BlockPos pos, BlockState state, Direction direction) {
         AttachmentTypes attachment = instance.getRenderedRimAttachment(world, pos, state, direction);
-        if (state.hasProperty(PaintedFluidPipeBlock.GLASS) && state.getValue(PaintedFluidPipeBlock.GLASS)) {
-            Direction.Axis axis = state.getValue(PaintedFluidPipeBlock.AXIS);
+        
+        net.minecraft.world.level.block.state.properties.BooleanProperty glassProp = null;
+        net.minecraft.world.level.block.state.properties.EnumProperty<Direction.Axis> axisProp = null;
+        for (var prop : state.getProperties()) {
+            if (prop.getName().equals("glass") && prop instanceof net.minecraft.world.level.block.state.properties.BooleanProperty bp) {
+                glassProp = bp;
+            } else if (prop.getName().equals("axis") && prop instanceof net.minecraft.world.level.block.state.properties.EnumProperty<?> ep && ep.getValueClass() == Direction.Axis.class) {
+                axisProp = (net.minecraft.world.level.block.state.properties.EnumProperty<Direction.Axis>) ep;
+            }
+        }
+        
+        if (glassProp != null && state.getValue(glassProp)) {
+            Direction.Axis axis = (axisProp != null) ? state.getValue(axisProp) : Direction.Axis.Y;
             if (direction.getAxis() != axis) {
                 return AttachmentTypes.NONE;
             } else {

@@ -1,7 +1,6 @@
 package net.deltav.mixin;
 
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
-import net.deltav.block.create.pipe.PaintedFluidPipeBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -42,8 +41,10 @@ public class FluidPipeBlockMixin {
         if (state.getBlock() instanceof com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock) {
             return true;
         }
-        if (state.hasProperty(PaintedFluidPipeBlock.GLASS) && state.getValue(PaintedFluidPipeBlock.GLASS)) {
-            return true;
+        for (var prop : state.getProperties()) {
+            if (prop.getName().equals("glass") && prop instanceof net.minecraft.world.level.block.state.properties.BooleanProperty bp) {
+                return state.getValue(bp);
+            }
         }
         return false;
     }
@@ -51,8 +52,10 @@ public class FluidPipeBlockMixin {
     @Unique
     private static boolean craftsconstruct$isNormalPipe(BlockState state) {
         if (state.getBlock() instanceof FluidPipeBlock) {
-            if (state.hasProperty(PaintedFluidPipeBlock.GLASS)) {
-                return !state.getValue(PaintedFluidPipeBlock.GLASS);
+            for (var prop : state.getProperties()) {
+                if (prop.getName().equals("glass") && prop instanceof net.minecraft.world.level.block.state.properties.BooleanProperty bp) {
+                    return !state.getValue(bp);
+                }
             }
             return true;
         }

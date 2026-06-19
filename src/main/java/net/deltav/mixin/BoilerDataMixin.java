@@ -2,9 +2,8 @@ package net.deltav.mixin;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.fluids.tank.BoilerData;
-
-import net.deltav.block.create.kinetic.PaintedSteamEngineBlock;
-import net.deltav.block.create.kinetic.PaintedSteamWhistleBlock;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,9 +20,9 @@ public class BoilerDataMixin {
     private boolean craftsConstruct$recognizePaintedBoilerAttachments(
             com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
         if (entry == AllBlocks.STEAM_ENGINE)
-            return entry.has(state) || state.getBlock() instanceof PaintedSteamEngineBlock;
+            return entry.has(state) || state.getBlock() instanceof SteamEngineBlock;
         if (entry == AllBlocks.STEAM_WHISTLE)
-            return entry.has(state) || state.getBlock() instanceof PaintedSteamWhistleBlock;
+            return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         return entry.has(state);
     }
 
@@ -33,6 +32,6 @@ public class BoilerDataMixin {
     )
     private boolean craftsConstruct$recognizePaintedWhistlesForPipeOrgan(
             com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        return entry.has(state) || state.getBlock() instanceof PaintedSteamWhistleBlock;
+        return entry.has(state) || state.getBlock() instanceof WhistleBlock;
     }
 }
