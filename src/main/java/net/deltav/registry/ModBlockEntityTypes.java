@@ -253,24 +253,6 @@ public class ModBlockEntityTypes {
                     ModBlocks.TRAIN_STEAM_WHISTLE.get()
             ).build(null));
 
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AndesiteChainDriveBlockEntity>> ANDESITE_ENCASED_CHAIN_DRIVE =
-            BLOCK_ENTITY_TYPES.register("andesite_encased_chain_drive", () -> BlockEntityType.Builder.of(
-                    AndesiteChainDriveBlockEntity::new,
-                    ModBlocks.ANDESITE_ENCASED_CHAIN_DRIVE.get()
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BrassChainDriveBlockEntity>> BRASS_ENCASED_CHAIN_DRIVE =
-            BLOCK_ENTITY_TYPES.register("brass_encased_chain_drive", () -> BlockEntityType.Builder.of(
-                    BrassChainDriveBlockEntity::new,
-                    ModBlocks.BRASS_ENCASED_CHAIN_DRIVE.get()
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TrainChainDriveBlockEntity>> TRAIN_ENCASED_CHAIN_DRIVE =
-            BLOCK_ENTITY_TYPES.register("train_encased_chain_drive", () -> BlockEntityType.Builder.of(
-                    TrainChainDriveBlockEntity::new,
-                    ModBlocks.TRAIN_ENCASED_CHAIN_DRIVE.get()
-            ).build(null));
-
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

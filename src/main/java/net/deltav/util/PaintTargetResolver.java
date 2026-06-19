@@ -65,7 +65,6 @@ public class PaintTargetResolver {
             Map.entry("smart_fluid_pipe", PaintMaterial.COPPER),
             Map.entry("mechanical_crafter", PaintMaterial.BRASS),
             Map.entry("gearbox", PaintMaterial.ANDESITE),
-            Map.entry("encased_chain_drive", PaintMaterial.ANDESITE),
             Map.entry("encased_fan", PaintMaterial.ANDESITE),
             Map.entry("millstone", PaintMaterial.ANDESITE),
             Map.entry("mechanical_saw", PaintMaterial.ANDESITE),

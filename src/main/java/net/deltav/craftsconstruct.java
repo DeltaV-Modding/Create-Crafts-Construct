@@ -37,6 +37,7 @@ public class craftsconstruct {
 
 
     public craftsconstruct(IEventBus modEventBus, ModContainer modContainer) {
+        REGISTRATE.defaultCreativeTab(ModCreativeModeTabs.CC_TAB_KEY);
         REGISTRATE.registerEventListeners(modEventBus);
 
         modEventBus.addListener(this::commonSetup);

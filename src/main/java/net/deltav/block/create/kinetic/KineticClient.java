@@ -17,20 +17,12 @@ public final class KineticClient {
     }
 
     public static void registerVisualizers() {
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.ANDESITE_ENCASED_CHAIN_DRIVE.get()).factory(ShaftVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.BRASS_ENCASED_CHAIN_DRIVE.get()).factory(ShaftVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.TRAIN_ENCASED_CHAIN_DRIVE.get()).factory(ShaftVisual::new).skipVanillaRender(be -> true).apply();
-
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.ANDESITE_STEAM_ENGINE.get()).factory(AndesiteSteamEngineVisual::new).skipVanillaRender(be -> true).apply();
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.BRASS_STEAM_ENGINE.get()).factory(BrassSteamEngineVisual::new).skipVanillaRender(be -> true).apply();
         SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.TRAIN_STEAM_ENGINE.get()).factory(TrainSteamEngineVisual::new).skipVanillaRender(be -> true).apply();
     }
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_ENCASED_CHAIN_DRIVE.get(), ShaftRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_ENCASED_CHAIN_DRIVE.get(), ShaftRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_ENCASED_CHAIN_DRIVE.get(), ShaftRenderer::new);
-
         event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_STEAM_ENGINE.get(), AndesiteSteamEngineRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_STEAM_ENGINE.get(), BrassSteamEngineRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_STEAM_ENGINE.get(), TrainSteamEngineRenderer::new);

@@ -46,7 +46,6 @@ public class ModBlocks {
     public static final List<BlockEntry<? extends Block>> PAINTED_HORIZONTAL_FLUID_TANKS = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_SPOUTS = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_HOSE_PULLEYS = new ArrayList<>();
-    public static final List<BlockEntry<? extends Block>> PAINTED_ENCASED_CHAIN_DRIVES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_STEAM_ENGINES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_STEAM_WHISTLES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_PORTABLE_FLUID_INTERFACES = new ArrayList<>();
@@ -249,23 +248,8 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<TrainSteamWhistleBlock> TRAIN_STEAM_WHISTLE = REGISTRATE.block("train_steam_whistle", p -> new TrainSteamWhistleBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()))
+     public static final BlockEntry<TrainSteamWhistleBlock> TRAIN_STEAM_WHISTLE = REGISTRATE.block("train_steam_whistle", p -> new TrainSteamWhistleBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()))
             .initialProperties(() -> createBlock("steam_whistle"))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<AndesiteChainDriveBlock> ANDESITE_ENCASED_CHAIN_DRIVE = REGISTRATE.block("andesite_encased_chain_drive", p -> new AndesiteChainDriveBlock(p, () -> ModBlockEntityTypes.ANDESITE_ENCASED_CHAIN_DRIVE.get()))
-            .initialProperties(() -> createBlock("encased_chain_drive"))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<BrassChainDriveBlock> BRASS_ENCASED_CHAIN_DRIVE = REGISTRATE.block("brass_encased_chain_drive", p -> new BrassChainDriveBlock(p, () -> ModBlockEntityTypes.BRASS_ENCASED_CHAIN_DRIVE.get()))
-            .initialProperties(() -> createBlock("encased_chain_drive"))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<TrainChainDriveBlock> TRAIN_ENCASED_CHAIN_DRIVE = REGISTRATE.block("train_encased_chain_drive", p -> new TrainChainDriveBlock(p, () -> ModBlockEntityTypes.TRAIN_ENCASED_CHAIN_DRIVE.get()))
-            .initialProperties(() -> createBlock("encased_chain_drive"))
             .item()
             .build()
             .register();
@@ -512,9 +496,6 @@ public class ModBlocks {
         PAINTED_STEAM_WHISTLES.add(ANDESITE_STEAM_WHISTLE);
         PAINTED_STEAM_WHISTLES.add(BRASS_STEAM_WHISTLE);
         PAINTED_STEAM_WHISTLES.add(TRAIN_STEAM_WHISTLE);
-        PAINTED_ENCASED_CHAIN_DRIVES.add(ANDESITE_ENCASED_CHAIN_DRIVE);
-        PAINTED_ENCASED_CHAIN_DRIVES.add(BRASS_ENCASED_CHAIN_DRIVE);
-        PAINTED_ENCASED_CHAIN_DRIVES.add(TRAIN_ENCASED_CHAIN_DRIVE);
     }
 
     private static Block createBlock(String target) {

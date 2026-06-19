@@ -43,40 +43,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SUGAR_BEET_SEEDS);
                         output.accept(ModItems.SUGAR_BEET);
 
-                        output.accept(ModBlocks.WHITE_TEXTILE);
-                        output.accept(ModBlocks.LIGHT_GRAY_TEXTILE);
-                        output.accept(ModBlocks.GRAY_TEXTILE);
-                        output.accept(ModBlocks.BLACK_TEXTILE);
-                        output.accept(ModBlocks.BROWN_TEXTILE);
-                        output.accept(ModBlocks.RED_TEXTILE);
-                        output.accept(ModBlocks.ORANGE_TEXTILE);
-                        output.accept(ModBlocks.YELLOW_TEXTILE);
-                        output.accept(ModBlocks.LIME_TEXTILE);
-                        output.accept(ModBlocks.GREEN_TEXTILE);
-                        output.accept(ModBlocks.CYAN_TEXTILE);
-                        output.accept(ModBlocks.LIGHT_BLUE_TEXTILE);
-                        output.accept(ModBlocks.BLUE_TEXTILE);
-                        output.accept(ModBlocks.PURPLE_TEXTILE);
-                        output.accept(ModBlocks.MAGENTA_TEXTILE);
-                        output.accept(ModBlocks.PINK_TEXTILE);
-
-                        output.accept(ModBlocks.WHITE_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.LIGHT_GRAY_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.GRAY_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.BLACK_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.BROWN_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.RED_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.ORANGE_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.YELLOW_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.LIME_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.GREEN_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.CYAN_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.LIGHT_BLUE_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.BLUE_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.PURPLE_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.MAGENTA_CHECKERED_TEXTILE);
-                        output.accept(ModBlocks.PINK_CHECKERED_TEXTILE);
-
                         for (var tempPaintBlock : ModBlocks.TEMP_PAINT_BLOCKS) {
                             output.accept(tempPaintBlock);
                         }
