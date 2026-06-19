@@ -7,7 +7,7 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer.FogMode;
@@ -30,141 +30,50 @@ import java.util.function.Supplier;
 import static net.deltav.util.ModCreativeModeTabs.CC_TAB_KEY;
 
 public class ModFluids {
+    private static final Supplier<Float> JELLY_FOG_DISTANCE =
+            () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF();
 
     private static ResourceLocation modResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, path);
     }
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> GREEN_JELLY =
-            craftsconstruct.registrate()
-                    .standardFluid("green_jelly",
-                            SolidRenderedFluidType.create(
-                                    0x52A04D,
-                                    () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF(),
-                                    "block/fluids/green_jelly_still",
-                                    "block/fluids/green_jelly_flow"
-                            )
-                    )
-                    .lang("Green Jelly")
-                    .properties(b -> b.viscosity(2000)
-                            .density(1400))
-                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .tag(Tags.Fluids.HONEY)
-                    .source(BaseFlowingFluid.Source::new)
-                    .bucket()
-                    .removeTab(CreativeModeTabs.SEARCH)
-                    .tab(CC_TAB_KEY)
-                    .tag(AllTags.commonItemTag("buckets/honey"))
-                    .build()
-                    .register();
+            jelly("green_jelly", "Green Jelly", 0x52A04D);
     public static final FluidEntry<BaseFlowingFluid.Flowing> YELLOW_JELLY =
-            craftsconstruct.registrate()
-                    .standardFluid("yellow_jelly",
-                            SolidRenderedFluidType.create(
-                                    0xB8B71E,
-                                    () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF(),
-                                    "block/fluids/yellow_jelly_still",
-                                    "block/fluids/yellow_jelly_flow"
-                            )
-                    )
-                    .lang("Yellow Jelly")
-                    .properties(b -> b.viscosity(2000)
-                            .density(1400))
-                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .tag(Tags.Fluids.HONEY)
-                    .source(BaseFlowingFluid.Source::new)
-                    .bucket()
-                    .removeTab(CreativeModeTabs.SEARCH)
-                    .tab(CC_TAB_KEY)
-                    .tag(AllTags.commonItemTag("buckets/honey"))
-                    .build()
-                    .register();
+            jelly("yellow_jelly", "Yellow Jelly", 0xB8B71E);
     public static final FluidEntry<BaseFlowingFluid.Flowing> RED_JELLY =
-            craftsconstruct.registrate()
-                    .standardFluid("red_jelly",
-                            SolidRenderedFluidType.create(
-                                    0xAA232A,
-                                    () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF(),
-                                    "block/fluids/red_jelly_still",
-                                    "block/fluids/red_jelly_flow"
-                            )
-                    )
-                    .lang("Red Jelly")
-                    .properties(b -> b.viscosity(2000)
-                            .density(1400))
-                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .tag(Tags.Fluids.HONEY)
-                    .source(BaseFlowingFluid.Source::new)
-                    .bucket()
-                    .removeTab(CreativeModeTabs.SEARCH)
-                    .tab(CC_TAB_KEY)
-                    .tag(AllTags.commonItemTag("buckets/honey"))
-                    .build()
-                    .register();
+            jelly("red_jelly", "Red Jelly", 0xAA232A);
     public static final FluidEntry<BaseFlowingFluid.Flowing> PINK_JELLY =
-            craftsconstruct.registrate()
-                    .standardFluid("pink_jelly",
-                            SolidRenderedFluidType.create(
-                                    0xB86BA6,
-                                    () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF(),
-                                    "block/fluids/pink_jelly_still",
-                                    "block/fluids/pink_jelly_flow"
-                            )
-                    )
-                    .lang("Pink Jelly")
-                    .properties(b -> b.viscosity(2000)
-                            .density(1400))
-                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .tag(Tags.Fluids.HONEY)
-                    .source(BaseFlowingFluid.Source::new)
-                    .bucket()
-                    .removeTab(CreativeModeTabs.SEARCH)
-                    .tab(CC_TAB_KEY)
-                    .tag(AllTags.commonItemTag("buckets/honey"))
-                    .build()
-                    .register();
+            jelly("pink_jelly", "Pink Jelly", 0xB86BA6);
     public static final FluidEntry<BaseFlowingFluid.Flowing> BLUE_JELLY =
-            craftsconstruct.registrate()
-                    .standardFluid("blue_jelly",
-                            SolidRenderedFluidType.create(
-                                    0x54ACC9,
-                                    () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF(),
-                                    "block/fluids/blue_jelly_still",
-                                    "block/fluids/blue_jelly_flow"
-                            )
-                    )
-                    .lang("Blue Jelly")
-                    .properties(b -> b.viscosity(2000)
-                            .density(1400))
-                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .tag(Tags.Fluids.HONEY)
-                    .source(BaseFlowingFluid.Source::new)
-                    .bucket()
-                    .removeTab(CreativeModeTabs.SEARCH)
-                    .tab(CC_TAB_KEY)
-                    .tag(AllTags.commonItemTag("buckets/honey"))
-                    .build()
-                    .register();
+            jelly("blue_jelly", "Blue Jelly", 0x54ACC9);
 
-
-
-    //↓↓↓   DON'T TOUCH ANYTHING UNDER HERE   ↓↓↓
-
+    private static FluidEntry<BaseFlowingFluid.Flowing> jelly(String name, String lang, int fogColor) {
+        return CraftsConstruct.registrate()
+                .standardFluid(name,
+                        SolidRenderedFluidType.create(
+                                fogColor,
+                                JELLY_FOG_DISTANCE,
+                                "block/fluids/" + name + "_still",
+                                "block/fluids/" + name + "_flow"
+                        )
+                )
+                .lang(lang)
+                .properties(b -> b.viscosity(2000)
+                        .density(1400))
+                .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                        .tickRate(25)
+                        .slopeFindDistance(3)
+                        .explosionResistance(100f))
+                .tag(Tags.Fluids.HONEY)
+                .source(BaseFlowingFluid.Source::new)
+                .bucket()
+                .removeTab(CreativeModeTabs.SEARCH)
+                .tab(CC_TAB_KEY)
+                .tag(AllTags.commonItemTag("buckets/honey"))
+                .build()
+                .register();
+    }
 
     public static class SolidRenderedFluidType extends AllFluids.TintedFluidType {
         private final ResourceLocation stillTexture;

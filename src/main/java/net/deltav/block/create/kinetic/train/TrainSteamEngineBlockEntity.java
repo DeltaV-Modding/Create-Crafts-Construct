@@ -1,13 +1,13 @@
 package net.deltav.block.create.kinetic.train;
 
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
-import net.deltav.registry.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class TrainSteamEngineBlockEntity extends SteamEngineBlockEntity {
-    public TrainSteamEngineBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.TRAIN_STEAM_ENGINE.get(), pos, state);
+    public TrainSteamEngineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     @Override

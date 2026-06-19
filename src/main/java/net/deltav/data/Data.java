@@ -1,6 +1,6 @@
 package net.deltav.data;
 
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = craftsconstruct.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = CraftsConstruct.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class Data {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {

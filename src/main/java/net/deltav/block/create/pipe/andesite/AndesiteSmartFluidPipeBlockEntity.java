@@ -6,12 +6,12 @@ import net.deltav.block.create.pipe.andesite.*;
 import net.deltav.block.create.portableInterface.andesite.*;
 import net.deltav.block.create.drain.andesite.*;
 import com.simibubi.create.content.fluids.pipes.SmartFluidPipeBlockEntity;
-import net.deltav.registry.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class AndesiteSmartFluidPipeBlockEntity extends SmartFluidPipeBlockEntity {
-    public AndesiteSmartFluidPipeBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get(), pos, state);
+    public AndesiteSmartFluidPipeBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 }

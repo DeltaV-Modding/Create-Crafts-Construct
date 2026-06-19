@@ -6,13 +6,13 @@ import net.deltav.block.create.pipe.andesite.*;
 import net.deltav.block.create.portableInterface.andesite.*;
 import net.deltav.block.create.drain.andesite.*;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
-import net.deltav.registry.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class AndesiteSteamEngineBlockEntity extends SteamEngineBlockEntity {
-    public AndesiteSteamEngineBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.ANDESITE_STEAM_ENGINE.get(), pos, state);
+    public AndesiteSteamEngineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     @Override

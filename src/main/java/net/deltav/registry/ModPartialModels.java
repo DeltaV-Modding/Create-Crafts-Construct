@@ -1,7 +1,7 @@
 package net.deltav.registry;
 
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.HashMap;
@@ -46,52 +46,63 @@ public class ModPartialModels {
         String[] materials = {"andesite", "brass", "train"};
         for (String mat : materials) {
             String enginePath = mat + "_steam_engine";
-            STEAM_ENGINE_GAUGES.put(enginePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + enginePath + "/gauge")));
-            STEAM_ENGINE_DIALS.put(enginePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + enginePath + "/gauge_dial")));
-            STEAM_ENGINE_PISTONS.put(enginePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + enginePath + "/piston")));
-            STEAM_ENGINE_LINKAGES.put(enginePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + enginePath + "/linkage")));
-            STEAM_ENGINE_CONNECTORS.put(enginePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + enginePath + "/shaft_connector")));
+            STEAM_ENGINE_GAUGES.put(enginePath, partial(enginePath, "gauge"));
+            STEAM_ENGINE_DIALS.put(enginePath, partial(enginePath, "gauge_dial"));
+            STEAM_ENGINE_PISTONS.put(enginePath, partial(enginePath, "piston"));
+            STEAM_ENGINE_LINKAGES.put(enginePath, partial(enginePath, "linkage"));
+            STEAM_ENGINE_CONNECTORS.put(enginePath, partial(enginePath, "shaft_connector"));
 
             String valvePath = mat + "_fluid_valve";
-            VALVE_POINTERS.put(valvePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + valvePath + "/pointer")));
+            VALVE_POINTERS.put(valvePath, partial(valvePath, "pointer"));
 
             String valveHandlePath = mat + "_valve_handle";
-            VALVE_HANDLES.put(valveHandlePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + valveHandlePath)));
+            VALVE_HANDLES.put(valveHandlePath, partial(valveHandlePath));
 
             String spoutPath = mat + "_spout";
-            SPOUT_TOPS.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/top")));
-            SPOUT_MIDDLES.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/middle")));
-            SPOUT_BOTTOMS.put(spoutPath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + spoutPath + "/bottom")));
+            SPOUT_TOPS.put(spoutPath, partial(spoutPath, "top"));
+            SPOUT_MIDDLES.put(spoutPath, partial(spoutPath, "middle"));
+            SPOUT_BOTTOMS.put(spoutPath, partial(spoutPath, "bottom"));
         }
 
         String[] storageMaterials = {"brass", "copper", "train"};
         for (String mat : storageMaterials) {
             String path = mat + "_portable_storage_interface";
-            PORTABLE_STORAGE_INTERFACE_TOP.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_top")));
-            PORTABLE_STORAGE_INTERFACE_MIDDLE.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle")));
-            PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
+            PORTABLE_STORAGE_INTERFACE_TOP.put(path, partial(path, "block_top"));
+            PORTABLE_STORAGE_INTERFACE_MIDDLE.put(path, partial(path, "block_middle"));
+            PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED.put(path, partial(path, "block_middle_powered"));
         }
-
 
         String[] fluidMaterials = {"andesite", "brass", "train"};
         for (String mat : fluidMaterials) {
             String path = mat + "_portable_fluid_interface";
-            PORTABLE_FLUID_INTERFACE_TOP.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_top")));
-            PORTABLE_FLUID_INTERFACE_MIDDLE.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle")));
-            PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(path, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/block_middle_powered")));
+            PORTABLE_FLUID_INTERFACE_TOP.put(path, partial(path, "block_top"));
+            PORTABLE_FLUID_INTERFACE_MIDDLE.put(path, partial(path, "block_middle"));
+            PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(path, partial(path, "block_middle_powered"));
         }
 
         for (String mat : fluidMaterials) {
             String hosePath = mat + "_hose_pulley";
-            HOSE_PULLEY_MAGNETS.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/pulley_magnet")));
-            HOSE_PULLEY_ROPES.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope")));
-            HOSE_PULLEY_ROPES_HALF.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope_half")));
-            HOSE_PULLEY_ROPES_HALF_MAGNET.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/rope_half_magnet")));
-            HOSE_PULLEY_COILS.put(hosePath, PartialModel.of(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + hosePath + "/hose_coil")));
+            HOSE_PULLEY_MAGNETS.put(hosePath, partial(hosePath, "pulley_magnet"));
+            HOSE_PULLEY_ROPES.put(hosePath, partial(hosePath, "rope"));
+            HOSE_PULLEY_ROPES_HALF.put(hosePath, partial(hosePath, "rope_half"));
+            HOSE_PULLEY_ROPES_HALF_MAGNET.put(hosePath, partial(hosePath, "rope_half_magnet"));
+            HOSE_PULLEY_COILS.put(hosePath, partial(hosePath, "hose_coil"));
             HOSE_PULLEY_COIL_SHIFTS.put(hosePath, SpriteShifter.get(
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + mat + "_hose_pulley/" + mat + "_hose_pulley_coil"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + mat + "_hose_pulley/" + mat + "_hose_pulley_coil_scroll")
+                    blockResource(hosePath + "/" + mat + "_hose_pulley_coil"),
+                    blockResource(hosePath + "/" + mat + "_hose_pulley_coil_scroll")
             ));
         }
+    }
+
+    private static PartialModel partial(String blockPath) {
+        return PartialModel.of(blockResource(blockPath));
+    }
+
+    private static PartialModel partial(String blockPath, String modelName) {
+        return PartialModel.of(blockResource(blockPath + "/" + modelName));
+    }
+
+    private static ResourceLocation blockResource(String path) {
+        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, "block/" + path);
     }
 }

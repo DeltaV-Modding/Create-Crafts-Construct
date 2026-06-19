@@ -1,6 +1,6 @@
 package net.deltav.registry;
 
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.deltav.item.DragonCharge;
 import net.deltav.item.FireballCharge;
 import net.deltav.item.PaintCartridgeItem;
@@ -13,55 +13,63 @@ import net.deltav.util.ModFood;
 import net.deltav.util.PaintMaterial;
 
 public class ModItems {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CraftsConstruct.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_DIAMOND = ITEMS.register("raw_diamond", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> RAW_AMETHYST = ITEMS.register("raw_amethyst", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> EMPTY_CHARGE = ITEMS.register("empty_charge", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RAW_DIAMOND = simpleItem("raw_diamond");
+    public static final DeferredItem<Item> RAW_AMETHYST = simpleItem("raw_amethyst");
+    public static final DeferredItem<Item> EMPTY_CHARGE = simpleItem("empty_charge");
 
-    public static final DeferredItem<Item> DRAGON_CHARGE = ITEMS.register("dragon_fireball", () -> new DragonCharge(new Item.Properties().stacksTo(16).fireResistant().rarity(Rarity.UNCOMMON)));
-    public static final DeferredItem<Item> FIREBALL_CHARGE = ITEMS.register("fireball", () -> new FireballCharge(new Item.Properties().stacksTo(16).fireResistant().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> DRAGON_CHARGE = ITEMS.register("dragon_fireball", () -> new DragonCharge(chargeProperties()));
+    public static final DeferredItem<Item> FIREBALL_CHARGE = ITEMS.register("fireball", () -> new FireballCharge(chargeProperties()));
     public static final DeferredItem<Item> SUGAR_BEET_SEEDS = ITEMS.register("sugar_beet_seeds", () -> new ItemNameBlockItem(ModBlocks.SUGAR_BEETS.get(), new Item.Properties()));
-    public static final DeferredItem<Item> SUGAR_BEET = ITEMS.register("sugar_beet", () -> new Item(new Item.Properties().food(ModFood.SUGAR_BEET)));
+    public static final DeferredItem<Item> SUGAR_BEET = foodItem("sugar_beet", ModFood.SUGAR_BEET);
 
-    public static final DeferredItem<Item> GREEN_GUMMY_BEAR = ITEMS.register("green_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
-    public static final DeferredItem<Item> YELLOW_GUMMY_BEAR = ITEMS.register("yellow_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
-    public static final DeferredItem<Item> RED_GUMMY_BEAR = ITEMS.register("red_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
-    public static final DeferredItem<Item> PINK_GUMMY_BEAR = ITEMS.register("pink_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
-    public static final DeferredItem<Item> BLUE_GUMMY_BEAR = ITEMS.register("blue_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
-    public static final DeferredItem<Item> RAINBOW_GUMMY_BEAR = ITEMS.register("rainbow_gummy_bear", () -> new Item(new Item.Properties().food(ModFood.GUMMY_BEAR)));
+    public static final DeferredItem<Item> GREEN_GUMMY_BEAR = gummyBear("green_gummy_bear");
+    public static final DeferredItem<Item> YELLOW_GUMMY_BEAR = gummyBear("yellow_gummy_bear");
+    public static final DeferredItem<Item> RED_GUMMY_BEAR = gummyBear("red_gummy_bear");
+    public static final DeferredItem<Item> PINK_GUMMY_BEAR = gummyBear("pink_gummy_bear");
+    public static final DeferredItem<Item> BLUE_GUMMY_BEAR = gummyBear("blue_gummy_bear");
+    public static final DeferredItem<Item> RAINBOW_GUMMY_BEAR = gummyBear("rainbow_gummy_bear");
 
+    public static final DeferredItem<Item> EMPTY_PAINT_CARTRIDGE = simpleItem("empty_paint_cartridge");
+    public static final DeferredItem<Item> BRASS_PAINT_CARTRIDGE = paintCartridge("brass_paint_cartridge", PaintMaterial.BRASS);
+    public static final DeferredItem<Item> COPPER_PAINT_CARTRIDGE = paintCartridge("copper_paint_cartridge", PaintMaterial.COPPER);
+    public static final DeferredItem<Item> ANDESITE_PAINT_CARTRIDGE = paintCartridge("andesite_paint_cartridge", PaintMaterial.ANDESITE);
+    public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = paintCartridge("train_paint_cartridge", PaintMaterial.TRAIN);
 
+    public static final DeferredItem<Item> INCOMPLETE_ANDESITE_PAINT_CARTRIDGE = simpleItem("incomplete_andesite_paint_cartridge");
+    public static final DeferredItem<Item> INCOMPLETE_BRASS_PAINT_CARTRIDGE = simpleItem("incomplete_brass_paint_cartridge");
+    public static final DeferredItem<Item> INCOMPLETE_COPPER_PAINT_CARTRIDGE = simpleItem("incomplete_copper_paint_cartridge");
+    public static final DeferredItem<Item> INCOMPLETE_STURDY_PAINT_CARTRIDGE = simpleItem("incomplete_sturdy_paint_cartridge");
 
-    //Paint Cartridge
-    public static final DeferredItem<Item> EMPTY_PAINT_CARTRIDGE = ITEMS.register("empty_paint_cartridge", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BRASS_PAINT_CARTRIDGE = ITEMS.register("brass_paint_cartridge",
-            () -> new PaintCartridgeItem(PaintMaterial.BRASS, new Item.Properties()));
-    public static final DeferredItem<Item> COPPER_PAINT_CARTRIDGE = ITEMS.register("copper_paint_cartridge",
-            () -> new PaintCartridgeItem(PaintMaterial.COPPER, new Item.Properties()));
-    public static final DeferredItem<Item> ANDESITE_PAINT_CARTRIDGE = ITEMS.register("andesite_paint_cartridge",
-            () -> new PaintCartridgeItem(PaintMaterial.ANDESITE, new Item.Properties()));
-    public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = ITEMS.register("train_paint_cartridge",
-            () -> new PaintCartridgeItem(PaintMaterial.TRAIN, new Item.Properties()));
-
-    public static final DeferredItem<Item> INCOMPLETE_ANDESITE_PAINT_CARTRIDGE = ITEMS.register("incomplete_andesite_paint_cartridge",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> INCOMPLETE_BRASS_PAINT_CARTRIDGE = ITEMS.register("incomplete_brass_paint_cartridge",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> INCOMPLETE_COPPER_PAINT_CARTRIDGE = ITEMS.register("incomplete_copper_paint_cartridge",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> INCOMPLETE_STURDY_PAINT_CARTRIDGE = ITEMS.register("incomplete_sturdy_paint_cartridge",
-            () -> new Item(new Item.Properties()));
-
-
-    //Paint Gun
-    public static final DeferredItem<Item> PAINT_GUN = ITEMS.register("paint_gun",
-            () -> new PaintGunItem(false, new Item.Properties()));
-
-    public static final DeferredItem<Item> C_PAINT_GUN = ITEMS.register("creative_paint_gun",
-            () -> new PaintGunItem(true, new Item.Properties()));
+    public static final DeferredItem<Item> PAINT_GUN = paintGun("paint_gun", false);
+    public static final DeferredItem<Item> C_PAINT_GUN = paintGun("creative_paint_gun", true);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
+    }
+
+    private static DeferredItem<Item> simpleItem(String name) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties()));
+    }
+
+    private static DeferredItem<Item> foodItem(String name, net.minecraft.world.food.FoodProperties food) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));
+    }
+
+    private static DeferredItem<Item> gummyBear(String name) {
+        return foodItem(name, ModFood.GUMMY_BEAR);
+    }
+
+    private static DeferredItem<Item> paintCartridge(String name, PaintMaterial material) {
+        return ITEMS.register(name, () -> new PaintCartridgeItem(material, new Item.Properties()));
+    }
+
+    private static DeferredItem<Item> paintGun(String name, boolean creative) {
+        return ITEMS.register(name, () -> new PaintGunItem(creative, new Item.Properties()));
+    }
+
+    private static Item.Properties chargeProperties() {
+        return new Item.Properties().stacksTo(16).fireResistant().rarity(Rarity.UNCOMMON);
     }
 }

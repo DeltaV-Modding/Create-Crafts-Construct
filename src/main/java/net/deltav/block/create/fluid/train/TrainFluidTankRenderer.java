@@ -8,7 +8,7 @@ import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import dev.engine_room.flywheel.lib.transform.TransformStack;
 
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.render.CachedBuffers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -88,7 +88,7 @@ public class TrainFluidTankRenderer extends FluidTankRenderer {
 
     private static boolean isPaintedTank(BlockState state) {
         ResourceLocation id = state.getBlock().builtInRegistryHolder().key().location();
-        return craftsconstruct.MOD_ID.equals(id.getNamespace()) && id.getPath().endsWith("_fluid_tank");
+        return CraftsConstruct.MOD_ID.equals(id.getNamespace()) && id.getPath().endsWith("_fluid_tank");
     }
 
     private static Partials getPartials(BlockState state) {

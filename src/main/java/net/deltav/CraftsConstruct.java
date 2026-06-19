@@ -3,9 +3,7 @@ package net.deltav;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.deltav.block.create.drain.ItemDrainClient;
 import net.deltav.block.create.fluid.FluidClient;
-import net.deltav.block.create.kinetic.KineticClient;
 import net.deltav.block.create.pipe.PipeClient;
-import net.deltav.block.create.portableInterface.PortableFluidInterfaceClient;
 import net.deltav.item.PaintGunItem;
 import net.deltav.registry.*;
 import net.neoforged.api.distmarker.Dist;
@@ -25,8 +23,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.deltav.util.ModCreativeModeTabs;
 
-@Mod(craftsconstruct.MOD_ID)
-public class craftsconstruct {
+@Mod(CraftsConstruct.MOD_ID)
+public class CraftsConstruct {
     public static final String MOD_ID = "crafts_construct";
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
@@ -36,7 +34,7 @@ public class craftsconstruct {
     }
 
 
-    public craftsconstruct(IEventBus modEventBus, ModContainer modContainer) {
+    public CraftsConstruct(IEventBus modEventBus, ModContainer modContainer) {
         REGISTRATE.defaultCreativeTab(ModCreativeModeTabs.CC_TAB_KEY);
         REGISTRATE.registerEventListeners(modEventBus);
 
@@ -48,7 +46,7 @@ public class craftsconstruct {
         ModItems.register(modEventBus);
         ModBlocks.register();
         ModCreativeModeTabs.register(modEventBus);
-        ModBlockEntityTypes.register(modEventBus);
+        ModBlockEntityTypes.register();
         ModCapabilities.register(modEventBus);
         modEventBus.addListener(this::onAddBlocksToBE);
 
@@ -126,9 +124,6 @@ public class craftsconstruct {
                 FluidClient.registerRenderLayers();
                 PipeClient.registerRenderLayers();
             });
-            KineticClient.registerVisualizers();
-            FluidClient.registerVisualizers();
-            PortableFluidInterfaceClient.registerVisualizers();
             ItemDrainClient.registerModelLayers();
         }
 
@@ -145,11 +140,7 @@ public class craftsconstruct {
 
         @SubscribeEvent(priority = EventPriority.LOWEST)
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-            KineticClient.registerRenderers(event);
             FluidClient.registerRenderers(event);
-            PipeClient.registerRenderers(event);
-            PortableFluidInterfaceClient.registerRenderers(event);
-            ItemDrainClient.registerRenderers(event);
         }
     }
 }

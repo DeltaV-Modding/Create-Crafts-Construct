@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
-import static net.deltav.craftsconstruct.REGISTRATE;
+import static net.deltav.CraftsConstruct.REGISTRATE;
 
 // Material-specific imports
 import net.deltav.block.create.fluid.andesite.*;
@@ -248,7 +248,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-     public static final BlockEntry<TrainSteamWhistleBlock> TRAIN_STEAM_WHISTLE = REGISTRATE.block("train_steam_whistle", p -> new TrainSteamWhistleBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()))
+    public static final BlockEntry<TrainSteamWhistleBlock> TRAIN_STEAM_WHISTLE = REGISTRATE.block("train_steam_whistle", p -> new TrainSteamWhistleBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()))
             .initialProperties(() -> createBlock("steam_whistle"))
             .item()
             .build()
@@ -259,243 +259,70 @@ public class ModBlocks {
             .register();
 
     public static void register() {
-        // This method is called from craftsconstruct to ensure the class is loaded
+        // This method is called from CraftsConstruct to ensure the class is loaded
     }
 
-    public static final BlockEntry<Block> WHITE_TEXTILE = REGISTRATE.block("white_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> WHITE_CHECKERED_TEXTILE = REGISTRATE.block("white_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIGHT_GRAY_TEXTILE = REGISTRATE.block("light_gray_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIGHT_GRAY_CHECKERED_TEXTILE = REGISTRATE.block("light_gray_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> GRAY_TEXTILE = REGISTRATE.block("gray_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> GRAY_CHECKERED_TEXTILE = REGISTRATE.block("gray_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BLACK_TEXTILE = REGISTRATE.block("black_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BLACK_CHECKERED_TEXTILE = REGISTRATE.block("black_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BROWN_TEXTILE = REGISTRATE.block("brown_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BROWN_CHECKERED_TEXTILE = REGISTRATE.block("brown_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> RED_TEXTILE = REGISTRATE.block("red_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> RED_CHECKERED_TEXTILE = REGISTRATE.block("red_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> ORANGE_TEXTILE = REGISTRATE.block("orange_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> ORANGE_CHECKERED_TEXTILE = REGISTRATE.block("orange_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> YELLOW_TEXTILE = REGISTRATE.block("yellow_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> YELLOW_CHECKERED_TEXTILE = REGISTRATE.block("yellow_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIME_TEXTILE = REGISTRATE.block("lime_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIME_CHECKERED_TEXTILE = REGISTRATE.block("lime_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> GREEN_TEXTILE = REGISTRATE.block("green_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> GREEN_CHECKERED_TEXTILE = REGISTRATE.block("green_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> CYAN_TEXTILE = REGISTRATE.block("cyan_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> CYAN_CHECKERED_TEXTILE = REGISTRATE.block("cyan_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIGHT_BLUE_TEXTILE = REGISTRATE.block("light_blue_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIGHT_BLUE_CHECKERED_TEXTILE = REGISTRATE.block("light_blue_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BLUE_TEXTILE = REGISTRATE.block("blue_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BLUE_CHECKERED_TEXTILE = REGISTRATE.block("blue_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> PURPLE_TEXTILE = REGISTRATE.block("purple_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> PURPLE_CHECKERED_TEXTILE = REGISTRATE.block("purple_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> MAGENTA_TEXTILE = REGISTRATE.block("magenta_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> MAGENTA_CHECKERED_TEXTILE = REGISTRATE.block("magenta_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> PINK_TEXTILE = REGISTRATE.block("pink_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> PINK_CHECKERED_TEXTILE = REGISTRATE.block("pink_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
+    public static final BlockEntry<Block> WHITE_TEXTILE = textile("white_textile_block");
+    public static final BlockEntry<Block> WHITE_CHECKERED_TEXTILE = textile("white_checkered_textile_block");
+    public static final BlockEntry<Block> LIGHT_GRAY_TEXTILE = textile("light_gray_textile_block");
+    public static final BlockEntry<Block> LIGHT_GRAY_CHECKERED_TEXTILE = textile("light_gray_checkered_textile_block");
+    public static final BlockEntry<Block> GRAY_TEXTILE = textile("gray_textile_block");
+    public static final BlockEntry<Block> GRAY_CHECKERED_TEXTILE = textile("gray_checkered_textile_block");
+    public static final BlockEntry<Block> BLACK_TEXTILE = textile("black_textile_block");
+    public static final BlockEntry<Block> BLACK_CHECKERED_TEXTILE = textile("black_checkered_textile_block");
+    public static final BlockEntry<Block> BROWN_TEXTILE = textile("brown_textile_block");
+    public static final BlockEntry<Block> BROWN_CHECKERED_TEXTILE = textile("brown_checkered_textile_block");
+    public static final BlockEntry<Block> RED_TEXTILE = textile("red_textile_block");
+    public static final BlockEntry<Block> RED_CHECKERED_TEXTILE = textile("red_checkered_textile_block");
+    public static final BlockEntry<Block> ORANGE_TEXTILE = textile("orange_textile_block");
+    public static final BlockEntry<Block> ORANGE_CHECKERED_TEXTILE = textile("orange_checkered_textile_block");
+    public static final BlockEntry<Block> YELLOW_TEXTILE = textile("yellow_textile_block");
+    public static final BlockEntry<Block> YELLOW_CHECKERED_TEXTILE = textile("yellow_checkered_textile_block");
+    public static final BlockEntry<Block> LIME_TEXTILE = textile("lime_textile_block");
+    public static final BlockEntry<Block> LIME_CHECKERED_TEXTILE = textile("lime_checkered_textile_block");
+    public static final BlockEntry<Block> GREEN_TEXTILE = textile("green_textile_block");
+    public static final BlockEntry<Block> GREEN_CHECKERED_TEXTILE = textile("green_checkered_textile_block");
+    public static final BlockEntry<Block> CYAN_TEXTILE = textile("cyan_textile_block");
+    public static final BlockEntry<Block> CYAN_CHECKERED_TEXTILE = textile("cyan_checkered_textile_block");
+    public static final BlockEntry<Block> LIGHT_BLUE_TEXTILE = textile("light_blue_textile_block");
+    public static final BlockEntry<Block> LIGHT_BLUE_CHECKERED_TEXTILE = textile("light_blue_checkered_textile_block");
+    public static final BlockEntry<Block> BLUE_TEXTILE = textile("blue_textile_block");
+    public static final BlockEntry<Block> BLUE_CHECKERED_TEXTILE = textile("blue_checkered_textile_block");
+    public static final BlockEntry<Block> PURPLE_TEXTILE = textile("purple_textile_block");
+    public static final BlockEntry<Block> PURPLE_CHECKERED_TEXTILE = textile("purple_checkered_textile_block");
+    public static final BlockEntry<Block> MAGENTA_TEXTILE = textile("magenta_textile_block");
+    public static final BlockEntry<Block> MAGENTA_CHECKERED_TEXTILE = textile("magenta_checkered_textile_block");
+    public static final BlockEntry<Block> PINK_TEXTILE = textile("pink_textile_block");
+    public static final BlockEntry<Block> PINK_CHECKERED_TEXTILE = textile("pink_checkered_textile_block");
 
     static {
-        PAINTED_FLUID_PIPES.add(ANDESITE_FLUID_PIPE);
-        PAINTED_FLUID_PIPES.add(BRASS_FLUID_PIPE);
-        PAINTED_FLUID_PIPES.add(TRAIN_FLUID_PIPE);
-        PAINTED_SMART_FLUID_PIPES.add(ANDESITE_SMART_FLUID_PIPE);
-        PAINTED_SMART_FLUID_PIPES.add(BRASS_SMART_FLUID_PIPE);
-        PAINTED_SMART_FLUID_PIPES.add(TRAIN_SMART_FLUID_PIPE);
-        PAINTED_MECHANICAL_PUMPS.add(ANDESITE_MECHANICAL_PUMP);
-        PAINTED_MECHANICAL_PUMPS.add(BRASS_MECHANICAL_PUMP);
-        PAINTED_MECHANICAL_PUMPS.add(TRAIN_MECHANICAL_PUMP);
-        PAINTED_FLUID_VALVES.add(ANDESITE_FLUID_VALVE);
-        PAINTED_FLUID_VALVES.add(BRASS_FLUID_VALVE);
-        PAINTED_FLUID_VALVES.add(TRAIN_FLUID_VALVE);
-        PAINTED_VALVE_HANDLES.add(ANDESITE_VALVE_HANDLE);
-        PAINTED_VALVE_HANDLES.add(BRASS_VALVE_HANDLE);
-        PAINTED_VALVE_HANDLES.add(TRAIN_VALVE_HANDLE);
-        PAINTED_FLUID_TANKS.add(ANDESITE_FLUID_TANK);
-        PAINTED_FLUID_TANKS.add(BRASS_FLUID_TANK);
-        PAINTED_FLUID_TANKS.add(TRAIN_FLUID_TANK);
-        PAINTED_HORIZONTAL_FLUID_TANKS.add(ANDESITE_HORIZONTAL_FLUID_TANK);
-        PAINTED_HORIZONTAL_FLUID_TANKS.add(BRASS_HORIZONTAL_FLUID_TANK);
-        PAINTED_HORIZONTAL_FLUID_TANKS.add(COPPER_HORIZONTAL_FLUID_TANK);
-        PAINTED_HORIZONTAL_FLUID_TANKS.add(TRAIN_HORIZONTAL_FLUID_TANK);
-        PAINTED_SPOUTS.add(ANDESITE_SPOUT);
-        PAINTED_SPOUTS.add(BRASS_SPOUT);
-        PAINTED_SPOUTS.add(TRAIN_SPOUT);
-        PAINTED_HOSE_PULLEYS.add(ANDESITE_HOSE_PULLEY);
-        PAINTED_HOSE_PULLEYS.add(BRASS_HOSE_PULLEY);
-        PAINTED_HOSE_PULLEYS.add(TRAIN_HOSE_PULLEY);
-        PAINTED_ITEM_DRAINS.add(ANDESITE_ITEM_DRAIN);
-        PAINTED_ITEM_DRAINS.add(BRASS_ITEM_DRAIN);
-        PAINTED_ITEM_DRAINS.add(TRAIN_ITEM_DRAIN);
-        PAINTED_PORTABLE_FLUID_INTERFACES.add(ANDESITE_PORTABLE_FLUID_INTERFACE);
-        PAINTED_PORTABLE_FLUID_INTERFACES.add(BRASS_PORTABLE_FLUID_INTERFACE);
-        PAINTED_PORTABLE_FLUID_INTERFACES.add(TRAIN_PORTABLE_FLUID_INTERFACE);
-        PAINTED_STEAM_ENGINES.add(ANDESITE_STEAM_ENGINE);
-        PAINTED_STEAM_ENGINES.add(BRASS_STEAM_ENGINE);
-        PAINTED_STEAM_ENGINES.add(TRAIN_STEAM_ENGINE);
-        PAINTED_STEAM_WHISTLES.add(ANDESITE_STEAM_WHISTLE);
-        PAINTED_STEAM_WHISTLES.add(BRASS_STEAM_WHISTLE);
-        PAINTED_STEAM_WHISTLES.add(TRAIN_STEAM_WHISTLE);
+        addAll(PAINTED_FLUID_PIPES, ANDESITE_FLUID_PIPE, BRASS_FLUID_PIPE, TRAIN_FLUID_PIPE);
+        addAll(PAINTED_SMART_FLUID_PIPES, ANDESITE_SMART_FLUID_PIPE, BRASS_SMART_FLUID_PIPE, TRAIN_SMART_FLUID_PIPE);
+        addAll(PAINTED_MECHANICAL_PUMPS, ANDESITE_MECHANICAL_PUMP, BRASS_MECHANICAL_PUMP, TRAIN_MECHANICAL_PUMP);
+        addAll(PAINTED_FLUID_VALVES, ANDESITE_FLUID_VALVE, BRASS_FLUID_VALVE, TRAIN_FLUID_VALVE);
+        addAll(PAINTED_VALVE_HANDLES, ANDESITE_VALVE_HANDLE, BRASS_VALVE_HANDLE, TRAIN_VALVE_HANDLE);
+        addAll(PAINTED_FLUID_TANKS, ANDESITE_FLUID_TANK, BRASS_FLUID_TANK, TRAIN_FLUID_TANK);
+        addAll(PAINTED_HORIZONTAL_FLUID_TANKS, ANDESITE_HORIZONTAL_FLUID_TANK, BRASS_HORIZONTAL_FLUID_TANK, COPPER_HORIZONTAL_FLUID_TANK, TRAIN_HORIZONTAL_FLUID_TANK);
+        addAll(PAINTED_SPOUTS, ANDESITE_SPOUT, BRASS_SPOUT, TRAIN_SPOUT);
+        addAll(PAINTED_HOSE_PULLEYS, ANDESITE_HOSE_PULLEY, BRASS_HOSE_PULLEY, TRAIN_HOSE_PULLEY);
+        addAll(PAINTED_ITEM_DRAINS, ANDESITE_ITEM_DRAIN, BRASS_ITEM_DRAIN, TRAIN_ITEM_DRAIN);
+        addAll(PAINTED_PORTABLE_FLUID_INTERFACES, ANDESITE_PORTABLE_FLUID_INTERFACE, BRASS_PORTABLE_FLUID_INTERFACE, TRAIN_PORTABLE_FLUID_INTERFACE);
+        addAll(PAINTED_STEAM_ENGINES, ANDESITE_STEAM_ENGINE, BRASS_STEAM_ENGINE, TRAIN_STEAM_ENGINE);
+        addAll(PAINTED_STEAM_WHISTLES, ANDESITE_STEAM_WHISTLE, BRASS_STEAM_WHISTLE, TRAIN_STEAM_WHISTLE);
+    }
+
+    private static BlockEntry<Block> textile(String name) {
+        return REGISTRATE.block(name, Block::new)
+                .initialProperties(() -> Blocks.WHITE_WOOL)
+                .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+                .item()
+                .build()
+                .register();
+    }
+
+    @SafeVarargs
+    private static void addAll(List<BlockEntry<? extends Block>> target, BlockEntry<? extends Block>... blocks) {
+        target.addAll(List.of(blocks));
     }
 
     private static Block createBlock(String target) {

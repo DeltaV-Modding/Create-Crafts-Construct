@@ -2,16 +2,16 @@ package net.deltav.block.create.fluid.train;
 
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
-import net.deltav.registry.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 public class TrainHorizontalFluidTankBlockEntity extends FluidTankBlockEntity {
-    public TrainHorizontalFluidTankBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK.get(), pos, state);
+    public TrainHorizontalFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     public IFluidHandler getFluidHandler() {

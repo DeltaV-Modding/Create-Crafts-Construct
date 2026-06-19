@@ -1,21 +1,11 @@
 package net.deltav.block.create.fluid;
 
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.CreateClient;
-import com.simibubi.create.content.fluids.hosePulley.HosePulleyRenderer;
-import com.simibubi.create.content.fluids.pump.PumpRenderer;
-import com.simibubi.create.content.fluids.spout.SpoutRenderer;
-import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
-import com.simibubi.create.content.contraptions.pulley.HosePulleyVisual;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
-
-import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
-
-import net.deltav.craftsconstruct;
-import net.deltav.registry.ModBlockEntityTypes;
+import net.deltav.CraftsConstruct;
 import net.deltav.registry.ModBlocks;
 import net.deltav.block.create.fluid.andesite.*;
 import net.deltav.block.create.fluid.brass.*;
@@ -26,38 +16,19 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import com.tterrag.registrate.util.entry.BlockEntry;
+
+import java.util.List;
 
 public final class FluidClient {
     private FluidClient() {
     }
 
-    public static void registerVisualizers() {
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.ANDESITE_MECHANICAL_PUMP.get()).factory(SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG)).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.BRASS_MECHANICAL_PUMP.get()).factory(SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG)).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.TRAIN_MECHANICAL_PUMP.get()).factory(SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG)).skipVanillaRender(be -> true).apply();
-
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.ANDESITE_FLUID_VALVE.get()).factory(AndesiteFluidValveVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.BRASS_FLUID_VALVE.get()).factory(BrassFluidValveVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.TRAIN_FLUID_VALVE.get()).factory(TrainFluidValveVisual::new).skipVanillaRender(be -> true).apply();
-
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.ANDESITE_HOSE_PULLEY.get()).factory(HosePulleyVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.BRASS_HOSE_PULLEY.get()).factory(HosePulleyVisual::new).skipVanillaRender(be -> true).apply();
-        SimpleBlockEntityVisualizer.builder(ModBlockEntityTypes.TRAIN_HOSE_PULLEY.get()).factory(HosePulleyVisual::new).skipVanillaRender(be -> true).apply();
-    }
-
     public static void registerRenderLayers() {
-        for (var block : ModBlocks.PAINTED_SPOUTS) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
-        }
-        for (var block : ModBlocks.PAINTED_FLUID_VALVES) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
-        }
-        for (var block : ModBlocks.PAINTED_FLUID_TANKS) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
-        }
-        for (var block : ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS) {
-            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
-        }
+        setCutoutLayer(ModBlocks.PAINTED_SPOUTS);
+        setCutoutLayer(ModBlocks.PAINTED_FLUID_VALVES);
+        setCutoutLayer(ModBlocks.PAINTED_FLUID_TANKS);
+        setCutoutLayer(ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS);
     }
 
     public static void registerModelSwappers() {
@@ -65,18 +36,18 @@ public final class FluidClient {
             String path = block.getId().getPath();
             CTSpriteShiftEntry sideShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path + "_connected")
+                    modBlockTexture(path + "/" + path),
+                    modBlockTexture(path + "/" + path + "_connected")
             );
             CTSpriteShiftEntry topShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path + "_top"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path + "_top_connected")
+                    modBlockTexture(path + "/" + path + "_top"),
+                    modBlockTexture(path + "/" + path + "_top_connected")
             );
             CTSpriteShiftEntry innerShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path + "_inner"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path + "/" + path + "_inner_connected")
+                    modBlockTexture(path + "/" + path + "_inner"),
+                    modBlockTexture(path + "/" + path + "_inner_connected")
             );
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
@@ -115,7 +86,7 @@ public final class FluidClient {
                 innerPath = "block/fluid_tank_inner";
                 innerConnectedPath = "block/fluid_tank_inner_connected";
             } else {
-                namespace = craftsconstruct.MOD_ID;
+                namespace = CraftsConstruct.MOD_ID;
                 texturePath = "block/" + baseTankPath + "/" + baseTankPath;
                 connectedPath = "block/" + baseTankPath + "/" + baseTankPath + "_connected";
                 topPath = "block/" + baseTankPath + "/" + baseTankPath + "_top";
@@ -126,18 +97,18 @@ public final class FluidClient {
 
             CTSpriteShiftEntry sideShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(namespace, texturePath),
-                    ResourceLocation.fromNamespaceAndPath(namespace, connectedPath)
+                    texture(namespace, texturePath),
+                    texture(namespace, connectedPath)
             );
             CTSpriteShiftEntry topShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(namespace, topPath),
-                    ResourceLocation.fromNamespaceAndPath(namespace, topConnectedPath)
+                    texture(namespace, topPath),
+                    texture(namespace, topConnectedPath)
             );
             CTSpriteShiftEntry innerShift = CTSpriteShifter.getCT(
                     AllCTTypes.RECTANGLE,
-                    ResourceLocation.fromNamespaceAndPath(namespace, innerPath),
-                    ResourceLocation.fromNamespaceAndPath(namespace, innerConnectedPath)
+                    texture(namespace, innerPath),
+                    texture(namespace, innerConnectedPath)
             );
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
@@ -160,30 +131,19 @@ public final class FluidClient {
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(AllBlockEntityTypes.FLUID_TANK.get(), AndesiteFluidTankRenderer::new);
-        
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_MECHANICAL_PUMP.get(), PumpRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_MECHANICAL_PUMP.get(), PumpRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_MECHANICAL_PUMP.get(), PumpRenderer::new);
+    }
 
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_FLUID_VALVE.get(), AndesiteFluidValveRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_FLUID_VALVE.get(), BrassFluidValveRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_FLUID_VALVE.get(), TrainFluidValveRenderer::new);
+    private static void setCutoutLayer(List<BlockEntry<? extends Block>> blocks) {
+        for (var block : blocks) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+    }
 
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_FLUID_TANK.get(), AndesiteFluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_FLUID_TANK.get(), BrassFluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_FLUID_TANK.get(), TrainFluidTankRenderer::new);
+    private static ResourceLocation modBlockTexture(String path) {
+        return texture(CraftsConstruct.MOD_ID, "block/" + path);
+    }
 
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_HORIZONTAL_FLUID_TANK.get(), AndesiteFluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_HORIZONTAL_FLUID_TANK.get(), BrassFluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.COPPER_HORIZONTAL_FLUID_TANK.get(), com.simibubi.create.content.fluids.tank.FluidTankRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK.get(), TrainFluidTankRenderer::new);
-
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_SPOUT.get(), AndesiteSpoutRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_SPOUT.get(), BrassSpoutRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_SPOUT.get(), TrainSpoutRenderer::new);
-
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_HOSE_PULLEY.get(), HosePulleyRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_HOSE_PULLEY.get(), HosePulleyRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_HOSE_PULLEY.get(), HosePulleyRenderer::new);
+    private static ResourceLocation texture(String namespace, String path) {
+        return ResourceLocation.fromNamespaceAndPath(namespace, path);
     }
 }

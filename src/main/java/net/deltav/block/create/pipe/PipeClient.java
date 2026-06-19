@@ -3,14 +3,9 @@ package net.deltav.block.create.pipe;
 import com.simibubi.create.CreateClient;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.foundation.model.BakedQuadHelper;
-import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
 
-import net.deltav.craftsconstruct;
-import net.deltav.registry.ModBlockEntityTypes;
+import net.deltav.CraftsConstruct;
 import net.deltav.registry.ModBlocks;
-import net.deltav.block.create.pipe.andesite.*;
-import net.deltav.block.create.pipe.brass.*;
-import net.deltav.block.create.pipe.train.*;
 import net.createmod.catnip.render.SpriteShiftEntry;
 import net.createmod.catnip.render.SpriteShifter;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -22,7 +17,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.model.BakedModelWrapper;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -48,35 +42,25 @@ public final class PipeClient {
         registerPipeModels(ModBlocks.PAINTED_SMART_FLUID_PIPES);
     }
 
-    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get(), SmartBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_SMART_FLUID_PIPE.get(), SmartBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_SMART_FLUID_PIPE.get(), SmartBlockEntityRenderer::new);
-
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.ANDESITE_FLUID_PIPE.get(), AndesiteGlassPipeRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.BRASS_FLUID_PIPE.get(), BrassGlassPipeRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntityTypes.TRAIN_FLUID_PIPE.get(), TrainGlassPipeRenderer::new);
-    }
-
     private static void registerPipeModels(List<BlockEntry<? extends Block>> blocks) {
         for (var block : blocks) {
 
             String path = block.getId().getPath();
-            String material = path.split("_")[0];
+            String material = path.substring(0, path.indexOf('_'));
             String targetPrefix = "block/" + material + "_fluid_pipe/" + material + "_fluid_pipe";
 
             SpriteShiftEntry pipeShift = SpriteShifter.get(
-                    ResourceLocation.fromNamespaceAndPath("create", "block/pipes"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, targetPrefix)
+                    createBlockTexture("pipes"),
+                    modTexture(targetPrefix)
             );
             SpriteShiftEntry pipeConnectedShift = SpriteShifter.get(
-                    ResourceLocation.fromNamespaceAndPath("create", "block/pipes_connected"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, targetPrefix + "_connected")
+                    createBlockTexture("pipes_connected"),
+                    modTexture(targetPrefix + "_connected")
             );
 
             SpriteShiftEntry glassPipeShift = SpriteShifter.get(
-                    ResourceLocation.fromNamespaceAndPath("create", "block/glass_fluid_pipe"),
-                    ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe")
+                    createBlockTexture("glass_fluid_pipe"),
+                    modTexture("block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe")
             );
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
@@ -88,6 +72,14 @@ public final class PipeClient {
                     bakedModel -> new SpriteShiftingBakedModel(bakedModel, pipeShift, pipeConnectedShift, glassPipeShift)
             );
         }
+    }
+
+    private static ResourceLocation createBlockTexture(String path) {
+        return ResourceLocation.fromNamespaceAndPath("create", "block/" + path);
+    }
+
+    private static ResourceLocation modTexture(String path) {
+        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, path);
     }
 
     private static class SpriteShiftingBakedModel extends BakedModelWrapper<BakedModel> {

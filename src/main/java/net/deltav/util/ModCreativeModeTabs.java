@@ -1,6 +1,6 @@
 package net.deltav.util;
 
-import net.deltav.craftsconstruct;
+import net.deltav.CraftsConstruct;
 import net.deltav.registry.ModItems;
 import net.deltav.registry.ModBlocks;
 import net.minecraft.core.registries.Registries;
@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, craftsconstruct.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CraftsConstruct.MOD_ID);
 
     public static final Supplier<CreativeModeTab> CC_TAB = CREATIVE_MODE_TAB.register("cc_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.RAINBOW_GUMMY_BEAR.get()))
