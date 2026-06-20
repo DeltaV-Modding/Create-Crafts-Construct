@@ -1,7 +1,7 @@
 package net.deltav.registry;
 
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.HashMap;
@@ -103,6 +103,6 @@ public class ModPartialModels {
     }
 
     private static ResourceLocation blockResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, "block/" + path);
+        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path);
     }
 }

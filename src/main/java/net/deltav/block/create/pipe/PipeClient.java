@@ -4,7 +4,7 @@ import com.simibubi.create.CreateClient;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.foundation.model.BakedQuadHelper;
 
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.deltav.registry.ModBlocks;
 import net.createmod.catnip.render.SpriteShiftEntry;
 import net.createmod.catnip.render.SpriteShifter;
@@ -39,6 +39,7 @@ public final class PipeClient {
 
     public static void registerModelSwappers() {
         registerPipeModels(ModBlocks.PAINTED_FLUID_PIPES);
+        registerPipeModels(ModBlocks.PAINTED_GLASS_PIPES);
         registerPipeModels(ModBlocks.PAINTED_SMART_FLUID_PIPES);
     }
 
@@ -79,7 +80,7 @@ public final class PipeClient {
     }
 
     private static ResourceLocation modTexture(String path) {
-        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, path);
     }
 
     private static class SpriteShiftingBakedModel extends BakedModelWrapper<BakedModel> {

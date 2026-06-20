@@ -5,7 +5,7 @@ import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.deltav.registry.ModBlocks;
 import net.deltav.block.create.fluid.andesite.*;
 import net.deltav.block.create.fluid.brass.*;
@@ -86,7 +86,7 @@ public final class FluidClient {
                 innerPath = "block/fluid_tank_inner";
                 innerConnectedPath = "block/fluid_tank_inner_connected";
             } else {
-                namespace = CraftsConstruct.MOD_ID;
+                namespace = craftsconstruct.MOD_ID;
                 texturePath = "block/" + baseTankPath + "/" + baseTankPath;
                 connectedPath = "block/" + baseTankPath + "/" + baseTankPath + "_connected";
                 topPath = "block/" + baseTankPath + "/" + baseTankPath + "_top";
@@ -140,7 +140,7 @@ public final class FluidClient {
     }
 
     private static ResourceLocation modBlockTexture(String path) {
-        return texture(CraftsConstruct.MOD_ID, "block/" + path);
+        return texture(craftsconstruct.MOD_ID, "block/" + path);
     }
 
     private static ResourceLocation texture(String namespace, String path) {

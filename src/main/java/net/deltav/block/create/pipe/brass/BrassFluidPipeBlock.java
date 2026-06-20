@@ -1,5 +1,9 @@
 package net.deltav.block.create.pipe.brass;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock;
+import com.simibubi.create.foundation.advancement.AllAdvancements;
+import net.createmod.catnip.data.Iterate;
 import net.deltav.block.create.fluid.brass.*;
 import net.deltav.block.create.kinetic.brass.*;
 import net.deltav.block.create.pipe.brass.*;
@@ -9,11 +13,13 @@ import com.simibubi.create.content.fluids.FluidPropagator;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
+import net.deltav.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -41,6 +47,11 @@ public class BrassFluidPipeBlock extends FluidPipeBlock {
         this.registerDefaultState(this.defaultBlockState()
                 .setValue(GLASS, false)
                 .setValue(AXIS, Direction.Axis.Y));
+    }
+
+    @Nullable
+    private Direction.Axis getAxis(BlockGetter world, BlockPos pos, BlockState state) {
+        return FluidPropagator.getStraightPipeAxis(state);
     }
 
     @Override
@@ -76,33 +87,13 @@ public class BrassFluidPipeBlock extends FluidPipeBlock {
         BlockPos pos = context.getClickedPos();
         Direction clickedFace = context.getClickedFace();
 
-        if (state.getValue(GLASS)) {
-            if (world.isClientSide)
-                return InteractionResult.SUCCESS;
-
-            FluidTransportBehaviour.cacheFlows(world, pos);
-
-            BlockState newState = this.defaultBlockState()
-                    .setValue(GLASS, false)
-                    .setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED));
-
-            Direction.Axis axis = state.getValue(AXIS);
-            Direction side = Direction.get(Direction.AxisDirection.POSITIVE, axis);
-            newState = updateBlockState(newState.setValue(PROPERTY_BY_DIRECTION.get(side), true)
-                    .setValue(PROPERTY_BY_DIRECTION.get(side.getOpposite()), true), side, null, world, pos);
-
-            world.setBlockAndUpdate(pos, newState);
-            FluidTransportBehaviour.loadFlows(world, pos);
-            return InteractionResult.SUCCESS;
-        }
-
-        Direction.Axis axis = FluidPropagator.getStraightPipeAxis(state);
+        Direction.Axis axis = getAxis(world, pos, state);
         if (axis == null) {
             Vec3 clickLocation = context.getClickLocation()
                     .subtract(pos.getX(), pos.getY(), pos.getZ());
             double closest = Float.MAX_VALUE;
             Direction argClosest = Direction.UP;
-            for (Direction direction : net.createmod.catnip.data.Iterate.directions) {
+            for (Direction direction : Iterate.directions) {
                 if (clickedFace.getAxis() == direction.getAxis())
                     continue;
                 Vec3 centerOf = Vec3.atCenterOf(direction.getNormal());
@@ -114,29 +105,19 @@ public class BrassFluidPipeBlock extends FluidPipeBlock {
             }
             axis = argClosest.getAxis();
         }
-
         if (clickedFace.getAxis() == axis)
             return InteractionResult.PASS;
-
         if (!world.isClientSide) {
             withBlockEntityDo(world, pos, fpte -> fpte.getBehaviour(FluidTransportBehaviour.TYPE).interfaces.values()
                     .stream()
                     .filter(pc -> pc != null && pc.hasFlow())
                     .findAny()
-                    .ifPresent($ -> com.simibubi.create.foundation.advancement.AllAdvancements.GLASS_PIPE.awardTo(context.getPlayer())));
+                    .ifPresent($ -> AllAdvancements.GLASS_PIPE.awardTo(context.getPlayer())));
 
             FluidTransportBehaviour.cacheFlows(world, pos);
-
-            BlockState newState = this.defaultBlockState()
-                    .setValue(GLASS, true)
-                    .setValue(AXIS, axis)
-                    .setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED));
-
-            for (Direction d : net.createmod.catnip.data.Iterate.directions) {
-                newState = newState.setValue(PROPERTY_BY_DIRECTION.get(d), d.getAxis() == axis);
-            }
-
-            world.setBlockAndUpdate(pos, newState);
+            world.setBlockAndUpdate(pos, ModBlocks.BRASS_FLUID_PIPE.getDefaultState()
+                    .setValue(GlassFluidPipeBlock.AXIS, axis)
+                    .setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED)));
             FluidTransportBehaviour.loadFlows(world, pos);
         }
         return InteractionResult.SUCCESS;

@@ -7,7 +7,7 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.util.entry.FluidEntry;
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer.FogMode;
@@ -34,7 +34,7 @@ public class ModFluids {
             () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF();
 
     private static ResourceLocation modResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, path);
     }
 
     public static final FluidEntry<BaseFlowingFluid.Flowing> GREEN_JELLY =
@@ -49,7 +49,7 @@ public class ModFluids {
             jelly("blue_jelly", "Blue Jelly", 0x54ACC9);
 
     private static FluidEntry<BaseFlowingFluid.Flowing> jelly(String name, String lang, int fogColor) {
-        return CraftsConstruct.registrate()
+        return craftsconstruct.registrate()
                 .standardFluid(name,
                         SolidRenderedFluidType.create(
                                 fogColor,

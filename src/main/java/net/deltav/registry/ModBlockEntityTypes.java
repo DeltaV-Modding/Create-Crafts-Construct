@@ -1,11 +1,15 @@
 package net.deltav.registry;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.actors.psi.PSIVisual;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceRenderer;
 import com.simibubi.create.content.contraptions.pulley.HosePulleyVisual;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleRenderer;
 import com.simibubi.create.content.fluids.hosePulley.HosePulleyRenderer;
+import com.simibubi.create.content.fluids.pipes.GlassPipeVisual;
+import com.simibubi.create.content.fluids.pipes.StraightPipeBlockEntity;
+import com.simibubi.create.content.fluids.pipes.TransparentStraightPipeRenderer;
 import com.simibubi.create.content.fluids.pump.PumpRenderer;
 import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
@@ -31,28 +35,27 @@ import net.deltav.block.create.portableInterface.andesite.AndesitePortableFluidI
 import net.deltav.block.create.portableInterface.brass.BrassPortableFluidInterfaceBlockEntity;
 import net.deltav.block.create.portableInterface.train.TrainPortableFluidInterfaceBlockEntity;
 
-import static net.deltav.CraftsConstruct.REGISTRATE;
+import static net.deltav.craftsconstruct.REGISTRATE;
 
 public class ModBlockEntityTypes {
     public static final BlockEntityEntry<AndesiteFluidPipeBlockEntity> ANDESITE_FLUID_PIPE = REGISTRATE
             .blockEntity("andesite_fluid_pipe", AndesiteFluidPipeBlockEntity::new)
-            .visual(() -> AndesiteGlassPipeVisual::new, false)
             .validBlocks(ModBlocks.ANDESITE_FLUID_PIPE)
-            .renderer(() -> AndesiteGlassPipeRenderer::new)
             .register();
     public static final BlockEntityEntry<BrassFluidPipeBlockEntity> BRASS_FLUID_PIPE = REGISTRATE
             .blockEntity("brass_fluid_pipe", BrassFluidPipeBlockEntity::new)
-            .visual(() -> BrassGlassPipeVisual::new, false)
-            .validBlocks(ModBlocks.BRASS_FLUID_PIPE)
-            .renderer(() -> BrassGlassPipeRenderer::new)
+            .validBlocks(ModBlocks.ANDESITE_FLUID_PIPE)
             .register();
     public static final BlockEntityEntry<TrainFluidPipeBlockEntity> TRAIN_FLUID_PIPE = REGISTRATE
             .blockEntity("train_fluid_pipe", TrainFluidPipeBlockEntity::new)
-            .visual(() -> TrainGlassPipeVisual::new, false)
             .validBlocks(ModBlocks.TRAIN_FLUID_PIPE)
-            .renderer(() -> TrainGlassPipeRenderer::new)
             .register();
-
+    public static final BlockEntityEntry<StraightPipeBlockEntity> ANDESITE_GLASS_PIPE = REGISTRATE
+            .blockEntity("andesite_glass_pipe", StraightPipeBlockEntity::new)
+            .visual(() -> GlassPipeVisual::new, false)
+            .validBlocks(ModBlocks.ANDESITE_GLASS_PIPE)
+            .renderer(() -> TransparentStraightPipeRenderer::new)
+            .register();
     public static final BlockEntityEntry<AndesiteSmartFluidPipeBlockEntity> ANDESITE_SMART_FLUID_PIPE = REGISTRATE
             .blockEntity("andesite_smart_fluid_pipe", AndesiteSmartFluidPipeBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_SMART_FLUID_PIPE)
@@ -106,7 +109,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_FLUID_VALVE)
             .renderer(() -> TrainFluidValveRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteFluidTankBlockEntity> ANDESITE_FLUID_TANK = REGISTRATE
             .blockEntity("andesite_fluid_tank", AndesiteFluidTankBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_FLUID_TANK)
@@ -122,7 +124,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_FLUID_TANK)
             .renderer(() -> TrainFluidTankRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteHorizontalFluidTankBlockEntity> ANDESITE_HORIZONTAL_FLUID_TANK = REGISTRATE
             .blockEntity("andesite_horizontal_fluid_tank", AndesiteHorizontalFluidTankBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_HORIZONTAL_FLUID_TANK)
@@ -143,7 +144,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_HORIZONTAL_FLUID_TANK)
             .renderer(() -> TrainFluidTankRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteSpoutBlockEntity> ANDESITE_SPOUT = REGISTRATE
             .blockEntity("andesite_spout", AndesiteSpoutBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_SPOUT)
@@ -159,7 +159,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_SPOUT)
             .renderer(() -> TrainSpoutRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteHosePulleyBlockEntity> ANDESITE_HOSE_PULLEY = REGISTRATE
             .blockEntity("andesite_hose_pulley", AndesiteHosePulleyBlockEntity::new)
             .visual(() -> HosePulleyVisual::new)
@@ -178,7 +177,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_HOSE_PULLEY)
             .renderer(() -> HosePulleyRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteItemDrainBlockEntity> ANDESITE_ITEM_DRAIN = REGISTRATE
             .blockEntity("andesite_item_drain", AndesiteItemDrainBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_ITEM_DRAIN)
@@ -194,7 +192,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_ITEM_DRAIN)
             .renderer(() -> TrainItemDrainRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesitePortableFluidInterfaceBlockEntity> ANDESITE_PORTABLE_FLUID_INTERFACE = REGISTRATE
             .blockEntity("andesite_portable_fluid_interface", AndesitePortableFluidInterfaceBlockEntity::new)
             .visual(() -> PSIVisual::new)
@@ -213,7 +210,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_PORTABLE_FLUID_INTERFACE)
             .renderer(() -> PortableStorageInterfaceRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteSteamEngineBlockEntity> ANDESITE_STEAM_ENGINE = REGISTRATE
             .blockEntity("andesite_steam_engine", AndesiteSteamEngineBlockEntity::new)
             .visual(() -> AndesiteSteamEngineVisual::new, false)
@@ -232,7 +228,6 @@ public class ModBlockEntityTypes {
             .validBlocks(ModBlocks.TRAIN_STEAM_ENGINE)
             .renderer(() -> TrainSteamEngineRenderer::new)
             .register();
-
     public static final BlockEntityEntry<AndesiteSteamWhistleBlockEntity> ANDESITE_STEAM_WHISTLE = REGISTRATE
             .blockEntity("andesite_steam_whistle", AndesiteSteamWhistleBlockEntity::new)
             .validBlocks(ModBlocks.ANDESITE_STEAM_WHISTLE)

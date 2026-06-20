@@ -1,7 +1,7 @@
 package net.deltav.data;
 
 import net.deltav.block.SugarBeetCropBlock;
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.deltav.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, CraftsConstruct.MOD_ID, exFileHelper);
+        super(output, craftsconstruct.MOD_ID, exFileHelper);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
         models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()),
-                ResourceLocation.fromNamespaceAndPath(CraftsConstruct.MOD_ID, "block/sugar_beets/" + textureName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()))).renderType("cutout"));
+                ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/sugar_beets/" + textureName + state.getValue(((SugarBeetCropBlock) block).getAgeProperty()))).renderType("cutout"));
 
         return models;
     }

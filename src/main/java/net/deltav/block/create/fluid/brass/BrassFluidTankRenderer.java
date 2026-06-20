@@ -1,10 +1,5 @@
 package net.deltav.block.create.fluid.brass;
 
-import net.deltav.block.create.fluid.brass.*;
-import net.deltav.block.create.kinetic.brass.*;
-import net.deltav.block.create.pipe.brass.*;
-import net.deltav.block.create.portableInterface.brass.*;
-import net.deltav.block.create.drain.brass.*;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
@@ -13,7 +8,7 @@ import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import dev.engine_room.flywheel.lib.transform.TransformStack;
 
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.render.CachedBuffers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -93,7 +88,7 @@ public class BrassFluidTankRenderer extends FluidTankRenderer {
 
     private static boolean isPaintedTank(BlockState state) {
         ResourceLocation id = state.getBlock().builtInRegistryHolder().key().location();
-        return CraftsConstruct.MOD_ID.equals(id.getNamespace()) && id.getPath().endsWith("_fluid_tank");
+        return craftsconstruct.MOD_ID.equals(id.getNamespace()) && id.getPath().endsWith("_fluid_tank");
     }
 
     private static Partials getPartials(BlockState state) {

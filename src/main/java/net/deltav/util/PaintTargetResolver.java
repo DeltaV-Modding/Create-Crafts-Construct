@@ -1,6 +1,6 @@
 package net.deltav.util;
 
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -14,9 +14,9 @@ import java.util.Set;
 
 public class PaintTargetResolver {
     private static final ResourceLocation CREATE_ITEM_DRAIN = id("create", "item_drain");
-    private static final ResourceLocation BRASS_ITEM_DRAIN = id(CraftsConstruct.MOD_ID, "brass_item_drain");
-    private static final ResourceLocation ANDESITE_ITEM_DRAIN = id(CraftsConstruct.MOD_ID, "andesite_item_drain");
-    private static final ResourceLocation TRAIN_ITEM_DRAIN = id(CraftsConstruct.MOD_ID, "train_item_drain");
+    private static final ResourceLocation BRASS_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "brass_item_drain");
+    private static final ResourceLocation ANDESITE_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "andesite_item_drain");
+    private static final ResourceLocation TRAIN_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "train_item_drain");
 
     private static final Map<PaintMaterial, ResourceLocation> ITEM_DRAIN_TARGETS = Map.of(
             PaintMaterial.COPPER, CREATE_ITEM_DRAIN,
@@ -168,7 +168,7 @@ public class PaintTargetResolver {
             return specialTargets.get(material);
         }
 
-        if (CraftsConstruct.MOD_ID.equals(sourceId.getNamespace())) {
+        if (craftsconstruct.MOD_ID.equals(sourceId.getNamespace())) {
             String strippedPath = stripKnownMaterialPrefix(sourceId.getPath());
             if (strippedPath == null) {
                 return null;
@@ -224,7 +224,7 @@ public class PaintTargetResolver {
             return Optional.empty();
         }
 
-        ResourceLocation id = id(CraftsConstruct.MOD_ID, material.getSerializedName() + "_" + strippedPath);
+        ResourceLocation id = id(craftsconstruct.MOD_ID, material.getSerializedName() + "_" + strippedPath);
         return BuiltInRegistries.BLOCK.get(id) == Blocks.AIR ? Optional.empty() : Optional.of(id);
     }
 

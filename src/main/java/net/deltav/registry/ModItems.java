@@ -1,6 +1,6 @@
 package net.deltav.registry;
 
-import net.deltav.CraftsConstruct;
+import net.deltav.craftsconstruct;
 import net.deltav.item.DragonCharge;
 import net.deltav.item.FireballCharge;
 import net.deltav.item.PaintCartridgeItem;
@@ -13,7 +13,7 @@ import net.deltav.util.ModFood;
 import net.deltav.util.PaintMaterial;
 
 public class ModItems {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CraftsConstruct.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
 
     public static final DeferredItem<Item> RAW_DIAMOND = simpleItem("raw_diamond");
     public static final DeferredItem<Item> RAW_AMETHYST = simpleItem("raw_amethyst");
