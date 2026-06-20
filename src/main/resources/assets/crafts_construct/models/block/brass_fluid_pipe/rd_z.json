@@ -1,8 +1,37 @@
-﻿{
-    "textures":  {
-                     "particle":  "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe",
-                     "0":  "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe_connected"
-                 },
-    "parent":  "create:block/fluid_pipe/rd_z"
+{
+  "parent": "crafts_construct:block/brass_fluid_pipe/core_z",
+  "elements": [
+    {
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            8.0,
+            0.0,
+            12.0,
+            4.0
+          ]
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            12.0,
+            0.0,
+            8.0,
+            4.0
+          ]
+        }
+      },
+      "from": [
+        4,
+        4,
+        4
+      ],
+      "to": [
+        12,
+        12,
+        12
+      ]
+    }
+  ]
 }
-

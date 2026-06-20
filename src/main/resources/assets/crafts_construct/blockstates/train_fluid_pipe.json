@@ -8,8 +8,7 @@
         "down": "false",
         "north": "false",
         "south": "true",
-        "up": "true",
-        "glass": "false"
+        "up": "true"
       }
     },
     {
@@ -20,8 +19,7 @@
         "down": "false",
         "north": "true",
         "south": "false",
-        "up": "true",
-        "glass": "false"
+        "up": "true"
       }
     },
     {
@@ -32,8 +30,7 @@
         "down": "true",
         "north": "false",
         "south": "true",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -44,8 +41,7 @@
         "down": "true",
         "north": "true",
         "south": "false",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -56,8 +52,7 @@
         "down": "true",
         "north": "false",
         "south": "false",
-        "up": "true",
-        "glass": "false"
+        "up": "true"
       }
     },
     {
@@ -68,8 +63,7 @@
         "down": "false",
         "north": "false",
         "south": "false",
-        "up": "true",
-        "glass": "false"
+        "up": "true"
       }
     },
     {
@@ -80,8 +74,7 @@
         "down": "true",
         "north": "false",
         "south": "false",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -92,8 +85,7 @@
         "down": "false",
         "north": "true",
         "south": "true",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -104,8 +96,7 @@
         "down": "false",
         "north": "false",
         "south": "true",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -116,8 +107,7 @@
         "down": "false",
         "north": "true",
         "south": "false",
-        "up": "false",
-        "glass": "false"
+        "up": "false"
       }
     },
     {
@@ -128,8 +118,7 @@
         "east": "true",
         "north": "false",
         "south": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -140,8 +129,7 @@
         "east": "false",
         "north": "false",
         "south": "true",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -152,8 +140,7 @@
         "east": "true",
         "north": "true",
         "south": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -164,8 +151,7 @@
         "east": "false",
         "north": "true",
         "south": "false",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -176,8 +162,7 @@
         "east": "false",
         "north": "true",
         "south": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -188,8 +173,7 @@
         "east": "false",
         "north": "false",
         "south": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -200,8 +184,7 @@
         "east": "false",
         "north": "true",
         "south": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -212,8 +195,7 @@
         "east": "true",
         "north": "false",
         "south": "false",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -224,8 +206,7 @@
         "east": "true",
         "north": "false",
         "south": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -236,8 +217,7 @@
         "east": "false",
         "north": "false",
         "south": "false",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -248,8 +228,7 @@
         "down": "false",
         "east": "true",
         "up": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -260,8 +239,7 @@
         "down": "false",
         "east": "false",
         "up": "true",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -272,8 +250,7 @@
         "down": "true",
         "east": "true",
         "up": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -284,8 +261,7 @@
         "down": "true",
         "east": "false",
         "up": "false",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -296,8 +272,7 @@
         "down": "true",
         "east": "false",
         "up": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -308,8 +283,7 @@
         "down": "false",
         "east": "false",
         "up": "true",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -320,8 +294,7 @@
         "down": "true",
         "east": "false",
         "up": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -332,8 +305,7 @@
         "down": "false",
         "east": "true",
         "up": "false",
-        "west": "true",
-        "glass": "false"
+        "west": "true"
       }
     },
     {
@@ -344,8 +316,7 @@
         "down": "false",
         "east": "true",
         "up": "false",
-        "west": "false",
-        "glass": "false"
+        "west": "false"
       }
     },
     {
@@ -356,38 +327,7 @@
         "down": "false",
         "east": "false",
         "up": "false",
-        "west": "true",
-        "glass": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_fluid_pipe/window",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "glass": "true",
-        "axis": "x"
-      }
-    },
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_fluid_pipe/window"
-      },
-      "when": {
-        "glass": "true",
-        "axis": "y"
-      }
-    },
-    {
-      "apply": {
-        "model": "crafts_construct:block/train_fluid_pipe/window",
-        "x": 90
-      },
-      "when": {
-        "glass": "true",
-        "axis": "z"
+        "west": "true"
       }
     }
   ]

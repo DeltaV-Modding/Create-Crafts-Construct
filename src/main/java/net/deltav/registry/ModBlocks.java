@@ -87,18 +87,16 @@ public class ModBlocks {
             .register();
     public static final BlockEntry<BrassFluidPipeBlock> BRASS_FLUID_PIPE = REGISTRATE.block("brass_fluid_pipe", p -> new BrassFluidPipeBlock(p, () -> ModBlockEntityTypes.BRASS_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
-            .properties(p -> p.forceSolidOff())
             .transform(pickaxeOnly())
-            .blockstate(BlockStateGen.pipe())
+            .blockstate(CCBlockStateGen.pipeBrass())
             .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
             .item()
             .transform(customItemModel())
             .register();
     public static final BlockEntry<TrainFluidPipeBlock> TRAIN_FLUID_PIPE = REGISTRATE.block("train_fluid_pipe", p -> new TrainFluidPipeBlock(p, () -> ModBlockEntityTypes.TRAIN_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
-            .properties(p -> p.forceSolidOff())
             .transform(pickaxeOnly())
-            .blockstate(BlockStateGen.pipe())
+            .blockstate(CCBlockStateGen.pipeTrain())
             .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
             .item()
             .transform(customItemModel())
@@ -124,6 +122,50 @@ public class ModBlocks {
                     })
                     .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
                     .loot((p, b) -> p.dropOther(b, ANDESITE_FLUID_PIPE.get()))
+                    .register();
+    public static final BlockEntry<BrassGlassPipeBlock> BRASS_GLASS_PIPE =
+            REGISTRATE.block("brass_glass_pipe", p -> new BrassGlassPipeBlock(p))
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion())
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(pickaxeOnly())
+                    .blockstate((c, p) -> {
+                        p.getVariantBuilder(c.getEntry())
+                                .forAllStatesExcept(state -> {
+                                    Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+                                    return ConfiguredModel.builder()
+                                            .modelFile(p.models()
+                                                    .getExistingFile(p.modLoc("block/andesite_fluid_pipe/window")))
+                                            .uvLock(false)
+                                            .rotationX(axis == Direction.Axis.Y ? 0 : 90)
+                                            .rotationY(axis == Direction.Axis.X ? 90 : 0)
+                                            .build();
+                                }, BlockStateProperties.WATERLOGGED);
+                    })
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
+                    .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
+                    .register();
+    public static final BlockEntry<TrainGlassPipeBlock> TRAIN_GLASS_PIPE =
+            REGISTRATE.block("train_glass_pipe", p -> new TrainGlassPipeBlock(p))
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion())
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(pickaxeOnly())
+                    .blockstate((c, p) -> {
+                        p.getVariantBuilder(c.getEntry())
+                                .forAllStatesExcept(state -> {
+                                    Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+                                    return ConfiguredModel.builder()
+                                            .modelFile(p.models()
+                                                    .getExistingFile(p.modLoc("block/andesite_fluid_pipe/window")))
+                                            .uvLock(false)
+                                            .rotationX(axis == Direction.Axis.Y ? 0 : 90)
+                                            .rotationY(axis == Direction.Axis.X ? 90 : 0)
+                                            .build();
+                                }, BlockStateProperties.WATERLOGGED);
+                    })
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
+                    .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
                     .register();
     public static final BlockEntry<AndesiteSmartFluidPipeBlock> ANDESITE_SMART_FLUID_PIPE = REGISTRATE.block("andesite_smart_fluid_pipe", p -> new AndesiteSmartFluidPipeBlock(p, () -> ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
@@ -698,6 +740,8 @@ public class ModBlocks {
         PAINTED_FLUID_PIPES.add(BRASS_FLUID_PIPE);
         PAINTED_FLUID_PIPES.add(TRAIN_FLUID_PIPE);
         PAINTED_GLASS_PIPES.add(ANDESITE_GLASS_PIPE);
+        PAINTED_GLASS_PIPES.add(BRASS_GLASS_PIPE);
+        PAINTED_GLASS_PIPES.add(TRAIN_GLASS_PIPE);
         PAINTED_SMART_FLUID_PIPES.add(ANDESITE_SMART_FLUID_PIPE);
         PAINTED_SMART_FLUID_PIPES.add(BRASS_SMART_FLUID_PIPE);
         PAINTED_SMART_FLUID_PIPES.add(TRAIN_SMART_FLUID_PIPE);

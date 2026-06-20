@@ -44,7 +44,7 @@ public class ModBlockEntityTypes {
             .register();
     public static final BlockEntityEntry<BrassFluidPipeBlockEntity> BRASS_FLUID_PIPE = REGISTRATE
             .blockEntity("brass_fluid_pipe", BrassFluidPipeBlockEntity::new)
-            .validBlocks(ModBlocks.ANDESITE_FLUID_PIPE)
+            .validBlocks(ModBlocks.BRASS_FLUID_PIPE)
             .register();
     public static final BlockEntityEntry<TrainFluidPipeBlockEntity> TRAIN_FLUID_PIPE = REGISTRATE
             .blockEntity("train_fluid_pipe", TrainFluidPipeBlockEntity::new)
@@ -54,6 +54,18 @@ public class ModBlockEntityTypes {
             .blockEntity("andesite_glass_pipe", StraightPipeBlockEntity::new)
             .visual(() -> GlassPipeVisual::new, false)
             .validBlocks(ModBlocks.ANDESITE_GLASS_PIPE)
+            .renderer(() -> TransparentStraightPipeRenderer::new)
+            .register();
+    public static final BlockEntityEntry<StraightPipeBlockEntity> BRASS_GLASS_PIPE = REGISTRATE
+            .blockEntity("brass_glass_pipe", StraightPipeBlockEntity::new)
+            .visual(() -> GlassPipeVisual::new, false)
+            .validBlocks(ModBlocks.BRASS_GLASS_PIPE)
+            .renderer(() -> TransparentStraightPipeRenderer::new)
+            .register();
+    public static final BlockEntityEntry<StraightPipeBlockEntity> TRAIN_GLASS_PIPE = REGISTRATE
+            .blockEntity("train_glass_pipe", StraightPipeBlockEntity::new)
+            .visual(() -> GlassPipeVisual::new, false)
+            .validBlocks(ModBlocks.TRAIN_GLASS_PIPE)
             .renderer(() -> TransparentStraightPipeRenderer::new)
             .register();
     public static final BlockEntityEntry<AndesiteSmartFluidPipeBlockEntity> ANDESITE_SMART_FLUID_PIPE = REGISTRATE

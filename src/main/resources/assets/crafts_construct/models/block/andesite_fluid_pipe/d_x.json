@@ -1,8 +1,37 @@
 ﻿{
-    "textures":  {
-                     "particle":  "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe",
-                     "0":  "crafts_construct:block/andesite_fluid_pipe/andesite_fluid_pipe_connected"
-                 },
-    "parent":  "create:block/fluid_pipe/d_x"
+  "parent": "crafts_construct:block/andesite_fluid_pipe/core_x",
+  "elements": [
+    {
+      "faces": {
+        "east": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            4.0,
+            4.0
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            4.0,
+            0.0,
+            0.0,
+            4.0
+          ]
+        }
+      },
+      "from": [
+        4,
+        4,
+        4
+      ],
+      "to": [
+        12,
+        12,
+        12
+      ]
+    }
+  ]
 }
-

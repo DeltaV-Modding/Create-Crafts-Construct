@@ -1,0 +1,18 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "crafts_construct:block/train_fluid_pipe/train_pipes_connected",
+		"particle": "crafts_construct:block/train_fluid_tank/train_underside"
+	},
+	"elements": [
+		{
+			"name": "core_x",
+			"from": [4, 4, 4],
+			"to": [12, 12, 12],
+			"faces": {
+				"east": {"uv": [12, 8, 16, 12], "texture": "#0"},
+				"west": {"uv": [16, 8, 12, 12], "texture": "#0"}
+			}
+		}
+	]
+}

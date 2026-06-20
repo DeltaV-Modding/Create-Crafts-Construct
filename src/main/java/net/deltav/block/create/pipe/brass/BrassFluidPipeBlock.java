@@ -1,14 +1,7 @@
 package net.deltav.block.create.pipe.brass;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import net.createmod.catnip.data.Iterate;
-import net.deltav.block.create.fluid.brass.*;
-import net.deltav.block.create.kinetic.brass.*;
-import net.deltav.block.create.pipe.brass.*;
-import net.deltav.block.create.portableInterface.brass.*;
-import net.deltav.block.create.drain.brass.*;
 import com.simibubi.create.content.fluids.FluidPropagator;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
@@ -18,64 +11,30 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
 public class BrassFluidPipeBlock extends FluidPipeBlock {
-    public static final BooleanProperty GLASS = BooleanProperty.create("glass");
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
     private final Supplier<BlockEntityType<? extends FluidPipeBlockEntity>> blockEntityType;
 
     public BrassFluidPipeBlock(BlockBehaviour.Properties properties,
-                                 Supplier<BlockEntityType<? extends FluidPipeBlockEntity>> blockEntityType) {
+                                Supplier<BlockEntityType<? extends FluidPipeBlockEntity>> blockEntityType) {
         super(properties);
         this.blockEntityType = blockEntityType;
-        this.registerDefaultState(this.defaultBlockState()
-                .setValue(GLASS, false)
-                .setValue(AXIS, Direction.Axis.Y));
-    }
-
-    @Nullable
-    private Direction.Axis getAxis(BlockGetter world, BlockPos pos, BlockState state) {
-        return FluidPropagator.getStraightPipeAxis(state);
     }
 
     @Override
     public BlockEntityType<? extends FluidPipeBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(GLASS, AXIS);
-        super.createBlockStateDefinition(builder);
-    }
-
-    @Override
-    public BlockState updateBlockState(BlockState state, Direction preferredDirection, @Nullable Direction ignore,
-                                       BlockAndTintGetter world, BlockPos pos) {
-        if (state.getValue(GLASS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            for (Direction d : net.createmod.catnip.data.Iterate.directions) {
-                state = state.setValue(PROPERTY_BY_DIRECTION.get(d), d.getAxis() == axis);
-            }
-            return state;
-        }
-        return super.updateBlockState(state, preferredDirection, ignore, world, pos);
     }
 
     @Override
@@ -105,6 +64,7 @@ public class BrassFluidPipeBlock extends FluidPipeBlock {
             }
             axis = argClosest.getAxis();
         }
+
         if (clickedFace.getAxis() == axis)
             return InteractionResult.PASS;
         if (!world.isClientSide) {
@@ -115,11 +75,17 @@ public class BrassFluidPipeBlock extends FluidPipeBlock {
                     .ifPresent($ -> AllAdvancements.GLASS_PIPE.awardTo(context.getPlayer())));
 
             FluidTransportBehaviour.cacheFlows(world, pos);
-            world.setBlockAndUpdate(pos, ModBlocks.BRASS_FLUID_PIPE.getDefaultState()
-                    .setValue(GlassFluidPipeBlock.AXIS, axis)
+            world.setBlockAndUpdate(pos, ModBlocks.BRASS_GLASS_PIPE.getDefaultState()
+                    .setValue(BrassGlassPipeBlock.AXIS, axis)
                     .setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED)));
             FluidTransportBehaviour.loadFlows(world, pos);
         }
         return InteractionResult.SUCCESS;
+    }
+
+
+    @Nullable
+    private Direction.Axis getAxis(BlockGetter world, BlockPos pos, BlockState state) {
+        return FluidPropagator.getStraightPipeAxis(state);
     }
 }
