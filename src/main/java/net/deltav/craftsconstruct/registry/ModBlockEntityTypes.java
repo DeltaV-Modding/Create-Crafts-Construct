@@ -1,14 +1,13 @@
 package net.deltav.craftsconstruct.registry;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.actors.psi.PSIVisual;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceRenderer;
 import com.simibubi.create.content.contraptions.pulley.HosePulleyVisual;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleRenderer;
 import com.simibubi.create.content.fluids.hosePulley.HosePulleyRenderer;
-import com.simibubi.create.content.fluids.pipes.GlassPipeVisual;
-import com.simibubi.create.content.fluids.pipes.StraightPipeBlockEntity;
-import com.simibubi.create.content.fluids.pipes.TransparentStraightPipeRenderer;
+import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pump.PumpRenderer;
 import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
@@ -66,6 +65,18 @@ public class ModBlockEntityTypes {
             .visual(() -> GlassPipeVisual::new, false)
             .validBlocks(ModBlocks.TRAIN_GLASS_PIPE)
             .renderer(() -> TransparentStraightPipeRenderer::new)
+            .register();
+    public static final BlockEntityEntry<AndesiteFluidPipeBlockEntity> ANDESITE_ENCASED_PIPE = REGISTRATE
+            .blockEntity("andesite_encased_fluid_pipe", AndesiteFluidPipeBlockEntity::new)
+            .validBlocks(ModBlocks.ANDESITE_ENCASED_PIPE)
+            .register();
+    public static final BlockEntityEntry<BrassFluidPipeBlockEntity> BRASS_ENCASED_PIPE = REGISTRATE
+            .blockEntity("brass_encased_fluid_pipe", BrassFluidPipeBlockEntity::new)
+            .validBlocks(ModBlocks.BRASS_ENCASED_PIPE)
+            .register();
+    public static final BlockEntityEntry<TrainFluidPipeBlockEntity> TRAIN_ENCASED_PIPE = REGISTRATE
+            .blockEntity("train_encased_fluid_pipe", TrainFluidPipeBlockEntity::new)
+            .validBlocks(ModBlocks.TRAIN_ENCASED_PIPE)
             .register();
     public static final BlockEntityEntry<AndesiteSmartFluidPipeBlockEntity> ANDESITE_SMART_FLUID_PIPE = REGISTRATE
             .blockEntity("andesite_smart_fluid_pipe", AndesiteSmartFluidPipeBlockEntity::new)

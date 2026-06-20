@@ -1,23 +1,30 @@
 package net.deltav.craftsconstruct.block.create.pipe.andesite;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock;
 import com.simibubi.create.content.fluids.pipes.StraightPipeBlockEntity;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
+import com.simibubi.create.content.schematics.requirement.ItemRequirement;
 import net.deltav.craftsconstruct.registry.ModBlockEntityTypes;
 import net.deltav.craftsconstruct.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.HitResult;
 
 import java.util.Map;
 
@@ -56,4 +63,12 @@ public class AndesiteGlassPipeBlock extends GlassFluidPipeBlock {
         FluidTransportBehaviour.loadFlows(world, pos);
         return InteractionResult.SUCCESS;
     }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
+                                       Player player) {
+        return ModBlocks.ANDESITE_FLUID_PIPE.asStack();
+    }
 }
+
+

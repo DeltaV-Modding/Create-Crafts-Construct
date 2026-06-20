@@ -1,10 +1,10 @@
 package net.deltav.craftsconstruct.registry;
 
-import com.simibubi.create.AllDisplaySources;
-import com.simibubi.create.AllMountedStorageTypes;
-import com.simibubi.create.AllTags;
+import com.simibubi.create.*;
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement;
+import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
+import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleGenerator;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.SmartFluidPipeGenerator;
@@ -165,6 +165,48 @@ public class ModBlocks {
                     })
                     .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
                     .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
+                    .register();
+    public static final BlockEntry<AndesiteEncasedPipeBlock> ANDESITE_ENCASED_PIPE =
+            REGISTRATE.block("andesite_encased_pipe", p -> new AndesiteEncasedPipeBlock(p, AllBlocks.ANDESITE_CASING::get))
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion()
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.encasedPipe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.ANDESITE_CASING)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.ANDESITE_CASING,
+                            (s, f) -> !s.getValue(AndesiteEncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
+                    .loot((p, b) -> p.dropOther(b, ANDESITE_FLUID_PIPE.get()))
+                    .transform(EncasingRegistry.addVariantTo(ANDESITE_FLUID_PIPE))
+                    .register();
+    public static final BlockEntry<BrassEncasedPipeBlock> BRASS_ENCASED_PIPE =
+            REGISTRATE.block("brass_encased_pipe", p -> new BrassEncasedPipeBlock(p, AllBlocks.BRASS_CASING::get))
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion()
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.encasedPipe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.BRASS_CASING)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.BRASS_CASING,
+                            (s, f) -> !s.getValue(BrassEncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
+                    .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
+                    .transform(EncasingRegistry.addVariantTo(BRASS_FLUID_PIPE))
+                    .register();
+    public static final BlockEntry<TrainEncasedPipeBlock> TRAIN_ENCASED_PIPE =
+            REGISTRATE.block("train_encased_pipe", p -> new TrainEncasedPipeBlock(p, AllBlocks.RAILWAY_CASING::get))
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion()
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.encasedPipe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.RAILWAY_CASING)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.RAILWAY_CASING,
+                            (s, f) -> !s.getValue(BrassEncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
+                    .loot((p, b) -> p.dropOther(b, TRAIN_FLUID_PIPE.get()))
+                    .transform(EncasingRegistry.addVariantTo(TRAIN_FLUID_PIPE))
                     .register();
     public static final BlockEntry<AndesiteSmartFluidPipeBlock> ANDESITE_SMART_FLUID_PIPE = REGISTRATE.block("andesite_smart_fluid_pipe", p -> new AndesiteSmartFluidPipeBlock(p, () -> ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)

@@ -9,14 +9,18 @@ import net.deltav.craftsconstruct.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.HitResult;
 
 import java.util.Map;
 
@@ -54,5 +58,11 @@ public class BrassGlassPipeBlock extends GlassFluidPipeBlock {
         world.setBlock(pos, newState, Block.UPDATE_ALL);
         FluidTransportBehaviour.loadFlows(world, pos);
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
+                                       Player player) {
+        return ModBlocks.BRASS_FLUID_PIPE.asStack();
     }
 }

@@ -1,6 +1,7 @@
 package net.deltav.craftsconstruct.util;
 
 import net.deltav.craftsconstruct.craftsconstruct;
+import net.deltav.craftsconstruct.registry.ModBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -17,12 +18,26 @@ public class PaintTargetResolver {
     private static final ResourceLocation BRASS_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "brass_item_drain");
     private static final ResourceLocation ANDESITE_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "andesite_item_drain");
     private static final ResourceLocation TRAIN_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "train_item_drain");
+    private static final ResourceLocation CREATE_GLASS_FLUID_PIPE = id("create", "glass_fluid_pipe");
+    private static final ResourceLocation CREATE_ENCASED_FLUID_PIPE = id("create", "encased_fluid_pipe");
 
     private static final Map<PaintMaterial, ResourceLocation> ITEM_DRAIN_TARGETS = Map.of(
             PaintMaterial.COPPER, CREATE_ITEM_DRAIN,
             PaintMaterial.BRASS, BRASS_ITEM_DRAIN,
             PaintMaterial.ANDESITE, ANDESITE_ITEM_DRAIN,
             PaintMaterial.TRAIN, TRAIN_ITEM_DRAIN
+    );
+    private static final Map<PaintMaterial, ResourceLocation> GLASS_FLUID_PIPE_TARGETS = Map.of(
+            PaintMaterial.COPPER, CREATE_GLASS_FLUID_PIPE,
+            PaintMaterial.BRASS, ModBlocks.BRASS_GLASS_PIPE.getId(),
+            PaintMaterial.ANDESITE, ModBlocks.ANDESITE_GLASS_PIPE.getId(),
+            PaintMaterial.TRAIN, ModBlocks.TRAIN_GLASS_PIPE.getId()
+    );
+    private static final Map<PaintMaterial, ResourceLocation> ENCASED_FLUID_PIPE_TARGETS = Map.of(
+            PaintMaterial.COPPER, CREATE_ENCASED_FLUID_PIPE,
+            PaintMaterial.BRASS, ModBlocks.BRASS_ENCASED_PIPE.getId(),
+            PaintMaterial.ANDESITE, ModBlocks.ANDESITE_ENCASED_PIPE.getId(),
+            PaintMaterial.TRAIN, ModBlocks.TRAIN_ENCASED_PIPE.getId()
     );
     private static final Set<PaintMaterial> CUSTOM_CREATE_MATERIALS =
             Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN);
@@ -40,26 +55,36 @@ public class PaintTargetResolver {
             "steam_whistle"
     );
 
-    private static final Map<ResourceLocation, Map<PaintMaterial, ResourceLocation>> SPECIAL_TARGETS = Map.of(
-            CREATE_ITEM_DRAIN, ITEM_DRAIN_TARGETS,
-            BRASS_ITEM_DRAIN, ITEM_DRAIN_TARGETS,
-            ANDESITE_ITEM_DRAIN, ITEM_DRAIN_TARGETS,
-            TRAIN_ITEM_DRAIN, ITEM_DRAIN_TARGETS,
-            id("create", "shaft"), Map.of(
+    private static final Map<ResourceLocation, Map<PaintMaterial, ResourceLocation>> SPECIAL_TARGETS = Map.ofEntries(
+            Map.entry(CREATE_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
+            Map.entry(BRASS_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
+            Map.entry(ANDESITE_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
+            Map.entry(TRAIN_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
+            Map.entry(CREATE_GLASS_FLUID_PIPE, GLASS_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.BRASS_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.ANDESITE_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.TRAIN_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
+            Map.entry(CREATE_ENCASED_FLUID_PIPE, ENCASED_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.BRASS_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.ANDESITE_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.TRAIN_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
+            Map.entry(id("create", "shaft"), Map.of(
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_shaft"),
                     PaintMaterial.BRASS, id("create", "brass_encased_shaft")
-            ),
-            id("create", "cogwheel"), Map.of(
+            )),
+            Map.entry(id("create", "cogwheel"), Map.of(
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_cogwheel"),
                     PaintMaterial.BRASS, id("create", "brass_encased_cogwheel")
-            ),
-            id("create", "large_cogwheel"), Map.of(
+            )),
+            Map.entry(id("create", "large_cogwheel"), Map.of(
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_large_cogwheel"),
                     PaintMaterial.BRASS, id("create", "brass_encased_large_cogwheel")
-            )
+            ))
     );
     private static final Map<String, PaintMaterial> CREATE_BASE_MATERIALS = Map.ofEntries(
             Map.entry("fluid_pipe", PaintMaterial.COPPER),
+            Map.entry("glass_fluid_pipe", PaintMaterial.COPPER),
+            Map.entry("encased_fluid_pipe", PaintMaterial.COPPER),
             Map.entry("mechanical_pump", PaintMaterial.COPPER),
             Map.entry("fluid_valve", PaintMaterial.COPPER),
             Map.entry("valve_handle", PaintMaterial.COPPER),
@@ -73,6 +98,7 @@ public class PaintTargetResolver {
     );
     private static final Map<String, Set<PaintMaterial>> CUSTOM_MATERIALS = Map.ofEntries(
             Map.entry("fluid_pipe", CUSTOM_CREATE_MATERIALS),
+            Map.entry("glass_fluid_pipe", CUSTOM_CREATE_MATERIALS),
             Map.entry("mechanical_pump", CUSTOM_CREATE_MATERIALS),
             Map.entry("fluid_valve", CUSTOM_CREATE_MATERIALS),
             Map.entry("valve_handle", CUSTOM_CREATE_MATERIALS),
