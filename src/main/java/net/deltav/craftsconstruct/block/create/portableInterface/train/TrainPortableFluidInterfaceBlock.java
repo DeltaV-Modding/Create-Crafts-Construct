@@ -57,7 +57,18 @@ public class TrainPortableFluidInterfaceBlock extends WrenchableDirectionalBlock
 
     @Override
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
-        return 0;
+        return getBlockEntityOptional(level, pos).map(be -> isConnected(be) ? 15 : 0)
+            .orElse(0);
+    }
+
+    private static boolean isConnected(PortableStorageInterfaceBlockEntity be) {
+        try {
+            var method = PortableStorageInterfaceBlockEntity.class.getDeclaredMethod("isConnected");
+            method.setAccessible(true);
+            return (boolean) method.invoke(be);
+        } catch (ReflectiveOperationException e) {
+            return false;
+        }
     }
 
     @Override

@@ -2,47 +2,186 @@ package net.deltav.craftsconstruct.block.create.fluid.brass;
 
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
+import com.simibubi.create.foundation.blockEntity.ComparatorUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.core.Direction;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
 public class BrassHorizontalFluidTankBlock extends FluidTankBlock {
     public static final EnumProperty<Direction.Axis> HORIZONTAL_AXIS = BlockStateProperties.HORIZONTAL_AXIS;
+    static final VoxelShape CAMPFIRE_SMOKE_CLIP = Block.box(0, 4, 0, 16, 16, 16);
+    public static final SoundType SILENCED_METAL =
+            new net.neoforged.neoforge.common.util.DeferredSoundType(0.1F, 1.5F, () -> SoundEvents.METAL_BREAK,
+                    () -> SoundEvents.METAL_STEP, () -> SoundEvents.METAL_PLACE, () -> SoundEvents.METAL_HIT,
+                    () -> SoundEvents.METAL_FALL);
+
     private final Supplier<BlockEntityType<? extends FluidTankBlockEntity>> blockEntityType;
 
     public BrassHorizontalFluidTankBlock(BlockBehaviour.Properties properties,
-                                     Supplier<BlockEntityType<? extends FluidTankBlockEntity>> blockEntityType) {
+                                         Supplier<BlockEntityType<? extends FluidTankBlockEntity>> blockEntityType) {
         super(properties, false);
         this.blockEntityType = blockEntityType;
-        this.registerDefaultState(this.defaultBlockState().setValue(HORIZONTAL_AXIS, Direction.Axis.X));
+        registerDefaultState(defaultBlockState().setValue(HORIZONTAL_AXIS, Direction.Axis.X));
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        AdvancementBehaviour.setPlacedBy(level, pos, placer);
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moved) {
+        if (oldState.getBlock() == state.getBlock())
+            return;
+        if (moved)
+            return;
+        withBlockEntityDo(world, pos, BrassHorizontalFluidTankBlock::updateConnectivity);
+
+        BlockState newState = world.getBlockState(pos);
+        if (state != newState && newState.getBlock() == this)
+            world.markAndNotifyBlock(pos, world.getChunkAt(pos), oldState, newState, UPDATE_ALL_IMMEDIATE, 512);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction.Axis axis = context.getHorizontalDirection().getAxis();
         BlockState state = super.getStateForPlacement(context);
-        if (state != null) {
-            return state.setValue(HORIZONTAL_AXIS, axis);
-        }
-        return this.defaultBlockState().setValue(HORIZONTAL_AXIS, axis);
+        return state != null ? state.setValue(HORIZONTAL_AXIS, axis) : defaultBlockState().setValue(HORIZONTAL_AXIS, axis);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(HORIZONTAL_AXIS);
+        builder.add(TOP, BOTTOM, SHAPE, HORIZONTAL_AXIS);
+    }
+
+    @Override
+    public int getLightEmission(BlockState state, BlockGetter world, BlockPos pos) {
+        return super.getLightEmission(state, world, pos);
+    }
+
+    @Override
+    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
+        withBlockEntityDo(context.getLevel(), context.getClickedPos(), FluidTankBlockEntity::toggleWindows);
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return context == CollisionContext.empty() ? CAMPFIRE_SMOKE_CLIP : state.getShape(level, pos);
+    }
+
+    @Override
+    public VoxelShape getBlockSupportShape(BlockState state, BlockGetter reader, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level,
+                                  BlockPos currentPos, BlockPos neighborPos) {
+        if (direction == Direction.DOWN && neighborState.getBlock() != this)
+            withBlockEntityDo(level, currentPos, FluidTankBlockEntity::updateBoilerTemperature);
+        return state;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.hasBlockEntity() && (state.getBlock() != newState.getBlock() || !newState.hasBlockEntity())) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (!(be instanceof FluidTankBlockEntity tankBE))
+                return;
+            world.removeBlockEntity(pos);
+            com.simibubi.create.api.connectivity.ConnectivityHandler.splitMulti(tankBE);
+        }
     }
 
     @Override
     public BlockEntityType<? extends FluidTankBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
+    }
+
+    private static void updateConnectivity(FluidTankBlockEntity tank) {
+        try {
+            var method = FluidTankBlockEntity.class.getDeclaredMethod("updateConnectivity");
+            method.setAccessible(true);
+            method.invoke(tank);
+        } catch (ReflectiveOperationException ignored) {
+        }
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        if (mirror == Mirror.NONE)
+            return state;
+        boolean x = mirror == Mirror.FRONT_BACK;
+        return switch (state.getValue(SHAPE)) {
+            case WINDOW_NE -> state.setValue(SHAPE, x ? Shape.WINDOW_NW : Shape.WINDOW_SE);
+            case WINDOW_NW -> state.setValue(SHAPE, x ? Shape.WINDOW_NE : Shape.WINDOW_SW);
+            case WINDOW_SE -> state.setValue(SHAPE, x ? Shape.WINDOW_SW : Shape.WINDOW_NE);
+            case WINDOW_SW -> state.setValue(SHAPE, x ? Shape.WINDOW_SE : Shape.WINDOW_NW);
+            default -> state;
+        };
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        for (int i = 0; i < rotation.ordinal(); i++)
+            state = rotateOnce(state);
+        return state;
+    }
+
+    private BlockState rotateOnce(BlockState state) {
+        return switch (state.getValue(SHAPE)) {
+            case WINDOW_NE -> state.setValue(SHAPE, Shape.WINDOW_SE);
+            case WINDOW_NW -> state.setValue(SHAPE, Shape.WINDOW_NE);
+            case WINDOW_SE -> state.setValue(SHAPE, Shape.WINDOW_SW);
+            case WINDOW_SW -> state.setValue(SHAPE, Shape.WINDOW_NW);
+            default -> state;
+        };
+    }
+
+    @Override
+    public SoundType getSoundType(BlockState state, LevelReader world, BlockPos pos, Entity entity) {
+        SoundType soundType = super.getSoundType(state, world, pos, entity);
+        return entity != null && entity.getPersistentData().contains("SilenceTankSound") ? SILENCED_METAL : soundType;
+    }
+
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos) {
+        return getBlockEntityOptional(world, pos).map(FluidTankBlockEntity::getControllerBE)
+                .map(be -> ComparatorUtil.fractionToRedstoneLevel(be.getFillState()))
+                .orElse(0);
     }
 }
