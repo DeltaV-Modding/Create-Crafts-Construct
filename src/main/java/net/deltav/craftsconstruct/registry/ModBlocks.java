@@ -272,7 +272,7 @@ public class ModBlocks {
             .transform(BuilderTransformers.valveHandle(null))
             .transform(CCStress.setCapacity(8.0))
             .register();
-    public static final BlockEntry<AndesiteFluidTankBlock> ANDESITE_FLUID_TANK = REGISTRATE.block("andesite_fluid_tank", p -> new AndesiteFluidTankBlock(p, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get))
+    public static final BlockEntry<AndesiteFluidTankBlock> ANDESITE_FLUID_TANK = REGISTRATE.block("andesite_fluid_tank", p -> new AndesiteFluidTankBlock(p, () -> ModBlockEntityTypes.ANDESITE_FLUID_TANK.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
                     .isRedstoneConductor((p1, p2, p3) -> true))
@@ -287,7 +287,7 @@ public class ModBlocks {
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
-    public static final BlockEntry<BrassFluidTankBlock> BRASS_FLUID_TANK = REGISTRATE.block("brass_fluid_tank", p -> new BrassFluidTankBlock(p, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get))
+    public static final BlockEntry<BrassFluidTankBlock> BRASS_FLUID_TANK = REGISTRATE.block("brass_fluid_tank", p -> new BrassFluidTankBlock(p, () -> ModBlockEntityTypes.BRASS_FLUID_TANK.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
                     .isRedstoneConductor((p1, p2, p3) -> true))
@@ -302,7 +302,7 @@ public class ModBlocks {
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
-    public static final BlockEntry<TrainFluidTankBlock> TRAIN_FLUID_TANK = REGISTRATE.block("train_fluid_tank", p -> new TrainFluidTankBlock(p, com.simibubi.create.AllBlockEntityTypes.FLUID_TANK::get))
+    public static final BlockEntry<TrainFluidTankBlock> TRAIN_FLUID_TANK = REGISTRATE.block("train_fluid_tank", p -> new TrainFluidTankBlock(p, () -> ModBlockEntityTypes.TRAIN_FLUID_TANK.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
                     .isRedstoneConductor((p1, p2, p3) -> true))
