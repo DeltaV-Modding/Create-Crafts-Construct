@@ -1,6 +1,7 @@
 {
   "paintable_blocks": [
     "create:fluid_pipe",
+    "create:glass_fluid_pipe",
     "create:mechanical_pump",
     "create:smart_fluid_pipe",
     "create:fluid_valve",
