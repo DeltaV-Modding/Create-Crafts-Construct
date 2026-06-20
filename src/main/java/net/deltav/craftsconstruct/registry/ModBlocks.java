@@ -26,7 +26,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
-import com.simibubi.create.content.fluids.tank.FluidTankItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -283,7 +282,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(AndesiteFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -298,7 +297,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(BrassFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -313,7 +312,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(TrainFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -328,7 +327,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(AndesiteHorizontalFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -343,7 +342,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(BrassHorizontalFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -358,7 +357,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(CopperHorizontalFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -373,7 +372,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(FluidTankItem::new)
+            .item(TrainHorizontalFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
