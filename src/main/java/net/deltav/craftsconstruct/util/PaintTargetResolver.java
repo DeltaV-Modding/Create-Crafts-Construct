@@ -69,25 +69,7 @@ public class PaintTargetResolver {
             Map.entry("portable_fluid_interface", PaintMaterial.COPPER),
             Map.entry("steam_engine", PaintMaterial.COPPER),
             Map.entry("steam_whistle", PaintMaterial.COPPER),
-            Map.entry("smart_fluid_pipe", PaintMaterial.COPPER),
-            Map.entry("mechanical_crafter", PaintMaterial.BRASS),
-            Map.entry("gearbox", PaintMaterial.ANDESITE),
-            Map.entry("encased_fan", PaintMaterial.ANDESITE),
-            Map.entry("millstone", PaintMaterial.ANDESITE),
-            Map.entry("mechanical_saw", PaintMaterial.ANDESITE),
-            Map.entry("mechanical_press", PaintMaterial.ANDESITE),
-            Map.entry("mechanical_mixer", PaintMaterial.ANDESITE),
-            Map.entry("deployer", PaintMaterial.ANDESITE),
-            Map.entry("mechanical_drill", PaintMaterial.ANDESITE),
-            Map.entry("clutch", PaintMaterial.ANDESITE),
-            Map.entry("gearshift", PaintMaterial.ANDESITE),
-            Map.entry("speedometer", PaintMaterial.ANDESITE),
-            Map.entry("stressometer", PaintMaterial.ANDESITE),
-            Map.entry("adjustable_chain_gearshift", PaintMaterial.ANDESITE),
-            Map.entry("contraption_controls", PaintMaterial.ANDESITE),
-            Map.entry("depot", PaintMaterial.ANDESITE),
-            Map.entry("weighted_ejector", PaintMaterial.ANDESITE),
-            Map.entry("portable_storage_interface", PaintMaterial.ANDESITE)
+            Map.entry("smart_fluid_pipe", PaintMaterial.COPPER)
     );
     private static final Map<String, Set<PaintMaterial>> CUSTOM_MATERIALS = Map.ofEntries(
             Map.entry("fluid_pipe", CUSTOM_CREATE_MATERIALS),
