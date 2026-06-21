@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"2": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"3": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"particle": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface"
+		"2": "crafts_construct:block/sturdy_fluid_tank/sturdy_underside",
+		"3": "create:block/fluid_chute_unpowered",
+		"particle": "create:block/railway_casing"
 	},
 	"elements": [
 		{

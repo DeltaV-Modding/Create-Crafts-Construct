@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/brass_portable_fluid_interface/brass_portable_fluid_interface",
-		"particle": "create:block/copper_casing"
+		"particle": "create:block/brass_casing"
 	},
 	"elements": [
 		{

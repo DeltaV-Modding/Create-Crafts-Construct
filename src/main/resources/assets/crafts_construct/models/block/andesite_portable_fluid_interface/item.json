@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface",
-		"2": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface",
-		"3": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface",
-		"particle": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface"
+		"2": "crafts_construct:block/andesite_fluid_tank/andesite_underside",
+		"3": "create:block/fluid_chute_unpowered",
+		"particle": "create:block/andesite_casing"
 	},
 	"elements": [
 		{

@@ -3,7 +3,7 @@
 	"textures": {
 		"1": "create:block/fluid_chute_unpowered",
 		"2": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"particle": "create:block/copper_casing"
+		"particle": "create:block/railway_casing"
 	},
 	"elements": [
 		{
