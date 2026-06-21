@@ -1,0 +1,41 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"harvester": "create:harvester"
+	},
+	"elements": [
+		{
+			"name": "Wheel",
+			"from": [5, 0, 3],
+			"to": [5.0625, 12, 15],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [12, 6, 9]},
+			"faces": {
+				"east": {"uv": [0, 0, 12, 12], "texture": "#harvester"},
+				"west": {"uv": [0, 0, 12, 12], "texture": "#harvester"}
+			}
+		},
+		{
+			"name": "Wheel",
+			"from": [11, 0, 3],
+			"to": [11.0625, 12, 15],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [4, 6, 9]},
+			"faces": {
+				"east": {"uv": [0, 0, 12, 12], "texture": "#harvester"},
+				"west": {"uv": [0, 0, 12, 12], "texture": "#harvester"}
+			}
+		},
+		{
+			"from": [5, 5, 8],
+			"to": [11, 7, 10],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [5, 6, 9]},
+			"faces": {
+				"north": {"uv": [9, 5, 3, 7], "texture": "#harvester"},
+				"south": {"uv": [9, 5, 3, 7], "texture": "#harvester"},
+				"up": {"uv": [5, 3, 7, 9], "texture": "#harvester"},
+				"down": {"uv": [3, 5, 9, 7], "texture": "#harvester"}
+			}
+		}
+	]
+}

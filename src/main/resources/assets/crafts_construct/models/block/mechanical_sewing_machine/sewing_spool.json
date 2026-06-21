@@ -1,0 +1,52 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "sewing_machine_side",
+		"particle": "create:block/andesite_casing_short",
+		"andesite_casing_short": "create:block/andesite_casing_short"
+	},
+	"elements": [
+		{
+			"name": "Core",
+			"from": [4, 4, 13.1],
+			"to": [12, 12, 16],
+			"faces": {
+				"north": {"uv": [4, 6, 12, 14], "texture": "#1"},
+				"east": {"uv": [2, 0, 10, 2.9], "rotation": 90, "texture": "#andesite_casing_short"},
+				"south": {"uv": [4, 6, 12, 14], "texture": "#1"},
+				"west": {"uv": [2, 0, 10, 2.9], "rotation": 270, "texture": "#andesite_casing_short"},
+				"up": {"uv": [0, 0, 8, 2.9], "texture": "#andesite_casing_short"},
+				"down": {"uv": [0, 0, 8, 2.9], "rotation": 180, "texture": "#andesite_casing_short"}
+			}
+		},
+		{
+			"name": "Attachment",
+			"from": [10, 7, 5],
+			"to": [11.9, 10, 13],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [12, 10, 13]},
+			"faces": {
+				"north": {"uv": [0.1, 8, 2, 11], "texture": "#andesite_casing_short"},
+				"east": {"uv": [0, 0, 8, 3], "texture": "#andesite_casing_short"},
+				"south": {"uv": [0, 0, 1.9, 3], "texture": "#andesite_casing_short"},
+				"west": {"uv": [0, 0, 8, 3], "texture": "#andesite_casing_short"},
+				"up": {"uv": [0.1, 6, 2, 14], "rotation": 180, "texture": "#andesite_casing_short"},
+				"down": {"uv": [0.1, 6, 2, 14], "rotation": 180, "texture": "#andesite_casing_short"}
+			}
+		},
+		{
+			"name": "Attachment",
+			"from": [4.1, 7, 5],
+			"to": [6, 10, 13],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [20, 10, 13]},
+			"faces": {
+				"north": {"uv": [14, 8, 15.9, 11], "texture": "#andesite_casing_short"},
+				"east": {"uv": [0, 0, 8, 3], "texture": "#andesite_casing_short"},
+				"south": {"uv": [0, 0, 1.9, 3], "texture": "#andesite_casing_short"},
+				"west": {"uv": [0, 0, 8, 3], "texture": "#andesite_casing_short"},
+				"up": {"uv": [14, 6, 15.9, 14], "rotation": 180, "texture": "#andesite_casing_short"},
+				"down": {"uv": [14, 6, 15.9, 14], "rotation": 180, "texture": "#andesite_casing_short"}
+			}
+		}
+	]
+}

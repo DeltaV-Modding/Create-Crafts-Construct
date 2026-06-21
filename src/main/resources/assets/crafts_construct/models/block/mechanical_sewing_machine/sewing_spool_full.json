@@ -1,0 +1,46 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"2": "sewing_string",
+		"harvester": "create:block/harvester",
+		"particle": "sewing_string"
+	},
+	"elements": [
+		{
+			"name": "Wheel",
+			"from": [5, 0, 3],
+			"to": [5.0625, 12, 15],
+			"rotation": {"x": -157.5, "y": 0, "z": 180, "origin": [5, 6, 9]},
+			"faces": {
+				"east": {"uv": [0, 0, 12, 12], "texture": "#harvester"},
+				"west": {"uv": [0, 0, 12, 12], "texture": "#harvester"}
+			}
+		},
+		{
+			"name": "Wheel",
+			"from": [11, 0, 3],
+			"to": [11.0625, 12, 15],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [11, 6, 9]},
+			"faces": {
+				"east": {"uv": [0, 0, 12, 12], "texture": "#harvester"},
+				"west": {"uv": [0, 0, 12, 12], "texture": "#harvester"}
+			}
+		},
+		{
+			"from": [5, 2, 5],
+			"to": [11, 10, 13],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [5, 6, 9]},
+			"faces": {
+				"north": {"uv": [6, 8, 0, 0], "texture": "#2"},
+				"east": {"uv": [6, 0, 14, 8], "texture": "#2"},
+				"south": {"uv": [0, 0, 6, 8], "texture": "#2"},
+				"west": {"uv": [6, 0, 14, 8], "texture": "#2"},
+				"up": {"uv": [0, 0, 6, 8], "texture": "#2"},
+				"down": {"uv": [0, 0, 6, 8], "texture": "#2"}
+			}
+		}
+	]
+}
