@@ -1,6 +1,5 @@
 package net.deltav.craftsconstruct.block.create.kinetic.brass;
 
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.steamEngine.PoweredShaftBlockEntity;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
@@ -34,9 +33,9 @@ public class BrassSteamEngineVisual extends AbstractBlockEntityVisual<SteamEngin
 
         BlockState state = blockEntity.getBlockState();
         String path = state.getBlock().builtInRegistryHolder().key().location().getPath();
-        PartialModel pistonModel = ModPartialModels.STEAM_ENGINE_PISTONS.getOrDefault(path, AllPartialModels.ENGINE_PISTON);
-        PartialModel linkageModel = ModPartialModels.STEAM_ENGINE_LINKAGES.getOrDefault(path, AllPartialModels.ENGINE_LINKAGE);
-        PartialModel connectorModel = ModPartialModels.STEAM_ENGINE_CONNECTORS.getOrDefault(path, AllPartialModels.ENGINE_CONNECTOR);
+        PartialModel pistonModel = ModPartialModels.STEAM_ENGINE_PISTONS.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_PISTON);
+        PartialModel linkageModel = ModPartialModels.STEAM_ENGINE_LINKAGES.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_LINKAGE);
+        PartialModel connectorModel = ModPartialModels.STEAM_ENGINE_CONNECTORS.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_CONNECTOR);
 
         this.piston = instancerProvider().instancer(InstanceTypes.TRANSFORMED, Models.partial(pistonModel)).createInstance();
         this.linkage = instancerProvider().instancer(InstanceTypes.TRANSFORMED, Models.partial(linkageModel)).createInstance();
