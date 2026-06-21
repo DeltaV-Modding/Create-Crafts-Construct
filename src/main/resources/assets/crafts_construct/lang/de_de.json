@@ -133,6 +133,9 @@
   "create.tooltip.cc.behaviour2": "Farb-Material",
   "create.tooltip.cc.behaviour3": "Farb-Material:",
   "create.tooltip.cc.condition2": " Benötigt eine _Farbkartusche_ in der _Zweiten Hand_",
+  "item.crafts_construct.sewing_thread": "Nähfaden",
+  "block.crafts_construct.mechanical_sewing_machine": "Nähmaschine",
+  "block.crafts_construct.spool_block": "Spulenblock",
   "message.crafts_construct.paint_gun.no_cartridge": "Lege eine Farbkartusche in die zweite Hand.",
   "message.crafts_construct.paint_gun.no_target": "Dieser Block hat keine Variante für diese Kartusche.",
   "message.crafts_construct.paint_gun.same_material": "Dieser Block hat bereits das Farb-Material."

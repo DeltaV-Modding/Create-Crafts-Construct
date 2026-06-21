@@ -1,17 +1,46 @@
 {
   "variants": {
-    "facing=east": {
+    "axis_along_first=false,facing=down": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block",
+      "x": 180
+    },
+    "axis_along_first=true,facing=down": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block",
+      "x": 180
+    },
+    "axis_along_first=false,facing=east": {
       "model": "crafts_construct:block/mechanical_sewing_machine/block",
       "y": 90
     },
-    "facing=north": {
+    "axis_along_first=true,facing=east": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block",
+      "y": 90
+    },
+    "axis_along_first=false,facing=north": {
       "model": "crafts_construct:block/mechanical_sewing_machine/block"
     },
-    "facing=south": {
+    "axis_along_first=true,facing=north": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block"
+    },
+    "axis_along_first=false,facing=south": {
       "model": "crafts_construct:block/mechanical_sewing_machine/block",
       "y": 180
     },
-    "facing=west": {
+    "axis_along_first=true,facing=south": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block",
+      "y": 180
+    },
+    "axis_along_first=false,facing=up": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block"
+    },
+    "axis_along_first=true,facing=up": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block"
+    },
+    "axis_along_first=false,facing=west": {
+      "model": "crafts_construct:block/mechanical_sewing_machine/block",
+      "y": 270
+    },
+    "axis_along_first=true,facing=west": {
       "model": "crafts_construct:block/mechanical_sewing_machine/block",
       "y": 270
     }

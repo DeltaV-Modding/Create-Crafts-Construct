@@ -26,6 +26,7 @@ import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.deltav.craftsconstruct.block.create.kinetic.andesite.*;
 import net.deltav.craftsconstruct.block.create.kinetic.brass.*;
 import net.deltav.craftsconstruct.block.create.kinetic.sturdy.*;
+import net.deltav.craftsconstruct.block.create.sewing.*;
 import net.deltav.craftsconstruct.block.create.pipe.andesite.*;
 import net.deltav.craftsconstruct.block.create.pipe.brass.*;
 import net.deltav.craftsconstruct.block.create.pipe.sturdy.*;
@@ -264,6 +265,17 @@ public class ModBlockEntityTypes {
             .blockEntity("sturdy_steam_whistle", SturdySteamWhistleBlockEntity::new)
             .validBlocks(ModBlocks.STURDY_STEAM_WHISTLE)
             .renderer(() -> WhistleRenderer::new)
+            .register();
+    public static final BlockEntityEntry<SewingMachineBlockEntity> SEWING_MACHINE = REGISTRATE
+            .blockEntity("mechanical_sewing_machine", SewingMachineBlockEntity::new)
+            .visual(() -> SewingMachineVisual::new, false)
+            .validBlocks(ModBlocks.SEWING_MACHINE)
+            .renderer(() -> SewingMachineRenderer::new)
+            .register();
+    public static final BlockEntityEntry<SpoolBlockEntity> SPOOL_BLOCK = REGISTRATE
+            .blockEntity("spool_block", SpoolBlockEntity::new)
+            .validBlocks(ModBlocks.SPOOL_BLOCK)
+            .renderer(() -> SmartBlockEntityRenderer::new)
             .register();
 
     private ModBlockEntityTypes() {

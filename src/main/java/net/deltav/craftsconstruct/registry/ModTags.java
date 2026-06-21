@@ -18,7 +18,8 @@ public class ModTags {
     }
 
     public static class Items {
-        //public static final TagKey<Item> EXAMPLE_TAG = createTag("example");
+        public static final TagKey<Item> SEWING_PATTERNS = createTag("sewing_patterns");
+        public static final TagKey<Item> SEWING_THREADS = createTag("sewing_threads");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, name));

@@ -5,6 +5,7 @@ import net.deltav.craftsconstruct.item.DragonCharge;
 import net.deltav.craftsconstruct.item.FireballCharge;
 import net.deltav.craftsconstruct.item.PaintCartridgeItem;
 import net.deltav.craftsconstruct.item.PaintGunItem;
+import net.deltav.craftsconstruct.item.SewingThreadItem;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -43,6 +44,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> PAINT_GUN = paintGun("paint_gun", false);
     public static final DeferredItem<Item> C_PAINT_GUN = paintGun("creative_paint_gun", true);
+    public static final DeferredItem<Item> SEWING_THREAD = ITEMS.register("sewing_thread", () -> new SewingThreadItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

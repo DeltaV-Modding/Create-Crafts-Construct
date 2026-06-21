@@ -197,6 +197,9 @@
   "advancements.crafts_construct.all_drains.description": "Zdobądź każdy odpływ przedmiotów (Andezytowy, Mosiężny, Solidny)!",
   "advancements.crafts_construct.all_pulleys.title": "Nieskończone Rolki",
   "advancements.crafts_construct.all_pulleys.description": "Zdobądź każdy wariant bloczka węża (Andezytowy, Mosiężny, Solidny)!",
+  "item.crafts_construct.sewing_thread": "Nici do szycia",
+  "block.crafts_construct.mechanical_sewing_machine": "Maszyna do szycia",
+  "block.crafts_construct.spool_block": "Blok szpuli",
   "message.crafts_construct.paint_gun.no_cartridge": "Umieść wkład z farbą w drugiej ręce.",
   "message.crafts_construct.paint_gun.no_target": "Ten blok nie ma wariantu malowania dla tego wkładu.",
   "message.crafts_construct.paint_gun.same_material": "Ten blok już używa tego materiału malowania."
