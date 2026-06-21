@@ -4,7 +4,7 @@ public enum PaintMaterial {
     ANDESITE("andesite"),
     BRASS("brass"),
     COPPER("copper"),
-    TRAIN("train");
+    STURDY("sturdy");
 
     private final String serializedName;
 

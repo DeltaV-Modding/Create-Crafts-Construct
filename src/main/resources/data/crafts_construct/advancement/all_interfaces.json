@@ -1,0 +1,59 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:sturdy_portable_fluid_interface"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.all_interfaces.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.all_interfaces.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:plumbing_specialist",
+  "criteria": {
+    "andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:andesite_portable_fluid_interface"
+            ]
+          }
+        ]
+      }
+    },
+    "brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:brass_portable_fluid_interface"
+            ]
+          }
+        ]
+      }
+    },
+    "sturdy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:sturdy_portable_fluid_interface"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 300
+  }
+}

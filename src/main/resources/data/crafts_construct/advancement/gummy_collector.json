@@ -1,0 +1,95 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:rainbow_gummy_bear"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.gummy_collector.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.gummy_collector.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:sugar_rush",
+  "criteria": {
+    "green": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:green_gummy_bear"
+            ]
+          }
+        ]
+      }
+    },
+    "yellow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:yellow_gummy_bear"
+            ]
+          }
+        ]
+      }
+    },
+    "red": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:red_gummy_bear"
+            ]
+          }
+        ]
+      }
+    },
+    "pink": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:pink_gummy_bear"
+            ]
+          }
+        ]
+      }
+    },
+    "blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:blue_gummy_bear"
+            ]
+          }
+        ]
+      }
+    },
+    "rainbow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:rainbow_gummy_bear"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

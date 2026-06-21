@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "crafts_construct:block/train_steam_whistle/train_steam_whistle"
-  }
-}

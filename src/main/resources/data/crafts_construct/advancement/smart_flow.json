@@ -1,0 +1,63 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:brass_smart_fluid_pipe"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.smart_flow.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.smart_flow.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:plumbing_specialist",
+  "criteria": {
+    "has_andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:andesite_smart_fluid_pipe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:brass_smart_fluid_pipe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_sturdy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:sturdy_smart_fluid_pipe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_andesite",
+      "has_brass",
+      "has_sturdy"
+    ]
+  ]
+}

@@ -8,10 +8,10 @@ import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTank
 import net.deltav.craftsconstruct.block.create.fluid.andesite.*;
 import net.deltav.craftsconstruct.block.create.fluid.brass.*;
 import net.deltav.craftsconstruct.block.create.fluid.copper.*;
-import net.deltav.craftsconstruct.block.create.fluid.train.*;
+import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.andesite.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.brass.*;
-import net.deltav.craftsconstruct.block.create.portableInterface.train.*;
+import net.deltav.craftsconstruct.block.create.portableInterface.sturdy.*;
 import net.minecraft.core.Direction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -38,7 +38,7 @@ public class ModCapabilities {
         for (var beType : List.of(
                 ModBlockEntityTypes.ANDESITE_ITEM_DRAIN,
                 ModBlockEntityTypes.BRASS_ITEM_DRAIN,
-                ModBlockEntityTypes.TRAIN_ITEM_DRAIN
+                ModBlockEntityTypes.STURDY_ITEM_DRAIN
         )) {
             event.registerBlockEntity(
                     Capabilities.ItemHandler.BLOCK,
@@ -66,7 +66,7 @@ public class ModCapabilities {
         for (var beType : List.of(
                 ModBlockEntityTypes.ANDESITE_PORTABLE_FLUID_INTERFACE,
                 ModBlockEntityTypes.BRASS_PORTABLE_FLUID_INTERFACE,
-                ModBlockEntityTypes.TRAIN_PORTABLE_FLUID_INTERFACE
+                ModBlockEntityTypes.STURDY_PORTABLE_FLUID_INTERFACE
         )) {
             event.registerBlockEntity(
                     Capabilities.FluidHandler.BLOCK,
@@ -76,8 +76,8 @@ public class ModCapabilities {
                             return andesiteBe.getFluidHandler();
                         } else if (be instanceof BrassPortableFluidInterfaceBlockEntity brassBe) {
                             return brassBe.getFluidHandler();
-                        } else if (be instanceof TrainPortableFluidInterfaceBlockEntity trainBe) {
-                            return trainBe.getFluidHandler();
+                        } else if (be instanceof SturdyPortableFluidInterfaceBlockEntity sturdyBe) {
+                            return sturdyBe.getFluidHandler();
                         }
                         return null;
                     }
@@ -87,7 +87,7 @@ public class ModCapabilities {
         for (var beType : List.of(
                 ModBlockEntityTypes.ANDESITE_FLUID_TANK,
                 ModBlockEntityTypes.BRASS_FLUID_TANK,
-                ModBlockEntityTypes.TRAIN_FLUID_TANK
+                ModBlockEntityTypes.STURDY_FLUID_TANK
         )) {
             event.registerBlockEntity(
                     Capabilities.FluidHandler.BLOCK,
@@ -98,8 +98,8 @@ public class ModCapabilities {
                             handler = andesiteBe.getFluidHandler();
                         } else if (be instanceof BrassFluidTankBlockEntity brassBe) {
                             handler = brassBe.getFluidHandler();
-                        } else if (be instanceof TrainFluidTankBlockEntity trainBe) {
-                            handler = trainBe.getFluidHandler();
+                        } else if (be instanceof SturdyFluidTankBlockEntity sturdyBe) {
+                            handler = sturdyBe.getFluidHandler();
                         }
                         if (handler == null && be instanceof com.simibubi.create.content.fluids.tank.FluidTankBlockEntity ftbe) {
                             ftbe.initialize();
@@ -107,8 +107,8 @@ public class ModCapabilities {
                                 handler = andesiteBe.getFluidHandler();
                             } else if (be instanceof BrassFluidTankBlockEntity brassBe) {
                                 handler = brassBe.getFluidHandler();
-                            } else if (be instanceof TrainFluidTankBlockEntity trainBe) {
-                                handler = trainBe.getFluidHandler();
+                            } else if (be instanceof SturdyFluidTankBlockEntity sturdyBe) {
+                                handler = sturdyBe.getFluidHandler();
                             }
                         }
                         return handler;
@@ -120,7 +120,7 @@ public class ModCapabilities {
                 ModBlockEntityTypes.ANDESITE_HORIZONTAL_FLUID_TANK,
                 ModBlockEntityTypes.BRASS_HORIZONTAL_FLUID_TANK,
                 ModBlockEntityTypes.COPPER_HORIZONTAL_FLUID_TANK,
-                ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK
+                ModBlockEntityTypes.STURDY_HORIZONTAL_FLUID_TANK
         )) {
             event.registerBlockEntity(
                     Capabilities.FluidHandler.BLOCK,
@@ -133,8 +133,8 @@ public class ModCapabilities {
                             handler = brassBe.getFluidHandler();
                         } else if (be instanceof CopperHorizontalFluidTankBlockEntity copperBe) {
                             handler = copperBe.getFluidHandler();
-                        } else if (be instanceof TrainHorizontalFluidTankBlockEntity trainBe) {
-                            handler = trainBe.getFluidHandler();
+                        } else if (be instanceof SturdyHorizontalFluidTankBlockEntity sturdyBe) {
+                            handler = sturdyBe.getFluidHandler();
                         }
                         if (handler == null && be instanceof com.simibubi.create.content.fluids.tank.FluidTankBlockEntity ftbe) {
                             ftbe.initialize();
@@ -144,8 +144,8 @@ public class ModCapabilities {
                                 handler = brassBe.getFluidHandler();
                             } else if (be instanceof CopperHorizontalFluidTankBlockEntity copperBe) {
                                 handler = copperBe.getFluidHandler();
-                            } else if (be instanceof TrainHorizontalFluidTankBlockEntity trainBe) {
-                                handler = trainBe.getFluidHandler();
+                            } else if (be instanceof SturdyHorizontalFluidTankBlockEntity sturdyBe) {
+                                handler = sturdyBe.getFluidHandler();
                             }
                         }
                         return handler;
@@ -156,7 +156,7 @@ public class ModCapabilities {
         for (var beType : List.of(
                 ModBlockEntityTypes.ANDESITE_SPOUT,
                 ModBlockEntityTypes.BRASS_SPOUT,
-                ModBlockEntityTypes.TRAIN_SPOUT
+                ModBlockEntityTypes.STURDY_SPOUT
         )) {
             event.registerBlockEntity(
                     Capabilities.FluidHandler.BLOCK,
@@ -168,7 +168,7 @@ public class ModCapabilities {
         for (var beType : List.of(
                 ModBlockEntityTypes.ANDESITE_HOSE_PULLEY,
                 ModBlockEntityTypes.BRASS_HOSE_PULLEY,
-                ModBlockEntityTypes.TRAIN_HOSE_PULLEY
+                ModBlockEntityTypes.STURDY_HOSE_PULLEY
         )) {
             event.registerBlockEntity(
                     Capabilities.FluidHandler.BLOCK,

@@ -43,7 +43,7 @@ public class ModPartialModels {
     public static final Map<String, PartialModel> SPOUT_BOTTOMS = new HashMap<>();
 
     public static void init() {
-        String[] materials = {"andesite", "brass", "train"};
+        String[] materials = {"andesite", "brass", "sturdy"};
         for (String mat : materials) {
             String enginePath = mat + "_steam_engine";
             STEAM_ENGINE_GAUGES.put(enginePath, partial(enginePath, "gauge"));
@@ -64,7 +64,7 @@ public class ModPartialModels {
             SPOUT_BOTTOMS.put(spoutPath, partial(spoutPath, "bottom"));
         }
 
-        String[] storageMaterials = {"brass", "copper", "train"};
+        String[] storageMaterials = {"brass", "copper", "sturdy"};
         for (String mat : storageMaterials) {
             String path = mat + "_portable_storage_interface";
             PORTABLE_STORAGE_INTERFACE_TOP.put(path, partial(path, "block_top"));
@@ -72,7 +72,7 @@ public class ModPartialModels {
             PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED.put(path, partial(path, "block_middle_powered"));
         }
 
-        String[] fluidMaterials = {"andesite", "brass", "train"};
+        String[] fluidMaterials = {"andesite", "brass", "sturdy"};
         for (String mat : fluidMaterials) {
             String path = mat + "_portable_fluid_interface";
             PORTABLE_FLUID_INTERFACE_TOP.put(path, partial(path, "block_top"));

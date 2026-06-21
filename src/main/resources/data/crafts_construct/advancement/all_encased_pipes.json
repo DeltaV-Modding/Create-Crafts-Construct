@@ -1,0 +1,74 @@
+{
+  "display": {
+    "icon": {
+      "id": "create:railway_casing"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.all_encased_pipes.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.all_encased_pipes.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:all_pipes",
+  "criteria": {
+    "andesite": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "blocks": [
+              "crafts_construct:andesite_fluid_pipe"
+            ]
+          }
+        },
+        "item": {
+          "items": [
+            "create:andesite_casing"
+          ]
+        }
+      }
+    },
+    "brass": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "blocks": [
+              "crafts_construct:brass_fluid_pipe"
+            ]
+          }
+        },
+        "item": {
+          "items": [
+            "create:brass_casing"
+          ]
+        }
+      }
+    },
+    "sturdy": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "blocks": [
+              "crafts_construct:sturdy_fluid_pipe"
+            ]
+          }
+        },
+        "item": {
+          "items": [
+            "create:railway_casing"
+          ]
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 350
+  }
+}

@@ -34,7 +34,7 @@ public class ModItems {
     public static final DeferredItem<Item> BRASS_PAINT_CARTRIDGE = paintCartridge("brass_paint_cartridge", PaintMaterial.BRASS);
     public static final DeferredItem<Item> COPPER_PAINT_CARTRIDGE = paintCartridge("copper_paint_cartridge", PaintMaterial.COPPER);
     public static final DeferredItem<Item> ANDESITE_PAINT_CARTRIDGE = paintCartridge("andesite_paint_cartridge", PaintMaterial.ANDESITE);
-    public static final DeferredItem<Item> TRAIN_PAINT_CARTRIDGE = paintCartridge("train_paint_cartridge", PaintMaterial.TRAIN);
+    public static final DeferredItem<Item> STURDY_PAINT_CARTRIDGE = paintCartridge("sturdy_paint_cartridge", PaintMaterial.STURDY);
 
     public static final DeferredItem<Item> INCOMPLETE_ANDESITE_PAINT_CARTRIDGE = simpleItem("incomplete_andesite_paint_cartridge");
     public static final DeferredItem<Item> INCOMPLETE_BRASS_PAINT_CARTRIDGE = simpleItem("incomplete_brass_paint_cartridge");

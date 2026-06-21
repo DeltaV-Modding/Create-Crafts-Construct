@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:raw_diamond"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.unpolished.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.unpolished.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:root",
+  "criteria": {
+    "raw_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:raw_diamond"
+            ]
+          }
+        ]
+      }
+    },
+    "raw_amethyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:raw_amethyst"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "raw_diamond",
+      "raw_amethyst"
+    ]
+  ]
+}

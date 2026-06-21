@@ -1,0 +1,59 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:sturdy_fluid_valve"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.all_valves.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.all_valves.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:all_pipes",
+  "criteria": {
+    "andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:andesite_fluid_valve"
+            ]
+          }
+        ]
+      }
+    },
+    "brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:brass_fluid_valve"
+            ]
+          }
+        ]
+      }
+    },
+    "sturdy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:sturdy_fluid_valve"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 300
+  }
+}

@@ -1,6 +1,0 @@
-{
-    "parent": "crafts_construct:block/train_steam_whistle/block_large_wall",
-    "textures": {
-        "2": "crafts_construct:block/train_steam_whistle/train_redstone_plate_powered"
-    }
-}
