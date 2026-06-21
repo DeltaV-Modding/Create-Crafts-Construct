@@ -20,7 +20,6 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.RAINBOW_GUMMY_BEAR.get()))
                     .title(Component.translatable("cc_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.C_PAINT_GUN);
                         output.accept(ModItems.PAINT_GUN);
 
                         output.accept(ModItems.EMPTY_PAINT_CARTRIDGE);
@@ -28,16 +27,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COPPER_PAINT_CARTRIDGE);
                         output.accept(ModItems.ANDESITE_PAINT_CARTRIDGE);
                         output.accept(ModItems.STURDY_PAINT_CARTRIDGE);
-                        output.accept(ModItems.INCOMPLETE_ANDESITE_PAINT_CARTRIDGE);
-                        output.accept(ModItems.INCOMPLETE_BRASS_PAINT_CARTRIDGE);
-                        output.accept(ModItems.INCOMPLETE_COPPER_PAINT_CARTRIDGE);
-                        output.accept(ModItems.INCOMPLETE_STURDY_PAINT_CARTRIDGE);
 
                         output.accept(ModItems.RAW_DIAMOND);
                         output.accept(ModItems.RAW_AMETHYST);
-                        output.accept(ModItems.EMPTY_CHARGE);
-                        output.accept(ModItems.DRAGON_CHARGE);
-                        output.accept(ModItems.FIREBALL_CHARGE);
+                        //output.accept(ModItems.EMPTY_CHARGE);
+                        //output.accept(ModItems.DRAGON_CHARGE);
+                        //output.accept(ModItems.FIREBALL_CHARGE);
                         output.accept(ModItems.SUGAR_BEET_SEEDS);
                         output.accept(ModItems.SUGAR_BEET);
 
@@ -46,7 +41,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.YELLOW_GUMMY_BEAR);
                         output.accept(ModItems.PINK_GUMMY_BEAR);
                         output.accept(ModItems.BLUE_GUMMY_BEAR);
-                        output.accept(ModItems.RAINBOW_GUMMY_BEAR);
                     }).build());
 
     public static final ResourceKey<CreativeModeTab> CC_TAB_KEY = ResourceKey.create(

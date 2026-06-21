@@ -10,7 +10,7 @@
 		"particle": "create:block/gearbox_top",
 		"gearbox_top": "create:block/gearbox_top",
 		"gearbox": "create:block/gearbox",
-		"andesite_casing_short": "create:C:/Users/Lukas/Pictures/MC Projects/Create CC/sewing_machine_side"
+		"andesite_casing_short": "create:sewing_machine_side"
 	},
 	"elements": [
 		{
@@ -54,13 +54,37 @@
 		{
 			"name": "Side2",
 			"from": [0, 16, 2],
-			"to": [2, 32, 12],
+			"to": [2, 20, 12],
 			"rotation": {"x": 90, "y": 0, "z": 0, "origin": [0, 16, 0]},
 			"faces": {
-				"east": {"uv": [0, 0, 16, 10], "rotation": 270, "texture": "#gearbox_top"},
-				"south": {"uv": [0, 0, 16, 2], "rotation": 90, "texture": "#andesite_casing_short"},
-				"west": {"uv": [0, 4, 16, 14], "rotation": 90, "texture": "#andesite_casing_short"},
-				"up": {"uv": [14, 4, 16, 14], "rotation": 180, "texture": "#andesite_casing_short"},
+				"east": {"uv": [0, 0, 4, 10], "rotation": 270, "texture": "#gearbox_top"},
+				"south": {"uv": [12, 0, 16, 2], "rotation": 90, "texture": "#andesite_casing_short"},
+				"west": {"uv": [12, 4, 16, 14], "rotation": 90, "texture": "#andesite_casing_short"},
+				"down": {"uv": [0, 4, 2, 14], "texture": "#andesite_casing_short"}
+			}
+		},
+		{
+			"name": "Side2",
+			"from": [0, 16, 14],
+			"to": [2, 20, 24],
+			"rotation": {"x": 90, "y": 0, "z": 0, "origin": [0, 16, 12]},
+			"faces": {
+				"east": {"uv": [12, 0, 16, 10], "rotation": 270, "texture": "#gearbox_top"},
+				"south": {"uv": [0, 0, 4, 2], "rotation": 90, "texture": "#andesite_casing_short"},
+				"west": {"uv": [0, 4, 4, 14], "rotation": 90, "texture": "#andesite_casing_short"},
+				"up": {"uv": [14, 4, 16, 14], "rotation": 180, "texture": "#andesite_casing_short"}
+			}
+		},
+		{
+			"name": "Side2",
+			"from": [0, 4, 4],
+			"to": [2, 14, 12],
+			"rotation": {"x": -180, "y": 0, "z": 0, "origin": [0, 9, 8]},
+			"faces": {
+				"east": {"uv": [6, 4, 16, 12], "rotation": 270, "texture": "#gearbox_top"},
+				"south": {"uv": [0, 0, 4, 2], "rotation": 90, "texture": "#andesite_casing_short"},
+				"west": {"uv": [4, 6, 14, 14], "rotation": 90, "texture": "#andesite_casing_short"},
+				"up": {"uv": [2, 5, 0, 13], "rotation": 180, "texture": "#andesite_casing_short"},
 				"down": {"uv": [0, 4, 2, 14], "texture": "#andesite_casing_short"}
 			}
 		}
@@ -71,7 +95,7 @@
 			"origin": [8, 8, 8],
 			"scope": 0,
 			"color": 0,
-			"children": [0, 1, 2, 3]
+			"children": [0, 1, 2, 3, 4, 5]
 		}
 	]
 }
