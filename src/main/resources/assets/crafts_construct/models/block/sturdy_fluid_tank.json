@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "crafts_construct:block/sturdy_fluid_tank/sturdy_fluid_tank"
+  }
+}

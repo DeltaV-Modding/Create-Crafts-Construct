@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "crafts_construct:block/sturdy_smart_fluid_pipe/sturdy_smart_fluid_pipe"
+  }
+}

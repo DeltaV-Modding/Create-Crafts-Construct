@@ -39,26 +39,25 @@ import static net.deltav.craftsconstruct.craftsconstruct.REGISTRATE;
 import net.deltav.craftsconstruct.block.create.fluid.andesite.*;
 import net.deltav.craftsconstruct.block.create.fluid.brass.*;
 import net.deltav.craftsconstruct.block.create.fluid.copper.*;
-import net.deltav.craftsconstruct.block.create.fluid.train.*;
+import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.deltav.craftsconstruct.block.create.kinetic.andesite.*;
 import net.deltav.craftsconstruct.block.create.kinetic.brass.*;
-import net.deltav.craftsconstruct.block.create.kinetic.train.*;
+import net.deltav.craftsconstruct.block.create.kinetic.sturdy.*;
 import net.deltav.craftsconstruct.block.create.pipe.andesite.*;
 import net.deltav.craftsconstruct.block.create.pipe.brass.*;
-import net.deltav.craftsconstruct.block.create.pipe.train.*;
+import net.deltav.craftsconstruct.block.create.pipe.sturdy.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.andesite.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.brass.*;
-import net.deltav.craftsconstruct.block.create.portableInterface.train.*;
+import net.deltav.craftsconstruct.block.create.portableInterface.sturdy.*;
 import net.deltav.craftsconstruct.block.create.drain.andesite.*;
 import net.deltav.craftsconstruct.block.create.drain.brass.*;
-import net.deltav.craftsconstruct.block.create.drain.train.*;
+import net.deltav.craftsconstruct.block.create.drain.sturdy.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 public class ModBlocks {
-    public static final List<BlockEntry<? extends Block>> TEMP_PAINT_BLOCKS = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_FLUID_PIPES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_GLASS_PIPES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_SMART_FLUID_PIPES = new ArrayList<>();
@@ -92,10 +91,10 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainFluidPipeBlock> TRAIN_FLUID_PIPE = REGISTRATE.block("train_fluid_pipe", p -> new TrainFluidPipeBlock(p, () -> ModBlockEntityTypes.TRAIN_FLUID_PIPE.get()))
+    public static final BlockEntry<SturdyFluidPipeBlock> STURDY_FLUID_PIPE = REGISTRATE.block("sturdy_fluid_pipe", p -> new SturdyFluidPipeBlock(p, () -> ModBlockEntityTypes.STURDY_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
-            .blockstate(CCBlockStateGen.pipeTrain())
+            .blockstate(CCBlockStateGen.pipeSturdy())
             .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
             .item()
             .transform(customItemModel())
@@ -144,8 +143,8 @@ public class ModBlocks {
                     .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
                     .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
                     .register();
-    public static final BlockEntry<TrainGlassPipeBlock> TRAIN_GLASS_PIPE =
-            REGISTRATE.block("train_glass_pipe", p -> new TrainGlassPipeBlock(p))
+    public static final BlockEntry<SturdyGlassPipeBlock> STURDY_GLASS_PIPE =
+            REGISTRATE.block("sturdy_glass_pipe", p -> new SturdyGlassPipeBlock(p))
                     .initialProperties(SharedProperties::copperMetal)
                     .properties(p -> p.noOcclusion())
                     .addLayer(() -> RenderType::cutoutMipped)
@@ -194,8 +193,8 @@ public class ModBlocks {
                     .loot((p, b) -> p.dropOther(b, BRASS_FLUID_PIPE.get()))
                     .transform(EncasingRegistry.addVariantTo(BRASS_FLUID_PIPE))
                     .register();
-    public static final BlockEntry<TrainEncasedPipeBlock> TRAIN_ENCASED_PIPE =
-            REGISTRATE.block("train_encased_pipe", p -> new TrainEncasedPipeBlock(p, AllBlocks.RAILWAY_CASING::get))
+    public static final BlockEntry<SturdyEncasedPipeBlock> STURDY_ENCASED_PIPE =
+            REGISTRATE.block("sturdy_encased_pipe", p -> new SturdyEncasedPipeBlock(p, AllBlocks.RAILWAY_CASING::get))
                     .initialProperties(SharedProperties::copperMetal)
                     .properties(p -> p.noOcclusion()
                             .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
@@ -205,8 +204,8 @@ public class ModBlocks {
                     .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.RAILWAY_CASING,
                             (s, f) -> !s.getValue(BrassEncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
                     .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
-                    .loot((p, b) -> p.dropOther(b, TRAIN_FLUID_PIPE.get()))
-                    .transform(EncasingRegistry.addVariantTo(TRAIN_FLUID_PIPE))
+                    .loot((p, b) -> p.dropOther(b, STURDY_FLUID_PIPE.get()))
+                    .transform(EncasingRegistry.addVariantTo(STURDY_FLUID_PIPE))
                     .register();
     public static final BlockEntry<AndesiteSmartFluidPipeBlock> ANDESITE_SMART_FLUID_PIPE = REGISTRATE.block("andesite_smart_fluid_pipe", p -> new AndesiteSmartFluidPipeBlock(p, () -> ModBlockEntityTypes.ANDESITE_SMART_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
@@ -226,7 +225,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainSmartFluidPipeBlock> TRAIN_SMART_FLUID_PIPE = REGISTRATE.block("train_smart_fluid_pipe", p -> new TrainSmartFluidPipeBlock(p, () -> ModBlockEntityTypes.TRAIN_SMART_FLUID_PIPE.get()))
+    public static final BlockEntry<SturdySmartFluidPipeBlock> STURDY_SMART_FLUID_PIPE = REGISTRATE.block("sturdy_smart_fluid_pipe", p -> new SturdySmartFluidPipeBlock(p, () -> ModBlockEntityTypes.STURDY_SMART_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
             .transform(pickaxeOnly())
@@ -255,7 +254,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainPumpBlock> TRAIN_MECHANICAL_PUMP = REGISTRATE.block("train_mechanical_pump", p -> new TrainPumpBlock(p, () -> ModBlockEntityTypes.TRAIN_MECHANICAL_PUMP.get()))
+    public static final BlockEntry<SturdyPumpBlock> STURDY_MECHANICAL_PUMP = REGISTRATE.block("sturdy_mechanical_pump", p -> new SturdyPumpBlock(p, () -> ModBlockEntityTypes.STURDY_MECHANICAL_PUMP.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.mapColor(MapColor.STONE))
             .transform(pickaxeOnly())
@@ -287,7 +286,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainFluidValveBlock> TRAIN_FLUID_VALVE = REGISTRATE.block("train_fluid_valve", p -> new TrainFluidValveBlock(p, () -> ModBlockEntityTypes.TRAIN_FLUID_VALVE.get()))
+    public static final BlockEntry<SturdyFluidValveBlock> STURDY_FLUID_VALVE = REGISTRATE.block("sturdy_fluid_valve", p -> new SturdyFluidValveBlock(p, () -> ModBlockEntityTypes.STURDY_FLUID_VALVE.get()))
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
             .addLayer(() -> RenderType::cutoutMipped)
@@ -308,7 +307,7 @@ public class ModBlocks {
             .transform(BuilderTransformers.valveHandle(null))
             .transform(CCStress.setCapacity(8.0))
             .register();
-    public static final BlockEntry<ValveHandleBlock> TRAIN_VALVE_HANDLE = REGISTRATE.block("train_valve_handle", p -> ValveHandleBlock.copper(p))
+    public static final BlockEntry<ValveHandleBlock> STURDY_VALVE_HANDLE = REGISTRATE.block("sturdy_valve_handle", p -> ValveHandleBlock.copper(p))
             .transform(pickaxeOnly())
             .transform(BuilderTransformers.valveHandle(null))
             .transform(CCStress.setCapacity(8.0))
@@ -343,7 +342,7 @@ public class ModBlocks {
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
-    public static final BlockEntry<TrainFluidTankBlock> TRAIN_FLUID_TANK = REGISTRATE.block("train_fluid_tank", p -> new TrainFluidTankBlock(p, () -> ModBlockEntityTypes.TRAIN_FLUID_TANK.get()))
+    public static final BlockEntry<SturdyFluidTankBlock> STURDY_FLUID_TANK = REGISTRATE.block("sturdy_fluid_tank", p -> new SturdyFluidTankBlock(p, () -> ModBlockEntityTypes.STURDY_FLUID_TANK.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
                     .isRedstoneConductor((p1, p2, p3) -> true))
@@ -354,7 +353,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(TrainFluidTankItem::new)
+            .item(SturdyFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -403,7 +402,7 @@ public class ModBlocks {
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
-    public static final BlockEntry<TrainHorizontalFluidTankBlock> TRAIN_HORIZONTAL_FLUID_TANK = REGISTRATE.block("train_horizontal_fluid_tank", p -> new TrainHorizontalFluidTankBlock(p, () -> ModBlockEntityTypes.TRAIN_HORIZONTAL_FLUID_TANK.get()))
+    public static final BlockEntry<SturdyHorizontalFluidTankBlock> STURDY_HORIZONTAL_FLUID_TANK = REGISTRATE.block("sturdy_horizontal_fluid_tank", p -> new SturdyHorizontalFluidTankBlock(p, () -> ModBlockEntityTypes.STURDY_HORIZONTAL_FLUID_TANK.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion()
                     .isRedstoneConductor((p1, p2, p3) -> true))
@@ -414,7 +413,7 @@ public class ModBlocks {
             .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
-            .item(TrainHorizontalFluidTankItem::new)
+            .item(SturdyHorizontalFluidTankItem::new)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -434,7 +433,7 @@ public class ModBlocks {
             .item(AssemblyOperatorBlockItem::new)
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainSpoutBlock> TRAIN_SPOUT = REGISTRATE.block("train_spout", p -> new TrainSpoutBlock(p, () -> ModBlockEntityTypes.TRAIN_SPOUT.get()))
+    public static final BlockEntry<SturdySpoutBlock> STURDY_SPOUT = REGISTRATE.block("sturdy_spout", p -> new SturdySpoutBlock(p, () -> ModBlockEntityTypes.STURDY_SPOUT.get()))
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
             .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), AssetLookup.partialBaseModel(ctx, prov)))
@@ -462,7 +461,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainHosePulleyBlock> TRAIN_HOSE_PULLEY = REGISTRATE.block("train_hose_pulley", p -> new TrainHosePulleyBlock(p, () -> ModBlockEntityTypes.TRAIN_HOSE_PULLEY.get()))
+    public static final BlockEntry<SturdyHosePulleyBlock> STURDY_HOSE_PULLEY = REGISTRATE.block("sturdy_hose_pulley", p -> new SturdyHosePulleyBlock(p, () -> ModBlockEntityTypes.STURDY_HOSE_PULLEY.get()))
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .addLayer(() -> RenderType::cutoutMipped)
@@ -486,7 +485,7 @@ public class ModBlocks {
             .blockstate((c, p) -> p.simpleBlock(c.get(), AssetLookup.standardModel(c, p)))
             .simpleItem()
             .register();
-    public static final BlockEntry<TrainItemDrainBlock> TRAIN_ITEM_DRAIN = REGISTRATE.block("train_item_drain", p -> new TrainItemDrainBlock(p))
+    public static final BlockEntry<SturdyItemDrainBlock> STURDY_ITEM_DRAIN = REGISTRATE.block("sturdy_item_drain", p -> new SturdyItemDrainBlock(p))
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
             .addLayer(() -> RenderType::cutoutMipped)
@@ -513,7 +512,7 @@ public class ModBlocks {
             .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainPortableFluidInterfaceBlock> TRAIN_PORTABLE_FLUID_INTERFACE = REGISTRATE.block("train_portable_fluid_interface", p -> new TrainPortableFluidInterfaceBlock(p))
+    public static final BlockEntry<SturdyPortableFluidInterfaceBlock> STURDY_PORTABLE_FLUID_INTERFACE = REGISTRATE.block("sturdy_portable_fluid_interface", p -> new SturdyPortableFluidInterfaceBlock(p))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
             .transform(axeOrPickaxe())
@@ -541,7 +540,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    public static final BlockEntry<TrainSteamEngineBlock> TRAIN_STEAM_ENGINE = REGISTRATE.block("train_steam_engine", p -> new TrainSteamEngineBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_ENGINE.get()))
+    public static final BlockEntry<SturdySteamEngineBlock> STURDY_STEAM_ENGINE = REGISTRATE.block("sturdy_steam_engine", p -> new SturdySteamEngineBlock(p, () -> ModBlockEntityTypes.STURDY_STEAM_ENGINE.get()))
             .initialProperties(SharedProperties::copperMetal)
             .transform(pickaxeOnly())
             .blockstate((c, p) -> p.horizontalFaceBlock(c.get(), AssetLookup.partialBaseModel(c, p)))
@@ -566,7 +565,7 @@ public class ModBlocks {
             .item()
             .transform(customItemModel())
             .register();
-     public static final BlockEntry<TrainSteamWhistleBlock> TRAIN_STEAM_WHISTLE = REGISTRATE.block("train_steam_whistle", p -> new TrainSteamWhistleBlock(p, () -> ModBlockEntityTypes.TRAIN_STEAM_WHISTLE.get()))
+     public static final BlockEntry<SturdySteamWhistleBlock> STURDY_STEAM_WHISTLE = REGISTRATE.block("sturdy_steam_whistle", p -> new SturdySteamWhistleBlock(p, () -> ModBlockEntityTypes.STURDY_STEAM_WHISTLE.get()))
              .initialProperties(SharedProperties::copperMetal)
              .properties(p -> p.mapColor(MapColor.GOLD))
              .transform(pickaxeOnly())
@@ -779,47 +778,47 @@ public class ModBlocks {
     static {
         PAINTED_FLUID_PIPES.add(ANDESITE_FLUID_PIPE);
         PAINTED_FLUID_PIPES.add(BRASS_FLUID_PIPE);
-        PAINTED_FLUID_PIPES.add(TRAIN_FLUID_PIPE);
+        PAINTED_FLUID_PIPES.add(STURDY_FLUID_PIPE);
         PAINTED_GLASS_PIPES.add(ANDESITE_GLASS_PIPE);
         PAINTED_GLASS_PIPES.add(BRASS_GLASS_PIPE);
-        PAINTED_GLASS_PIPES.add(TRAIN_GLASS_PIPE);
+        PAINTED_GLASS_PIPES.add(STURDY_GLASS_PIPE);
         PAINTED_SMART_FLUID_PIPES.add(ANDESITE_SMART_FLUID_PIPE);
         PAINTED_SMART_FLUID_PIPES.add(BRASS_SMART_FLUID_PIPE);
-        PAINTED_SMART_FLUID_PIPES.add(TRAIN_SMART_FLUID_PIPE);
+        PAINTED_SMART_FLUID_PIPES.add(STURDY_SMART_FLUID_PIPE);
         PAINTED_MECHANICAL_PUMPS.add(ANDESITE_MECHANICAL_PUMP);
         PAINTED_MECHANICAL_PUMPS.add(BRASS_MECHANICAL_PUMP);
-        PAINTED_MECHANICAL_PUMPS.add(TRAIN_MECHANICAL_PUMP);
+        PAINTED_MECHANICAL_PUMPS.add(STURDY_MECHANICAL_PUMP);
         PAINTED_FLUID_VALVES.add(ANDESITE_FLUID_VALVE);
         PAINTED_FLUID_VALVES.add(BRASS_FLUID_VALVE);
-        PAINTED_FLUID_VALVES.add(TRAIN_FLUID_VALVE);
+        PAINTED_FLUID_VALVES.add(STURDY_FLUID_VALVE);
         PAINTED_VALVE_HANDLES.add(ANDESITE_VALVE_HANDLE);
         PAINTED_VALVE_HANDLES.add(BRASS_VALVE_HANDLE);
-        PAINTED_VALVE_HANDLES.add(TRAIN_VALVE_HANDLE);
+        PAINTED_VALVE_HANDLES.add(STURDY_VALVE_HANDLE);
         PAINTED_FLUID_TANKS.add(ANDESITE_FLUID_TANK);
         PAINTED_FLUID_TANKS.add(BRASS_FLUID_TANK);
-        PAINTED_FLUID_TANKS.add(TRAIN_FLUID_TANK);
+        PAINTED_FLUID_TANKS.add(STURDY_FLUID_TANK);
         PAINTED_HORIZONTAL_FLUID_TANKS.add(ANDESITE_HORIZONTAL_FLUID_TANK);
         PAINTED_HORIZONTAL_FLUID_TANKS.add(BRASS_HORIZONTAL_FLUID_TANK);
         PAINTED_HORIZONTAL_FLUID_TANKS.add(COPPER_HORIZONTAL_FLUID_TANK);
-        PAINTED_HORIZONTAL_FLUID_TANKS.add(TRAIN_HORIZONTAL_FLUID_TANK);
+        PAINTED_HORIZONTAL_FLUID_TANKS.add(STURDY_HORIZONTAL_FLUID_TANK);
         PAINTED_SPOUTS.add(ANDESITE_SPOUT);
         PAINTED_SPOUTS.add(BRASS_SPOUT);
-        PAINTED_SPOUTS.add(TRAIN_SPOUT);
+        PAINTED_SPOUTS.add(STURDY_SPOUT);
         PAINTED_HOSE_PULLEYS.add(ANDESITE_HOSE_PULLEY);
         PAINTED_HOSE_PULLEYS.add(BRASS_HOSE_PULLEY);
-        PAINTED_HOSE_PULLEYS.add(TRAIN_HOSE_PULLEY);
+        PAINTED_HOSE_PULLEYS.add(STURDY_HOSE_PULLEY);
         PAINTED_ITEM_DRAINS.add(ANDESITE_ITEM_DRAIN);
         PAINTED_ITEM_DRAINS.add(BRASS_ITEM_DRAIN);
-        PAINTED_ITEM_DRAINS.add(TRAIN_ITEM_DRAIN);
+        PAINTED_ITEM_DRAINS.add(STURDY_ITEM_DRAIN);
         PAINTED_PORTABLE_FLUID_INTERFACES.add(ANDESITE_PORTABLE_FLUID_INTERFACE);
         PAINTED_PORTABLE_FLUID_INTERFACES.add(BRASS_PORTABLE_FLUID_INTERFACE);
-        PAINTED_PORTABLE_FLUID_INTERFACES.add(TRAIN_PORTABLE_FLUID_INTERFACE);
+        PAINTED_PORTABLE_FLUID_INTERFACES.add(STURDY_PORTABLE_FLUID_INTERFACE);
         PAINTED_STEAM_ENGINES.add(ANDESITE_STEAM_ENGINE);
         PAINTED_STEAM_ENGINES.add(BRASS_STEAM_ENGINE);
-        PAINTED_STEAM_ENGINES.add(TRAIN_STEAM_ENGINE);
+        PAINTED_STEAM_ENGINES.add(STURDY_STEAM_ENGINE);
         PAINTED_STEAM_WHISTLES.add(ANDESITE_STEAM_WHISTLE);
         PAINTED_STEAM_WHISTLES.add(BRASS_STEAM_WHISTLE);
-        PAINTED_STEAM_WHISTLES.add(TRAIN_STEAM_WHISTLE);
+        PAINTED_STEAM_WHISTLES.add(STURDY_STEAM_WHISTLE);
     }
 
     private static Block createBlock(String target) {

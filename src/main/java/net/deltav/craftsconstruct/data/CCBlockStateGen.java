@@ -10,7 +10,7 @@ import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.math.Pointing;
 import net.deltav.craftsconstruct.block.create.pipe.andesite.AndesiteFluidPipeBlock;
 import net.deltav.craftsconstruct.block.create.pipe.brass.BrassFluidPipeBlock;
-import net.deltav.craftsconstruct.block.create.pipe.train.TrainFluidPipeBlock;
+import net.deltav.craftsconstruct.block.create.pipe.sturdy.SturdyFluidPipeBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -156,7 +156,7 @@ public class CCBlockStateGen {
         };
     }
 
-    public static <P extends TrainFluidPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> pipeTrain() {
+    public static <P extends SturdyFluidPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> pipeSturdy() {
         return (c, p) -> {
             String path = "block/" + c.getName();
 
@@ -199,7 +199,7 @@ public class CCBlockStateGen {
 
                     coreModels.put(key, p.models()
                             .withExistingParent(modelName, parent)
-                            .texture("#0", ResourceLocation.fromNamespaceAndPath("crafts_construct", "block/train_fluid_pipe"))
+                            .texture("#0", ResourceLocation.fromNamespaceAndPath("crafts_construct", "block/sturdy_fluid_pipe"))
                     );
                 }
             }

@@ -1,0 +1,119 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:black_checkered_textile_block"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.checkered_pattern.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.checkered_pattern.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:textile_artist",
+  "criteria": {
+    "white_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:white_checkered_textile_block"]}]
+      }
+    },
+    "light_gray_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:light_gray_checkered_textile_block"]}]
+      }
+    },
+    "gray_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:gray_checkered_textile_block"]}]
+      }
+    },
+    "black_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:black_checkered_textile_block"]}]
+      }
+    },
+    "brown_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:brown_checkered_textile_block"]}]
+      }
+    },
+    "red_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:red_checkered_textile_block"]}]
+      }
+    },
+    "orange_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:orange_checkered_textile_block"]}]
+      }
+    },
+    "yellow_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:yellow_checkered_textile_block"]}]
+      }
+    },
+    "lime_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:lime_checkered_textile_block"]}]
+      }
+    },
+    "green_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:green_checkered_textile_block"]}]
+      }
+    },
+    "cyan_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:cyan_checkered_textile_block"]}]
+      }
+    },
+    "light_blue_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:light_blue_checkered_textile_block"]}]
+      }
+    },
+    "blue_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:blue_checkered_textile_block"]}]
+      }
+    },
+    "purple_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:purple_checkered_textile_block"]}]
+      }
+    },
+    "magenta_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:magenta_checkered_textile_block"]}]
+      }
+    },
+    "pink_checkered": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{"items": ["crafts_construct:pink_checkered_textile_block"]}]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 500
+  }
+}

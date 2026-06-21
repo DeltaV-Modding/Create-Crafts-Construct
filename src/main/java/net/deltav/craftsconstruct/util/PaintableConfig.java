@@ -47,6 +47,6 @@ public class PaintableConfig {
         }
         String path = blockId.getPath();
         return path.startsWith("andesite_") || path.startsWith("brass_")
-                || path.startsWith("copper_") || path.startsWith("train_");
+                || path.startsWith("copper_") || path.startsWith("sturdy_");
     }
 }

@@ -10,7 +10,7 @@ import net.deltav.craftsconstruct.registry.ModBlocks;
 import net.deltav.craftsconstruct.block.create.fluid.andesite.*;
 import net.deltav.craftsconstruct.block.create.fluid.brass.*;
 import net.deltav.craftsconstruct.block.create.fluid.copper.*;
-import net.deltav.craftsconstruct.block.create.fluid.train.*;
+import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -57,8 +57,8 @@ public final class FluidClient {
                             return new AndesiteFluidTankModel(bakedModel, sideShift, topShift, innerShift, false);
                         } else if (path.startsWith("brass")) {
                             return new BrassFluidTankModel(bakedModel, sideShift, topShift, innerShift, false);
-                        } else if (path.startsWith("train")) {
-                            return new TrainFluidTankModel(bakedModel, sideShift, topShift, innerShift, false);
+                        } else if (path.startsWith("sturdy")) {
+                            return new SturdyFluidTankModel(bakedModel, sideShift, topShift, innerShift, false);
                         }
                         return bakedModel;
                     }
@@ -118,8 +118,8 @@ public final class FluidClient {
                             return new AndesiteFluidTankModel(bakedModel, sideShift, topShift, innerShift, true);
                         } else if (baseTankPath.startsWith("brass")) {
                             return new BrassFluidTankModel(bakedModel, sideShift, topShift, innerShift, true);
-                        } else if (baseTankPath.startsWith("train")) {
-                            return new TrainFluidTankModel(bakedModel, sideShift, topShift, innerShift, true);
+                        } else if (baseTankPath.startsWith("sturdy")) {
+                            return new SturdyFluidTankModel(bakedModel, sideShift, topShift, innerShift, true);
                         } else if (baseTankPath.startsWith("copper")) {
                             return new CopperFluidTankModel(bakedModel, sideShift, topShift, innerShift, true);
                         }

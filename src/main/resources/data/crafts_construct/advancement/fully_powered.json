@@ -1,0 +1,63 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:brass_steam_engine"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.fully_powered.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.fully_powered.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:root",
+  "criteria": {
+    "has_andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:andesite_steam_engine"
+            ]
+          }
+        ]
+      }
+    },
+    "has_brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:brass_steam_engine"
+            ]
+          }
+        ]
+      }
+    },
+    "has_sturdy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:sturdy_steam_engine"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_andesite",
+      "has_brass",
+      "has_sturdy"
+    ]
+  ]
+}

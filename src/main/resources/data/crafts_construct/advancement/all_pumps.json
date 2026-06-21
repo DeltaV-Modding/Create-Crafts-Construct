@@ -1,0 +1,59 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:sturdy_mechanical_pump"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.all_pumps.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.all_pumps.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:pumped_up",
+  "criteria": {
+    "andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:andesite_mechanical_pump"
+            ]
+          }
+        ]
+      }
+    },
+    "brass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:brass_mechanical_pump"
+            ]
+          }
+        ]
+      }
+    },
+    "sturdy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:sturdy_mechanical_pump"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 250
+  }
+}

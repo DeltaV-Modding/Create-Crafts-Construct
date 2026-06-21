@@ -2,7 +2,6 @@ package net.deltav.craftsconstruct.block.create.kinetic.brass;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.steamEngine.PoweredShaftBlockEntity;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
@@ -52,9 +51,9 @@ public class BrassSteamEngineRenderer extends SafeBlockEntityRenderer<SteamEngin
         float pistonTranslation = (1.0f - sin) / 4.0f * 24.0f / 16.0f;
 
         String path = state.getBlock().builtInRegistryHolder().key().location().getPath();
-        PartialModel pistonModel = ModPartialModels.STEAM_ENGINE_PISTONS.getOrDefault(path, AllPartialModels.ENGINE_PISTON);
-        PartialModel linkageModel = ModPartialModels.STEAM_ENGINE_LINKAGES.getOrDefault(path, AllPartialModels.ENGINE_LINKAGE);
-        PartialModel connectorModel = ModPartialModels.STEAM_ENGINE_CONNECTORS.getOrDefault(path, AllPartialModels.ENGINE_CONNECTOR);
+        PartialModel pistonModel = ModPartialModels.STEAM_ENGINE_PISTONS.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_PISTON);
+        PartialModel linkageModel = ModPartialModels.STEAM_ENGINE_LINKAGES.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_LINKAGE);
+        PartialModel connectorModel = ModPartialModels.STEAM_ENGINE_CONNECTORS.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_CONNECTOR);
 
         VertexConsumer vc = buffer.getBuffer(RenderType.solid());
 

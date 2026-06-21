@@ -27,7 +27,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRASS_PAINT_CARTRIDGE);
                         output.accept(ModItems.COPPER_PAINT_CARTRIDGE);
                         output.accept(ModItems.ANDESITE_PAINT_CARTRIDGE);
-                        output.accept(ModItems.TRAIN_PAINT_CARTRIDGE);
+                        output.accept(ModItems.STURDY_PAINT_CARTRIDGE);
                         output.accept(ModItems.INCOMPLETE_ANDESITE_PAINT_CARTRIDGE);
                         output.accept(ModItems.INCOMPLETE_BRASS_PAINT_CARTRIDGE);
                         output.accept(ModItems.INCOMPLETE_COPPER_PAINT_CARTRIDGE);
@@ -41,15 +41,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SUGAR_BEET_SEEDS);
                         output.accept(ModItems.SUGAR_BEET);
 
-                        for (var tempPaintBlock : ModBlocks.TEMP_PAINT_BLOCKS) {
-                            output.accept(tempPaintBlock);
-                        }
-
                         output.accept(ModItems.GREEN_GUMMY_BEAR);
                         output.accept(ModItems.RED_GUMMY_BEAR);
                         output.accept(ModItems.YELLOW_GUMMY_BEAR);
                         output.accept(ModItems.PINK_GUMMY_BEAR);
                         output.accept(ModItems.BLUE_GUMMY_BEAR);
+                        output.accept(ModItems.RAINBOW_GUMMY_BEAR);
                     }).build());
 
     public static final ResourceKey<CreativeModeTab> CC_TAB_KEY = ResourceKey.create(

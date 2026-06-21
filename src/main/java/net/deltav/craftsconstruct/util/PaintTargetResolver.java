@@ -17,7 +17,7 @@ public class PaintTargetResolver {
     private static final ResourceLocation CREATE_ITEM_DRAIN = id("create", "item_drain");
     private static final ResourceLocation BRASS_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "brass_item_drain");
     private static final ResourceLocation ANDESITE_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "andesite_item_drain");
-    private static final ResourceLocation TRAIN_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "train_item_drain");
+    private static final ResourceLocation STURDY_ITEM_DRAIN = id(craftsconstruct.MOD_ID, "sturdy_item_drain");
     private static final ResourceLocation CREATE_GLASS_FLUID_PIPE = id("create", "glass_fluid_pipe");
     private static final ResourceLocation CREATE_ENCASED_FLUID_PIPE = id("create", "encased_fluid_pipe");
 
@@ -25,22 +25,22 @@ public class PaintTargetResolver {
             PaintMaterial.COPPER, CREATE_ITEM_DRAIN,
             PaintMaterial.BRASS, BRASS_ITEM_DRAIN,
             PaintMaterial.ANDESITE, ANDESITE_ITEM_DRAIN,
-            PaintMaterial.TRAIN, TRAIN_ITEM_DRAIN
+            PaintMaterial.STURDY, STURDY_ITEM_DRAIN
     );
     private static final Map<PaintMaterial, ResourceLocation> GLASS_FLUID_PIPE_TARGETS = Map.of(
             PaintMaterial.COPPER, CREATE_GLASS_FLUID_PIPE,
             PaintMaterial.BRASS, ModBlocks.BRASS_GLASS_PIPE.getId(),
             PaintMaterial.ANDESITE, ModBlocks.ANDESITE_GLASS_PIPE.getId(),
-            PaintMaterial.TRAIN, ModBlocks.TRAIN_GLASS_PIPE.getId()
+            PaintMaterial.STURDY, ModBlocks.STURDY_GLASS_PIPE.getId()
     );
     private static final Map<PaintMaterial, ResourceLocation> ENCASED_FLUID_PIPE_TARGETS = Map.of(
             PaintMaterial.COPPER, CREATE_ENCASED_FLUID_PIPE,
             PaintMaterial.BRASS, ModBlocks.BRASS_ENCASED_PIPE.getId(),
             PaintMaterial.ANDESITE, ModBlocks.ANDESITE_ENCASED_PIPE.getId(),
-            PaintMaterial.TRAIN, ModBlocks.TRAIN_ENCASED_PIPE.getId()
+            PaintMaterial.STURDY, ModBlocks.STURDY_ENCASED_PIPE.getId()
     );
     private static final Set<PaintMaterial> CUSTOM_CREATE_MATERIALS =
-            Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.TRAIN);
+            Set.of(PaintMaterial.ANDESITE, PaintMaterial.BRASS, PaintMaterial.STURDY);
     private static final Set<String> FUNCTIONAL_CRAFTS_CONSTRUCT_VARIANTS = Set.of(
             "fluid_pipe",
             "smart_fluid_pipe",
@@ -59,15 +59,15 @@ public class PaintTargetResolver {
             Map.entry(CREATE_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
             Map.entry(BRASS_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
             Map.entry(ANDESITE_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
-            Map.entry(TRAIN_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
+            Map.entry(STURDY_ITEM_DRAIN, ITEM_DRAIN_TARGETS),
             Map.entry(CREATE_GLASS_FLUID_PIPE, GLASS_FLUID_PIPE_TARGETS),
             Map.entry(ModBlocks.BRASS_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
             Map.entry(ModBlocks.ANDESITE_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
-            Map.entry(ModBlocks.TRAIN_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.STURDY_GLASS_PIPE.getId(), GLASS_FLUID_PIPE_TARGETS),
             Map.entry(CREATE_ENCASED_FLUID_PIPE, ENCASED_FLUID_PIPE_TARGETS),
             Map.entry(ModBlocks.BRASS_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
             Map.entry(ModBlocks.ANDESITE_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
-            Map.entry(ModBlocks.TRAIN_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
+            Map.entry(ModBlocks.STURDY_ENCASED_PIPE.getId(), ENCASED_FLUID_PIPE_TARGETS),
             Map.entry(id("create", "shaft"), Map.of(
                     PaintMaterial.ANDESITE, id("create", "andesite_encased_shaft"),
                     PaintMaterial.BRASS, id("create", "brass_encased_shaft")
@@ -148,8 +148,8 @@ public class PaintTargetResolver {
         if (sourceId.equals(ANDESITE_ITEM_DRAIN)) {
             return Optional.of(PaintMaterial.ANDESITE);
         }
-        if (sourceId.equals(TRAIN_ITEM_DRAIN)) {
-            return Optional.of(PaintMaterial.TRAIN);
+        if (sourceId.equals(STURDY_ITEM_DRAIN)) {
+            return Optional.of(PaintMaterial.STURDY);
         }
         if ("create".equals(sourceId.getNamespace())) {
             String strippedPath = stripKnownMaterialPrefix(sourceId.getPath());

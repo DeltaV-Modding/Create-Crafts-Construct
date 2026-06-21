@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "crafts_construct:paint_gun"
+    },
+    "title": {
+      "translate": "advancements.crafts_construct.time_to_paint.title"
+    },
+    "description": {
+      "translate": "advancements.crafts_construct.time_to_paint.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crafts_construct:prime",
+  "criteria": {
+    "has_paint_gun": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafts_construct:paint_gun"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
