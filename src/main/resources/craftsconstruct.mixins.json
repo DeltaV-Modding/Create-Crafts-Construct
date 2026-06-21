@@ -27,8 +27,6 @@
     "PonderTagRegistryAccessor",
     "PipeAttachmentModelMixin",
     "AbstractPulleyRendererMixin",
-    "HosePulleyRendererMixin",
-    "HosePulleyVisualMixin",
     "AbstractVisualAccessor",
     "AbstractBlockEntityVisualAccessor"
   ],

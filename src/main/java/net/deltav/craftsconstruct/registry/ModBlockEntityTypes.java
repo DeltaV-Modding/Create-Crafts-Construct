@@ -183,21 +183,21 @@ public class ModBlockEntityTypes {
             .register();
     public static final BlockEntityEntry<AndesiteHosePulleyBlockEntity> ANDESITE_HOSE_PULLEY = REGISTRATE
             .blockEntity("andesite_hose_pulley", AndesiteHosePulleyBlockEntity::new)
-            .visual(() -> HosePulleyVisual::new)
+            .visual(() -> AndesiteHosePulleyVisual::new)
             .validBlocks(ModBlocks.ANDESITE_HOSE_PULLEY)
-            .renderer(() -> HosePulleyRenderer::new)
+            .renderer(() -> AndesiteHosePulleyRenderer::new)
             .register();
     public static final BlockEntityEntry<BrassHosePulleyBlockEntity> BRASS_HOSE_PULLEY = REGISTRATE
             .blockEntity("brass_hose_pulley", BrassHosePulleyBlockEntity::new)
-            .visual(() -> HosePulleyVisual::new)
+            .visual(() -> BrassHosePulleyVisual::new)
             .validBlocks(ModBlocks.BRASS_HOSE_PULLEY)
-            .renderer(() -> HosePulleyRenderer::new)
+            .renderer(() -> BrassHosePulleyRenderer::new)
             .register();
     public static final BlockEntityEntry<SturdyHosePulleyBlockEntity> STURDY_HOSE_PULLEY = REGISTRATE
             .blockEntity("sturdy_hose_pulley", SturdyHosePulleyBlockEntity::new)
-            .visual(() -> HosePulleyVisual::new)
+            .visual(() -> SturdyHosePulleyVisual::new)
             .validBlocks(ModBlocks.STURDY_HOSE_PULLEY)
-            .renderer(() -> HosePulleyRenderer::new)
+            .renderer(() -> SturdyHosePulleyRenderer::new)
             .register();
     public static final BlockEntityEntry<AndesiteItemDrainBlockEntity> ANDESITE_ITEM_DRAIN = REGISTRATE
             .blockEntity("andesite_item_drain", AndesiteItemDrainBlockEntity::new)
