@@ -22,7 +22,6 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.C_PAINT_GUN);
                         output.accept(ModItems.PAINT_GUN);
-                        output.accept(ModItems.SEWING_THREAD);
 
                         output.accept(ModItems.EMPTY_PAINT_CARTRIDGE);
                         output.accept(ModItems.BRASS_PAINT_CARTRIDGE);

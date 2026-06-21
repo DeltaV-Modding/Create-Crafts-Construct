@@ -11,6 +11,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.deltav.craftsconstruct.util.PaintMaterial;
+import com.tterrag.registrate.util.entry.ItemEntry;
+
+import static net.deltav.craftsconstruct.craftsconstruct.REGISTRATE;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
@@ -44,7 +47,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> PAINT_GUN = paintGun("paint_gun", false);
     public static final DeferredItem<Item> C_PAINT_GUN = paintGun("creative_paint_gun", true);
-    public static final DeferredItem<Item> SEWING_THREAD = ITEMS.register("sewing_thread", () -> new SewingThreadItem(new Item.Properties()));
+    public static final ItemEntry<SewingThreadItem> SEWING_THREAD = REGISTRATE.item("sewing_thread", SewingThreadItem::new)
+            .register();
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
