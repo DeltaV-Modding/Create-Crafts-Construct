@@ -18,7 +18,6 @@ import static net.deltav.craftsconstruct.craftsconstruct.REGISTRATE;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
 
-    public static final DeferredItem<Item> RAW_DIAMOND = simpleItem("raw_diamond");
     public static final DeferredItem<Item> RAW_AMETHYST = simpleItem("raw_amethyst");
     public static final DeferredItem<Item> EMPTY_CHARGE = simpleItem("empty_charge");
 
@@ -47,8 +46,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> PAINT_GUN = paintGun("paint_gun", false);
     public static final DeferredItem<Item> C_PAINT_GUN = paintGun("creative_paint_gun", true);
-    public static final ItemEntry<SewingThreadItem> SEWING_THREAD = REGISTRATE.item("sewing_thread", SewingThreadItem::new)
-            .register();
+
+    @Deprecated(forRemoval = true)
+    public static final ItemEntry<SewingThreadItem> SEWING_THREAD = REGISTRATE.item("sewing_thread", SewingThreadItem::new).register();
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

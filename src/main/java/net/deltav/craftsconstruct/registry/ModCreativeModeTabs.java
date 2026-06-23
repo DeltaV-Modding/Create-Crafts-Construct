@@ -28,7 +28,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ANDESITE_PAINT_CARTRIDGE);
                         output.accept(ModItems.STURDY_PAINT_CARTRIDGE);
 
-                        output.accept(ModItems.RAW_DIAMOND);
                         output.accept(ModItems.RAW_AMETHYST);
                         //output.accept(ModItems.EMPTY_CHARGE);
                         //output.accept(ModItems.DRAGON_CHARGE);

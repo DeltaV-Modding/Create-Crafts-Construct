@@ -1,0 +1,17 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "crafts_construct:unpolished_amethyst"
+    }
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "id": "minecraft:amethyst_shard"
+    },
+    {
+      "id": "minecraft:amethyst_shard"
+    }
+  ]
+}
