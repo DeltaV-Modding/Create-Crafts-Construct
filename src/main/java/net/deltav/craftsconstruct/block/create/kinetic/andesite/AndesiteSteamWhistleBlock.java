@@ -81,7 +81,11 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
             wall = false;
         }
 
-        BlockState state = super.getStateForPlacement(context).setValue(FACING, face.getOpposite())
+        BlockState baseState = super.getStateForPlacement(context);
+        if (baseState == null)
+            return null;
+
+        BlockState state = baseState.setValue(FACING, face.getOpposite())
                 .setValue(POWERED, level.hasNeighborSignal(clickedPos))
                 .setValue(WALL, wall);
         return canSurvive(state, level, clickedPos) ? state : null;
