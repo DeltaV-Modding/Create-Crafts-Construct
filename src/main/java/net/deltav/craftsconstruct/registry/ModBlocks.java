@@ -17,12 +17,14 @@ import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.simibubi.create.content.kinetics.crank.ValveHandleBlock;
 import net.deltav.craftsconstruct.block.SugarBeetCropBlock;
+import net.deltav.craftsconstruct.block.WildSugarBeetBlock;
 import net.deltav.craftsconstruct.data.CCBlockStateGen;
 import net.deltav.craftsconstruct.util.CCStress;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -596,6 +598,10 @@ public class ModBlocks {
 
     public static final BlockEntry<SugarBeetCropBlock> SUGAR_BEETS = REGISTRATE.block("sugar_beets", SugarBeetCropBlock::new)
             .initialProperties(() -> Blocks.BEETROOTS)
+            .register();
+
+    public static final BlockEntry<WildSugarBeetBlock> WILD_SUGAR_BEET_BLOCK = REGISTRATE.block("wild_sugar_beet_block", p -> new WildSugarBeetBlock(
+            MobEffects.MOVEMENT_SPEED, 6, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)))
             .register();
 
     public static void register() {
