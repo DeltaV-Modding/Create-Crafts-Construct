@@ -25,7 +25,6 @@
     "SchematicLevelMixin",
     "PonderSceneRegistryAccessor",
     "PonderTagRegistryAccessor",
-    "PipeAttachmentModelMixin",
     "AbstractPulleyRendererMixin",
     "AbstractVisualAccessor",
     "AbstractBlockEntityVisualAccessor"

@@ -45,7 +45,6 @@ import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.deltav.craftsconstruct.block.create.kinetic.andesite.*;
 import net.deltav.craftsconstruct.block.create.kinetic.brass.*;
 import net.deltav.craftsconstruct.block.create.kinetic.sturdy.*;
-import net.deltav.craftsconstruct.block.create.sewing.*;
 import net.deltav.craftsconstruct.block.create.pipe.andesite.*;
 import net.deltav.craftsconstruct.block.create.pipe.brass.*;
 import net.deltav.craftsconstruct.block.create.pipe.sturdy.*;
@@ -75,8 +74,6 @@ public class ModBlocks {
     public static final List<BlockEntry<? extends Block>> PAINTED_STEAM_WHISTLES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_PORTABLE_FLUID_INTERFACES = new ArrayList<>();
     public static final List<BlockEntry<? extends Block>> PAINTED_ITEM_DRAINS = new ArrayList<>();
-    public static final List<BlockEntry<? extends Block>> PAINTED_PORTABLE_STORAGE_INTERFACES = new ArrayList<>();
-    public static final List<BlockEntry<? extends Block>> PAINTED_CONTRAPTION_CONTROLS = new ArrayList<>();
 
     public static final BlockEntry<AndesiteFluidPipeBlock> ANDESITE_FLUID_PIPE = REGISTRATE.block("andesite_fluid_pipe", p -> new AndesiteFluidPipeBlock(p, () -> ModBlockEntityTypes.ANDESITE_FLUID_PIPE.get()))
             .initialProperties(SharedProperties::copperMetal)
@@ -577,25 +574,6 @@ public class ModBlocks {
              .transform(customItemModel())
              .register();
 
-    public static final BlockEntry<SewingMachineBlock> SEWING_MACHINE = REGISTRATE.block("mechanical_sewing_machine", SewingMachineBlock::new)
-            .initialProperties(SharedProperties::copperMetal)
-            .properties(p -> p.mapColor(MapColor.METAL))
-            .transform(pickaxeOnly())
-            .blockstate((c, p) -> p.simpleBlock(c.get(), p.models().getExistingFile(p.modLoc("block/mechanical_sewing_machine/block"))))
-            .transform(CCStress.setImpact(4.0))
-            .item()
-            .transform(customItemModel())
-            .register();
-
-    public static final BlockEntry<SpoolBlock> SPOOL_BLOCK = REGISTRATE.block("spool_block", SpoolBlock::new)
-            .initialProperties(SharedProperties::copperMetal)
-            .properties(p -> p.mapColor(MapColor.COLOR_BROWN).noOcclusion())
-            .transform(pickaxeOnly())
-            .blockstate((c, p) -> p.horizontalBlock(c.get(), p.models().getExistingFile(p.mcLoc("block/oak_planks"))))
-            .item()
-            .transform(customItemModel())
-            .register();
-
     public static final BlockEntry<SugarBeetCropBlock> SUGAR_BEETS = REGISTRATE.block("sugar_beets", SugarBeetCropBlock::new)
             .initialProperties(() -> Blocks.BEETROOTS)
             .register();
@@ -805,6 +783,9 @@ public class ModBlocks {
         PAINTED_FLUID_PIPES.add(ANDESITE_FLUID_PIPE);
         PAINTED_FLUID_PIPES.add(BRASS_FLUID_PIPE);
         PAINTED_FLUID_PIPES.add(STURDY_FLUID_PIPE);
+        PAINTED_FLUID_PIPES.add(ANDESITE_MECHANICAL_PUMP);
+        PAINTED_FLUID_PIPES.add(BRASS_MECHANICAL_PUMP); // Gotta add those here as well because I'm too lazy to make a new list for them
+        PAINTED_FLUID_PIPES.add(STURDY_MECHANICAL_PUMP);
         PAINTED_GLASS_PIPES.add(ANDESITE_GLASS_PIPE);
         PAINTED_GLASS_PIPES.add(BRASS_GLASS_PIPE);
         PAINTED_GLASS_PIPES.add(STURDY_GLASS_PIPE);

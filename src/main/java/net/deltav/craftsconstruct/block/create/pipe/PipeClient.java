@@ -41,6 +41,7 @@ public final class PipeClient {
         registerPipeModels(ModBlocks.PAINTED_FLUID_PIPES);
         registerPipeModels(ModBlocks.PAINTED_GLASS_PIPES);
         registerPipeModels(ModBlocks.PAINTED_SMART_FLUID_PIPES);
+        registerPipeModels(ModBlocks.PAINTED_FLUID_VALVES);
     }
 
     private static void registerPipeModels(List<BlockEntry<? extends Block>> blocks) {

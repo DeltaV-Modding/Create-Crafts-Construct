@@ -1,12 +1,8 @@
 package net.deltav.craftsconstruct.registry;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.actors.psi.PSIVisual;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceRenderer;
-import com.simibubi.create.content.contraptions.pulley.HosePulleyVisual;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleRenderer;
-import com.simibubi.create.content.fluids.hosePulley.HosePulleyRenderer;
 import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pump.PumpRenderer;
 import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
@@ -26,7 +22,6 @@ import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
 import net.deltav.craftsconstruct.block.create.kinetic.andesite.*;
 import net.deltav.craftsconstruct.block.create.kinetic.brass.*;
 import net.deltav.craftsconstruct.block.create.kinetic.sturdy.*;
-import net.deltav.craftsconstruct.block.create.sewing.*;
 import net.deltav.craftsconstruct.block.create.pipe.andesite.*;
 import net.deltav.craftsconstruct.block.create.pipe.brass.*;
 import net.deltav.craftsconstruct.block.create.pipe.sturdy.*;
@@ -97,19 +92,19 @@ public class ModBlockEntityTypes {
 
     public static final BlockEntityEntry<AndesitePumpBlockEntity> ANDESITE_MECHANICAL_PUMP = REGISTRATE
             .blockEntity("andesite_mechanical_pump", AndesitePumpBlockEntity::new)
-            .visual(() -> SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG))
+            .visual(() -> SingleAxisRotatingVisual.ofZ(ModPartialModels.ANDESITE_PUMP_COG))
             .validBlocks(ModBlocks.ANDESITE_MECHANICAL_PUMP)
-            .renderer(() -> PumpRenderer::new)
+            .renderer(() -> AndesitePumpRenderer::new)
             .register();
     public static final BlockEntityEntry<BrassPumpBlockEntity> BRASS_MECHANICAL_PUMP = REGISTRATE
             .blockEntity("brass_mechanical_pump", BrassPumpBlockEntity::new)
-            .visual(() -> SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG))
+            .visual(() -> SingleAxisRotatingVisual.ofZ(ModPartialModels.BRASS_PUMP_COG))
             .validBlocks(ModBlocks.BRASS_MECHANICAL_PUMP)
             .renderer(() -> PumpRenderer::new)
             .register();
     public static final BlockEntityEntry<SturdyPumpBlockEntity> STURDY_MECHANICAL_PUMP = REGISTRATE
             .blockEntity("sturdy_mechanical_pump", SturdyPumpBlockEntity::new)
-            .visual(() -> SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG))
+            .visual(() -> SingleAxisRotatingVisual.ofZ(ModPartialModels.STURDY_PUMP_COG))
             .validBlocks(ModBlocks.STURDY_MECHANICAL_PUMP)
             .renderer(() -> PumpRenderer::new)
             .register();
@@ -265,17 +260,6 @@ public class ModBlockEntityTypes {
             .blockEntity("sturdy_steam_whistle", SturdySteamWhistleBlockEntity::new)
             .validBlocks(ModBlocks.STURDY_STEAM_WHISTLE)
             .renderer(() -> WhistleRenderer::new)
-            .register();
-    public static final BlockEntityEntry<SewingMachineBlockEntity> SEWING_MACHINE = REGISTRATE
-            .blockEntity("mechanical_sewing_machine", SewingMachineBlockEntity::new)
-            .visual(() -> SewingMachineVisual::new, false)
-            .validBlocks(ModBlocks.SEWING_MACHINE)
-            .renderer(() -> SewingMachineRenderer::new)
-            .register();
-    public static final BlockEntityEntry<SpoolBlockEntity> SPOOL_BLOCK = REGISTRATE
-            .blockEntity("spool_block", SpoolBlockEntity::new)
-            .validBlocks(ModBlocks.SPOOL_BLOCK)
-            .renderer(() -> SmartBlockEntityRenderer::new)
             .register();
 
     private ModBlockEntityTypes() {

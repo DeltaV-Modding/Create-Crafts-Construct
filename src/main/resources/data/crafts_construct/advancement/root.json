@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancements.crafts_construct.root.description"
     },
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "background": "crafts_construct:textures/gui/advancements/backgrounds/textile.png",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,

@@ -68,6 +68,10 @@ public class ModPartialModels {
             STURDY_SPOUT_MIDDLE = block("sturdy_spout/middle"),
             STURDY_SPOUT_BOTTOM = block("sturdy_spout/bottom"),
 
+            ANDESITE_PUMP_COG = block("andesite_mechanical_pump/cog"),
+            BRASS_PUMP_COG = block("brass_mechanical_pump/cog"),
+            STURDY_PUMP_COG = block("sturdy_mechanical_pump/cog"),
+
             BRASS_PORTABLE_STORAGE_INTERFACE_TOP = block("brass_portable_storage_interface/block_top"),
             BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("brass_portable_storage_interface/block_middle"),
             BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("brass_portable_storage_interface/block_middle_powered"),

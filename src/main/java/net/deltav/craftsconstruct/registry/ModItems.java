@@ -5,17 +5,15 @@ import net.deltav.craftsconstruct.item.DragonCharge;
 import net.deltav.craftsconstruct.item.FireballCharge;
 import net.deltav.craftsconstruct.item.PaintCartridgeItem;
 import net.deltav.craftsconstruct.item.PaintGunItem;
-import net.deltav.craftsconstruct.item.SewingThreadItem;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.deltav.craftsconstruct.util.PaintMaterial;
-import com.tterrag.registrate.util.entry.ItemEntry;
-
-import static net.deltav.craftsconstruct.craftsconstruct.REGISTRATE;
 
 public class ModItems {
+
+    // TODO: Change this to Registrate
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(craftsconstruct.MOD_ID);
 
     public static final DeferredItem<Item> RAW_AMETHYST = simpleItem("raw_amethyst");
@@ -46,9 +44,6 @@ public class ModItems {
 
     public static final DeferredItem<Item> PAINT_GUN = paintGun("paint_gun", false);
     public static final DeferredItem<Item> C_PAINT_GUN = paintGun("creative_paint_gun", true);
-
-    @Deprecated(forRemoval = true)
-    public static final ItemEntry<SewingThreadItem> SEWING_THREAD = REGISTRATE.item("sewing_thread", SewingThreadItem::new).register();
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

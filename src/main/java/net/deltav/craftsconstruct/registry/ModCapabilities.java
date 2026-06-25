@@ -9,7 +9,6 @@ import net.deltav.craftsconstruct.block.create.fluid.andesite.*;
 import net.deltav.craftsconstruct.block.create.fluid.brass.*;
 import net.deltav.craftsconstruct.block.create.fluid.copper.*;
 import net.deltav.craftsconstruct.block.create.fluid.sturdy.*;
-import net.deltav.craftsconstruct.block.create.sewing.SpoolBlockEntity;
 import net.deltav.craftsconstruct.block.create.portableInterface.andesite.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.brass.*;
 import net.deltav.craftsconstruct.block.create.portableInterface.sturdy.*;
@@ -182,12 +181,6 @@ public class ModCapabilities {
                 }
             );
         }
-
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                ModBlockEntityTypes.SPOOL_BLOCK.get(),
-                (be, context) -> be instanceof SpoolBlockEntity spool ? spool.getInventory() : null
-        );
     }
 
     private static Field field(String name) {
