@@ -46,6 +46,7 @@ public class craftsconstruct {
         ModItems.register(modEventBus);
         ModBlocks.register();
         ModCreativeModeTabs.register(modEventBus);
+        ModFeatures.register(modEventBus);
         ModBlockEntityTypes.register();
         ModCapabilities.register(modEventBus);
         modEventBus.addListener(this::onAddBlocksToBE);

@@ -369,6 +369,7 @@ public class ModBlocks {
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
             .item(AndesiteHorizontalFluidTankItem::new)
+            .removeTab(ModCreativeModeTabs.CC_TAB_KEY) // Just temporary, til it works
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -384,6 +385,7 @@ public class ModBlocks {
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
             .item(BrassHorizontalFluidTankItem::new)
+            .removeTab(ModCreativeModeTabs.CC_TAB_KEY)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -399,6 +401,7 @@ public class ModBlocks {
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
             .item(CopperHorizontalFluidTankItem::new)
+            .removeTab(ModCreativeModeTabs.CC_TAB_KEY)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -414,6 +417,7 @@ public class ModBlocks {
             .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
             .addLayer(() -> RenderType::cutoutMipped)
             .item(SturdyHorizontalFluidTankItem::new)
+            .removeTab(ModCreativeModeTabs.CC_TAB_KEY)
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
@@ -586,13 +590,9 @@ public class ModBlocks {
         // This method is called from craftsconstruct to ensure the class is loaded
     }
 
+    //TEXTILE
+
     public static final BlockEntry<Block> WHITE_TEXTILE = REGISTRATE.block("white_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> WHITE_CHECKERED_TEXTILE = REGISTRATE.block("white_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -604,19 +604,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> LIGHT_GRAY_CHECKERED_TEXTILE = REGISTRATE.block("light_gray_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> GRAY_TEXTILE = REGISTRATE.block("gray_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> GRAY_CHECKERED_TEXTILE = REGISTRATE.block("gray_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -628,19 +616,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> BLACK_CHECKERED_TEXTILE = REGISTRATE.block("black_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> BROWN_TEXTILE = REGISTRATE.block("brown_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BROWN_CHECKERED_TEXTILE = REGISTRATE.block("brown_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -652,19 +628,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> RED_CHECKERED_TEXTILE = REGISTRATE.block("red_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> ORANGE_TEXTILE = REGISTRATE.block("orange_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> ORANGE_CHECKERED_TEXTILE = REGISTRATE.block("orange_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -676,19 +640,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> YELLOW_CHECKERED_TEXTILE = REGISTRATE.block("yellow_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> LIME_TEXTILE = REGISTRATE.block("lime_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> LIME_CHECKERED_TEXTILE = REGISTRATE.block("lime_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -700,19 +652,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> GREEN_CHECKERED_TEXTILE = REGISTRATE.block("green_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> CYAN_TEXTILE = REGISTRATE.block("cyan_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> CYAN_CHECKERED_TEXTILE = REGISTRATE.block("cyan_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -724,19 +664,7 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> LIGHT_BLUE_CHECKERED_TEXTILE = REGISTRATE.block("light_blue_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> BLUE_TEXTILE = REGISTRATE.block("blue_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
-    public static final BlockEntry<Block> BLUE_CHECKERED_TEXTILE = REGISTRATE.block("blue_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
@@ -748,25 +676,106 @@ public class ModBlocks {
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> PURPLE_CHECKERED_TEXTILE = REGISTRATE.block("purple_checkered_textile_block", Block::new)
-            .initialProperties(() -> Blocks.WHITE_WOOL)
-            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
-            .item()
-            .build()
-            .register();
     public static final BlockEntry<Block> MAGENTA_TEXTILE = REGISTRATE.block("magenta_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> MAGENTA_CHECKERED_TEXTILE = REGISTRATE.block("magenta_checkered_textile_block", Block::new)
+    public static final BlockEntry<Block> PINK_TEXTILE = REGISTRATE.block("pink_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
             .build()
             .register();
-    public static final BlockEntry<Block> PINK_TEXTILE = REGISTRATE.block("pink_textile_block", Block::new)
+
+    //CHECKERED
+
+    public static final BlockEntry<Block> WHITE_CHECKERED_TEXTILE = REGISTRATE.block("white_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> LIGHT_GRAY_CHECKERED_TEXTILE = REGISTRATE.block("light_gray_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> GRAY_CHECKERED_TEXTILE = REGISTRATE.block("gray_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> BLACK_CHECKERED_TEXTILE = REGISTRATE.block("black_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> BROWN_CHECKERED_TEXTILE = REGISTRATE.block("brown_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> RED_CHECKERED_TEXTILE = REGISTRATE.block("red_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> ORANGE_CHECKERED_TEXTILE = REGISTRATE.block("orange_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> YELLOW_CHECKERED_TEXTILE = REGISTRATE.block("yellow_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> LIME_CHECKERED_TEXTILE = REGISTRATE.block("lime_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> GREEN_CHECKERED_TEXTILE = REGISTRATE.block("green_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> CYAN_CHECKERED_TEXTILE = REGISTRATE.block("cyan_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> LIGHT_BLUE_CHECKERED_TEXTILE = REGISTRATE.block("light_blue_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> BLUE_CHECKERED_TEXTILE = REGISTRATE.block("blue_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> PURPLE_CHECKERED_TEXTILE = REGISTRATE.block("purple_checkered_textile_block", Block::new)
+            .initialProperties(() -> Blocks.WHITE_WOOL)
+            .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
+            .item()
+            .build()
+            .register();
+    public static final BlockEntry<Block> MAGENTA_CHECKERED_TEXTILE = REGISTRATE.block("magenta_checkered_textile_block", Block::new)
             .initialProperties(() -> Blocks.WHITE_WOOL)
             .properties(p -> p.ignitedByLava().sound(SoundType.WOOL).strength(0.8f))
             .item()
