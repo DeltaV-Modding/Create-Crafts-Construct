@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 
 // Credit: Farmer's Delight
-public record WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySpread, Holder<PlacedFeature> primaryFeature, Holder<PlacedFeature> secondaryFeature, @Nullable Holder<PlacedFeature> floorFeature
+public record WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySpread, Holder<PlacedFeature> primaryFeature, @Nullable Holder<PlacedFeature> floorFeature
 ) implements FeatureConfiguration
 {
     public static final Codec<WildSugarBeetsFeatureConfigurator> CODEC = RecordCodecBuilder.create((config) -> config.group(
@@ -20,16 +20,14 @@ public record WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySp
             ExtraCodecs.NON_NEGATIVE_INT.fieldOf("xz_spread").orElse(4).forGetter(WildSugarBeetsFeatureConfigurator::xzSpread),
             ExtraCodecs.NON_NEGATIVE_INT.fieldOf("y_spread").orElse(3).forGetter(WildSugarBeetsFeatureConfigurator::ySpread),
             PlacedFeature.CODEC.fieldOf("primary_feature").forGetter(WildSugarBeetsFeatureConfigurator::primaryFeature),
-            PlacedFeature.CODEC.fieldOf("secondary_feature").forGetter(WildSugarBeetsFeatureConfigurator::secondaryFeature),
             PlacedFeature.CODEC.optionalFieldOf("floor_feature").forGetter(floorConfig -> Optional.ofNullable(floorConfig.floorFeature))
-    ).apply(config, (tries, xzSpread, yspread, primary, secondary, floor) -> floor.map(placedFeatureHolder -> new WildSugarBeetsFeatureConfigurator(tries, xzSpread, yspread, primary, secondary, placedFeatureHolder)).orElseGet(() -> new WildSugarBeetsFeatureConfigurator(tries, xzSpread, yspread, primary, secondary, null))));
+    ).apply(config, (tries, xzSpread, yspread, primary, floor) -> floor.map(placedFeatureHolder -> new WildSugarBeetsFeatureConfigurator(tries, xzSpread, yspread, primary, placedFeatureHolder)).orElseGet(() -> new WildSugarBeetsFeatureConfigurator(tries, xzSpread, yspread, primary, null))));
 
-    public WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySpread, Holder<PlacedFeature> primaryFeature, Holder<PlacedFeature> secondaryFeature, @Nullable Holder<PlacedFeature> floorFeature) {
+    public WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySpread, Holder<PlacedFeature> primaryFeature, @Nullable Holder<PlacedFeature> floorFeature) {
         this.tries = tries;
         this.xzSpread = xzSpread;
         this.ySpread = ySpread;
         this.primaryFeature = primaryFeature;
-        this.secondaryFeature = secondaryFeature;
         this.floorFeature = floorFeature;
     }
 
@@ -47,10 +45,6 @@ public record WildSugarBeetsFeatureConfigurator(int tries, int xzSpread, int ySp
 
     public Holder<PlacedFeature> primaryFeature() {
         return this.primaryFeature;
-    }
-
-    public Holder<PlacedFeature> secondaryFeature() {
-        return this.secondaryFeature;
     }
 
     public Holder<PlacedFeature> floorFeature() {
