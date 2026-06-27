@@ -36,8 +36,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SUGAR_BEET);
 
                         output.accept(ModItems.GREEN_GUMMY_BEAR);
-                        output.accept(ModItems.RED_GUMMY_BEAR);
                         output.accept(ModItems.YELLOW_GUMMY_BEAR);
+                        output.accept(ModItems.RED_GUMMY_BEAR);
                         output.accept(ModItems.PINK_GUMMY_BEAR);
                         output.accept(ModItems.BLUE_GUMMY_BEAR);
                     }).build());

@@ -24,6 +24,8 @@ public class PaintGunOutlineRenderer {
     private static Supplier<Iterable<BlockPos>> renderedPosition;
 
     public static void tick() {
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player == null || !player.isShiftKeyDown()) return;
         gatherBlockTarget();
         if (renderedPosition == null)
             return;
@@ -31,11 +33,8 @@ public class PaintGunOutlineRenderer {
         Outliner outliner = Outliner.getInstance();
         BlockPos targetPos = renderedPosition.get().iterator().next();
         int color = 0xff0000; // That's red
-
         if (isPaintableBlock(targetPos)) {
             color = 0x00ff00; // That's green
-            LocalPlayer player = Minecraft.getInstance().player;
-            if (player != null) {
                 ItemStack cartridge = player.getOffhandItem();
                 boolean creative = player.getMainHandItem().is(ModItems.C_PAINT_GUN.get()) || player.getOffhandItem().is(ModItems.C_PAINT_GUN.get());
                 PaintMaterial material = null;
@@ -55,7 +54,6 @@ public class PaintGunOutlineRenderer {
                     color = 0xffd000;
                 }
             }
-        }
 
         outliner.showCluster("PaintGunOutline", renderedPosition.get())
                 .colored(color)

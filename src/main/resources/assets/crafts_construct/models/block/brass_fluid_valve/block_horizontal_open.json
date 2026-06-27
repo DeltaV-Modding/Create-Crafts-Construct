@@ -3,7 +3,7 @@
     "textures": {
         "2": "crafts_construct:block/brass_fluid_valve/brass_fluid_valve",
         "3": "create:block/valve_open",
-        "particle": "create:block/copper_underside"
+        "particle": "crafts_construct:block/brass_fluid_tank/brass_underside"
     },
     "elements": [
         {
