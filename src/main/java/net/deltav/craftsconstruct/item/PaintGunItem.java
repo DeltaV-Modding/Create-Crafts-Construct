@@ -47,7 +47,7 @@ public class PaintGunItem extends Item {
 
     public static InteractionResult useOn(UseOnContext context, boolean creative) {
         Player player = context.getPlayer();
-        if (player == null) {
+        if (player == null || !player.isShiftKeyDown()) {
             return InteractionResult.PASS;
         }
 
