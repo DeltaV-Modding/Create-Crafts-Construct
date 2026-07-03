@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "create:block/fluid_chute_unpowered",
+		"1": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
 		"2": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"particle": "create:block/railway_casing"
+		"particle": "crafts_construct:block/sturdy_fluid_pipe/sturdy_encased_pipe"
 	},
 	"elements": [
 		{

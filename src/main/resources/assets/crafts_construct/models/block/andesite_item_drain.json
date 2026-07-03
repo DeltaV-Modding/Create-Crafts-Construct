@@ -3,7 +3,7 @@
   "parent": "block/block",
   "textures": {
     "0": "crafts_construct:block/andesite_item_drain/andesite_item_drain_side",
-    "1": "create:block/item_drain_top",
+    "1": "crafts_construct:block/andesite_item_drain/andesite_item_drain_side",
     "3": "crafts_construct:block/andesite_item_drain/andesite_pump",
     "4": "crafts_construct:block/andesite_item_drain/andesite_underside",
     "particle": "crafts_construct:block/andesite_item_drain/andesite_item_drain_side"

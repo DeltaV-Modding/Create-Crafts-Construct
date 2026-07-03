@@ -2,10 +2,10 @@
     "credit": "Made with Blockbench",
     "textures": {
         "2": "crafts_construct:block/brass_fluid_valve/brass_fluid_valve",
-        "4": "create:block/valve_open",
+        "4": "crafts_construct:block/brass_fluid_valve/brass_fluid_valve",
         "1_1": "create:block/axis_top",
         "1_0": "create:block/axis",
-        "particle": "create:block/valve_closed"
+        "particle": "crafts_construct:block/brass_fluid_valve/brass_fluid_valve"
     },
     "elements": [
         {

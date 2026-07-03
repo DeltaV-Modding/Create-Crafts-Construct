@@ -3,7 +3,7 @@
   "parent": "block/block",
   "textures": {
     "0": "crafts_construct:block/sturdy_item_drain/sturdy_item_drain_side",
-    "1": "create:block/item_drain_top",
+    "1": "crafts_construct:block/sturdy_item_drain/sturdy_item_drain_side",
     "3": "crafts_construct:block/sturdy_item_drain/sturdy_pump",
     "4": "crafts_construct:block/sturdy_item_drain/sturdy_underside",
     "particle": "crafts_construct:block/sturdy_item_drain/sturdy_item_drain_side"

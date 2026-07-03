@@ -1,9 +1,9 @@
-﻿{
+{
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "textures": {
     "0": "crafts_construct:block/andesite_fluid_pipe/andesite_glass_fluid_pipe",
-    "particle": "create:block/andesite_block"
+    "particle": "crafts_construct:block/andesite_fluid_pipe/andesite_pipes"
   },
   "elements": [
     {

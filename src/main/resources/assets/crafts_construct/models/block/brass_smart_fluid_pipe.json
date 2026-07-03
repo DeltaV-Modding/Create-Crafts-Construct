@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "create:block/brass_casing"
+    "all": "crafts_construct:block/brass_fluid_pipe/brass_encased_pipe"
   }
 }

@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/andesite_portable_fluid_interface/andesite_portable_fluid_interface",
-		"particle": "create:block/copper_casing"
+		"particle": "crafts_construct:block/andesite_fluid_pipe/andesite_encased_pipe"
 	},
 	"elements": [
 		{

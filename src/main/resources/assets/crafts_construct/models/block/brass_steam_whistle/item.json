@@ -1,7 +1,7 @@
 {
     "credit": "Made with Blockbench",
     "textures": {
-        "0": "create:block/whistle",
+        "0": "crafts_construct:block/brass_steam_whistle/brass_steam_whistle",
         "1": "crafts_construct:block/brass_steam_engine/brass_engine",
         "2": "crafts_construct:block/brass_steam_whistle/brass_redstone_plate",
         "particle": "crafts_construct:block/brass_steam_whistle/brass_redstone_plate"

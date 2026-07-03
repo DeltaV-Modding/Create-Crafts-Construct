@@ -1,8 +1,8 @@
-﻿{
+{
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe",
-		"particle": "create:block/brass_block"
+		"particle": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe"
 	},
 	"elements": [
 		{

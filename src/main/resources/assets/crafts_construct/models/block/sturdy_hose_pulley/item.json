@@ -3,7 +3,7 @@
     "parent": "create:block/block",
     "textures": {
         "1": "crafts_construct:block/sturdy_hose_pulley/sturdy_hose_pulley",
-        "2": "create:block/hose_pulley_coil",
+        "2": "crafts_construct:block/sturdy_hose_pulley/sturdy_hose_pulley_coil",
         "3": "crafts_construct:block/sturdy_mechanical_pump/sturdy_pump",
         "4": "create:block/axis",
         "5": "create:block/axis_top",

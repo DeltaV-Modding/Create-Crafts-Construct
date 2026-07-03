@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "create:block/cam_linkage"
+		"0": "crafts_construct:block/sturdy_steam_engine/sturdy_engine"
 	},
 	"elements": [
 		{

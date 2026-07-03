@@ -13,7 +13,7 @@
 			"name": "Wheel",
 			"from": [5, 0, 3],
 			"to": [5.0625, 12, 15],
-			"rotation": {"x": -157.5, "y": 0, "z": 180, "origin": [5, 6, 9]},
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [5, 6, 9]},
 			"faces": {
 				"east": {"uv": [0, 0, 12, 12], "texture": "#harvester"},
 				"west": {"uv": [0, 0, 12, 12], "texture": "#harvester"}

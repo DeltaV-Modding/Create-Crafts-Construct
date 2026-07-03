@@ -3,7 +3,7 @@
 	"parent": "block/block",
 	"textures": {
 		"1": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe",
-		"particle": "create:block/brass_block"
+		"particle": "crafts_construct:block/brass_fluid_pipe/brass_fluid_pipe"
 	},
 	"elements": [
 		{

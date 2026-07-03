@@ -3,7 +3,7 @@
 	"textures": {
 		"0": "crafts_construct:block/brass_portable_fluid_interface/brass_portable_fluid_interface",
 		"2": "crafts_construct:block/brass_fluid_tank/brass_underside",
-		"particle": "create:block/brass_casing"
+		"particle": "crafts_construct:block/brass_fluid_pipe/brass_encased_pipe"
 	},
 	"elements": [
 		{

@@ -77,7 +77,7 @@
 		{
 			"from": [7.75, 8, 18],
 			"to": [8.25, 8, 20],
-			"rotation": {"x": 0, "y": 0, "z": -135, "origin": [8, 8, 18]},
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 18]},
 			"faces": {
 				"north": {"uv": [11.5, 4, 12, 6], "texture": "#mechanical_press_pole"},
 				"east": {"uv": [11.5, 4, 12, 6], "texture": "#mechanical_press_pole"},
@@ -103,7 +103,7 @@
 		{
 			"from": [7.85, 8, 20],
 			"to": [8.15, 8, 24],
-			"rotation": {"x": 0, "y": 0, "z": -135, "origin": [8, 8, 20]},
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 20]},
 			"faces": {
 				"north": {"uv": [11.5, 4, 12, 8], "texture": "#mechanical_press_pole"},
 				"east": {"uv": [11.5, 4, 12, 8], "texture": "#mechanical_press_pole"},
