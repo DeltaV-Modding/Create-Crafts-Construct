@@ -30,33 +30,21 @@ public class SugarBeetCropBlock extends CropBlock {
     public SugarBeetCropBlock(Properties properties) {
         super(properties);
     }
-
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE_BY_AGE[state.getValue(AGE)];
     }
-
-    @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.SUGAR_BEET_SEEDS;
+        return ModItems.SUGAR_BEET_SEEDS.get();
     }
-
-    @Override
     public IntegerProperty getAgeProperty() {
         return AGE;
     }
-
-    @Override
     public int getMaxAge() {
         return MAX_AGE;
     }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
-
-    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isAreaLoaded(pos, 1) || level.getRawBrightness(pos.above(), 0) < REQUIRED_LIGHT_LEVEL) {
             return;

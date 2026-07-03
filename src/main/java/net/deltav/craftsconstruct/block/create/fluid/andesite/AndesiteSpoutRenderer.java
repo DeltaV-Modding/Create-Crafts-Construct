@@ -6,7 +6,7 @@ import com.simibubi.create.content.fluids.spout.SpoutRenderer;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour.TankSegment;
 
-import net.createmod.catnip.platform.NeoForgeCatnipServices;
+import net.createmod.catnip.platform.ForgeCatnipServices;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.createmod.catnip.render.CachedBuffers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.deltav.craftsconstruct.registry.ModPartialModels;
 
 public class AndesiteSpoutRenderer extends SpoutRenderer {
@@ -31,8 +31,6 @@ public class AndesiteSpoutRenderer extends SpoutRenderer {
     public AndesiteSpoutRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
-
-    @Override
     protected void renderSafe(SpoutBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                               int light, int overlay) {
         SmartFluidTankBehaviour tank;
@@ -64,7 +62,7 @@ public class AndesiteSpoutRenderer extends SpoutRenderer {
             if (!top) ms.translate(0, yOffset, 0);
             else ms.translate(0, max - min, 0);
 
-            NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
+            ForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
                     min, min - yOffset, min, max, min, max,
                     buffer, ms, light, false, true);
 
@@ -80,7 +78,7 @@ public class AndesiteSpoutRenderer extends SpoutRenderer {
         if (!fluidStack.isEmpty() && processingTicks != -1) {
             radius = (float) (Math.pow(((2 * processingProgress) - 1), 2) - 1);
             AABB bb = new AABB(0.5, 0.0, 0.5, 0.5, -1.2, 0.5).inflate(radius / 32f);
-            NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
+            ForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
                     (float) bb.minX, (float) bb.minY, (float) bb.minZ,
                     (float) bb.maxX, (float) bb.maxY, (float) bb.maxZ,
                     buffer, ms, light, true, true);

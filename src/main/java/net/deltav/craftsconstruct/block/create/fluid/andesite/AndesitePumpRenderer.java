@@ -14,8 +14,6 @@ public class AndesitePumpRenderer extends KineticBlockEntityRenderer<AndesitePum
     public AndesitePumpRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
-
-    @Override
     protected SuperByteBuffer getRotatedModel(AndesitePumpBlockEntity be, BlockState state) {
         return CachedBuffers.partialFacing(ModPartialModels.ANDESITE_PUMP_COG, state);
     }

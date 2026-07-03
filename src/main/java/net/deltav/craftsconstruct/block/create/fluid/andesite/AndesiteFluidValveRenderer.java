@@ -26,8 +26,6 @@ public class AndesiteFluidValveRenderer extends KineticBlockEntityRenderer<Fluid
     public AndesiteFluidValveRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
-
-    @Override
     protected void renderSafe(FluidValveBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                               int light, int overlay) {
         if (VisualizationManager.supportsVisualization(be.getLevel()))
@@ -51,8 +49,6 @@ public class AndesiteFluidValveRenderer extends KineticBlockEntityRenderer<Fluid
                 .light(light)
                 .renderInto(ms, buffer.getBuffer(RenderType.solid()));
     }
-
-    @Override
     protected BlockState getRenderedBlockState(FluidValveBlockEntity be) {
         return shaft(getRotationAxisOf(be));
     }

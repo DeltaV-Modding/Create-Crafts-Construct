@@ -12,7 +12,7 @@ public class ModTags {
     public static class Blocks {
 
         private static TagKey<Block> createTag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, name));
+            return BlockTags.create(new ResourceLocation(craftsconstruct.MOD_ID, name));
         }
         public static final TagKey<Block> PAINTABLE_BLOCKS = createTag("paint/paintable");
     }
@@ -22,7 +22,7 @@ public class ModTags {
         public static final TagKey<Item> SEWING_THREADS = createTag("sewing_threads");
 
         private static TagKey<Item> createTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, name));
+            return ItemTags.create(new ResourceLocation(craftsconstruct.MOD_ID, name));
         }
     }
 }

@@ -9,8 +9,6 @@ public class SturdySteamEngineBlockEntity extends SteamEngineBlockEntity {
     public SturdySteamEngineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
-
-    @Override
     public boolean isValid() {
         net.minecraft.core.Direction facing = com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock.getConnectedDirection(getBlockState());
         if (facing == null)
@@ -28,8 +26,6 @@ public class SturdySteamEngineBlockEntity extends SteamEngineBlockEntity {
         }
         return false;
     }
-
-    @Override
     public Float getTargetAngle() {
         float angle = 0.0f;
         BlockState state = getBlockState();

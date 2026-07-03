@@ -18,17 +18,15 @@ public class PaintCartridgeItem extends Item {
     private final PaintMaterial material;
 
     public PaintCartridgeItem(PaintMaterial material, Properties properties) {
-        super(properties.durability(USES).stacksTo(1));
+        super(properties.durability(USES));
         this.material = material;
     }
 
     public PaintMaterial getMaterial() {
         return material;
     }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, context, tooltip, flag);
+    public void appendHoverText(ItemStack stack, net.minecraft.world.level.Level level, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, level, tooltip, flag);
         List<Component> materialTooltip = TooltipHelper.cutTextComponent(
                 CreateLang.translate("tooltip.cc.paint." + material.getSerializedName()).component(),
                 FontHelper.Palette.STANDARD_CREATE.primary(),

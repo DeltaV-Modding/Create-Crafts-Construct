@@ -17,8 +17,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.client.model.BakedModelWrapper;
-import net.neoforged.neoforge.client.model.data.ModelData;
+import net.minecraftforge.client.model.BakedModelWrapper;
+import net.minecraftforge.client.model.data.ModelData;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public final class PipeClient {
 
             String path = block.getId().getPath();
             String material = path.substring(0, path.indexOf('_'));
-            String targetPrefix = "block/" + material + "_fluid_pipe/" + material + "_fluid_pipe";
+            String targetPrefix = "block/" + material + "_fluid_pipe/" + material + "_pipes";
 
             SpriteShiftEntry pipeShift = SpriteShifter.get(
                     createBlockTexture("pipes"),
@@ -77,11 +77,11 @@ public final class PipeClient {
     }
 
     private static ResourceLocation createBlockTexture(String path) {
-        return ResourceLocation.fromNamespaceAndPath("create", "block/" + path);
+        return new ResourceLocation("create", "block/" + path);
     }
 
     private static ResourceLocation modTexture(String path) {
-        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, path);
+        return new ResourceLocation(craftsconstruct.MOD_ID, path);
     }
 
     private static class SpriteShiftingBakedModel extends BakedModelWrapper<BakedModel> {
@@ -95,12 +95,10 @@ public final class PipeClient {
             this.connectedSpriteShift = connectedSpriteShift;
             this.glassPipeShift = glassPipeShift;
         }
-
         @Override
         public List<BakedQuad> getQuads(BlockState state, Direction side, RandomSource rand) {
             return getQuads(state, side, rand, ModelData.EMPTY, null);
         }
-
         @Override
         public List<BakedQuad> getQuads(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType) {
             List<BakedQuad> originalQuads = super.getQuads(state, side, rand, extraData, renderType);

@@ -24,8 +24,6 @@ public class SturdySteamEngineRenderer extends SafeBlockEntityRenderer<SteamEngi
     public SturdySteamEngineRenderer(BlockEntityRendererProvider.Context context) {
         super();
     }
-
-    @Override
     protected void renderSafe(SteamEngineBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                               int light, int overlay) {
         if (VisualizationManager.supportsVisualization(be.getLevel()))

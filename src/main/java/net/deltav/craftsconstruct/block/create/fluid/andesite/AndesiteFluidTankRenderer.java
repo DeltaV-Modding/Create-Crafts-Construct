@@ -27,8 +27,6 @@ public class AndesiteFluidTankRenderer extends FluidTankRenderer {
     public AndesiteFluidTankRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
-
-    @Override
     protected void renderAsBoiler(FluidTankBlockEntity tank, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                                   int light, int overlay) {
         if (!renderPaintedBoiler(tank, partialTicks, ms, buffer, light, overlay)) {

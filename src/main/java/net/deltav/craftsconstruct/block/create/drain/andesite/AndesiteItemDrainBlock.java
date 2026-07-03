@@ -14,7 +14,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -34,8 +34,6 @@ public class AndesiteItemDrainBlock extends ItemDrainBlock {
     public AndesiteItemDrainBlock(Properties properties) {
         super(properties);
     }
-
-    @Override
     public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) {
         super.updateEntityAfterFallOn(worldIn, entityIn);
         if (!(entityIn instanceof ItemEntity itemEntity))
@@ -59,21 +57,17 @@ public class AndesiteItemDrainBlock extends ItemDrainBlock {
             itemEntity.discard();
     }
 
-    protected ItemInteractionResult tryExchange(Level worldIn, Player player, InteractionHand handIn, ItemStack heldItem,
+    protected InteractionResult tryExchange(Level worldIn, Player player, InteractionHand handIn, ItemStack heldItem,
                                                 ItemDrainBlockEntity be) {
         if (FluidHelper.tryEmptyItemIntoBE(worldIn, player, handIn, heldItem, be))
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         if (GenericItemEmptying.canItemBeEmptied(worldIn, heldItem))
-            return ItemInteractionResult.SUCCESS;
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AllShapes.CASING_13PX.get(Direction.UP);
     }
-
-    @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.hasBlockEntity() || state.getBlock() == newState.getBlock())
             return;
@@ -84,39 +78,25 @@ public class AndesiteItemDrainBlock extends ItemDrainBlock {
         });
         worldIn.removeBlockEntity(pos);
     }
-
-    @Override
     public Class<ItemDrainBlockEntity> getBlockEntityClass() {
         return ItemDrainBlockEntity.class;
     }
-
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         AdvancementBehaviour.setPlacedBy(level, pos, placer);
     }
-
-    @Override
     public BlockEntityType<? extends ItemDrainBlockEntity> getBlockEntityType() {
         return ModBlockEntityTypes.ANDESITE_ITEM_DRAIN.get();
     }
-
-    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return ModBlockEntityTypes.ANDESITE_ITEM_DRAIN.get().create(pos, state);
     }
-
-    @Override
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
-
-    @Override
     public int getAnalogOutputSignal(BlockState blockState, Level worldIn, BlockPos pos) {
         return ComparatorUtil.levelOfSmartFluidTank(worldIn, pos);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }

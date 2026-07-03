@@ -22,8 +22,6 @@ public class FireballCharge extends Item {
     public FireballCharge(Properties properties) {
         super(properties);
     }
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.getCooldowns().addCooldown(this, COOLDOWN);
@@ -81,14 +79,10 @@ public class FireballCharge extends Item {
             this.setOwner(owner);
             this.setDeltaMovement(dx, dy, dz);
         }
-
-        @Override
         protected void onHitBlock(BlockHitResult result) {
             super.onHitBlock(result);
             this.explode();
         }
-
-        @Override
         protected void onHitEntity(EntityHitResult result) {
             super.onHitEntity(result);
             this.explode();

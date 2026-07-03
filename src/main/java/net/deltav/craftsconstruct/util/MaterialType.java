@@ -11,8 +11,6 @@ public enum MaterialType implements StringRepresentable {
     MaterialType(String name) {
         this.name = name;
     }
-
-    @Override
     public String getSerializedName() {
         return this.name;
     }

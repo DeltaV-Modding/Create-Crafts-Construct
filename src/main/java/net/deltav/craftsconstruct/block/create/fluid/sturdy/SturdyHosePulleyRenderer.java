@@ -18,41 +18,27 @@ public class SturdyHosePulleyRenderer extends AbstractPulleyRenderer<HosePulleyB
     public SturdyHosePulleyRenderer(BlockEntityRendererProvider.Context context) {
         super(context, AllPartialModels.HOSE_HALF, ModPartialModels.STURDY_HOSE_PULLEY_ROPE_HALF_MAGNET);
     }
-
-    @Override
     protected Direction.Axis getShaftAxis(HosePulleyBlockEntity be) {
         return be.getBlockState()
                 .getValue(HosePulleyBlock.HORIZONTAL_FACING)
                 .getClockWise()
                 .getAxis();
     }
-
-    @Override
     protected PartialModel getCoil() {
         return AllPartialModels.HOSE_COIL;
     }
-
-    @Override
     protected SuperByteBuffer renderRope(HosePulleyBlockEntity be) {
         return CachedBuffers.partial(AllPartialModels.HOSE, be.getBlockState());
     }
-
-    @Override
     protected SuperByteBuffer renderMagnet(HosePulleyBlockEntity be) {
         return CachedBuffers.partial(ModPartialModels.STURDY_HOSE_PULLEY_MAGNET, be.getBlockState());
     }
-
-    @Override
     protected float getOffset(HosePulleyBlockEntity be, float partialTicks) {
         return be.getInterpolatedOffset(partialTicks);
     }
-
-    @Override
     protected SpriteShiftEntry getCoilShift() {
         return AllSpriteShifts.HOSE_PULLEY_COIL;
     }
-
-    @Override
     protected boolean isRunning(HosePulleyBlockEntity be) {
         return true;
     }

@@ -12,8 +12,6 @@ public class AndesiteSteamWhistleBlockEntity extends WhistleBlockEntity {
     public AndesiteSteamWhistleBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
-
-    @Override
     public void updatePitch() {
         BlockPos currentPos = worldPosition.above();
         int newPitch;

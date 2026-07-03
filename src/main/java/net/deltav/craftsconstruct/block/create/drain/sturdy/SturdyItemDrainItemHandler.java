@@ -5,7 +5,7 @@ import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
 import com.simibubi.create.foundation.item.ItemHelper;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class SturdyItemDrainItemHandler implements IItemHandler {
 
@@ -16,18 +16,12 @@ public class SturdyItemDrainItemHandler implements IItemHandler {
         this.blockEntity = be;
         this.side = side;
     }
-
-    @Override
     public int getSlots() {
         return 1;
     }
-
-    @Override
     public ItemStack getStackInSlot(int slot) {
         return blockEntity.getHeldItemStack();
     }
-
-    @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
         if (!blockEntity.getHeldItemStack().isEmpty())
             return stack;
@@ -49,8 +43,6 @@ public class SturdyItemDrainItemHandler implements IItemHandler {
 
         return returned;
     }
-
-    @Override
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
         ItemStack heldStack = blockEntity.getHeldItemStack();
         if (heldStack.isEmpty())
@@ -72,13 +64,9 @@ public class SturdyItemDrainItemHandler implements IItemHandler {
 
         return extracted;
     }
-
-    @Override
     public int getSlotLimit(int slot) {
         return 64;
     }
-
-    @Override
     public boolean isItemValid(int slot, ItemStack stack) {
         return true;
     }

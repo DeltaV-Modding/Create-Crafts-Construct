@@ -15,8 +15,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.HashMap;
@@ -61,7 +61,7 @@ public class CCBlockStateGen {
             Map<Pair<String, Direction.Axis>, ModelFile> coreModels = new HashMap<>();
 
             for (Direction.Axis axis : Iterate.axes)
-                coreTemplates.put(axis, ResourceLocation.fromNamespaceAndPath("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
+                coreTemplates.put(axis, new ResourceLocation("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
 
             for (Direction.Axis axis : Iterate.axes) {
                 ResourceLocation parent = coreTemplates.get(axis);
@@ -71,7 +71,7 @@ public class CCBlockStateGen {
 
                     coreModels.put(key, p.models()
                             .withExistingParent(modelName, parent)
-                            .texture("#0", ResourceLocation.fromNamespaceAndPath("crafts_construct", "block/andesite_fluid_pipe"))
+                            .texture("#0", new ResourceLocation("crafts_construct", "block/andesite_fluid_pipe"))
                     );
                 }
             }
@@ -125,7 +125,7 @@ public class CCBlockStateGen {
             Map<Pair<String, Direction.Axis>, ModelFile> coreModels = new HashMap<>();
 
             for (Direction.Axis axis : Iterate.axes)
-                coreTemplates.put(axis, ResourceLocation.fromNamespaceAndPath("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
+                coreTemplates.put(axis, new ResourceLocation("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
 
             for (Direction.Axis axis : Iterate.axes) {
                 ResourceLocation parent = coreTemplates.get(axis);
@@ -135,7 +135,7 @@ public class CCBlockStateGen {
 
                     coreModels.put(key, p.models()
                             .withExistingParent(modelName, parent)
-                            .texture("#0", ResourceLocation.fromNamespaceAndPath("crafts_construct", "block/brass_fluid_pipe"))
+                            .texture("#0", new ResourceLocation("crafts_construct", "block/brass_fluid_pipe"))
                     );
                 }
             }
@@ -189,7 +189,7 @@ public class CCBlockStateGen {
             Map<Pair<String, Direction.Axis>, ModelFile> coreModels = new HashMap<>();
 
             for (Direction.Axis axis : Iterate.axes)
-                coreTemplates.put(axis, ResourceLocation.fromNamespaceAndPath("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
+                coreTemplates.put(axis, new ResourceLocation("create", "block/fluid_pipe/core_" + axis.getSerializedName()));
 
             for (Direction.Axis axis : Iterate.axes) {
                 ResourceLocation parent = coreTemplates.get(axis);
@@ -199,7 +199,7 @@ public class CCBlockStateGen {
 
                     coreModels.put(key, p.models()
                             .withExistingParent(modelName, parent)
-                            .texture("#0", ResourceLocation.fromNamespaceAndPath("crafts_construct", "block/sturdy_fluid_pipe"))
+                            .texture("#0", new ResourceLocation("crafts_construct", "block/sturdy_fluid_pipe"))
                     );
                 }
             }

@@ -16,8 +16,6 @@ public class DragonCharge extends Item {
     public DragonCharge(Properties properties) {
         super(properties);
     }
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.getCooldowns().addCooldown(this, 160);

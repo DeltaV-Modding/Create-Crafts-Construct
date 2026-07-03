@@ -14,8 +14,6 @@ public class BrassGaugeBlock extends GaugeBlock {
         super(properties, speed ? Type.SPEED : Type.STRESS);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public BlockEntityType<? extends GaugeBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }

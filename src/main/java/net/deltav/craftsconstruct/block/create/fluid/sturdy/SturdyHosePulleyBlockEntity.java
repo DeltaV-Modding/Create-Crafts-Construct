@@ -9,11 +9,9 @@ public class SturdyHosePulleyBlockEntity extends HosePulleyBlockEntity {
     public SturdyHosePulleyBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
-
-    @Override
     protected net.minecraft.world.level.block.Block getStressConfigKey() {
         return net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("create", "hose_pulley")
+            new net.minecraft.resources.ResourceLocation("create", "hose_pulley")
         );
     }
 }

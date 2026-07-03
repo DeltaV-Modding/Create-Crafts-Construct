@@ -16,12 +16,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.fluids.BaseFlowingFluid;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.FluidType;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidType;
 import org.joml.Vector3f;
 
 import java.util.function.Consumer;
@@ -34,21 +34,21 @@ public class ModFluids {
             () -> 1f / 24f * AllConfigs.client().chocolateTransparencyMultiplier.getF();
 
     private static ResourceLocation modResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, path);
+        return new ResourceLocation(craftsconstruct.MOD_ID, path);
     }
 
-    public static final FluidEntry<BaseFlowingFluid.Flowing> GREEN_JELLY =
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> GREEN_JELLY =
             jelly("green_jelly", "Green Jelly", 0x52A04D);
-    public static final FluidEntry<BaseFlowingFluid.Flowing> YELLOW_JELLY =
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> YELLOW_JELLY =
             jelly("yellow_jelly", "Yellow Jelly", 0xB8B71E);
-    public static final FluidEntry<BaseFlowingFluid.Flowing> RED_JELLY =
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> RED_JELLY =
             jelly("red_jelly", "Red Jelly", 0xAA232A);
-    public static final FluidEntry<BaseFlowingFluid.Flowing> PINK_JELLY =
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> PINK_JELLY =
             jelly("pink_jelly", "Pink Jelly", 0xB86BA6);
-    public static final FluidEntry<BaseFlowingFluid.Flowing> BLUE_JELLY =
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> BLUE_JELLY =
             jelly("blue_jelly", "Blue Jelly", 0x54ACC9);
 
-    private static FluidEntry<BaseFlowingFluid.Flowing> jelly(String name, String lang, int fogColor) {
+    private static FluidEntry<ForgeFlowingFluid.Flowing> jelly(String name, String lang, int fogColor) {
         return craftsconstruct.registrate()
                 .standardFluid(name,
                         SolidRenderedFluidType.create(
@@ -65,12 +65,11 @@ public class ModFluids {
                         .tickRate(25)
                         .slopeFindDistance(3)
                         .explosionResistance(100f))
-                .tag(Tags.Fluids.HONEY)
-                .source(BaseFlowingFluid.Source::new)
+                .source(ForgeFlowingFluid.Source::new)
                 .bucket()
                 .removeTab(CreativeModeTabs.SEARCH)
                 .tab(CC_TAB_KEY)
-                .tag(AllTags.commonItemTag("buckets/honey"))
+                .tag(net.minecraft.tags.ItemTags.create(new ResourceLocation("forge", "buckets/honey")))
                 .build()
                 .register();
     }
@@ -113,47 +112,33 @@ public class ModFluids {
                     (hexColor & 0xFF) / 255f
             );
         }
-
-        @Override
         protected int getTintColor(FluidStack stack) {
             return 0x00FFFFFF;
         }
-        @Override
         public int getTintColor(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
             return 0x00FFFFFF;
         }
-
-        @Override
         protected Vector3f getCustomFogColor() {
             return fogColor;
         }
-        @Override
         protected float getFogDistanceModifier() {
             return fogDistance.get();
         }
-
-        @Override
         public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
             consumer.accept(new IClientFluidTypeExtensions() {
-                @Override
                 public ResourceLocation getStillTexture() {
                     return stillTexture;
                 }
-                @Override
                 public ResourceLocation getFlowingTexture() {
                     return flowingTexture;
                 }
-                @Override
                 public int getTintColor(FluidStack stack) {
                     return 0xFFFFFFFF;
                 }
-                @Override
                 public Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
                                                int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
                     return fogColor;
                 }
-
-                @Override
                 public void modifyFogRender(Camera camera, FogMode mode, float renderDistance, float partialTick,
                                             float nearDistance, float farDistance, FogShape shape) {
                     RenderSystem.setShaderFogShape(FogShape.CYLINDER);

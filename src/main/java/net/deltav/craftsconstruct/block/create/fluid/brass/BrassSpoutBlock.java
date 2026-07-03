@@ -28,39 +28,25 @@ public class BrassSpoutBlock extends SpoutBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AllShapes.SPOUT;
     }
-
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         AdvancementBehaviour.setPlacedBy(level, pos, placer);
     }
-
-    @Override
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
-
-    @Override
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return ComparatorUtil.levelOfSmartFluidTank(level, pos);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
-
-    @Override
     public BlockEntityType<? extends SpoutBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }
-
-    @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         IBE.onRemove(state, level, pos, newState);
     }

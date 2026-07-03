@@ -42,23 +42,15 @@ public class SturdyPumpBlock extends PumpBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public BlockState getRotatedBlockState(BlockState originalState, Direction targetedFace) {
         return originalState.setValue(FACING, originalState.getValue(FACING).getOpposite());
     }
-
-    @Override
     public Axis getRotationAxis(BlockState state) {
         return state.getValue(FACING).getAxis();
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AllShapes.PUMP.get(state.getValue(FACING));
     }
-
-    @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block otherBlock, BlockPos neighborPos,
                                 boolean isMoving) {
         DebugPackets.sendNeighborsUpdatePacket(world, pos);
@@ -69,22 +61,16 @@ public class SturdyPumpBlock extends PumpBlock {
             return;
         world.scheduleTick(pos, this, 1, TickPriority.HIGH);
     }
-
-    @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false)
                 : Fluids.EMPTY.defaultFluidState();
     }
-
-    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor world,
                                   BlockPos pos, BlockPos neighbourPos) {
         if (state.getValue(BlockStateProperties.WATERLOGGED))
             world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         return state;
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState toPlace = super.getStateForPlacement(context);
         Level level = context.getLevel();
@@ -120,8 +106,6 @@ public class SturdyPumpBlock extends PumpBlock {
     public static boolean isPump(BlockState state) {
         return state.getBlock() instanceof SturdyPumpBlock;
     }
-
-    @Override
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, world, pos, oldState, isMoving);
         if (world.isClientSide)
@@ -140,26 +124,18 @@ public class SturdyPumpBlock extends PumpBlock {
     public static boolean isOpenAt(BlockState state, Direction direction) {
         return direction.getAxis() == state.getValue(FACING).getAxis();
     }
-
-    @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         FluidPropagator.propagateChangedPipe(world, pos, state);
     }
-
-    @Override
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
         boolean blockTypeChanged = !state.is(newState.getBlock());
         if (blockTypeChanged && !world.isClientSide)
             FluidPropagator.propagateChangedPipe(world, pos, state);
         super.onRemove(state, world, pos, newState, isMoving);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
-
-    @Override
     public BlockEntityType<? extends PumpBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }

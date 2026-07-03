@@ -28,7 +28,7 @@ public class PaintableConfig {
                 Set<String> blockStrings = new Gson().fromJson(json.get("paintable_blocks"), type);
 
                 for (String blockId : blockStrings) {
-                    ResourceLocation rl = ResourceLocation.parse(blockId);
+                    ResourceLocation rl = new ResourceLocation(blockId);
                     paintableBlocks.add(rl);
                 }
             }

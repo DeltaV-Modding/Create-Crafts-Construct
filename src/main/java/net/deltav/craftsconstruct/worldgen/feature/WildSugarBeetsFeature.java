@@ -14,8 +14,6 @@ public class WildSugarBeetsFeature extends Feature<WildSugarBeetsFeatureConfigur
     public WildSugarBeetsFeature(Codec<WildSugarBeetsFeatureConfigurator> codec) {
         super(codec);
     }
-
-    @Override
     public boolean place(FeaturePlaceContext<WildSugarBeetsFeatureConfigurator> context) {
         WildSugarBeetsFeatureConfigurator config = context.config();
         BlockPos origin = context.origin();

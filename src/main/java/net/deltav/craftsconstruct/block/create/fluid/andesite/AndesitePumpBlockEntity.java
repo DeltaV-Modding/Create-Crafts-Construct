@@ -30,8 +30,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class AndesitePumpBlockEntity extends PumpBlockEntity {
 
@@ -44,16 +44,12 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
         super(typeIn, pos, state);
         sidesToUpdate = Couple.create(MutableBoolean::new);
     }
-
-    @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         super.addBehaviours(behaviours);
         behaviours.add(new AndesitePumpBlockEntity.PumpFluidTransferBehaviour(this));
         registerAwardables(behaviours, FluidPropagator.getSharedTriggers());
         registerAwardables(behaviours, AllAdvancements.PUMP);
     }
-
-    @Override
     public void tick() {
         super.tick();
 
@@ -74,8 +70,6 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
             distributePressureTo(isFront ? getFront() : getFront().getOpposite());
         });
     }
-
-    @Override
     public void onSpeedChanged(float previousSpeed) {
         super.onSpeedChanged(previousSpeed);
 
@@ -101,10 +95,8 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
             behaviour.wipePressure();
         sidesToUpdate.forEach(MutableBoolean::setTrue);
     }
-
-    @Override
-    protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
-        super.read(compound, registries, clientPacket);
+    protected void read(CompoundTag compound, boolean clientPacket) {
+        super.read(compound, clientPacket);
         if (compound.getBoolean("Reversed"))
             scheduleFlip = true;
     }
@@ -277,7 +269,7 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
             return false;
 
         if (blockEntity != null) {
-            IFluidHandler capability = blockEntity.getLevel().getCapability(Capabilities.FluidHandler.BLOCK, blockEntity.getBlockPos(), face.getOpposite());
+            IFluidHandler capability = blockEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, face.getOpposite()).orElse(null);
             if (capability != null)
                 return true;
         }
@@ -331,8 +323,6 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
         public PumpFluidTransferBehaviour(SmartBlockEntity be) {
             super(be);
         }
-
-        @Override
         public void tick() {
             super.tick();
             for (Entry<Direction, PipeConnection> entry : interfaces.entrySet()) {
@@ -342,13 +332,9 @@ public class AndesitePumpBlockEntity extends PumpBlockEntity {
                 pressure.set(!pull, 0f);
             }
         }
-
-        @Override
         public boolean canHaveFlowToward(BlockState state, Direction direction) {
             return isSideAccessible(direction);
         }
-
-        @Override
         public AttachmentTypes getRenderedRimAttachment(BlockAndTintGetter world, BlockPos pos, BlockState state,
                                                         Direction direction) {
             AttachmentTypes attachment = super.getRenderedRimAttachment(world, pos, state, direction);

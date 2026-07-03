@@ -23,21 +23,15 @@ public class BrassHosePulleyBlock extends HosePulleyBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public Axis getRotationAxis(BlockState state) {
         return state.getValue(HORIZONTAL_FACING).getClockWise().getAxis();
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction preferredHorizontalFacing = getPreferredHorizontalFacing(context);
         return defaultBlockState().setValue(HORIZONTAL_FACING,
                 preferredHorizontalFacing != null ? preferredHorizontalFacing.getCounterClockWise()
                         : context.getHorizontalDirection().getOpposite());
     }
-
-    @Override
     public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
         return state.getValue(HORIZONTAL_FACING).getClockWise() == face;
     }
@@ -45,8 +39,6 @@ public class BrassHosePulleyBlock extends HosePulleyBlock {
     public static boolean hasPipeTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
         return state.getValue(HORIZONTAL_FACING).getCounterClockWise() == face;
     }
-
-    @Override
     public Direction getPreferredHorizontalFacing(BlockPlaceContext context) {
         Direction fromParent = super.getPreferredHorizontalFacing(context);
         if (fromParent != null)
@@ -65,8 +57,6 @@ public class BrassHosePulleyBlock extends HosePulleyBlock {
         }
         return preferredSide == null ? null : preferredSide.getOpposite();
     }
-
-    @Override
     public BlockEntityType<? extends HosePulleyBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }

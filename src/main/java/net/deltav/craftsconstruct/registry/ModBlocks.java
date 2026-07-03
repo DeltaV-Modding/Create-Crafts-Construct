@@ -57,7 +57,7 @@ import net.deltav.craftsconstruct.block.create.drain.sturdy.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 public class ModBlocks {
     public static final List<BlockEntry<? extends Block>> PAINTED_FLUID_PIPES = new ArrayList<>();
@@ -583,7 +583,7 @@ public class ModBlocks {
             .register();
 
     public static final BlockEntry<WildSugarBeetBlock> WILD_SUGAR_BEET_BLOCK = REGISTRATE.block("wild_sugar_beet_block", p -> new WildSugarBeetBlock(
-            MobEffects.MOVEMENT_SPEED, 6, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)))
+            MobEffects.MOVEMENT_SPEED, 6, Block.Properties.copy(Blocks.TALL_GRASS)))
             .register();
 
     public static void register() {
@@ -839,12 +839,12 @@ public class ModBlocks {
 
     private static Block createBlock(String target) {
         if ("valve_handle".equals(target)) {
-            return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", "copper_valve_handle"));
+            return BuiltInRegistries.BLOCK.get(new ResourceLocation("create", "copper_valve_handle"));
         }
         if ("horizontal_fluid_tank".equals(target)) {
-            return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", "fluid_tank"));
+            return BuiltInRegistries.BLOCK.get(new ResourceLocation("create", "fluid_tank"));
         }
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("create", target));
+        Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation("create", target));
         return block == Blocks.AIR ? Blocks.IRON_BLOCK : block;
     }
 }

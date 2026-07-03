@@ -50,14 +50,12 @@ public class HorizontalFluidTankCTBehaviour extends FluidTankCTBehaviour {
         Direction.Axis remainingAxis = connectionAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
         return Direction.fromAxisAndDirection(remainingAxis, localFace.getAxisDirection());
     }
-
     @Override
     public CTSpriteShiftEntry getShift(BlockState state, Direction direction, TextureAtlasSprite sprite) {
         Direction.Axis connectionAxis = getAxis(state);
         Direction localDir = worldToLocal(direction, connectionAxis);
         return super.getShift(state, localDir, sprite);
     }
-
     @Override
     protected Direction getUpDirection(BlockAndTintGetter reader, BlockPos pos, BlockState state, Direction face) {
         Direction.Axis connectionAxis = getAxis(state);
@@ -65,7 +63,6 @@ public class HorizontalFluidTankCTBehaviour extends FluidTankCTBehaviour {
         Direction localUp = super.getUpDirection(reader, pos, state, localFace);
         return localToWorld(localUp, connectionAxis);
     }
-
     @Override
     protected Direction getRightDirection(BlockAndTintGetter reader, BlockPos pos, BlockState state, Direction face) {
         Direction.Axis connectionAxis = getAxis(state);
@@ -73,7 +70,6 @@ public class HorizontalFluidTankCTBehaviour extends FluidTankCTBehaviour {
         Direction localRight = super.getRightDirection(reader, pos, state, localFace);
         return localToWorld(localRight, connectionAxis);
     }
-
     @Override
     protected boolean reverseUVs(BlockState state, Direction direction) {
         Direction.Axis axis = getAxis(state);
@@ -85,7 +81,6 @@ public class HorizontalFluidTankCTBehaviour extends FluidTankCTBehaviour {
         }
         return super.reverseUVs(state, direction);
     }
-
     @Override
     protected boolean reverseUVsVertically(BlockState state, Direction direction) {
         Direction.Axis axis = getAxis(state);

@@ -37,13 +37,9 @@ public class SturdyFluidValveBlock extends FluidValveBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AllShapes.FLUID_VALVE.get(getPipeAxis(state));
     }
-
-    @Override
     protected boolean prefersConnectionTo(LevelReader reader, BlockPos pos, Direction facing, boolean shaftAxis) {
         if (!shaftAxis) {
             BlockPos offset = pos.relative(facing);
@@ -52,26 +48,18 @@ public class SturdyFluidValveBlock extends FluidValveBlock {
         }
         return super.prefersConnectionTo(reader, pos, facing, shaftAxis);
     }
-
-    @Override
     public Axis getAxis(BlockState state) {
         return getPipeAxis(state);
     }
-
-    @Override
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
         boolean blockTypeChanged = !state.is(newState.getBlock());
         if (blockTypeChanged && !world.isClientSide)
             FluidPropagator.propagateChangedPipe(world, pos, state);
         super.onRemove(state, world, pos, newState, isMoving);
     }
-
-    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return true;
     }
-
-    @Override
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, world, pos, oldState, isMoving);
         if (world.isClientSide)
@@ -79,8 +67,6 @@ public class SturdyFluidValveBlock extends FluidValveBlock {
         if (state != oldState)
             world.scheduleTick(pos, this, 1, TickPriority.HIGH);
     }
-
-    @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block otherBlock, BlockPos neighborPos,
                                 boolean isMoving) {
         DebugPackets.sendNeighborsUpdatePacket(world, pos);
@@ -95,35 +81,23 @@ public class SturdyFluidValveBlock extends FluidValveBlock {
     public static boolean isOpenAt(BlockState state, Direction direction) {
         return direction.getAxis() == getPipeAxis(state);
     }
-
-    @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         FluidPropagator.propagateChangedPipe(world, pos, state);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return withWater(super.getStateForPlacement(context), context);
     }
-
-    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor world,
                                   BlockPos pos, BlockPos neighbourPos) {
         updateWater(world, state, pos);
         return state;
     }
-
-    @Override
     public FluidState getFluidState(BlockState state) {
         return fluidState(state);
     }
-
-    @Override
     public BlockEntityType<? extends FluidValveBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }

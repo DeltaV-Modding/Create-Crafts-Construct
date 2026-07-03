@@ -2,7 +2,6 @@ package net.deltav.craftsconstruct.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -22,46 +21,30 @@ public class WildSugarBeetBlock extends FlowerBlock implements BonemealableBlock
 {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public WildSugarBeetBlock(Holder<MobEffect> suspiciousStewEffect, int effectDuration, Properties properties) {
+    public WildSugarBeetBlock(MobEffect suspiciousStewEffect, int effectDuration, Properties properties) {
         super(suspiciousStewEffect, effectDuration, properties);
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-
-    @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.is(BlockTags.DIRT) || state.is(BlockTags.SAND);
     }
-
-    @Override
     public boolean canBeReplaced(BlockState state, BlockPlaceContext useContext) {
         return false;
     }
-
-    @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction face) {
         return 60;
     }
-
-    @Override
     public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction face) {
         return 100;
     }
-
-    @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
-
-    @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return (double) random.nextFloat() < 0.8F;
     }
-
-    @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         int wildCropLimit = 10;
 

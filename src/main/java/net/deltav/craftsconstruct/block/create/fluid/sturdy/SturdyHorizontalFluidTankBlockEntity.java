@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class SturdyHorizontalFluidTankBlockEntity extends FluidTankBlockEntity {
     public SturdyHorizontalFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -15,10 +15,8 @@ public class SturdyHorizontalFluidTankBlockEntity extends FluidTankBlockEntity {
     }
 
     public IFluidHandler getFluidHandler() {
-        return fluidCapability;
+        return fluidCapability.orElse(null);
     }
-
-    @Override
     public Direction.Axis getMainConnectionAxis() {
         BlockState state = getBlockState();
         if (state.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
@@ -26,8 +24,6 @@ public class SturdyHorizontalFluidTankBlockEntity extends FluidTankBlockEntity {
         }
         return Direction.Axis.X;
     }
-
-    @Override
     public void notifyMultiUpdated() {
         BlockState state = this.getBlockState();
         if (state.getBlock() instanceof SturdyHorizontalFluidTankBlock) {

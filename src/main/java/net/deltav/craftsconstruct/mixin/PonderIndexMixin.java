@@ -40,7 +40,7 @@ public class PonderIndexMixin {
                     originalPath = "valve_handle";
                 }
                 for (PaintMaterial material : PaintMaterial.values()) {
-                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalPath);
+                    ResourceLocation customId = new ResourceLocation("crafts_construct", material.getSerializedName() + "_" + originalPath);
                     if (BuiltInRegistries.ITEM.containsKey(customId) || BuiltInRegistries.BLOCK.containsKey(customId)) {
                         scenesMap.put(customId, entry.getValue());
                     }
@@ -59,7 +59,7 @@ public class PonderIndexMixin {
                     originalPath = "valve_handle";
                 }
                 for (PaintMaterial material : PaintMaterial.values()) {
-                    ResourceLocation customId = ResourceLocation.fromNamespaceAndPath("crafts_construct", material.getSerializedName() + "_" + originalPath);
+                    ResourceLocation customId = new ResourceLocation("crafts_construct", material.getSerializedName() + "_" + originalPath);
                     if (BuiltInRegistries.ITEM.containsKey(customId) || BuiltInRegistries.BLOCK.containsKey(customId)) {
                         tagsMap.put(customId, entry.getValue());
                     }

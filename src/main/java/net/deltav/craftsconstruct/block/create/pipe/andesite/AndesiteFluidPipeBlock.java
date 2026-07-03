@@ -31,13 +31,9 @@ public class AndesiteFluidPipeBlock extends FluidPipeBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public BlockEntityType<? extends FluidPipeBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }
-
-    @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         if (tryRemoveBracket(context))
             return InteractionResult.SUCCESS;

@@ -18,7 +18,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -53,24 +53,16 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         AdvancementBehaviour.setPlacedBy(level, pos, placer);
     }
-
-    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return FluidTankBlock.isTank(level.getBlockState(pos.relative(getAttachedDirection(state))));
     }
-
-    @Override
     public BlockState getRotatedBlockState(BlockState originalState, Direction targetedFace) {
         return originalState.cycle(SIZE);
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos clickedPos = context.getClickedPos();
@@ -90,19 +82,17 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
                 .setValue(WALL, wall);
         return canSurvive(state, level, clickedPos) ? state : null;
     }
-
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player == null)
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
 
         if (isWhistleItem(stack)) {
             incrementSize(level, pos);
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
 
     private static boolean isWhistleItem(ItemStack stack) {
@@ -154,26 +144,18 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
         if (blockState.getBlock() instanceof AndesiteSteamWhistleBlock whistle && !level.getBlockTicks().hasScheduledTick(pos, whistle))
             level.scheduleTick(pos, whistle, 1);
     }
-
-    @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         withBlockEntityDo(level, pos, WhistleBlockEntity::updatePitch);
     }
-
-    @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         FluidTankBlock.updateBoilerState(state, level, pos.relative(getAttachedDirection(state)));
         if (oldState.getBlock() != this || oldState.getValue(SIZE) != state.getValue(SIZE))
             queuePitchUpdate(level, pos);
     }
-
-    @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         IBE.onRemove(state, level, pos, newState);
         FluidTankBlock.updateBoilerState(state, level, pos.relative(getAttachedDirection(state)));
     }
-
-    @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if (level.isClientSide)
             return;
@@ -181,16 +163,12 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
         if (previouslyPowered != level.hasNeighborSignal(pos))
             level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_CLIENTS);
     }
-
-    @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level,
                                   BlockPos currentPos, BlockPos facingPos) {
         return getAttachedDirection(state) == facing && !state.canSurvive(level, currentPos)
                 ? Blocks.AIR.defaultBlockState()
                 : state;
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         WhistleSize size = state.getValue(SIZE);
         if (!state.getValue(WALL))
@@ -200,8 +178,6 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
         return (size == WhistleSize.SMALL ? AllShapes.WHISTLE_SMALL_WALL
                 : size == WhistleSize.MEDIUM ? AllShapes.WHISTLE_MEDIUM_WALL : AllShapes.WHISTLE_LARGE_WALL).get(direction);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
@@ -209,18 +185,12 @@ public class AndesiteSteamWhistleBlock extends WhistleBlock {
     public static Direction getAttachedDirection(BlockState state) {
         return state.getValue(WALL) ? state.getValue(FACING) : Direction.DOWN;
     }
-
-    @Override
     public BlockEntityType<? extends WhistleBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }
-
-    @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
-
-    @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return mirror == Mirror.NONE ? state : state.rotate(mirror.getRotation(state.getValue(FACING)));
     }

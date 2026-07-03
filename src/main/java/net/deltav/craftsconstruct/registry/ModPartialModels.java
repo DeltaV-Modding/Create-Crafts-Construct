@@ -209,7 +209,7 @@ public class ModPartialModels {
     }
 
     private static ResourceLocation blockResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(craftsconstruct.MOD_ID, "block/" + path);
+        return new ResourceLocation(craftsconstruct.MOD_ID, "block/" + path);
     }
 
     public static void init() {

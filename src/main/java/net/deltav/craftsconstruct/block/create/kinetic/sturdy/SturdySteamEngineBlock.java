@@ -17,7 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -55,14 +55,10 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         AdvancementBehaviour.setPlacedBy(level, pos, placer);
     }
-
-    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return canAttach(level, pos, getConnectedDirection(state).getOpposite());
     }
@@ -70,31 +66,23 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
     public static boolean canAttach(LevelReader reader, BlockPos pos, Direction direction) {
         return reader.getBlockState(pos.relative(direction)).getBlock() instanceof FluidTankBlock;
     }
-
-    @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : Fluids.EMPTY.defaultFluidState();
     }
-
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                               Player player, InteractionHand hand, BlockHitResult hitResult) {
         IPlacementHelper placementHelper = PlacementHelpers.get(placementHelperId);
         if (placementHelper.matchesItem(stack))
             return placementHelper.getOffset(player, level, state, pos, hitResult)
                     .placeInWorld(level, (BlockItem) stack.getItem(), player, hand, hitResult);
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
-
-    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor world,
                                   BlockPos pos, BlockPos neighbourPos) {
         if (state.getValue(WATERLOGGED))
             world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         return state;
     }
-
-    @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         FluidTankBlock.updateBoilerState(state, level, pos.relative(getFacing(state).getOpposite()));
         BlockPos shaftPos = getShaftPos(state, pos);
@@ -102,8 +90,6 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
         if (isShaftValid(state, shaftState))
             level.setBlock(shaftPos, PoweredShaftBlock.getEquivalent(shaftState), Block.UPDATE_ALL);
     }
-
-    @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.hasBlockEntity() && (!state.is(newState.getBlock()) || !newState.hasBlockEntity()))
             level.removeBlockEntity(pos);
@@ -113,8 +99,6 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
         if (AllBlocks.POWERED_SHAFT.has(shaftState))
             level.scheduleTick(shaftPos, shaftState.getBlock(), 1);
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         AttachFace face = state.getValue(FACE);
         Direction direction = state.getValue(FACING);
@@ -122,8 +106,6 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
                 : face == AttachFace.FLOOR ? AllShapes.STEAM_ENGINE.get(direction.getAxis())
                 : AllShapes.STEAM_ENGINE_WALL.get(direction);
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
@@ -131,8 +113,6 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
         BlockState state = super.getStateForPlacement(context);
         return state == null ? null : state.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
     }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
@@ -149,24 +129,17 @@ public class SturdySteamEngineBlock extends SteamEngineBlock {
         return (AllBlocks.SHAFT.has(shaft) || AllBlocks.POWERED_SHAFT.has(shaft))
                 && shaft.getValue(ShaftBlock.AXIS) != getFacing(state).getAxis();
     }
-
-    @Override
     public BlockEntityType<? extends SteamEngineBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }
 
     private static class PlacementHelper implements IPlacementHelper {
-        @Override
         public Predicate<ItemStack> getItemPredicate() {
             return AllBlocks.SHAFT::isIn;
         }
-
-        @Override
         public Predicate<BlockState> getStatePredicate() {
             return state -> state.getBlock() instanceof SturdySteamEngineBlock;
         }
-
-        @Override
         public PlacementOffset getOffset(Player player, Level world, BlockState state, BlockPos pos, BlockHitResult ray) {
             BlockPos shaftPos = SturdySteamEngineBlock.getShaftPos(state, pos);
             BlockState shaft = AllBlocks.SHAFT.getDefaultState();

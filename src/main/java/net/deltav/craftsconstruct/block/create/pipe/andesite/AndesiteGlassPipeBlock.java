@@ -34,8 +34,6 @@ public class AndesiteGlassPipeBlock extends GlassFluidPipeBlock {
     public AndesiteGlassPipeBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
-
-    @Override
     public BlockEntityType<? extends StraightPipeBlockEntity> getBlockEntityType() {
         return ModBlockEntityTypes.ANDESITE_GLASS_PIPE.get();
     }
@@ -48,9 +46,6 @@ public class AndesiteGlassPipeBlock extends GlassFluidPipeBlock {
                         .setValue(facingToPropertyMap.get(side), true)
                         .setValue(facingToPropertyMap.get(side.getOpposite()), true), side, null, world, pos);
     }
-
-
-    @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         if (tryRemoveBracket(context))
             return InteractionResult.SUCCESS;
@@ -63,8 +58,6 @@ public class AndesiteGlassPipeBlock extends GlassFluidPipeBlock {
         FluidTransportBehaviour.loadFlows(world, pos);
         return InteractionResult.SUCCESS;
     }
-
-    @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
                                        Player player) {
         return ModBlocks.ANDESITE_FLUID_PIPE.asStack();

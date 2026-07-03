@@ -23,13 +23,9 @@ public class SturdyEncasedPipeBlock extends EncasedPipeBlock {
     public SturdyEncasedPipeBlock(Properties properties, Supplier<Block> casing) {
         super(properties, casing);
     }
-
-    @Override
     public BlockEntityType<? extends FluidPipeBlockEntity> getBlockEntityType() {
         return ModBlockEntityTypes.STURDY_ENCASED_PIPE.get();
     }
-
-    @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Level world = context.getLevel();
         BlockPos pos = context.getClickedPos();

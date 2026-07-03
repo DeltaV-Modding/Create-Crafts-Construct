@@ -12,12 +12,13 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
 import net.createmod.catnip.config.ConfigBase;
-import net.createmod.catnip.registry.RegisteredObjectsHelper;
+import net.createmod.catnip.platform.CatnipServices;
+import net.createmod.catnip.platform.services.RegisteredObjectsHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-import net.neoforged.neoforge.common.ModConfigSpec.Builder;
-import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
+import net.minecraftforge.common.ForgeConfigSpec.Builder;
+import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 
 import static net.deltav.craftsconstruct.craftsconstruct.MOD_ID;
 
@@ -29,8 +30,6 @@ public class CCStress extends ConfigBase {
 
     protected final Map<ResourceLocation, ConfigValue<Double>> capacities = new HashMap<>();
     protected final Map<ResourceLocation, ConfigValue<Double>> impacts = new HashMap<>();
-
-    @Override
     public void registerAll(Builder builder) {
         builder.comment(".", CCStress.Comments.su, CCStress.Comments.impact)
                 .push("impact");
@@ -42,22 +41,20 @@ public class CCStress extends ConfigBase {
         DEFAULT_CAPACITIES.forEach((id, value) -> this.capacities.put(id, builder.define(id.getPath(), value)));
         builder.pop();
     }
-
-    @Override
     public String getName() {
         return "stressValues.v" + VERSION;
     }
 
     @Nullable
     public DoubleSupplier getImpact(Block block) {
-        ResourceLocation id = RegisteredObjectsHelper.getKeyOrThrow(block);
+        ResourceLocation id = CatnipServices.REGISTRIES.getKeyOrThrow(block);
         ConfigValue<Double> value = this.impacts.get(id);
         return value == null ? null : value::get;
     }
 
     @Nullable
     public DoubleSupplier getCapacity(Block block) {
-        ResourceLocation id = RegisteredObjectsHelper.getKeyOrThrow(block);
+        ResourceLocation id = CatnipServices.REGISTRIES.getKeyOrThrow(block);
         ConfigValue<Double> value = this.capacities.get(id);
         return value == null ? null : value::get;
     }
@@ -69,7 +66,7 @@ public class CCStress extends ConfigBase {
     public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> setImpact(double value) {
         return builder -> {
             assertFromCreateCC(builder);
-            DEFAULT_IMPACTS.put(ResourceLocation.fromNamespaceAndPath(MOD_ID, builder.getName()), value);
+            DEFAULT_IMPACTS.put(new ResourceLocation(MOD_ID, builder.getName()), value);
             return builder;
         };
     }
@@ -77,7 +74,7 @@ public class CCStress extends ConfigBase {
     public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> setCapacity(double value) {
         return builder -> {
             assertFromCreateCC(builder);
-            DEFAULT_CAPACITIES.put(ResourceLocation.fromNamespaceAndPath(MOD_ID, builder.getName()), value);
+            DEFAULT_CAPACITIES.put(new ResourceLocation(MOD_ID, builder.getName()), value);
             return builder;
         };
     }

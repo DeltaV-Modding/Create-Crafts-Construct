@@ -15,8 +15,6 @@ public class BrassSmartFluidPipeBlock extends SmartFluidPipeBlock {
         super(properties);
         this.blockEntityType = blockEntityType;
     }
-
-    @Override
     public BlockEntityType<? extends SmartFluidPipeBlockEntity> getBlockEntityType() {
         return blockEntityType.get();
     }

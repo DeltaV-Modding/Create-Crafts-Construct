@@ -14,9 +14,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.client.model.data.ModelData;
-import net.neoforged.neoforge.client.model.data.ModelData.Builder;
-import net.neoforged.neoforge.client.model.data.ModelProperty;
+import net.minecraftforge.client.model.data.ModelData;
+import net.minecraftforge.client.model.data.ModelData.Builder;
+import net.minecraftforge.client.model.data.ModelProperty;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,6 @@ public class CopperFluidTankModel extends CTModel {
                 new HorizontalFluidTankCTBehaviour(side, top, inner) : 
                 new FluidTankCTBehaviour(side, top, inner));
     }
-
     @Override
     protected ModelData.Builder gatherModelData(Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state, ModelData blockEntityData) {
         super.gatherModelData(builder, world, pos, state, blockEntityData);
@@ -56,7 +55,6 @@ public class CopperFluidTankModel extends CTModel {
 
         return builder.with(CULL_PROPERTY, cullData);
     }
-
     @Override
     public List<BakedQuad> getQuads(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType) {
         if (side != null)

@@ -24,19 +24,13 @@ public class BrassPortableFluidInterfaceBlock extends WrenchableDirectionalBlock
     public BrassPortableFluidInterfaceBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
-
-    @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean movedByPiston) {
         withBlockEntityDo(level, pos, PortableStorageInterfaceBlockEntity::neighbourChanged);
     }
-
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         AdvancementBehaviour.setPlacedBy(level, pos, placer);
     }
-
-    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction direction = context.getNearestLookingDirection();
         if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
@@ -44,18 +38,12 @@ public class BrassPortableFluidInterfaceBlock extends WrenchableDirectionalBlock
         }
         return defaultBlockState().setValue(FACING, direction.getOpposite());
     }
-
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return AllShapes.PORTABLE_STORAGE_INTERFACE.get(state.getValue(FACING));
     }
-
-    @Override
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
-
-    @Override
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return getBlockEntityOptional(level, pos).map(be -> isConnected(be) ? 15 : 0)
             .orElse(0);
@@ -70,13 +58,9 @@ public class BrassPortableFluidInterfaceBlock extends WrenchableDirectionalBlock
             return false;
         }
     }
-
-    @Override
     public Class<PortableStorageInterfaceBlockEntity> getBlockEntityClass() {
         return PortableStorageInterfaceBlockEntity.class;
     }
-
-    @Override
     public BlockEntityType<? extends PortableStorageInterfaceBlockEntity> getBlockEntityType() {
         return ModBlockEntityTypes.BRASS_PORTABLE_FLUID_INTERFACE.get();
     }

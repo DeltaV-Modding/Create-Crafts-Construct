@@ -6,21 +6,22 @@ import net.deltav.craftsconstruct.block.create.fluid.FluidClient;
 import net.deltav.craftsconstruct.block.create.pipe.PipeClient;
 import net.deltav.craftsconstruct.item.PaintGunItem;
 import net.deltav.craftsconstruct.registry.*;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.deltav.craftsconstruct.registry.ModCreativeModeTabs;
 
 @Mod(craftsconstruct.MOD_ID)
@@ -34,12 +35,14 @@ public class craftsconstruct {
     }
 
 
-    public craftsconstruct(IEventBus modEventBus, ModContainer modContainer) {
+    public craftsconstruct() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         REGISTRATE.defaultCreativeTab(ModCreativeModeTabs.CC_TAB_KEY);
         REGISTRATE.registerEventListeners(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
         ModFluids.register(modEventBus);
@@ -49,19 +52,8 @@ public class craftsconstruct {
         ModFeatures.register(modEventBus);
         ModBlockEntityTypes.register();
         ModCapabilities.register(modEventBus);
-        modEventBus.addListener(this::onAddBlocksToBE);
 
-
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
-
-    private void onAddBlocksToBE(net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent event) {
-        for (var block : ModBlocks.PAINTED_FLUID_TANKS) {
-            event.modify(com.simibubi.create.AllBlockEntityTypes.FLUID_TANK.get(), block.get());
-        }
-        for (var block : ModBlocks.PAINTED_VALVE_HANDLES) {
-            event.modify(com.simibubi.create.AllBlockEntityTypes.VALVE_HANDLE.get(), block.get());
-        }
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -102,13 +94,13 @@ public class craftsconstruct {
         }
 
         @SubscribeEvent(priority = EventPriority.HIGH)
-        public static void onModifyBakingResult(net.neoforged.neoforge.client.event.ModelEvent.ModifyBakingResult event) {
+        public static void onModifyBakingResult(net.minecraftforge.client.event.ModelEvent.ModifyBakingResult event) {
             FluidClient.registerModelSwappers();
             PipeClient.registerModelSwappers();
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
-        public static void onRegisterAdditional(net.neoforged.neoforge.client.event.ModelEvent.RegisterAdditional event) {
+        public static void onRegisterAdditional(net.minecraftforge.client.event.ModelEvent.RegisterAdditional event) {
             net.deltav.craftsconstruct.registry.ModPartialModels.init();
         }
 

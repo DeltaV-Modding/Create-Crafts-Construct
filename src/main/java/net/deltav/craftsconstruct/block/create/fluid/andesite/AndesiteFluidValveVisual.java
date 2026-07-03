@@ -44,8 +44,6 @@ public class AndesiteFluidValveVisual extends ShaftVisual<FluidValveBlockEntity>
                 .createInstance();
         transformPointer(partialTick);
     }
-
-    @Override
     public void beginFrame(DynamicVisual.Context context) {
         if (((net.deltav.craftsconstruct.mixin.FluidValveBlockEntityAccessor) blockEntity).getPointer().settled() && settled)
             return;
@@ -66,20 +64,14 @@ public class AndesiteFluidValveVisual extends ShaftVisual<FluidValveBlockEntity>
                 .uncenter()
                 .setChanged();
     }
-
-    @Override
     public void updateLight(float partialTick) {
         super.updateLight(partialTick);
         relight(pointer);
     }
-
-    @Override
     protected void _delete() {
         super._delete();
         pointer.delete();
     }
-
-    @Override
     public void collectCrumblingInstances(Consumer<Instance> consumer) {
         super.collectCrumblingInstances(consumer);
         consumer.accept(pointer);

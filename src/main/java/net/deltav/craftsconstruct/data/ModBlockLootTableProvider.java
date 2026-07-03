@@ -4,12 +4,9 @@ import net.deltav.craftsconstruct.block.SugarBeetCropBlock;
 import net.deltav.craftsconstruct.registry.ModBlocks;
 import net.deltav.craftsconstruct.registry.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -21,40 +18,38 @@ import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
+import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.common.loot.CanToolPerformAction;
 
+import java.util.Map;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
-    protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    protected ModBlockLootTableProvider() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), Map.of());
     }
 
-    @Override
     protected void generate() {
-        LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SUGAR_BEETS.get())
+        LootItemCondition.Builder ripeSugarBeets = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(ModBlocks.SUGAR_BEETS.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SugarBeetCropBlock.AGE, 3));
-        HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         this.add(ModBlocks.SUGAR_BEETS.get(), this.createCropDrops(ModBlocks.SUGAR_BEETS.get(),
-                ModItems.SUGAR_BEET.get(), ModItems.SUGAR_BEET_SEEDS.get(), lootItemConditionBuilder));
+                ModItems.SUGAR_BEET.get(), ModItems.SUGAR_BEET_SEEDS.get(), ripeSugarBeets));
 
         this.add(ModBlocks.WILD_SUGAR_BEET_BLOCK.get(), this.wildSugarBeetLoot(ModBlocks.WILD_SUGAR_BEET_BLOCK.get(),
-                ModItems.SUGAR_BEET.get(), registryLookup));
-
+                ModItems.SUGAR_BEET.get()));
     }
 
-
-    protected LootTable.Builder wildSugarBeetLoot(Block block, Item crop, HolderLookup.RegistryLookup<Enchantment> registryLookup) {
+    protected LootTable.Builder wildSugarBeetLoot(Block block, Item crop) {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
                         .add(AlternativesEntry.alternatives(
                                 LootItem.lootTableItem(block)
-                                        .when(CanItemPerformAbility.canItemPerformAbility(ItemAbilities.SHEARS_HARVEST)),
+                                        .when(CanToolPerformAction.canToolPerformAction(ToolActions.SHEARS_HARVEST)),
                                 LootItem.lootTableItem(crop)
                                         .apply(ApplyExplosionDecay.explosionDecay())
-                                        .apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE), 2)))));
+                                        .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2)))));
     }
 }

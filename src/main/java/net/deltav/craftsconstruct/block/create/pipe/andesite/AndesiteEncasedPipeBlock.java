@@ -24,13 +24,9 @@ public class AndesiteEncasedPipeBlock extends EncasedPipeBlock {
     public AndesiteEncasedPipeBlock(Properties properties, Supplier<Block> casing) {
         super(properties, casing);
     }
-
-    @Override
     public BlockEntityType<? extends FluidPipeBlockEntity> getBlockEntityType() {
         return ModBlockEntityTypes.ANDESITE_ENCASED_PIPE.get();
     }
-
-    @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Level world = context.getLevel();
         BlockPos pos = context.getClickedPos();

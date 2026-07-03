@@ -4,7 +4,7 @@ import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class SturdyFluidTankBlockEntity extends FluidTankBlockEntity {
     public SturdyFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -12,6 +12,6 @@ public class SturdyFluidTankBlockEntity extends FluidTankBlockEntity {
     }
 
     public IFluidHandler getFluidHandler() {
-        return fluidCapability;
+        return fluidCapability.orElse(null);
     }
 }

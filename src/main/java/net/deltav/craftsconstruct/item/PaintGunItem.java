@@ -39,8 +39,6 @@ public class PaintGunItem extends Item {
     public boolean isCreative() {
         return creative;
     }
-
-    @Override
     public InteractionResult useOn(UseOnContext context) {
         return useOn(context, creative);
     }
@@ -83,7 +81,7 @@ public class PaintGunItem extends Item {
             BlockEntity oldBe = level.getBlockEntity(pos);
             CompoundTag nbt = null;
             if (oldBe != null) {
-                nbt = oldBe.saveWithFullMetadata(level.registryAccess());
+                nbt = oldBe.saveWithFullMetadata();
             }
 
             level.setBlock(pos, targetState.get(), 3);
@@ -96,7 +94,7 @@ public class PaintGunItem extends Item {
                     if (newTypeId != null) {
                         nbt.putString("id", newTypeId.toString());
                     }
-                    newBe.loadWithComponents(nbt, level.registryAccess());
+                    newBe.load(nbt);
                     newBe.setChanged();
                     level.sendBlockUpdated(pos, sourceState, targetState.get(), 3);
                 }
@@ -125,10 +123,8 @@ public class PaintGunItem extends Item {
         }
         cartridge.setDamageValue(nextDamage);
     }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, context, tooltip, flag);
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, level, tooltip, flag);
         if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) {
             List<Component> summary = TooltipHelper.cutTextComponent(
                     CreateLang.translate(creative ? "tooltip.cc.c_paint_gun.summary" : "tooltip.cc.paint_gun.summary").component(),

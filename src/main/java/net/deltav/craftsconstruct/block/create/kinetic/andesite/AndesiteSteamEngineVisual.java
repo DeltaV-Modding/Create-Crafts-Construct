@@ -43,8 +43,6 @@ public class AndesiteSteamEngineVisual extends AbstractBlockEntityVisual<SteamEn
 
         animate();
     }
-
-    @Override
     public void beginFrame(DynamicVisual.Context context) {
         animate();
     }
@@ -115,22 +113,16 @@ public class AndesiteSteamEngineVisual extends AbstractBlockEntityVisual<SteamEn
                 .rotateYDegrees(roll90 ? -90.0f : 0.0f)
                 .uncenter();
     }
-
-    @Override
     protected void _delete() {
         piston.delete();
         linkage.delete();
         connector.delete();
     }
-
-    @Override
     public void collectCrumblingInstances(Consumer<dev.engine_room.flywheel.api.instance.Instance> consumer) {
         consumer.accept(piston);
         consumer.accept(linkage);
         consumer.accept(connector);
     }
-
-    @Override
     public void updateLight(float partialTicks) {
         relight(piston, linkage, connector);
     }
