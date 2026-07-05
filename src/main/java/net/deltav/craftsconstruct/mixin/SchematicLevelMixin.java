@@ -36,7 +36,12 @@ public class SchematicLevelMixin {
                 if (material != null) {
                     ResourceLocation originalId = BuiltInRegistries.BLOCK.getKey(original.getBlock());
                     if (originalId.getNamespace().equals("create")) {
-                        ResourceLocation customId = new ResourceLocation("crafts_construct", material + "_" + originalId.getPath());
+                        String originalPath = originalId.getPath();
+                        if (originalPath.equals("copper_valve_handle")) {
+                            originalPath = "valve_handle";
+                        }
+
+                        ResourceLocation customId = new ResourceLocation("crafts_construct", material + "_" + originalPath);
                         if (BuiltInRegistries.BLOCK.containsKey(customId)) {
                             Block customBlock = BuiltInRegistries.BLOCK.get(customId);
                             BlockState customState = customBlock.defaultBlockState();

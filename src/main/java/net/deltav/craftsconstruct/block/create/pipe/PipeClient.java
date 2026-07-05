@@ -22,6 +22,7 @@ import net.minecraftforge.client.model.data.ModelData;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class PipeClient {
@@ -30,6 +31,9 @@ public final class PipeClient {
 
     public static void registerRenderLayers() {
         for (var block : ModBlocks.PAINTED_FLUID_PIPES) {
+            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
+        }
+        for (var block : ModBlocks.PAINTED_GLASS_PIPES) {
             ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
         }
         for (var block : ModBlocks.PAINTED_SMART_FLUID_PIPES) {
@@ -49,29 +53,59 @@ public final class PipeClient {
 
             String path = block.getId().getPath();
             String material = path.substring(0, path.indexOf('_'));
-            String targetPrefix = "block/" + material + "_fluid_pipe/" + material + "_pipes";
+            String pipeTexture = pipeTexture(material, false);
+            String connectedPipeTexture = pipeTexture(material, true);
+            String targetPipeTexture = paintablePipeTexture(material, false);
+            String targetConnectedPipeTexture = paintablePipeTexture(material, true);
 
-            SpriteShiftEntry pipeShift = SpriteShifter.get(
-                    createBlockTexture("pipes"),
-                    modTexture(targetPrefix)
+            List<SpriteShiftEntry> pipeShifts = Arrays.asList(
+                    SpriteShifter.get(createBlockTexture("pipes"), modTexture(targetPipeTexture)),
+                    SpriteShifter.get(modTexture(pipeTexture), modTexture(targetPipeTexture))
             );
-            SpriteShiftEntry pipeConnectedShift = SpriteShifter.get(
-                    createBlockTexture("pipes_connected"),
-                    modTexture(targetPrefix + "_connected")
+            List<SpriteShiftEntry> pipeConnectedShifts = Arrays.asList(
+                    SpriteShifter.get(createBlockTexture("pipes_connected"), modTexture(targetConnectedPipeTexture)),
+                    SpriteShifter.get(modTexture(connectedPipeTexture), modTexture(targetConnectedPipeTexture))
             );
 
-            SpriteShiftEntry glassPipeShift = SpriteShifter.get(
-                    createBlockTexture("glass_fluid_pipe"),
-                    modTexture("block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe")
+            List<SpriteShiftEntry> glassPipeShifts = Arrays.asList(
+                    SpriteShifter.get(createBlockTexture("glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe")),
+                    SpriteShifter.get(modTexture("block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe")),
+                    SpriteShifter.get(modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe"))
+            );
+            List<SpriteShiftEntry> smartPipeShifts = Arrays.asList(
+                    SpriteShifter.get(
+                            createBlockTexture("smart_pipe_1"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_1")
+                    ),
+                    SpriteShifter.get(
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_1"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_1")
+                    ),
+                    SpriteShifter.get(
+                            createBlockTexture("smart_pipe_2"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_2")
+                    ),
+                    SpriteShifter.get(
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_2"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_2")
+                    ),
+                    SpriteShifter.get(
+                            createBlockTexture("smart_pipe_3"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_3")
+                    ),
+                    SpriteShifter.get(
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_3"),
+                            modTexture("block/paintables/" + material + "_smart_pipe_3")
+                    )
             );
 
             CreateClient.MODEL_SWAPPER.getCustomBlockModels().register(
                     block.getId(),
-                    bakedModel -> new SpriteShiftingBakedModel(PipeAttachmentModel.withAO(bakedModel), pipeShift, pipeConnectedShift, glassPipeShift)
+                    bakedModel -> new SpriteShiftingBakedModel(PipeAttachmentModel.withAO(bakedModel), pipeShifts, pipeConnectedShifts, glassPipeShifts, smartPipeShifts)
             );
             CreateClient.MODEL_SWAPPER.getCustomItemModels().register(
                     block.getId(),
-                    bakedModel -> new SpriteShiftingBakedModel(bakedModel, pipeShift, pipeConnectedShift, glassPipeShift)
+                    bakedModel -> new SpriteShiftingBakedModel(bakedModel, pipeShifts, pipeConnectedShifts, glassPipeShifts, smartPipeShifts)
             );
         }
     }
@@ -80,20 +114,31 @@ public final class PipeClient {
         return new ResourceLocation("create", "block/" + path);
     }
 
+    private static String pipeTexture(String material, boolean connected) {
+        String baseName = material.equals("brass") ? "brass_fluid_pipe" : material + "_pipes";
+        return "block/" + material + "_fluid_pipe/" + baseName + (connected ? "_connected" : "");
+    }
+
+    private static String paintablePipeTexture(String material, boolean connected) {
+        return "block/paintables/" + material + "_pipes" + (connected ? "_connected" : "");
+    }
+
     private static ResourceLocation modTexture(String path) {
         return new ResourceLocation(craftsconstruct.MOD_ID, path);
     }
 
     private static class SpriteShiftingBakedModel extends BakedModelWrapper<BakedModel> {
-        private final SpriteShiftEntry spriteShift;
-        private final SpriteShiftEntry connectedSpriteShift;
-        private final SpriteShiftEntry glassPipeShift;
+        private final List<SpriteShiftEntry> spriteShifts;
+        private final List<SpriteShiftEntry> connectedSpriteShifts;
+        private final List<SpriteShiftEntry> glassPipeShifts;
+        private final List<SpriteShiftEntry> smartPipeShifts;
 
-        private SpriteShiftingBakedModel(BakedModel originalModel, SpriteShiftEntry spriteShift, SpriteShiftEntry connectedSpriteShift, SpriteShiftEntry glassPipeShift) {
+        private SpriteShiftingBakedModel(BakedModel originalModel, List<SpriteShiftEntry> spriteShifts, List<SpriteShiftEntry> connectedSpriteShifts, List<SpriteShiftEntry> glassPipeShifts, List<SpriteShiftEntry> smartPipeShifts) {
             super(originalModel);
-            this.spriteShift = spriteShift;
-            this.connectedSpriteShift = connectedSpriteShift;
-            this.glassPipeShift = glassPipeShift;
+            this.spriteShifts = spriteShifts;
+            this.connectedSpriteShifts = connectedSpriteShifts;
+            this.glassPipeShifts = glassPipeShifts;
+            this.smartPipeShifts = smartPipeShifts;
         }
         @Override
         public List<BakedQuad> getQuads(BlockState state, Direction side, RandomSource rand) {
@@ -127,12 +172,23 @@ public final class PipeClient {
         private SpriteShiftEntry getShift(BakedQuad quad) {
             if (quad.getSprite() == null)
                 return null;
-            if (spriteShift != null && quad.getSprite() == spriteShift.getOriginal())
-                return spriteShift;
-            if (connectedSpriteShift != null && quad.getSprite() == connectedSpriteShift.getOriginal())
-                return connectedSpriteShift;
-            if (glassPipeShift != null && quad.getSprite() == glassPipeShift.getOriginal())
-                return glassPipeShift;
+            SpriteShiftEntry shift = getShift(quad, spriteShifts);
+            if (shift != null)
+                return shift;
+            shift = getShift(quad, connectedSpriteShifts);
+            if (shift != null)
+                return shift;
+            shift = getShift(quad, glassPipeShifts);
+            if (shift != null)
+                return shift;
+            return getShift(quad, smartPipeShifts);
+        }
+
+        private SpriteShiftEntry getShift(BakedQuad quad, List<SpriteShiftEntry> shifts) {
+            for (SpriteShiftEntry shift : shifts) {
+                if (shift != null && quad.getSprite() == shift.getOriginal())
+                    return shift;
+            }
             return null;
         }
     }

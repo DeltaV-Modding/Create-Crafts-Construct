@@ -14,11 +14,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class WhistleExtenderBlockMixin {
 
     @Redirect(
-            method = "useItemOn",
+            method = "use",
             at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z")
     )
     private boolean craftsConstruct$allowCustomWhistlesToExtendOnExtender(com.tterrag.registrate.util.entry.BlockEntry<?> entry, ItemStack stack) {
-        if (entry == AllBlocks.STEAM_WHISTLE) {
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
             if (entry.isIn(stack)) {
                 return true;
             }
@@ -34,7 +34,7 @@ public class WhistleExtenderBlockMixin {
             at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z")
     )
     private boolean craftsConstruct$allowExtenderToSurviveOnCustomWhistles(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        if (entry == AllBlocks.STEAM_WHISTLE) {
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
             return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         }
         return entry.has(state);
@@ -45,7 +45,7 @@ public class WhistleExtenderBlockMixin {
             at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z")
     )
     private boolean craftsConstruct$allowHidingNeighborFaceOnCustomWhistles(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        if (entry == AllBlocks.STEAM_WHISTLE) {
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
             return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         }
         return entry.has(state);

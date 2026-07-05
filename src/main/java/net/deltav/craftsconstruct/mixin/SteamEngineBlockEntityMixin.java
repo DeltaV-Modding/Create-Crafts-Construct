@@ -15,7 +15,7 @@ public class SteamEngineBlockEntityMixin {
             at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z")
     )
     private boolean craftsConstruct$recognizePaintedSteamEngine(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        if (entry == AllBlocks.STEAM_ENGINE) {
+        if (entry.getId().equals(AllBlocks.STEAM_ENGINE.getId())) {
             return entry.has(state) || state.getBlock() instanceof SteamEngineBlock;
         }
         return entry.has(state);

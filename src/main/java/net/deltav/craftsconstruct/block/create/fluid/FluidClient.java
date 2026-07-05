@@ -25,8 +25,15 @@ public final class FluidClient {
     }
 
     public static void registerRenderLayers() {
+        setCutoutLayer(ModBlocks.PAINTED_MECHANICAL_PUMPS);
+        setCutoutLayer(ModBlocks.PAINTED_HOSE_PULLEYS);
+        setCutoutLayer(ModBlocks.PAINTED_PORTABLE_FLUID_INTERFACES);
         setCutoutLayer(ModBlocks.PAINTED_SPOUTS);
         setCutoutLayer(ModBlocks.PAINTED_FLUID_VALVES);
+        setCutoutLayer(ModBlocks.PAINTED_VALVE_HANDLES);
+        setCutoutLayer(ModBlocks.PAINTED_ITEM_DRAINS);
+        setCutoutLayer(ModBlocks.PAINTED_STEAM_ENGINES);
+        setCutoutLayer(ModBlocks.PAINTED_STEAM_WHISTLES);
         setCutoutLayer(ModBlocks.PAINTED_FLUID_TANKS);
         setCutoutLayer(ModBlocks.PAINTED_HORIZONTAL_FLUID_TANKS);
     }

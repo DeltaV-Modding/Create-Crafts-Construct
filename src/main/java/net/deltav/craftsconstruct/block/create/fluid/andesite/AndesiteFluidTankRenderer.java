@@ -91,7 +91,12 @@ public class AndesiteFluidTankRenderer extends FluidTankRenderer {
 
     private static Partials getPartials(BlockState state) {
         String path = state.getBlock().builtInRegistryHolder().key().location().getPath();
-        String material = path.substring(0, path.indexOf("_fluid_tank"));
+        String material = "andesite";
+        if (path.contains("brass")) {
+            material = "brass";
+        } else if (path.contains("sturdy")) {
+            material = "sturdy";
+        }
         String steamEnginePath = material + "_steam_engine";
 
         PartialModel gauge = net.deltav.craftsconstruct.registry.ModPartialModels.STEAM_ENGINE_GAUGES.get(steamEnginePath);

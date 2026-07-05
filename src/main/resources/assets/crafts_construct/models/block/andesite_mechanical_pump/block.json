@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump",
+	"parent": "create:block/block",
 	"textures": {
 		"4": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump",
 		"particle": "crafts_construct:block/andesite_mechanical_pump/andesite_mechanical_pump"
@@ -65,4 +65,3 @@
 		}
 	}
 }
-

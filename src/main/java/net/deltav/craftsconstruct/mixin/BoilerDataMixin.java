@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(BoilerData.class)
+@Mixin(value = BoilerData.class, remap = false)
 public class BoilerDataMixin {
     @Redirect(
             method = "evaluate",
@@ -19,9 +19,9 @@ public class BoilerDataMixin {
     )
     private boolean craftsConstruct$recognizePaintedBoilerAttachments(
             com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        if (entry == AllBlocks.STEAM_ENGINE)
+        if (entry.getId().equals(AllBlocks.STEAM_ENGINE.getId()))
             return entry.has(state) || state.getBlock() instanceof SteamEngineBlock;
-        if (entry == AllBlocks.STEAM_WHISTLE)
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId()))
             return entry.has(state) || state.getBlock() instanceof WhistleBlock;
         return entry.has(state);
     }
@@ -32,6 +32,9 @@ public class BoilerDataMixin {
     )
     private boolean craftsConstruct$recognizePaintedWhistlesForPipeOrgan(
             com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
-        return entry.has(state) || state.getBlock() instanceof WhistleBlock;
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
+            return entry.has(state) || state.getBlock() instanceof WhistleBlock;
+        }
+        return entry.has(state);
     }
 }

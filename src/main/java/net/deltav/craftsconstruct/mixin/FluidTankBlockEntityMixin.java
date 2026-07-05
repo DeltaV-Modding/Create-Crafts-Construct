@@ -49,7 +49,7 @@ public abstract class FluidTankBlockEntityMixin {
                         };
 
                         BlockState state = tank.getLevel().getBlockState(pos);
-                        if (!FluidTankBlock.isTank(state))
+                        if (!FluidTankBlock.isTank(state) || state.getBlock() != blockState.getBlock())
                             continue;
 
                         Shape shape = Shape.PLAIN;

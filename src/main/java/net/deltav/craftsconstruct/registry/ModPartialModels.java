@@ -72,15 +72,15 @@ public class ModPartialModels {
             BRASS_PUMP_COG = block("brass_mechanical_pump/cog"),
             STURDY_PUMP_COG = block("sturdy_mechanical_pump/cog"),
 
-            BRASS_PORTABLE_STORAGE_INTERFACE_TOP = block("brass_portable_storage_interface/block_top"),
-            BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("brass_portable_storage_interface/block_middle"),
-            BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("brass_portable_storage_interface/block_middle_powered"),
-            COPPER_PORTABLE_STORAGE_INTERFACE_TOP = block("copper_portable_storage_interface/block_top"),
-            COPPER_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("copper_portable_storage_interface/block_middle"),
-            COPPER_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("copper_portable_storage_interface/block_middle_powered"),
-            STURDY_PORTABLE_STORAGE_INTERFACE_TOP = block("sturdy_portable_storage_interface/block_top"),
-            STURDY_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("sturdy_portable_storage_interface/block_middle"),
-            STURDY_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("sturdy_portable_storage_interface/block_middle_powered"),
+            BRASS_PORTABLE_STORAGE_INTERFACE_TOP = block("brass_portable_fluid_interface/block_top"),
+            BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("brass_portable_fluid_interface/block_middle"),
+            BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("brass_portable_fluid_interface/block_middle_powered"),
+            COPPER_PORTABLE_STORAGE_INTERFACE_TOP = createBlock("portable_fluid_interface/block_top"),
+            COPPER_PORTABLE_STORAGE_INTERFACE_MIDDLE = createBlock("portable_fluid_interface/block_middle"),
+            COPPER_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = createBlock("portable_fluid_interface/block_middle_powered"),
+            STURDY_PORTABLE_STORAGE_INTERFACE_TOP = block("sturdy_portable_fluid_interface/block_top"),
+            STURDY_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("sturdy_portable_fluid_interface/block_middle"),
+            STURDY_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("sturdy_portable_fluid_interface/block_middle_powered"),
 
             ANDESITE_PORTABLE_FLUID_INTERFACE_TOP = block("andesite_portable_fluid_interface/block_top"),
             ANDESITE_PORTABLE_FLUID_INTERFACE_MIDDLE = block("andesite_portable_fluid_interface/block_middle"),
@@ -90,7 +90,19 @@ public class ModPartialModels {
             BRASS_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = block("brass_portable_fluid_interface/block_middle_powered"),
             STURDY_PORTABLE_FLUID_INTERFACE_TOP = block("sturdy_portable_fluid_interface/block_top"),
             STURDY_PORTABLE_FLUID_INTERFACE_MIDDLE = block("sturdy_portable_fluid_interface/block_middle"),
-            STURDY_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = block("sturdy_portable_fluid_interface/block_middle_powered");
+            STURDY_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = block("sturdy_portable_fluid_interface/block_middle_powered"),
+
+            ANDESITE_WHISTLE_MOUTH_LARGE = block("andesite_steam_whistle/large_mouth"),
+            ANDESITE_WHISTLE_MOUTH_MEDIUM = block("andesite_steam_whistle/medium_mouth"),
+            ANDESITE_WHISTLE_MOUTH_SMALL = block("andesite_steam_whistle/small_mouth"),
+
+            BRASS_WHISTLE_MOUTH_LARGE = block("brass_steam_whistle/large_mouth"),
+            BRASS_WHISTLE_MOUTH_MEDIUM = block("brass_steam_whistle/medium_mouth"),
+            BRASS_WHISTLE_MOUTH_SMALL = block("brass_steam_whistle/small_mouth"),
+
+            STURDY_WHISTLE_MOUTH_LARGE = block("sturdy_steam_whistle/large_mouth"),
+            STURDY_WHISTLE_MOUTH_MEDIUM = block("sturdy_steam_whistle/medium_mouth"),
+            STURDY_WHISTLE_MOUTH_SMALL = block("sturdy_steam_whistle/small_mouth");
 
     public static final Map<String, PartialModel> HOSE_PULLEY_MAGNETS = new HashMap<>();
     public static final Map<String, PartialModel> HOSE_PULLEY_ROPES = new HashMap<>();
@@ -107,6 +119,10 @@ public class ModPartialModels {
 
     public static final Map<String, PartialModel> VALVE_POINTERS = new HashMap<>();
     public static final Map<String, PartialModel> VALVE_HANDLES = new HashMap<>();
+
+    public static final Map<String, PartialModel> WHISTLE_MOUTHS_LARGE = new HashMap<>();
+    public static final Map<String, PartialModel> WHISTLE_MOUTHS_MEDIUM = new HashMap<>();
+    public static final Map<String, PartialModel> WHISTLE_MOUTHS_SMALL = new HashMap<>();
 
     public static final Map<String, PartialModel> PORTABLE_STORAGE_INTERFACE_TOP = new HashMap<>();
     public static final Map<String, PartialModel> PORTABLE_STORAGE_INTERFACE_MIDDLE = new HashMap<>();
@@ -160,6 +176,10 @@ public class ModPartialModels {
                 BRASS_PORTABLE_FLUID_INTERFACE_MIDDLE, BRASS_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED);
         putPortableFluidInterface("sturdy_portable_fluid_interface", STURDY_PORTABLE_FLUID_INTERFACE_TOP,
                 STURDY_PORTABLE_FLUID_INTERFACE_MIDDLE, STURDY_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED);
+
+        putWhistle("andesite_steam_whistle", ANDESITE_WHISTLE_MOUTH_LARGE, ANDESITE_WHISTLE_MOUTH_MEDIUM, ANDESITE_WHISTLE_MOUTH_SMALL);
+        putWhistle("brass_steam_whistle", BRASS_WHISTLE_MOUTH_LARGE, BRASS_WHISTLE_MOUTH_MEDIUM, BRASS_WHISTLE_MOUTH_SMALL);
+        putWhistle("sturdy_steam_whistle", STURDY_WHISTLE_MOUTH_LARGE, STURDY_WHISTLE_MOUTH_MEDIUM, STURDY_WHISTLE_MOUTH_SMALL);
     }
 
     private static void putHosePulley(String path, PartialModel magnet, PartialModel rope, PartialModel ropeHalf,
@@ -186,6 +206,12 @@ public class ModPartialModels {
         STEAM_ENGINE_CONNECTORS.put(path, connector);
     }
 
+    private static void putWhistle(String path, PartialModel large, PartialModel medium, PartialModel small) {
+        WHISTLE_MOUTHS_LARGE.put(path, large);
+        WHISTLE_MOUTHS_MEDIUM.put(path, medium);
+        WHISTLE_MOUTHS_SMALL.put(path, small);
+    }
+
     private static void putSpout(String path, PartialModel top, PartialModel middle, PartialModel bottom) {
         SPOUT_TOPS.put(path, top);
         SPOUT_MIDDLES.put(path, middle);
@@ -206,6 +232,10 @@ public class ModPartialModels {
 
     private static PartialModel block(String path) {
         return PartialModel.of(blockResource(path));
+    }
+
+    private static PartialModel createBlock(String path) {
+        return PartialModel.of(new ResourceLocation("create", "block/" + path));
     }
 
     private static ResourceLocation blockResource(String path) {

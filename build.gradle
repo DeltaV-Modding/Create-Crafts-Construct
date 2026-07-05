@@ -103,6 +103,8 @@ legacyForge {
             // You can set various levels here.
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             logLevel = org.slf4j.event.Level.DEBUG
+            programArgument '--mixin'
+            programArgument 'craftsconstruct.mixins.json'
         }
     }
 
@@ -168,6 +170,11 @@ tasks.matching { it.name in ['runClient', 'runServer', 'runGameTestServer'] }.co
 
 tasks.named('jar') {
     dependsOn preLaunchChecks
+    manifest {
+        attributes([
+                'MixinConfigs': 'craftsconstruct.mixins.json'
+        ])
+    }
 }
 
 // Sets up a dependency configuration called 'localRuntime'.

@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class WhistleBlockMixin {
 
     @Redirect(
-            method = "useItemOn",
+            method = "use",
             at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z")
     )
     private boolean craftsConstruct$allowCustomWhistlesToExtend(com.tterrag.registrate.util.entry.BlockEntry<?> entry, ItemStack stack) {
-        if (entry == AllBlocks.STEAM_WHISTLE) {
+        if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
             if (entry.isIn(stack)) {
                 return true;
             }

@@ -4,6 +4,7 @@
   "package": "net.deltav.craftsconstruct.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BlockEntityTypeMixin",
     "BoilerDataMixin",
     "PoweredShaftBlockEntityMixin",
     "SteamEngineBlockEntityMixin",
@@ -18,6 +19,7 @@
   ],
   "client": [
     "FluidTankRendererMixin",
+    "WhistleRendererMixin",
     "PortableStorageInterfaceRendererMixin",
     "PonderUIMixin",
     "PonderIndexMixin",

@@ -6,20 +6,22 @@
       "request": "launch",
       "name": "Client",
       "presentation": {
-        "group": "Mod Development - Create-Crafts-Construct",
+        "group": "Mod Development - Create-Crafts-Construct 1.20.1",
         "order": 0
       },
-      "projectName": "Create-Crafts-Construct",
+      "projectName": "Create-Crafts-Construct 1.20.1",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\clientRunProgramArgs.txt"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct\\bin\\main"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
-      "env": {},
+      "env": {
+        "MOD_CLASSES": "crafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
+      },
       "console": "internalConsole",
       "shortenCommandLine": "none"
     },
@@ -28,20 +30,22 @@
       "request": "launch",
       "name": "Data",
       "presentation": {
-        "group": "Mod Development - Create-Crafts-Construct",
+        "group": "Mod Development - Create-Crafts-Construct 1.20.1",
         "order": 1
       },
-      "projectName": "Create-Crafts-Construct",
+      "projectName": "Create-Crafts-Construct 1.20.1",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\dataRunProgramArgs.txt"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct\\bin\\main"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
-      "env": {},
+      "env": {
+        "MOD_CLASSES": "crafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
+      },
       "console": "internalConsole",
       "shortenCommandLine": "none"
     },
@@ -50,20 +54,22 @@
       "request": "launch",
       "name": "GameTestServer",
       "presentation": {
-        "group": "Mod Development - Create-Crafts-Construct",
+        "group": "Mod Development - Create-Crafts-Construct 1.20.1",
         "order": 2
       },
-      "projectName": "Create-Crafts-Construct",
+      "projectName": "Create-Crafts-Construct 1.20.1",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct\\bin\\main"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
-      "env": {},
+      "env": {
+        "MOD_CLASSES": "crafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
+      },
       "console": "internalConsole",
       "shortenCommandLine": "none"
     },
@@ -72,20 +78,22 @@
       "request": "launch",
       "name": "Server",
       "presentation": {
-        "group": "Mod Development - Create-Crafts-Construct",
+        "group": "Mod Development - Create-Crafts-Construct 1.20.1",
         "order": 3
       },
-      "projectName": "Create-Crafts-Construct",
+      "projectName": "Create-Crafts-Construct 1.20.1",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\serverRunProgramArgs.txt"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\IJ\\Create-Crafts-Construct\\build\\moddev\\serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct\\bin\\main"
+        "@E:\\IJ\\Create-Crafts-Construct 1.20.1\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcrafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
-      "env": {},
+      "env": {
+        "MOD_CLASSES": "crafts_construct%%E:\\IJ\\Create-Crafts-Construct 1.20.1\\bin\\main"
+      },
       "console": "internalConsole",
       "shortenCommandLine": "none"
     }
