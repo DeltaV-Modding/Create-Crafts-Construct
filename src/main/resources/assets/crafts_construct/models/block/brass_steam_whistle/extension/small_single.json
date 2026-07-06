@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "crafts_construct:block/brass_steam_whistle/brass_steam_whistle",
-		"particle": "crafts_construct:block/brass_steam_whistle/brass_steam_whistle"
+		"0": "create:block/whistle",
+		"particle": "create:block/whistle"
 	},
 	"elements": [
 		{

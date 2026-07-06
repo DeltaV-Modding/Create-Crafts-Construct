@@ -88,14 +88,10 @@ public class craftsconstruct {
             event.enqueueWork(() -> {
                 FluidClient.registerRenderLayers();
                 PipeClient.registerRenderLayers();
+                FluidClient.registerModelSwappers();
+                PipeClient.registerModelSwappers();
             });
             ItemDrainClient.registerModelLayers();
-        }
-
-        @SubscribeEvent(priority = EventPriority.HIGH)
-        public static void onModifyBakingResult(net.minecraftforge.client.event.ModelEvent.ModifyBakingResult event) {
-            FluidClient.registerModelSwappers();
-            PipeClient.registerModelSwappers();
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)

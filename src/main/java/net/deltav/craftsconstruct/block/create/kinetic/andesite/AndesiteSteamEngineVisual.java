@@ -78,28 +78,28 @@ public class AndesiteSteamEngineVisual extends AbstractBlockEntityVisual<SteamEn
         Axis facingAxis = facing.getAxis();
         boolean roll90 = (facingAxis.isHorizontal() && axis == Axis.Y) || (facingAxis.isVertical() && axis == Axis.Z);
 
-        float sin = Mth.sin(angle);
-        float sinShift = Mth.sin(angle - 1.5707964f);
-        float pistonTranslation = (1.0f - sin) / 4.0f * 24.0f / 16.0f;
+        float pistonValue = .375f * Mth.sin(angle) - Mth.sqrt(Mth.square(.875f) - Mth.square(.375f) * Mth.square(Mth.cos(angle)));
+        float linkageAngle = (float) Math.acos(Mth.sqrt(Mth.square(pistonValue - .375f * Mth.sin(angle))) / .875f)
+                * (Mth.cos(angle) >= 0 ? 1 : -1);
 
         transformed(piston, facing, roll90)
-                .translate(0.0f, pistonTranslation, 0.0f)
+                .translate(0.0f, pistonValue + 1.25f, 0.0f)
                 .setChanged();
 
         transformed(linkage, facing, roll90)
                 .center()
                 .translate(0.0f, 1.0f, 0.0f)
                 .uncenter()
-                .translate(0.0f, pistonTranslation, 0.0f)
+                .translate(0.0f, pistonValue + 1.25f, 0.0f)
                 .translate(0.0f, 0.25f, 0.5f)
-                .rotateXDegrees(sinShift * 23.0f)
+                .rotateX(linkageAngle)
                 .translate(0.0f, -0.25f, -0.5f)
                 .setChanged();
 
         transformed(connector, facing, roll90)
                 .translate(0.0f, 2.0f, 0.0f)
                 .center()
-                .rotateX(-angle + 1.5707964f)
+                .rotateX(-(angle + 1.5707964f))
                 .uncenter()
                 .setChanged();
     }

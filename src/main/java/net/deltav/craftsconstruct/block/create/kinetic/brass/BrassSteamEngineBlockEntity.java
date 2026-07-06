@@ -39,10 +39,8 @@ public class BrassSteamEngineBlockEntity extends SteamEngineBlockEntity {
         angle = com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer.getAngleForBe(shaft, shaft.getBlockPos(), rotationAxis);
         if (rotationAxis == facingAxis)
             return null;
-        if (rotationAxis.isHorizontal()) {
-            if ((facingAxis == net.minecraft.core.Direction.Axis.X) == (facing.getAxisDirection() == net.minecraft.core.Direction.AxisDirection.POSITIVE)) {
-                angle *= -1.0f;
-            }
+        if (rotationAxis.isHorizontal() && (facingAxis == net.minecraft.core.Direction.Axis.X ^ facing.getAxisDirection() == net.minecraft.core.Direction.AxisDirection.POSITIVE)) {
+            angle *= -1.0f;
         }
         if (rotationAxis == net.minecraft.core.Direction.Axis.X && facing == net.minecraft.core.Direction.DOWN) {
             angle *= -1.0f;

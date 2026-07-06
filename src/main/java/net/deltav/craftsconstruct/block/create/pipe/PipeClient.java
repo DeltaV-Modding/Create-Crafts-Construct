@@ -68,34 +68,34 @@ public final class PipeClient {
             );
 
             List<SpriteShiftEntry> glassPipeShifts = Arrays.asList(
-                    SpriteShifter.get(createBlockTexture("glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe")),
-                    SpriteShifter.get(modTexture("block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe")),
-                    SpriteShifter.get(modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/paintables/" + material + "_glass_fluid_pipe"))
+                    SpriteShifter.get(createBlockTexture("glass_fluid_pipe"), modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe")),
+                    SpriteShifter.get(modTexture("block/" + material + "_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe")),
+                    SpriteShifter.get(modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe"), modTexture("block/" + material + "_glass_fluid_pipe/" + material + "_glass_fluid_pipe"))
             );
             List<SpriteShiftEntry> smartPipeShifts = Arrays.asList(
                     SpriteShifter.get(
                             createBlockTexture("smart_pipe_1"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_1")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_1")
                     ),
                     SpriteShifter.get(
                             modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_1"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_1")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_1")
                     ),
                     SpriteShifter.get(
                             createBlockTexture("smart_pipe_2"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_2")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_2")
                     ),
                     SpriteShifter.get(
                             modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_2"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_2")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_2")
                     ),
                     SpriteShifter.get(
                             createBlockTexture("smart_pipe_3"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_3")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_3")
                     ),
                     SpriteShifter.get(
                             modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_3"),
-                            modTexture("block/paintables/" + material + "_smart_pipe_3")
+                            modTexture("block/" + material + "_smart_fluid_pipe/" + material + "_smart_pipe_3")
                     )
             );
 
@@ -120,7 +120,7 @@ public final class PipeClient {
     }
 
     private static String paintablePipeTexture(String material, boolean connected) {
-        return "block/paintables/" + material + "_pipes" + (connected ? "_connected" : "");
+        return "block/" + material + "_fluid_pipe/" + material + "_pipes" + (connected ? "_connected" : "");
     }
 
     private static ResourceLocation modTexture(String path) {
@@ -186,7 +186,8 @@ public final class PipeClient {
 
         private SpriteShiftEntry getShift(BakedQuad quad, List<SpriteShiftEntry> shifts) {
             for (SpriteShiftEntry shift : shifts) {
-                if (shift != null && quad.getSprite() == shift.getOriginal())
+                if (shift != null && (quad.getSprite() == shift.getOriginal()
+                        || quad.getSprite().contents().name().equals(shift.getOriginalResourceLocation())))
                     return shift;
             }
             return null;

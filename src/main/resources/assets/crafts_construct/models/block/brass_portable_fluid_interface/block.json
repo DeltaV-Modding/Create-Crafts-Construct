@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/brass_portable_fluid_interface/brass_portable_fluid_interface",
-		"2": "crafts_construct:block/paintables/brass_fluid_tank_top",
+		"2": "crafts_construct:block/brass_fluid_tank/brass_fluid_tank_top",
 		"particle": "crafts_construct:block/brass_fluid_pipe/brass_encased_pipe"
 	},
 	"elements": [

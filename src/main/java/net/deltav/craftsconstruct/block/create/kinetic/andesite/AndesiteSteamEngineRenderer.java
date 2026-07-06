@@ -44,9 +44,9 @@ public class AndesiteSteamEngineRenderer extends SafeBlockEntityRenderer<SteamEn
 
         boolean roll90 = facingAxis.isHorizontal() && rotationAxis == Direction.Axis.Y || facingAxis.isVertical() && rotationAxis == Direction.Axis.Z;
 
-        float sin = Mth.sin(angle);
-        float sinShift = Mth.sin(angle - 1.5707964f);
-        float pistonTranslation = (1.0f - sin) / 4.0f * 24.0f / 16.0f;
+        float piston = .375f * Mth.sin(angle) - Mth.sqrt(Mth.square(.875f) - Mth.square(.375f) * Mth.square(Mth.cos(angle)));
+        float linkageAngle = (float) Math.acos(Mth.sqrt(Mth.square(piston - .375f * Mth.sin(angle))) / .875f)
+                * (Mth.cos(angle) >= 0 ? 1 : -1);
 
         String path = state.getBlock().builtInRegistryHolder().key().location().getPath();
         PartialModel pistonModel = ModPartialModels.STEAM_ENGINE_PISTONS.getOrDefault(path, com.simibubi.create.AllPartialModels.ENGINE_PISTON);
@@ -56,7 +56,7 @@ public class AndesiteSteamEngineRenderer extends SafeBlockEntityRenderer<SteamEn
         VertexConsumer vc = buffer.getBuffer(RenderType.solid());
 
         transformed(pistonModel, state, facing, roll90)
-                .translate(0, pistonTranslation, 0)
+                .translate(0, piston + 1.25f, 0)
                 .light(light)
                 .renderInto(ms, vc);
 
@@ -64,9 +64,9 @@ public class AndesiteSteamEngineRenderer extends SafeBlockEntityRenderer<SteamEn
                 .center()
                 .translate(0, 1.0f, 0)
                 .uncenter()
-                .translate(0, pistonTranslation, 0)
+                .translate(0, piston + 1.25f, 0)
                 .translate(0, 0.25f, 0.5f)
-                .rotateXDegrees(sinShift * 23.0f)
+                .rotateX(linkageAngle)
                 .translate(0, -0.25f, -0.5f)
                 .light(light)
                 .renderInto(ms, vc);
@@ -74,7 +74,7 @@ public class AndesiteSteamEngineRenderer extends SafeBlockEntityRenderer<SteamEn
         transformed(connectorModel, state, facing, roll90)
                 .translate(0, 2.0f, 0)
                 .center()
-                .rotateX(-angle + 1.5707964f)
+                .rotateX(-(angle + 1.5707964f))
                 .uncenter()
                 .light(light)
                 .renderInto(ms, vc);

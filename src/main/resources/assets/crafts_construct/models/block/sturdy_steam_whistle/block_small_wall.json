@@ -1,8 +1,8 @@
 {
     "credit": "Made with Blockbench",
     "textures": {
-        "0": "crafts_construct:block/sturdy_steam_whistle/sturdy_steam_whistle",
-        "1": "crafts_construct:block/sturdy_steam_engine/sturdy_engine",
+        "0": "create:block/whistle",
+        "1": "crafts_construct:block/sturdy_steam_engine/sturdy_steam_engine",
         "2": "crafts_construct:block/sturdy_steam_whistle/sturdy_redstone_plate",
         "particle": "crafts_construct:block/sturdy_steam_whistle/sturdy_redstone_plate"
     },
