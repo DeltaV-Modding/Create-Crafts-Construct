@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
-		"2": "crafts_construct:block/sturdy_portable_fluid_interface/sturdy_portable_fluid_interface",
+		"2": "crafts_construct:block/sturdy_fluid_pipe/sturdy_fluid_pipe",
 		"particle": "crafts_construct:block/sturdy_fluid_pipe/sturdy_encased_pipe"
 	},
 	"elements": [

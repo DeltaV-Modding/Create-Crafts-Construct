@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "crafts_construct:block/brass_portable_fluid_interface/brass_portable_fluid_interface",
+		"3": "create:block/fluid_chute_unpowered",
 		"2": "crafts_construct:block/brass_fluid_tank/brass_fluid_tank_top",
-		"3": "crafts_construct:block/brass_portable_fluid_interface/brass_portable_fluid_interface",
 		"particle": "crafts_construct:block/brass_fluid_pipe/brass_encased_pipe"
 	},
 	"elements": [
