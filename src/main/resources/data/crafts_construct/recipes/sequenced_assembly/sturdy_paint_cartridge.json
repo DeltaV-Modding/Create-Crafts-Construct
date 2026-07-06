@@ -1,0 +1,61 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "crafts_construct:empty_paint_cartridge"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "item": "crafts_construct:sturdy_paint_cartridge"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "crafts_construct:empty_paint_cartridge"
+        },
+        [
+          {
+            "item": "create:sturdy_sheet"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+        }
+      ],
+      "results": [
+        {
+          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+        }
+      ],
+      "results": [
+        {
+          "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "item": "crafts_construct:incomplete_sturdy_paint_cartridge"
+  }
+}

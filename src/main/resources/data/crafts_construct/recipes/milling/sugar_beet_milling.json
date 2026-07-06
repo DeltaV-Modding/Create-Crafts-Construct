@@ -1,0 +1,27 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "crafts_construct:sugar_beet"
+    }
+  ],
+  "processing_time": 50,
+  "results": [
+    {
+      "count": 2,
+      "item": "minecraft:sugar"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:sugar"
+    },
+    {
+      "chance": 0.2,
+      "item": "crafts_construct:sugar_beet_seeds"
+    },
+    {
+      "chance": 0.2,
+      "item": "minecraft:lime_dye"
+    }
+  ]
+}

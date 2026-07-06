@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "item": "minecraft:calcite"
+    },
+    {
+      "item": "create:experience_nugget"
+    }
+
+  ],
+  "results": [
+    {
+      "item": "minecraft:lapis_block"
+    }
+  ]
+}
