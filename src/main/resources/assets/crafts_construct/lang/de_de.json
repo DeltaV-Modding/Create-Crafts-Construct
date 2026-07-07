@@ -26,6 +26,7 @@
   "fluid.crafts_construct.blue_jelly": "Blaues Gelee",
 
   "item.crafts_construct.rainbow_gummy_bear": "Regenbogen Gummibärchen",
+
   "item.crafts_construct.empty_paint_cartridge": "Leere Farbkartusche",
   "item.crafts_construct.brass_paint_cartridge": "Messing Farbkartusche",
   "item.crafts_construct.copper_paint_cartridge": "Kupfer Farbkartusche",
@@ -117,6 +118,7 @@
   "block.crafts_construct.magenta_checkered_textile_block": "Magenta Karierter Textilblock",
   "block.crafts_construct.pink_textile_block": "Rosa Textilblock",
   "block.crafts_construct.pink_checkered_textile_block": "Rosa Karierter Textilblock",
+
   "create.tooltip.cc.null": "",
   "create.tooltip.cc.keyShift": "§Halte [§7Shift§8] für eine Zusammenfassung",
   "create.tooltip.cc.keyShift_down": "§8Halte [§fShift§8] für eine Zusammenfassung",
