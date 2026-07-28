@@ -37,9 +37,9 @@ public class WildSugarBeetsFeature extends Feature<WildSugarBeetsFeatureConfigur
             }
         }
 
+        int primaryXZSpread = Math.max(1, xzSpread - 2);
         for (int k = 0; k < tries; ++k) {
-            int shorterXZ = xzSpread - 2;
-            mutablePos.setWithOffset(origin, random.nextInt(shorterXZ) - random.nextInt(shorterXZ), random.nextInt(ySpread) - random.nextInt(ySpread), random.nextInt(shorterXZ) - random.nextInt(shorterXZ));
+            mutablePos.setWithOffset(origin, random.nextInt(primaryXZSpread) - random.nextInt(primaryXZSpread), random.nextInt(ySpread) - random.nextInt(ySpread), random.nextInt(primaryXZSpread) - random.nextInt(primaryXZSpread));
             if (config.primaryFeature().value().place(level, context.chunkGenerator(), random, mutablePos)) {
                 ++i;
             }
