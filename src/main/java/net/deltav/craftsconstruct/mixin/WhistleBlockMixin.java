@@ -13,7 +13,8 @@ public class WhistleBlockMixin {
 
     @Redirect(
             method = "use",
-            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z")
+            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z", remap = false),
+            remap = true
     )
     private boolean craftsConstruct$allowCustomWhistlesToExtend(com.tterrag.registrate.util.entry.BlockEntry<?> entry, ItemStack stack) {
         if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {

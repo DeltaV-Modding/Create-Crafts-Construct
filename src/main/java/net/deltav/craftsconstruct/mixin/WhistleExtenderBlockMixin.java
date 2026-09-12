@@ -15,7 +15,8 @@ public class WhistleExtenderBlockMixin {
 
     @Redirect(
             method = "use",
-            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z")
+            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z", remap = false),
+            remap = true
     )
     private boolean craftsConstruct$allowCustomWhistlesToExtendOnExtender(com.tterrag.registrate.util.entry.BlockEntry<?> entry, ItemStack stack) {
         if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {
@@ -31,7 +32,8 @@ public class WhistleExtenderBlockMixin {
 
     @Redirect(
             method = "canSurvive",
-            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z")
+            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z", remap = false),
+            remap = true
     )
     private boolean craftsConstruct$allowExtenderToSurviveOnCustomWhistles(com.tterrag.registrate.util.entry.BlockEntry<?> entry, BlockState state) {
         if (entry.getId().equals(AllBlocks.STEAM_WHISTLE.getId())) {

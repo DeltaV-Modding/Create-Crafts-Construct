@@ -16,8 +16,10 @@ public class PortableStorageInterfaceMovementMixin {
         method = "getStationaryInterfaceAt",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"
-        )
+            target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;",
+            remap = true
+        ),
+        remap = false
     )
     private Block onGetBlockCompare(BlockState instance) {
         Block block = instance.getBlock();
